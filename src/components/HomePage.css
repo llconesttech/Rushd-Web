@@ -1,0 +1,388 @@
+.homepage {
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-bottom: 3rem;
+}
+
+.hero-logo {
+    width: 180px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Salah Times Card */
+.salah-card {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    color: white;
+    box-shadow: 0 10px 40px rgba(13, 92, 99, 0.3);
+}
+
+.salah-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.salah-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.salah-location {
+    font-size: 0.875rem;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.salah-header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.method-selector {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.method-selector:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.method-selector option {
+    background: var(--color-primary-dark);
+    color: white;
+}
+
+.salah-times-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.salah-time-item {
+    text-align: center;
+    padding: 1.5rem 0.5rem 1rem 0.5rem;
+    /* More top padding for badge */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    /* For absolute badge */
+    border: 1px solid transparent;
+}
+
+.salah-time-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.salah-time-item.current {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.salah-name {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.salah-time {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.current-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    background: white;
+    color: var(--color-primary-dark);
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Forbidden Times */
+.forbidden-times-container {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.forbidden-title {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.forbidden-times-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.forbidden-item {
+    background: rgba(220, 38, 38, 0.1);
+    padding: 1.25rem 0.75rem 0.75rem 0.75rem;
+    /* More top padding for badge */
+    border-radius: 0.75rem;
+    text-align: center;
+    border: 1px solid rgba(220, 38, 38, 0.15);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.forbidden-item.active {
+    background: rgba(220, 38, 38, 0.25);
+    border-color: rgba(220, 38, 38, 0.4);
+    animation: forbiddenPulse 2s infinite ease-in-out;
+}
+
+@keyframes forbiddenPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.3);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+    }
+}
+
+.forbidden-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    background: #dc2626;
+    color: white;
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+.forbidden-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+    margin-bottom: 0.25rem;
+}
+
+.forbidden-range {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+@media (max-width: 640px) {
+    .forbidden-times-list {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+}
+
+/* Quick Actions */
+.quick-actions {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 1.5rem 0;
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.quick-action-card {
+    background: var(--color-bg-card);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.quick-action-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(13, 92, 99, 0.15);
+}
+
+.quick-action-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1rem;
+    background: var(--color-primary-light);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+}
+
+.quick-action-card:hover .quick-action-icon {
+    background: var(--color-primary);
+    color: white;
+}
+
+.quick-action-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin: 0;
+}
+
+/* Feature Sections */
+.feature-section {
+    margin-bottom: 3rem;
+}
+
+.feature-section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.feature-section-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--color-accent);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: white;
+}
+
+.feature-section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin: 0;
+}
+
+.feature-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.feature-card {
+    background: var(--color-bg-card);
+    border-radius: 0.875rem;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--color-border);
+}
+
+.feature-card:hover {
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+}
+
+.feature-card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .salah-times-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .quick-actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .salah-times-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .homepage {
+        padding: 1rem;
+    }
+}

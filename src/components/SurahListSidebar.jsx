@@ -3,7 +3,7 @@ import { useSettings } from '../context/SettingsContext';
 import { surahData } from '../data/quranData';
 import './SurahListSidebar.css';
 
-const SurahListSidebar = ({ onSurahSelect, currentSurah }) => {
+const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) => {
     const { isSurahListOpen, toggleSurahList } = useSettings();
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -14,7 +14,17 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah }) => {
         surah.number.toString() === searchTerm
     );
 
-    if (!isSurahListOpen) {
+    // Auto-scroll to active surah
+    React.useEffect(() => {
+        if (currentSurah && persistent) {
+            const activeElement = document.querySelector(`.surah-item[data-surah="${currentSurah}"]`);
+            if (activeElement) {
+                activeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    }, [currentSurah, persistent]);
+
+    if (!persistent && !isSurahListOpen) {
         return (
             <button className="surah-toggle-btn" onClick={toggleSurahList} title="Open Surah List">
                 📖
@@ -23,10 +33,10 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah }) => {
     }
 
     return (
-        <aside className="surah-sidebar">
+        <aside className={`surah-sidebar ${persistent ? 'persistent' : ''}`}>
             <div className="surah-header">
                 <h3>Surahs</h3>
-                <button className="close-btn" onClick={toggleSurahList}>×</button>
+                {!persistent && <button className="close-btn" onClick={toggleSurahList}>×</button>}
             </div>
 
             <div className="surah-search">
@@ -42,6 +52,7 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah }) => {
                 {filteredSurahs.map(surah => (
                     <li
                         key={surah.number}
+                        data-surah={surah.number}
                         className={`surah-item ${currentSurah === surah.number ? 'active' : ''}`}
                         onClick={() => onSurahSelect(surah.number)}
                     >

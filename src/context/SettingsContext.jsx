@@ -17,6 +17,9 @@ export const SettingsProvider = ({ children }) => {
     // Audio Reciter (default to Alafasy or user preference)
     const [selectedReciter, setSelectedReciter] = useState('ar.alafasy');
 
+    // UI Style (style1 or style2)
+    const [uiStyle, setUiStyle] = useState('style1');
+
     const toggleSurahList = () => setIsSurahListOpen(!isSurahListOpen);
     const toggleSettings = () => setIsSettingsOpen(!isSettingsOpen);
 
@@ -31,6 +34,8 @@ export const SettingsProvider = ({ children }) => {
         setSelectedTranslation,
         selectedReciter,
         setSelectedReciter,
+        uiStyle,
+        setUiStyle,
     };
 
     return (

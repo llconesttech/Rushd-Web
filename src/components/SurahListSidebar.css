@@ -13,19 +13,28 @@
     flex-direction: column;
 }
 
+.surah-sidebar.persistent {
+    position: relative;
+    height: 100%;
+    border-right: 1px solid var(--color-border);
+    box-shadow: none;
+    z-index: 10;
+}
+
 .surah-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.25rem;
     background: linear-gradient(135deg, #047857 0%, #059669 100%);
-    color: white;
+    color: white !important;
 }
 
 .surah-header h3 {
     margin: 0;
     font-size: 1.1rem;
     font-weight: 600;
+    color: white !important;
 }
 
 .surah-search {
@@ -41,6 +50,7 @@
     font-size: 0.9rem;
     outline: none;
     transition: all 0.2s ease;
+    box-sizing: border-box;
 }
 
 .surah-search input:focus {

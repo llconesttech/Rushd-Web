@@ -3,7 +3,7 @@ import { useSettings } from '../context/SettingsContext';
 import { quranScripts, translations, reciters, languageList } from '../data/quranData';
 import './SettingsSidebar.css';
 
-const SettingsSidebar = () => {
+const SettingsSidebar = ({ persistent = false }) => {
     const {
         isSettingsOpen,
         toggleSettings,
@@ -12,7 +12,9 @@ const SettingsSidebar = () => {
         selectedTranslation,
         setSelectedTranslation,
         selectedReciter,
-        setSelectedReciter
+        setSelectedReciter,
+        uiStyle,
+        setUiStyle
     } = useSettings();
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -39,7 +41,7 @@ const SettingsSidebar = () => {
         groupedTranslations[langCode].items.push({ key, ...value });
     });
 
-    if (!isSettingsOpen) {
+    if (!persistent && !isSettingsOpen) {
         return (
             <button className="settings-toggle-btn" onClick={toggleSettings} title="Open Settings">
                 ⚙️
@@ -48,10 +50,10 @@ const SettingsSidebar = () => {
     }
 
     return (
-        <aside className="settings-sidebar">
+        <aside className={`settings-sidebar ${persistent ? 'persistent' : ''}`}>
             <div className="settings-header">
                 <h3>Settings</h3>
-                <button className="close-btn" onClick={toggleSettings}>×</button>
+                {!persistent && <button className="close-btn" onClick={toggleSettings}>×</button>}
             </div>
 
             {/* Section Tabs */}
@@ -93,6 +95,40 @@ const SettingsSidebar = () => {
                                 </li>
                             ))}
                         </ul>
+
+                        <h4 style={{ marginTop: '1.5rem' }}>UI Design Style</h4>
+                        <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+                            <button
+                                className={`tab ${uiStyle === 'style1' ? 'active' : ''}`}
+                                style={{
+                                    flex: 1,
+                                    padding: '0.5rem',
+                                    borderRadius: '8px',
+                                    border: '1px solid var(--color-border)',
+                                    cursor: 'pointer',
+                                    backgroundColor: uiStyle === 'style1' ? 'var(--color-primary)' : 'white',
+                                    color: uiStyle === 'style1' ? 'white' : 'var(--color-text-main)'
+                                }}
+                                onClick={() => setUiStyle('style1')}
+                            >
+                                Style 1
+                            </button>
+                            <button
+                                className={`tab ${uiStyle === 'style2' ? 'active' : ''}`}
+                                style={{
+                                    flex: 1,
+                                    padding: '0.5rem',
+                                    borderRadius: '8px',
+                                    border: '1px solid var(--color-border)',
+                                    cursor: 'pointer',
+                                    backgroundColor: uiStyle === 'style2' ? 'var(--color-primary)' : 'white',
+                                    color: uiStyle === 'style2' ? 'white' : 'var(--color-text-main)'
+                                }}
+                                onClick={() => setUiStyle('style2')}
+                            >
+                                Style 2
+                            </button>
+                        </div>
                     </section>
                 )}
 

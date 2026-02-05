@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate } from 'react-router-dom';
-import { BookOpen, Home, Settings, ChevronLeft, Moon, Sun } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate, useLocation, matchPath } from 'react-router-dom';
+import { ChevronLeft } from 'lucide-react';
 import { useSurahList, useSurahDetail } from './hooks/useQuran';
 import { useSettings } from './context/SettingsContext';
 import SettingsSidebar from './components/SettingsSidebar';
 import SurahListSidebar from './components/SurahListSidebar';
+import HomePage from './components/HomePage';
 import AudioPlayer from './components/AudioPlayer';
 import { surahData, getSurahInfo } from './data/quranData';
 
@@ -129,7 +130,7 @@ const parseWordByWord = (text) => {
 const QuranReader = () => {
   const { number } = useParams();
   const [transliterationType, setTransliterationType] = useState('none');
-  const { selectedScript, selectedTranslation } = useSettings();
+  const { selectedScript, selectedTranslation, uiStyle } = useSettings();
 
   // Pass selected script and translation to the hook
   const { data: surah, loading, error } = useSurahDetail(
@@ -159,46 +160,60 @@ const QuranReader = () => {
         <Link to="/quran" className="btn-icon" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', color: 'var(--color-text-muted)' }}>
           <ChevronLeft /> Back
         </Link>
-        <div style={{ flex: 1, textAlign: 'center', minWidth: '200px' }}>
-          <h1 style={{ margin: 0 }}>{surah.englishName}</h1>
-          <p style={{ margin: 0, color: 'var(--color-text-muted)', fontSize: '1rem' }}>
-            {surah.englishNameTranslation} • {surah.numberOfAyahs} Ayahs
-          </p>
+        <div style={{ flex: 1, textAlign: 'center', minWidth: '300px' }}>
+          <h1 style={{ margin: '0.5rem 0', fontSize: '2.5rem', color: 'var(--color-primary-dark)' }}>{surah.englishName}</h1>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '0.5rem',
+            color: 'var(--color-text-muted)',
+            marginBottom: '1rem'
+          }}>
+            <span>{surah.englishNameTranslation}</span>
+            <span>•</span>
+            <span>{surah.numberOfAyahs} Ayahs</span>
+          </div>
+
           {surahInfo && (
             <div style={{
               display: 'flex',
               justifyContent: 'center',
-              gap: '1rem',
-              marginTop: '0.5rem',
+              gap: '0.75rem',
+              marginTop: '1rem',
               flexWrap: 'wrap'
             }}>
               <span style={{
-                padding: '0.25rem 0.75rem',
+                padding: '0.4rem 1rem',
                 backgroundColor: 'var(--color-primary-light)',
-                borderRadius: '1rem',
-                fontSize: '0.75rem',
+                borderRadius: '2rem',
+                fontSize: '0.85rem',
                 color: 'var(--color-primary-dark)',
-                fontWeight: 500
+                fontWeight: 600,
+                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
               }}>
                 Juz {surahInfo.juz.length > 1 ? `${surahInfo.juz[0]}-${surahInfo.juz[surahInfo.juz.length - 1]}` : surahInfo.juz[0]}
               </span>
               <span style={{
-                padding: '0.25rem 0.75rem',
+                padding: '0.4rem 1rem',
                 backgroundColor: surahInfo.revelationType === 'Meccan' ? '#fef3c7' : '#dbeafe',
-                borderRadius: '1rem',
-                fontSize: '0.75rem',
+                borderRadius: '2rem',
+                fontSize: '0.85rem',
                 color: surahInfo.revelationType === 'Meccan' ? '#92400e' : '#1e40af',
-                fontWeight: 500
+                fontWeight: 600,
+                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
               }}>
                 {surahInfo.revelationType}
               </span>
               <span style={{
-                padding: '0.25rem 0.75rem',
+                padding: '0.4rem 1rem',
                 backgroundColor: '#f3e8ff',
-                borderRadius: '1rem',
-                fontSize: '0.75rem',
+                borderRadius: '2rem',
+                fontSize: '1rem',
                 color: '#6b21a8',
-                fontWeight: 500
+                fontWeight: 500,
+                fontFamily: 'var(--font-arabic)',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
               }}>
                 {surahInfo.arabicName}
               </span>
@@ -206,141 +221,175 @@ const QuranReader = () => {
           )}
         </div>
 
-        <select
-          value={transliterationType}
-          onChange={(e) => setTransliterationType(e.target.value)}
-          style={{
-            padding: '0.5rem',
-            borderRadius: '0.5rem',
-            border: '1px solid var(--color-border)',
-            backgroundColor: 'white',
-            cursor: 'pointer'
-          }}
-        >
-          <option value="none">No Transliteration</option>
-          <option value="bn_v1">Bengali (Phonetic)</option>
-          {/* Future: <option value="bn_v2">Bengali (IPA)</option> */}
-        </select>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <select
+            value={transliterationType}
+            onChange={(e) => setTransliterationType(e.target.value)}
+            style={{
+              padding: '0.5rem 1rem',
+              borderRadius: '0.5rem',
+              border: '1px solid var(--color-border)',
+              backgroundColor: 'white',
+              cursor: 'pointer',
+              fontSize: '0.875rem',
+              fontWeight: 500,
+              boxShadow: 'var(--shadow-sm)'
+            }}
+          >
+            <option value="none">No Transliteration</option>
+            <option value="bn_v1">Bengali (Phonetic)</option>
+            {/* Future: <option value="bn_v2">Bengali (IPA)</option> */}
+          </select>
+        </div>
       </div>
 
-      <div style={{
-        backgroundColor: 'var(--color-bg-card)',
-        borderRadius: '1rem',
-        boxShadow: 'var(--shadow-md)',
+      <div className={uiStyle === 'style2' ? '' : ''} style={{
+        backgroundColor: uiStyle === 'style2' ? 'transparent' : 'var(--color-bg-card)',
+        borderRadius: uiStyle === 'style2' ? '0' : '1rem',
+        boxShadow: uiStyle === 'style2' ? 'none' : 'var(--shadow-md)',
         overflow: 'hidden'
       }}>
         {surah.ayahs.map((ayah, index) => (
-          <div key={ayah.number} style={{
-            padding: '2rem',
-            borderBottom: '1px solid var(--color-border)',
-            backgroundColor: index % 2 === 0 ? 'var(--color-bg-card)' : 'var(--color-bg-main)'
-          }}>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              marginBottom: '1.5rem',
-              color: 'var(--color-text-muted)',
-              fontSize: '0.875rem'
-            }}>
-              <span>{surah.number}:{ayah.numberInSurah}</span>
-            </div>
+          uiStyle === 'style2' ? (
+            <div key={ayah.number} className="ayah-card-style2">
+              <span className="ayah-badge">Ayah {ayah.numberInSurah}</span>
+              <button className="play-btn-circle" title="Play Ayah">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </button>
 
-            {isWordByWord ? (
-              <div className="word-by-word-container">
-                {parseWordByWord(ayah.text).map((w, i) => (
-                  <div key={i} className="word-block">
-                    <span className="word-arabic">{w.arabic}</span>
-                    <span className="word-translation">{w.translation}</span>
+              <div className="ayah-text-container">
+                {isWordByWord ? (
+                  <div className="word-by-word-container" style={{ padding: 0 }}>
+                    {parseWordByWord(ayah.text).map((w, i) => (
+                      <div key={i} className="word-block">
+                        <span className="word-arabic">{w.arabic}</span>
+                        <span className="word-translation">{w.translation}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                ) : isTajweed ? (
+                  <p className="arabic-text tajweed-text" style={{
+                    fontSize: '2.5rem',
+                    lineHeight: '2.5',
+                    textAlign: 'right',
+                    margin: 0,
+                    color: 'var(--color-text-main)'
+                  }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text) }} />
+                ) : (
+                  <p className="arabic-text" style={{
+                    fontSize: '2.5rem',
+                    lineHeight: '2.5',
+                    textAlign: 'right',
+                    margin: 0,
+                    color: 'var(--color-text-main)'
+                  }}>
+                    {ayah.text}
+                  </p>
+                )}
+
+                <div className="translation-container">
+                  <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'var(--color-text-main)', margin: 0 }}>
+                    {ayah.translation}
+                  </p>
+                </div>
+
+                {ayah.transliteration && (
+                  <p style={{ fontSize: '1.1rem', color: 'var(--color-primary-dark)', fontStyle: 'italic', margin: 0, borderLeft: '3px solid var(--color-primary)', paddingLeft: '1rem' }}>
+                    {ayah.transliteration}
+                  </p>
+                )}
               </div>
-            ) : isTajweed ? (
-              <p className="arabic-text tajweed-text" style={{
-                fontSize: '2.5rem',
-                lineHeight: '2.2',
-                textAlign: 'right',
-                marginBottom: '1.5rem',
-                color: 'var(--color-text-main)'
-              }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text) }} />
-            ) : (
-              <p className="arabic-text" style={{
-                fontSize: '2.5rem',
-                lineHeight: '2.2',
-                textAlign: 'right',
-                marginBottom: '1.5rem',
-                color: 'var(--color-text-main)'
-              }}>
-                {ayah.text}
-              </p>
-            )}
 
-            <div style={{ marginBottom: '1rem' }}>
-              <p style={{ fontSize: '1.125rem', lineHeight: '1.6', color: 'var(--color-text-main)' }}>
-                {ayah.translation}
-              </p>
-            </div>
-
-            {ayah.transliteration && (
-              <div style={{ marginTop: '0.75rem', padding: '0.75rem', backgroundColor: 'var(--color-primary-light)', borderRadius: '0.5rem' }}>
-                <p style={{ fontSize: '1rem', color: 'var(--color-primary-dark)', fontStyle: 'italic', margin: 0 }}>
-                  {ayah.transliteration}
+              {/* Footnote/Note Box if data exists (mocking it for now as per style 2) */}
+              <div className="footnote-box">
+                <p className="footnote-text">
+                  Note: This ayah highlights the importance of faith and guidance.
                 </p>
               </div>
-            )}
-          </div>
+            </div>
+          ) : (
+            <div key={ayah.number} style={{
+              padding: '2rem',
+              borderBottom: '1px solid var(--color-border)',
+              backgroundColor: index % 2 === 0 ? 'var(--color-bg-card)' : 'var(--color-bg-main)'
+            }}>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                marginBottom: '1.5rem',
+                color: 'var(--color-text-muted)',
+                fontSize: '0.875rem'
+              }}>
+                <span>{surah.number}:{ayah.numberInSurah}</span>
+              </div>
+
+              {isWordByWord ? (
+                <div className="word-by-word-container">
+                  {parseWordByWord(ayah.text).map((w, i) => (
+                    <div key={i} className="word-block">
+                      <span className="word-arabic">{w.arabic}</span>
+                      <span className="word-translation">{w.translation}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : isTajweed ? (
+                <p className="arabic-text tajweed-text" style={{
+                  fontSize: '2.5rem',
+                  lineHeight: '2.2',
+                  textAlign: 'right',
+                  marginBottom: '1.5rem',
+                  color: 'var(--color-text-main)'
+                }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text) }} />
+              ) : (
+                <p className="arabic-text" style={{
+                  fontSize: '2.5rem',
+                  lineHeight: '2.2',
+                  textAlign: 'right',
+                  marginBottom: '1.5rem',
+                  color: 'var(--color-text-main)'
+                }}>
+                  {ayah.text}
+                </p>
+              )}
+
+              <div style={{ marginBottom: '1rem' }}>
+                <p style={{ fontSize: '1.125rem', lineHeight: '1.6', color: 'var(--color-text-main)' }}>
+                  {ayah.translation}
+                </p>
+              </div>
+
+              {ayah.transliteration && (
+                <div style={{ marginTop: '0.75rem', padding: '0.75rem', backgroundColor: 'var(--color-primary-light)', borderRadius: '0.5rem' }}>
+                  <p style={{ fontSize: '1rem', color: 'var(--color-primary-dark)', fontStyle: 'italic', margin: 0 }}>
+                    {ayah.transliteration}
+                  </p>
+                </div>
+              )}
+            </div>
+          )
         ))}
       </div>
     </div>
   );
 };
 
-const Layout = ({ children }) => (
-  <div style={{ display: 'flex', minHeight: '100vh' }}>
-    <aside style={{
-      width: '260px',
-      backgroundColor: 'var(--color-bg-card)',
-      borderRight: '1px solid var(--color-border)',
-      padding: 'var(--spacing-md)',
-      position: 'fixed',
-      height: '100vh',
-      overflowY: 'auto'
-    }}>
-      <div style={{ marginBottom: '3rem', marginTop: '1rem', color: 'var(--color-primary-dark)', fontWeight: 'bold', fontSize: '1.75rem', display: 'flex', alignItems: 'center', gap: '0.75rem', paddingLeft: '0.5rem' }}>
-        <div style={{ background: 'var(--color-primary)', color: 'white', padding: '6px', borderRadius: '8px' }}>
-          <BookOpen size={24} />
-        </div>
-        Rushd
-      </div>
-      <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-        <NavLink to="/" icon={<Home size={20} />} label="Dashboard" />
-        <NavLink to="/quran" icon={<BookOpen size={20} />} label="Quran Index" />
-        <div style={{ height: '1px', background: 'var(--color-border)', margin: '1rem 0' }}></div>
-        <NavLink to="/settings" icon={<Settings size={20} />} label="Settings" />
-      </nav>
-    </aside>
-    <main style={{ flex: 1, marginLeft: '260px', padding: '3rem' }}>
-      {children}
-    </main>
-  </div>
-);
+const Layout = ({ children }) => {
+  const { uiStyle } = useSettings();
+  const location = window.location.pathname;
+  const isGridView = location === '/' || location === '/quran';
 
-const NavLink = ({ to, icon, label }) => (
-  <Link to={to} style={{
-    textDecoration: 'none',
-    color: 'var(--color-text-main)',
-    padding: '0.75rem 1rem',
-    borderRadius: '0.75rem',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.75rem',
-    fontWeight: '500',
-    transition: 'all 0.2s',
-  }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--color-bg-main)'}
-    onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-  >
-    <span style={{ color: 'var(--color-text-muted)' }}>{icon}</span> {label}
-  </Link>
-);
+  return (
+    <div style={{
+      display: 'flex',
+      height: '100vh',
+      width: '100vw',
+      overflow: 'hidden',
+      backgroundColor: (uiStyle === 'style2' || isGridView) ? 'var(--color-bg-main)' : undefined
+    }} className={(uiStyle === 'style2' || isGridView) ? 'bg-dots' : ''}>
+      {children}
+    </div>
+  );
+};
 
 function App() {
   const navigate = useNavigate();
@@ -349,19 +398,65 @@ function App() {
     navigate(`/quran/${surahNumber}`);
   };
 
+  // const { number } = useParams();
+  // const surahNumber = number ? parseInt(number) : null;
+
+  // Determine if we are on the Reader page
+  const location = useLocation();
+  const readerMatch = matchPath("/quran/:number", location.pathname);
+  const surahNumber = readerMatch ? parseInt(readerMatch.params.number) : null;
+  const isReaderPage = !!readerMatch;
+
   return (
-    <>
-      <SurahListSidebar onSurahSelect={handleSurahSelect} currentSurah={null} />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<SurahList />} />
-          <Route path="/quran" element={<SurahList />} />
-          <Route path="/quran/:number" element={<QuranReader />} />
-          <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
-        </Routes>
-      </Layout>
-      <SettingsSidebar />
-    </>
+    <Layout>
+      {/* 
+          Surah Sidebar:
+          - Pass 'persistent={true}' if on Reader page to keep it open and sticky.
+          - In Flex layout, this becomes the first flex item.
+      */}
+      {isReaderPage && (
+        <SurahListSidebar
+          onSurahSelect={handleSurahSelect}
+          currentSurah={surahNumber}
+          persistent={true}
+        />
+      )}
+
+      {/* Main Content Area */}
+      <main style={{
+        flex: 1,
+        overflowY: 'auto',
+        display: 'flex', // To center the inner container
+        justifyContent: 'center', // Center content horizontally
+        backgroundColor: 'transparent'
+      }}>
+        {/* Inner Content Container */}
+        <div style={{
+          width: '100%',
+          maxWidth: isReaderPage ? '864px' : '1200px', // 800px content + 64px padding
+          padding: '2rem', // Reduced padding
+          // Margin auto is handled by flex justify-center, but good for safety
+          margin: isReaderPage ? '0 auto' : '0 auto',
+        }}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/quran" element={<SurahList />} />
+            {/* Reader Page */}
+            <Route path="/quran/:number" element={<QuranReader />} />
+            <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
+          </Routes>
+        </div>
+      </main>
+
+      {/* 
+         Settings Sidebar:
+         - Pass 'persistent={true}' but control visibility via context/props if needed.
+         - The request was "Can toggle the settings on right".
+      */}
+      {isReaderPage && (
+        <SettingsSidebar persistent={true} />
+      )}
+    </Layout>
   );
 }
 
