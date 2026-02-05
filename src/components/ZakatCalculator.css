@@ -1,0 +1,383 @@
+.zakat-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Settings Row */
+.zakat-settings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+    padding: 1rem;
+    background: var(--color-bg-card);
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 150px;
+}
+
+.setting-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.setting-group select {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background: var(--color-bg-main);
+    color: var(--color-text-main);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.reset-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background: var(--color-bg-main);
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.reset-btn:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+    background: #fef2f2;
+}
+
+/* Metal Prices Section */
+.metal-prices-section {
+    background: var(--color-bg-card);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.metal-prices-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+}
+
+.metal-prices-inputs {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.metal-input {
+    flex: 1;
+    min-width: 150px;
+}
+
+.metal-input label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.35rem;
+}
+
+.metal-input .input-field {
+    padding: 0.4rem 0.6rem;
+}
+
+.metal-input .input-field input {
+    width: 80px;
+    text-align: right;
+}
+
+.metal-input .unit {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.metal-prices-note {
+    margin: 0.75rem 0 0 0;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.metal-prices-note a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.metal-prices-note a:hover {
+    text-decoration: underline;
+}
+
+/* Sections */
+.zakat-section {
+    background: var(--color-bg-card);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0 0 1rem 0;
+}
+
+/* Input Grid */
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.liabilities-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.input-card {
+    padding: 1rem;
+    background: var(--color-bg-main);
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+}
+
+.input-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.input-icon {
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.input-icon.liability-icon {
+    color: #ef4444;
+}
+
+.input-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+}
+
+.input-description {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-top: 0.15rem;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+}
+
+.currency-symbol {
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+.input-field input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--color-text-main);
+    font-size: 1rem;
+    outline: none;
+}
+
+.input-field input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.5;
+}
+
+/* Results Section */
+.zakat-results {
+    background: var(--color-bg-card);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-main);
+    border-radius: 0.5rem;
+}
+
+.result-item.highlight {
+    background: var(--color-primary-light);
+    grid-column: span 2;
+}
+
+.result-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.result-value {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-text-main);
+}
+
+.result-value.minus {
+    color: #ef4444;
+}
+
+/* Zakat Due Card */
+.zakat-due-card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.zakat-due-card.due {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+}
+
+.zakat-due-card.not-due {
+    background: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+}
+
+.due-status {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.zakat-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.amount-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-bottom: 0.25rem;
+}
+
+.amount-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.due-message {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.zakat-due-card.not-due .due-status {
+    color: var(--color-text-muted);
+}
+
+.zakat-due-card.not-due .due-message {
+    color: var(--color-text-muted);
+}
+
+/* Info Section */
+.zakat-info {
+    background: var(--color-bg-card);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.zakat-info h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    color: var(--color-primary);
+}
+
+.zakat-info ul {
+    margin: 0 0 1rem 0;
+    padding-left: 1.25rem;
+}
+
+.zakat-info li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+}
+
+.disclaimer {
+    margin: 0;
+    padding: 0.75rem;
+    background: #fef3c7;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    color: #92400e;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .zakat-settings {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-item.highlight {
+        grid-column: span 1;
+    }
+
+    .amount-value {
+        font-size: 2rem;
+    }
+}

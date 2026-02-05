@@ -1,0 +1,282 @@
+.salah-rules-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Accordion Sections */
+.accordion-section {
+    background: var(--color-bg-card);
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+}
+
+.accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-main);
+    transition: background 0.2s;
+}
+
+.accordion-header:hover {
+    background: var(--color-bg-main);
+}
+
+.accordion-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.accordion-title svg {
+    color: var(--color-primary);
+}
+
+.accordion-content {
+    padding: 0 1.25rem 1.25rem;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.section-intro {
+    margin: 0 0 1rem 0;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+/* Rakats Table */
+.rakats-table {
+    background: var(--color-bg-main);
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.rakats-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    padding: 0.75rem 1rem;
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.rakats-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    align-items: center;
+}
+
+.rakats-row:last-child {
+    border-bottom: none;
+}
+
+.prayer-name {
+    display: flex;
+    flex-direction: column;
+}
+
+.prayer-name .arabic {
+    font-family: var(--font-arabic);
+    font-size: 1.1rem;
+    color: var(--color-primary);
+}
+
+.prayer-name .english {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.rakat-count {
+    font-weight: 600;
+    text-align: center;
+}
+
+.rakat-count small {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+.rakat-count.fard {
+    color: var(--color-primary);
+}
+
+.rakat-count.sunnah {
+    color: #22c55e;
+}
+
+.rakat-count.total {
+    color: var(--color-text-main);
+    font-size: 1.1rem;
+}
+
+.legend {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1rem 0 0 0;
+    padding: 0;
+}
+
+.legend .badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.legend .badge.fard {
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+}
+
+.legend .badge.sunnah {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.legend .badge.witr {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* Rules Grid */
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0.75rem;
+}
+
+.rule-item {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--color-bg-main);
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+}
+
+.rule-number {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.rule-item.condition .rule-number {
+    background: #3b82f6;
+}
+
+.rule-item.pillar .rule-number {
+    background: var(--color-primary);
+}
+
+.rule-item.sunnah-act .rule-number {
+    background: #22c55e;
+}
+
+.rule-item.invalidator .rule-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fee2e2;
+    color: #dc2626;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.rule-content {
+    flex: 1;
+}
+
+.rule-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+    margin-bottom: 0.15rem;
+}
+
+.rule-description {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+/* Disclaimer Box */
+.disclaimer-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #fef3c7;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+}
+
+.disclaimer-box svg {
+    color: #d97706;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.disclaimer-box p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #92400e;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+
+    .rakats-header,
+    .rakats-row {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+        font-size: 0.75rem;
+        padding: 0.6rem 0.75rem;
+    }
+
+    .prayer-name .arabic {
+        font-size: 0.95rem;
+    }
+
+    .prayer-name .english {
+        font-size: 0.75rem;
+    }
+
+    .rules-grid {
+        grid-template-columns: 1fr;
+    }
+}

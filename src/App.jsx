@@ -10,6 +10,8 @@ import AudioPlayer from './components/AudioPlayer';
 import PageHeader from './components/PageHeader'; // Import new component
 import QiblaFinder from './components/QiblaFinder';
 import TasbihCounter from './components/TasbihCounter';
+import ZakatCalculator from './components/ZakatCalculator';
+import SalahRules from './components/SalahRules';
 import { surahData, getSurahInfo } from './data/quranData';
 
 // Components
@@ -430,6 +432,8 @@ function App() {
             <Route path="/quran/:number" element={<QuranReader />} />
             <Route path="/qibla" element={<QiblaFinder />} />
             <Route path="/tasbih" element={<TasbihCounter />} />
+            <Route path="/zakat" element={<ZakatCalculator />} />
+            <Route path="/salah-rules" element={<SalahRules />} />
             <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
           </Routes>
         </div>
