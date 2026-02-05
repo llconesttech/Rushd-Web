@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getPrayerTimes, getAvailableMethods } from '../services/prayerTimesService';
+import RamadanWidget from './RamadanWidget';
 import './HomePage.css';
 
 // Feature data
@@ -54,6 +55,7 @@ const featureSections = [
         title: 'Ramadhan Special',
         icon: '🌙',
         features: [
+            { id: 'ramadan-cal', title: 'Ramadan Calendar', icon: '📅', link: '/ramadan' },
             { id: 'fasting', title: 'Fasting Rules', icon: '🍽️', link: '/fasting' },
             { id: 'taraweeh', title: 'Taraweeh', icon: '🌃', link: '/taraweeh' },
             { id: 'sadaqah', title: 'Sadaqah', icon: '💝', link: '/sadaqah' },
@@ -257,6 +259,13 @@ const HomePage = () => {
                 <h1 className="hero-title">Rushd - Quran Tafsir Guidance</h1>
                 <p className="hero-subtitle">Clear Guidance for Everyday Life</p>
             </section>
+
+            {/* Ramadan Widget - Shows Sehri/Iftar countdown */}
+            {coords && (
+                <section className="container">
+                    <RamadanWidget latitude={coords.latitude} longitude={coords.longitude} />
+                </section>
+            )}
 
             {/* Salah Times Card */}
             <section className="salah-card">

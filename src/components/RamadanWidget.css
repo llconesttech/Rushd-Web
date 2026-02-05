@@ -1,0 +1,141 @@
+.ramadan-widget {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.ramadan-widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.widget-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.widget-link {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.widget-link:hover {
+    color: white;
+}
+
+.widget-times {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.widget-time-box {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.time-type {
+    opacity: 0.85;
+}
+
+.time-value {
+    font-weight: 700;
+    font-family: 'SF Mono', 'Consolas', monospace;
+}
+
+.widget-countdown {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.countdown-text {
+    font-family: 'SF Mono', 'Consolas', monospace;
+}
+
+.widget-countdown-days {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+}
+
+.days-count {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.days-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    flex: 1;
+}
+
+.moonsighting-note {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* Eid Mode */
+.ramadan-widget.eid-mode {
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+}
+
+.eid-message {
+    font-size: 0.95rem;
+    opacity: 0.95;
+    margin-top: 0.5rem;
+}
+
+.eid-countdown {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+}
+
+.eid-countdown .moonsighting-note {
+    margin-left: auto;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .widget-times {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .widget-time-box,
+    .widget-countdown {
+        justify-content: center;
+    }
+}

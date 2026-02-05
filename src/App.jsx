@@ -12,6 +12,12 @@ import QiblaFinder from './components/QiblaFinder';
 import TasbihCounter from './components/TasbihCounter';
 import ZakatCalculator from './components/ZakatCalculator';
 import SalahRules from './components/SalahRules';
+import AsmaUlHusna from './components/AsmaUlHusna';
+import IslamicCalendar from './components/IslamicCalendar';
+import RamadanCalendar from './components/RamadanCalendar';
+import FastingRules from './components/FastingRules';
+import Taraweeh from './components/Taraweeh';
+import LaylatulQadr from './components/LaylatulQadr';
 import { surahData, getSurahInfo } from './data/quranData';
 
 // Components
@@ -434,6 +440,12 @@ function App() {
             <Route path="/tasbih" element={<TasbihCounter />} />
             <Route path="/zakat" element={<ZakatCalculator />} />
             <Route path="/salah-rules" element={<SalahRules />} />
+            <Route path="/names" element={<AsmaUlHusna />} />
+            <Route path="/calendar" element={<IslamicCalendar />} />
+            <Route path="/ramadan" element={<RamadanCalendar />} />
+            <Route path="/fasting" element={<FastingRules />} />
+            <Route path="/taraweeh" element={<Taraweeh />} />
+            <Route path="/laylatul-qadr" element={<LaylatulQadr />} />
             <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
           </Routes>
         </div>
