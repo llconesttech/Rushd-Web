@@ -18,6 +18,7 @@ import RamadanCalendar from './components/RamadanCalendar';
 import FastingRules from './components/FastingRules';
 import Taraweeh from './components/Taraweeh';
 import LaylatulQadr from './components/LaylatulQadr';
+import Sadaqah from './components/Sadaqah';
 import { surahData, getSurahInfo } from './data/quranData';
 
 // Components
@@ -446,6 +447,7 @@ function App() {
             <Route path="/fasting" element={<FastingRules />} />
             <Route path="/taraweeh" element={<Taraweeh />} />
             <Route path="/laylatul-qadr" element={<LaylatulQadr />} />
+            <Route path="/sadaqah" element={<Sadaqah />} />
             <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
           </Routes>
         </div>
