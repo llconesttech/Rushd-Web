@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { surahData } from '../data/quranData';
-
-const API_BASE = 'http://api.alquran.cloud/v1';
+import quranService from '../services/quranService';
 
 export const useSurahList = () => {
     const [data, setData] = useState([]);
@@ -9,8 +8,7 @@ export const useSurahList = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`${API_BASE}/surah`)
-            .then(res => res.json())
+        quranService.getAllSurahs()
             .then(json => {
                 setData(json.data);
                 setLoading(false);
@@ -39,8 +37,7 @@ export const useSurahDetail = (number, transliterationType = 'none', selectedScr
                 const editions = `${selectedScript},${selectedTranslation}`;
 
                 // 1. Fetch Core Data (Arabic Script + Selected Translation)
-                const apiRes = await fetch(`${API_BASE}/surah/${number}/editions/${editions}`);
-                const apiJson = await apiRes.json();
+                const apiJson = await quranService.getSurahDetails(number, editions);
 
                 if (apiJson.code !== 200 || !apiJson.data || apiJson.data.length < 2) {
                     throw new Error('Failed to fetch surah data');
@@ -54,8 +51,7 @@ export const useSurahDetail = (number, transliterationType = 'none', selectedScr
                 // 2. Fetch/Process Transliteration
                 if (transliterationType === 'bn_v1') {
                     try {
-                        const transRes = await fetch('/data/transliteration_bn_v1.json');
-                        const transJson = await transRes.json();
+                        const transJson = await quranService.transliteration.getLocal('bn_v1');
                         const surahTrans = transJson[number];
                         if (surahTrans && surahTrans.transliteration) {
                             surahTrans.transliteration.forEach(item => {
@@ -88,12 +84,6 @@ export const useSurahDetail = (number, transliterationType = 'none', selectedScr
     }, [number, transliterationType, selectedScript, selectedTranslation]);
 
     return { data, loading, error };
-};
-
-// Helper to get audio URL using alquran.cloud CDN
-// Format: https://cdn.islamic.network/quran/audio/{bitrate}/{edition}/{ayah_number}.mp3
-export const getAudioUrl = (reciter, absoluteAyahNumber, bitrate = 128) => {
-    return `https://cdn.islamic.network/quran/audio/${bitrate}/${reciter}/${absoluteAyahNumber}.mp3`;
 };
 
 // Calculate absolute ayah number dynamically from surahData

@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSettings } from '../context/SettingsContext';
 import { reciters } from '../data/quranData';
-import { getAudioUrl, getAbsoluteAyahNumber } from '../hooks/useQuran';
+import { getAbsoluteAyahNumber } from '../hooks/useQuran';
+import audioService from '../services/audioService';
 import './AudioPlayer.css';
 
 const AudioPlayer = ({ surahNumber, totalAyahs }) => {
@@ -17,7 +18,7 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
 
     // Calculate absolute ayah number for the audio CDN
     const absoluteAyahNumber = getAbsoluteAyahNumber(surahNumber, currentAyah);
-    const audioUrl = getAudioUrl(selectedReciter, absoluteAyahNumber);
+    const audioUrl = audioService.getUrl(selectedReciter, absoluteAyahNumber);
 
     useEffect(() => {
         if (audioRef.current) {

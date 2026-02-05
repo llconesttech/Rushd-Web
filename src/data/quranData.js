@@ -1,9 +1,6 @@
 // Complete Quran data extracted from legacy GlobalQuran project
 // This includes all available translations, reciters, and Quran scripts
 
-export const API_BASE_URL = 'https://api.globalquran.com';
-export const AUDIO_BASE_URL = 'https://audio.globalquran.com';
-
 // All available languages
 export const languageList = {
     "af": { "english_name": "Afrikaans", "native_name": "", "dir": "left" },

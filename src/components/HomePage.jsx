@@ -68,6 +68,7 @@ const HomePage = () => {
     const [coords, setCoords] = useState(null);
     const [currentPrayer, setCurrentPrayer] = useState(null);
     const [currentForbidden, setCurrentForbidden] = useState(null);
+    const [currentSunnah, setCurrentSunnah] = useState(null);
     const [loading, setLoading] = useState(true);
 
     // Load method from localStorage or default
@@ -125,7 +126,32 @@ const HomePage = () => {
             }
             setCurrentForbidden(foundForbidden);
         }
+
+        // 3. Check Sunnah Times
+        if (salahTimes.sunnah) {
+            let foundSunnah = null;
+            for (const [name, period] of Object.entries(salahTimes.sunnah)) {
+                const start = parseTimeToMinutes(period.start);
+                const end = parseTimeToMinutes(period.end);
+
+                // Handle overnight times (like Tahajjud which spans midnight)
+                if (start > end) {
+                    // Overnight: check if current is after start OR before end
+                    if (currentMinutes >= start || currentMinutes < end) {
+                        foundSunnah = name;
+                        break;
+                    }
+                } else {
+                    if (currentMinutes >= start && currentMinutes < end) {
+                        foundSunnah = name;
+                        break;
+                    }
+                }
+            }
+            setCurrentSunnah(foundSunnah);
+        }
     };
+
 
     // Calculate prayer times
     const calculatePrayerTimes = (lat, lng, selectedMethod) => {
@@ -144,7 +170,8 @@ const HomePage = () => {
                 Isha: times.isha,
                 Sunrise: times.sunrise,
                 Sunset: times.maghrib,
-                forbidden: times.forbidden
+                forbidden: times.forbidden,
+                sunnah: times.sunnah
             });
         } catch (error) {
             console.error('Error calculating prayer times:', error);
@@ -288,6 +315,35 @@ const HomePage = () => {
                                 </div>
                             </div>
                         </div>
+
+                        {/* Sunnah Times */}
+                        {salahTimes.sunnah && (
+                            <div className="sunnah-times-container">
+                                <h3 className="sunnah-title">🌙 Sunnah Prayer Times</h3>
+                                <div className="sunnah-times-grid">
+                                    <div className={`sunnah-item ${currentSunnah === 'ishraq' ? 'active' : ''}`}>
+                                        {currentSunnah === 'ishraq' && <div className="sunnah-badge">NOW</div>}
+                                        <span className="sunnah-label">Ishraq</span>
+                                        <span className="sunnah-time">{salahTimes.sunnah.ishraq?.start} - {salahTimes.sunnah.ishraq?.end}</span>
+                                    </div>
+                                    <div className={`sunnah-item ${currentSunnah === 'duha' ? 'active' : ''}`}>
+                                        {currentSunnah === 'duha' && <div className="sunnah-badge">NOW</div>}
+                                        <span className="sunnah-label">Duha (Chasht)</span>
+                                        <span className="sunnah-time">{salahTimes.sunnah.duha?.start} - {salahTimes.sunnah.duha?.end}</span>
+                                    </div>
+                                    <div className={`sunnah-item ${currentSunnah === 'awwabin' ? 'active' : ''}`}>
+                                        {currentSunnah === 'awwabin' && <div className="sunnah-badge">NOW</div>}
+                                        <span className="sunnah-label">Awwabin</span>
+                                        <span className="sunnah-time">{salahTimes.sunnah.awwabin?.start} - {salahTimes.sunnah.awwabin?.end}</span>
+                                    </div>
+                                    <div className={`sunnah-item ${currentSunnah === 'tahajjud' ? 'active' : ''}`}>
+                                        {currentSunnah === 'tahajjud' && <div className="sunnah-badge">NOW</div>}
+                                        <span className="sunnah-label">Tahajjud</span>
+                                        <span className="sunnah-time">{salahTimes.sunnah.tahajjud?.start} - {salahTimes.sunnah.tahajjud?.end}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </>
                 )}
             </section>

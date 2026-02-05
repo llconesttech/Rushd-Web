@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate, useLocation, matchPath } from 'react-router-dom';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useSurahList, useSurahDetail } from './hooks/useQuran';
 import { useSettings } from './context/SettingsContext';
 import SettingsSidebar from './components/SettingsSidebar';
 import SurahListSidebar from './components/SurahListSidebar';
 import HomePage from './components/HomePage';
 import AudioPlayer from './components/AudioPlayer';
+import PageHeader from './components/PageHeader'; // Import new component
+import QiblaFinder from './components/QiblaFinder';
+import TasbihCounter from './components/TasbihCounter';
 import { surahData, getSurahInfo } from './data/quranData';
 
 // Components
@@ -24,15 +27,20 @@ const SurahList = () => {
 
   return (
     <div className="container">
-      <div style={{ marginBottom: '2rem' }}>
-        <h1>Surah Index</h1>
-        <p style={{ color: 'var(--color-text-muted)' }}>Select a Surah to read • 114 Surahs • 30 Juz</p>
-      </div>
+      <PageHeader
+        title="Surah Index"
+        subtitle="Select a Surah to read • 114 Surahs • 30 Juz"
+        breadcrumbs={[
+          { label: 'Home', path: '/' },
+          { label: 'Quran', path: '/quran' }
+        ]}
+      />
 
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-        gap: '1rem'
+        gap: '1rem',
+        marginTop: '1rem'
       }}>
         {enhancedSurahs.map(surah => (
           <Link to={`/quran/${surah.number}`} key={surah.number} style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -104,11 +112,9 @@ const SurahList = () => {
   );
 };
 
-// Parsing utilities for special scripts
+// ... parsing utilities omitted for brevity as they are unchanged ...
 const parseTajweed = (text) => {
   if (!text) return "";
-  // alquran.cloud format: [h:1[ٱ] or [n[ـٰ]
-  // Matches [rule:index[text] or [rule[text]
   return text.replace(/\[([a-z])(?::\d+)?\[([^\]]+)\]/g, (match, type, content) => {
     return `<span class="tj-${type}">${content}</span>`;
   });
@@ -116,7 +122,6 @@ const parseTajweed = (text) => {
 
 const parseWordByWord = (text) => {
   if (!text) return [];
-  // Example: Word|Translation|X|Y|#$
   const words = text.split('$').filter(w => w.trim());
   return words.map(w => {
     const parts = w.split('|');
@@ -129,8 +134,11 @@ const parseWordByWord = (text) => {
 
 const QuranReader = () => {
   const { number } = useParams();
+  const navigate = useNavigate();
   const [transliterationType, setTransliterationType] = useState('none');
   const { selectedScript, selectedTranslation, uiStyle } = useSettings();
+
+  const surahNum = parseInt(number);
 
   // Pass selected script and translation to the hook
   const { data: surah, loading, error } = useSurahDetail(
@@ -141,7 +149,7 @@ const QuranReader = () => {
   );
 
   // Get complete metadata from our comprehensive data
-  const surahInfo = getSurahInfo(parseInt(number));
+  const surahInfo = getSurahInfo(surahNum);
 
   if (loading) return <div className="container" style={{ marginTop: '2rem' }}>Loading Surah...</div>;
   if (error) return <div className="container" style={{ marginTop: '2rem' }}>Error loading Surah. Try a different translation.</div>;
@@ -150,105 +158,82 @@ const QuranReader = () => {
   const isWordByWord = selectedScript === 'quran-kids' || selectedScript === 'quran-wordbyword' || selectedScript === 'quran-wordbyword-2';
   const isTajweed = selectedScript === 'quran-tajweed';
 
-  return (
-    <div className="container" style={{ maxWidth: '800px' }}>
-      {/* Audio Player */}
-      <AudioPlayer surahNumber={parseInt(number)} totalAyahs={surah.numberOfAyahs} />
+  // Navigation handlers
+  const handleNextSurah = () => {
+    if (surahNum < 114) navigate(`/quran/${surahNum + 1}`);
+  };
 
-      {/* Surah Header with Juz Info */}
-      <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-        <Link to="/quran" className="btn-icon" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', color: 'var(--color-text-muted)' }}>
-          <ChevronLeft /> Back
-        </Link>
-        <div style={{ flex: 1, textAlign: 'center', minWidth: '300px' }}>
-          <h1 style={{ margin: '0.5rem 0', fontSize: '2.5rem', color: 'var(--color-primary-dark)' }}>{surah.englishName}</h1>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '0.5rem',
-            color: 'var(--color-text-muted)',
-            marginBottom: '1rem'
-          }}>
-            <span>{surah.englishNameTranslation}</span>
-            <span>•</span>
-            <span>{surah.numberOfAyahs} Ayahs</span>
-          </div>
+  const handlePrevSurah = () => {
+    if (surahNum > 1) navigate(`/quran/${surahNum - 1}`);
+  };
 
-          {surahInfo && (
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '0.75rem',
-              marginTop: '1rem',
-              flexWrap: 'wrap'
-            }}>
-              <span style={{
-                padding: '0.4rem 1rem',
-                backgroundColor: 'var(--color-primary-light)',
-                borderRadius: '2rem',
-                fontSize: '0.85rem',
-                color: 'var(--color-primary-dark)',
-                fontWeight: 600,
-                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-              }}>
-                Juz {surahInfo.juz.length > 1 ? `${surahInfo.juz[0]}-${surahInfo.juz[surahInfo.juz.length - 1]}` : surahInfo.juz[0]}
-              </span>
-              <span style={{
-                padding: '0.4rem 1rem',
-                backgroundColor: surahInfo.revelationType === 'Meccan' ? '#fef3c7' : '#dbeafe',
-                borderRadius: '2rem',
-                fontSize: '0.85rem',
-                color: surahInfo.revelationType === 'Meccan' ? '#92400e' : '#1e40af',
-                fontWeight: 600,
-                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-              }}>
-                {surahInfo.revelationType}
-              </span>
-              <span style={{
-                padding: '0.4rem 1rem',
-                backgroundColor: '#f3e8ff',
-                borderRadius: '2rem',
-                fontSize: '1rem',
-                color: '#6b21a8',
-                fontWeight: 500,
-                fontFamily: 'var(--font-arabic)',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-              }}>
-                {surahInfo.arabicName}
-              </span>
-            </div>
-          )}
-        </div>
-
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <select
-            value={transliterationType}
-            onChange={(e) => setTransliterationType(e.target.value)}
-            style={{
-              padding: '0.5rem 1rem',
-              borderRadius: '0.5rem',
-              border: '1px solid var(--color-border)',
-              backgroundColor: 'white',
-              cursor: 'pointer',
-              fontSize: '0.875rem',
-              fontWeight: 500,
-              boxShadow: 'var(--shadow-sm)'
-            }}
-          >
-            <option value="none">No Transliteration</option>
-            <option value="bn_v1">Bengali (Phonetic)</option>
-            {/* Future: <option value="bn_v2">Bengali (IPA)</option> */}
-          </select>
-        </div>
+  const actions = (
+    <>
+      <div className="ph-actions-group">
+        <button
+          className="ph-action-btn ph-btn-outline"
+          onClick={handlePrevSurah}
+          disabled={surahNum <= 1}
+          title="Previous Surah"
+        >
+          <ChevronLeft size={16} /> Prev
+        </button>
+        <button
+          className="ph-action-btn ph-btn-outline"
+          onClick={handleNextSurah}
+          disabled={surahNum >= 114}
+          title="Next Surah"
+        >
+          Next <ChevronRight size={16} />
+        </button>
       </div>
 
+      <select
+        value={transliterationType}
+        onChange={(e) => setTransliterationType(e.target.value)}
+        className="ph-action-btn ph-btn-outline"
+        style={{ padding: '0.4rem 0.75rem' }}
+      >
+        <option value="none">No Transliteration</option>
+        <option value="bn_v1">Bengali (Phonetic)</option>
+      </select>
+    </>
+  );
+
+  const subtitle = (
+    <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      {surah.englishNameTranslation} • {surah.numberOfAyahs} Ayahs • {surahInfo?.revelationType}
+    </span>
+  );
+
+  return (
+    <div className="container" style={{ maxWidth: '800px', padding: 0 }}>
+      <PageHeader
+        title={surah.englishName}
+        subtitle={subtitle}
+        breadcrumbs={[
+          { label: 'Home', path: '/' },
+          { label: 'Quran', path: '/quran' },
+          { label: surah.englishName, path: `/quran/${surahNum}` }
+        ]}
+        actions={actions}
+      />
+
+      {/* Audio Player */}
+      <div style={{ padding: '0 2rem' }}>
+        <AudioPlayer surahNumber={parseInt(number)} totalAyahs={surah.numberOfAyahs} />
+      </div>
+
+      {/* Main Content */}
       <div className={uiStyle === 'style2' ? '' : ''} style={{
+        marginTop: '1rem',
+        padding: '0 2rem 2rem 2rem',
         backgroundColor: uiStyle === 'style2' ? 'transparent' : 'var(--color-bg-card)',
         borderRadius: uiStyle === 'style2' ? '0' : '1rem',
         boxShadow: uiStyle === 'style2' ? 'none' : 'var(--shadow-md)',
         overflow: 'hidden'
       }}>
+        {/* ... Ayah Mapping (Content) ... */}
         {surah.ayahs.map((ayah, index) => (
           uiStyle === 'style2' ? (
             <div key={ayah.number} className="ayah-card-style2">
@@ -443,6 +428,8 @@ function App() {
             <Route path="/quran" element={<SurahList />} />
             {/* Reader Page */}
             <Route path="/quran/:number" element={<QuranReader />} />
+            <Route path="/qibla" element={<QiblaFinder />} />
+            <Route path="/tasbih" element={<TasbihCounter />} />
             <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
           </Routes>
         </div>

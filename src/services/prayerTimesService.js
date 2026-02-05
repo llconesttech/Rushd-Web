@@ -38,7 +38,9 @@ import {
     Coordinates,
     CalculationMethod,
     Madhab,
-    SunnahTimes
+    HighLatitudeRule,
+    SunnahTimes,
+    Qibla
 } from 'adhan';
 
 // Calculation methods mapping
@@ -108,6 +110,7 @@ export const getPrayerTimes = (date, latitude, longitude, options = {}) => {
     const method = METHODS[options.method] || CalculationMethod.MuslimWorldLeague;
     const params = method();
     params.madhab = MADHABS[options.madhab] || Madhab.Shafi;
+    params.highLatitudeRule = HighLatitudeRule.recommended(coordinates);
 
     // Calculate prayer times
     const prayerTimes = new PrayerTimes(coordinates, dateObj, params);
@@ -120,6 +123,23 @@ export const getPrayerTimes = (date, latitude, longitude, options = {}) => {
     const zawalStart = subtractMinutes(prayerTimes.dhuhr, 10);
     const sunsetStart = subtractMinutes(prayerTimes.maghrib, 15);
 
+    // Calculate Sunnah time RANGES
+    // Ishraq: 15 min after sunrise until ~45 min after sunrise
+    const ishraqStart = addMinutes(prayerTimes.sunrise, 15);
+    const ishraqEnd = addMinutes(prayerTimes.sunrise, 45);
+
+    // Duha (Chasht): ~45 min after sunrise until ~20 min before Dhuhr
+    const duhaStart = addMinutes(prayerTimes.sunrise, 45);
+    const duhaEnd = subtractMinutes(prayerTimes.dhuhr, 20);
+
+    // Awwabin: After Maghrib until Isha
+    const awwabinStart = addMinutes(prayerTimes.maghrib, 10);
+    const awwabinEnd = prayerTimes.isha;
+
+    // Tahajjud: Last third of night until Fajr
+    const tahajjudStart = sunnahTimes.lastThirdOfTheNight;
+    const tahajjudEnd = prayerTimes.fajr;
+
     return {
         // Main prayer times
         fajr: formatTime(prayerTimes.fajr),
@@ -129,9 +149,18 @@ export const getPrayerTimes = (date, latitude, longitude, options = {}) => {
         maghrib: formatTime(prayerTimes.maghrib),
         isha: formatTime(prayerTimes.isha),
 
-        // Additional times
+        // Sunnah prayer time RANGES
+        sunnah: {
+            ishraq: { start: formatTime(ishraqStart), end: formatTime(ishraqEnd) },
+            duha: { start: formatTime(duhaStart), end: formatTime(duhaEnd) },
+            awwabin: { start: formatTime(awwabinStart), end: formatTime(awwabinEnd) },
+            tahajjud: { start: formatTime(tahajjudStart), end: formatTime(tahajjudEnd) },
+        },
+
+        // Additional times (legacy, kept for backward compatibility)
         midnight: formatTime(sunnahTimes.middleOfTheNight),
         lastThird: formatTime(sunnahTimes.lastThirdOfTheNight),
+
 
         // Forbidden periods
         forbidden: {
@@ -156,6 +185,17 @@ export const getPrayerTimes = (date, latitude, longitude, options = {}) => {
 };
 
 /**
+ * Get Qibla direction from North
+ * @param {number} latitude 
+ * @param {number} longitude 
+ * @returns {number} Degree from North (0-360)
+ */
+export const getQiblaDirection = (latitude, longitude) => {
+    const coordinates = new Coordinates(latitude, longitude);
+    return Qibla(coordinates);
+};
+
+/**
  * Get available calculation methods
  * @returns {string[]} List of available method names
  */
@@ -170,5 +210,6 @@ export const getAvailableMadhabs = () => Object.keys(MADHABS);
 export default {
     getPrayerTimes,
     getAvailableMethods,
-    getAvailableMadhabs
+    getAvailableMadhabs,
+    getQiblaDirection
 };
