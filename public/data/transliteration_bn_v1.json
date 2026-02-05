@@ -1,0 +1,35 @@
+{
+  "1": {
+    "name": "Al-Fatiha",
+    "transliteration": [
+      {
+        "verse": 1,
+        "text": "Bismillaahir Rahmaanir Raheem"
+      },
+      {
+        "verse": 2,
+        "text": "Alhamdu lillaahi Rabbil 'aalameen"
+      },
+      {
+        "verse": 3,
+        "text": "Ar-Rahmaanir-Raheem"
+      },
+      {
+        "verse": 4,
+        "text": "Maaliki Yawmid-Deen"
+      },
+      {
+        "verse": 5,
+        "text": "Iyyaaka na'budu wa lyyaaka nasta'een"
+      },
+      {
+        "verse": 6,
+        "text": "Ihdinas-Siraatal-Mustaqeem"
+      },
+      {
+        "verse": 7,
+        "text": "Siraatal-lazeena an'amta 'alaihim ghayril-maghdoobi 'alaihim wa lad-daalleen"
+      }
+    ]
+  }
+}

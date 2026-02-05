@@ -1,0 +1,147 @@
+:root {
+  /* Emerald Green Theme Palette */
+  --color-primary: #10B981;
+  /* Emerald 500 */
+  --color-primary-dark: #047857;
+  /* Emerald 700 */
+  --color-primary-light: #D1FAE5;
+  /* Emerald 100 */
+  --color-accent: #D97706;
+  /* Amber 600 - for Islamic geometric accents */
+
+  --color-bg-main: #F9FAFB;
+  /* Gray 50 */
+  --color-bg-card: #FFFFFF;
+  --color-text-main: #111827;
+  /* Gray 900 */
+  --color-text-muted: #6B7280;
+  /* Gray 500 */
+  --color-border: #E5E7EB;
+  /* Gray 200 */
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-arabic: 'Amiri', 'Scheherazade New', serif;
+  /* Need to import these */
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  margin: 0;
+  line-height: 1.5;
+  transition: background-color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.arabic-text {
+  font-family: var(--font-arabic);
+  direction: rtl;
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Tajweed Color Coding classes */
+.tajweed-text .tj-h,
+.tajweed-text .tj-s,
+.tajweed-text .tj-l {
+  color: #AAA;
+}
+
+/* Hamzatul Wasl, Silent, Lam Shamsiyyah */
+.tajweed-text .tj-n {
+  color: #F00;
+  font-weight: bold;
+}
+
+/* Ghunnah */
+.tajweed-text .tj-m,
+.tajweed-text .tj-p {
+  color: #00F;
+}
+
+/* Medd */
+.tajweed-text .tj-i {
+  color: #10b981;
+}
+
+/* Ikhfa */
+.tajweed-text .tj-d {
+  color: #1e40af;
+}
+
+/* Idgham */
+.tajweed-text .tj-a {
+  color: #059669;
+}
+
+/* Qalqalah */
+
+.word-by-word-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  gap: 1.5rem 1rem;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.word-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.word-arabic {
+  font-size: 2.2rem;
+  color: var(--color-text-main);
+  font-family: var(--font-arabic);
+}
+
+.word-translation {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
