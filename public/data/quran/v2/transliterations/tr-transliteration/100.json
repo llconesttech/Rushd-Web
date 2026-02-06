@@ -1,0 +1,140 @@
+{
+  "number": 100,
+  "name": "سُورَةُ العَادِيَاتِ",
+  "englishName": "Al-Aadiyaat",
+  "englishNameTranslation": "The Chargers",
+  "revelationType": "Meccan",
+  "numberOfAyahs": 11,
+  "ayahs": [
+    {
+      "number": 6147,
+      "text": "vel`âdiyâti ḍabḥâ.",
+      "numberInSurah": 1,
+      "juz": 30,
+      "manzil": 7,
+      "page": 599,
+      "ruku": 542,
+      "hizbQuarter": 239,
+      "sajda": false
+    },
+    {
+      "number": 6148,
+      "text": "felmûriyâti ḳadḥâ.",
+      "numberInSurah": 2,
+      "juz": 30,
+      "manzil": 7,
+      "page": 599,
+      "ruku": 542,
+      "hizbQuarter": 239,
+      "sajda": false
+    },
+    {
+      "number": 6149,
+      "text": "felmügîrâti ṣubḥâ.",
+      "numberInSurah": 3,
+      "juz": 30,
+      "manzil": 7,
+      "page": 599,
+      "ruku": 542,
+      "hizbQuarter": 239,
+      "sajda": false
+    },
+    {
+      "number": 6150,
+      "text": "feeŝerne bihî naḳ`â.",
+      "numberInSurah": 4,
+      "juz": 30,
+      "manzil": 7,
+      "page": 599,
+      "ruku": 542,
+      "hizbQuarter": 239,
+      "sajda": false
+    },
+    {
+      "number": 6151,
+      "text": "fevesaṭne bihî cem`â.",
+      "numberInSurah": 5,
+      "juz": 30,
+      "manzil": 7,
+      "page": 599,
+      "ruku": 542,
+      "hizbQuarter": 239,
+      "sajda": false
+    },
+    {
+      "number": 6152,
+      "text": "inne-l'insâne lirabbihî lekenûd.",
+      "numberInSurah": 6,
+      "juz": 30,
+      "manzil": 7,
+      "page": 599,
+      "ruku": 542,
+      "hizbQuarter": 239,
+      "sajda": false
+    },
+    {
+      "number": 6153,
+      "text": "veinnehû `alâ ẕâlike leşehîd.",
+      "numberInSurah": 7,
+      "juz": 30,
+      "manzil": 7,
+      "page": 599,
+      "ruku": 542,
+      "hizbQuarter": 239,
+      "sajda": false
+    },
+    {
+      "number": 6154,
+      "text": "veinnehû liḥubbi-lḫayri leşedîd.",
+      "numberInSurah": 8,
+      "juz": 30,
+      "manzil": 7,
+      "page": 599,
+      "ruku": 542,
+      "hizbQuarter": 239,
+      "sajda": false
+    },
+    {
+      "number": 6155,
+      "text": "efelâ ya`lemü iẕâ bü`ŝira mâ fi-lḳubûr.",
+      "numberInSurah": 9,
+      "juz": 30,
+      "manzil": 7,
+      "page": 599,
+      "ruku": 542,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6156,
+      "text": "veḥuṣṣile mâ fi-ṣṣudûr.",
+      "numberInSurah": 10,
+      "juz": 30,
+      "manzil": 7,
+      "page": 600,
+      "ruku": 542,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6157,
+      "text": "inne rabbehüm bihim yevmeiẕil leḫabîr.",
+      "numberInSurah": 11,
+      "juz": 30,
+      "manzil": 7,
+      "page": 600,
+      "ruku": 542,
+      "hizbQuarter": 240,
+      "sajda": false
+    }
+  ],
+  "edition": {
+    "identifier": "tr.transliteration",
+    "language": "tr",
+    "name": "Çeviriyazı",
+    "englishName": "Muhammet Abay",
+    "format": "text",
+    "type": "transliteration",
+    "direction": "ltr"
+  }
+}

@@ -14,7 +14,9 @@ const SettingsSidebar = ({ persistent = false }) => {
         selectedReciter,
         setSelectedReciter,
         uiStyle,
-        setUiStyle
+        setUiStyle,
+        selectedArabicFont,
+        setSelectedArabicFont
     } = useSettings();
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -102,6 +104,64 @@ const SettingsSidebar = ({ persistent = false }) => {
                             ))}
                         </ul>
 
+                        <h4 style={{ marginTop: '1.5rem' }}>Arabic Font</h4>
+                        {selectedScript === 'quran-indopak' ? (
+                            <p style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', fontStyle: 'italic' }}>
+                                IndoPak script uses a fixed Nastaleeq font.
+                            </p>
+                        ) : (
+                            <div className="font-selector-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem' }}>
+                                <button
+                                    className={`tab ${selectedArabicFont === 'amiri' ? 'active' : ''}`}
+                                    style={{
+                                        padding: '0.5rem',
+                                        borderRadius: '8px',
+                                        border: '1px solid var(--color-border)',
+                                        cursor: 'pointer',
+                                        backgroundColor: selectedArabicFont === 'amiri' ? 'var(--color-primary)' : 'white',
+                                        color: selectedArabicFont === 'amiri' ? 'white' : 'var(--color-text-main)',
+                                        fontFamily: "'Amiri Quran', serif",
+                                        fontSize: '1.1rem'
+                                    }}
+                                    onClick={() => setSelectedArabicFont('amiri')}
+                                >
+                                    أميري
+                                </button>
+                                <button
+                                    className={`tab ${selectedArabicFont === 'scheherazade' ? 'active' : ''}`}
+                                    style={{
+                                        padding: '0.5rem',
+                                        borderRadius: '8px',
+                                        border: '1px solid var(--color-border)',
+                                        cursor: 'pointer',
+                                        backgroundColor: selectedArabicFont === 'scheherazade' ? 'var(--color-primary)' : 'white',
+                                        color: selectedArabicFont === 'scheherazade' ? 'white' : 'var(--color-text-main)',
+                                        fontFamily: "'Scheherazade', serif",
+                                        fontSize: '1.1rem'
+                                    }}
+                                    onClick={() => setSelectedArabicFont('scheherazade')}
+                                >
+                                    شهرزاد
+                                </button>
+                                <button
+                                    className={`tab ${selectedArabicFont === 'alqalam' ? 'active' : ''}`}
+                                    style={{
+                                        padding: '0.5rem',
+                                        borderRadius: '8px',
+                                        border: '1px solid var(--color-border)',
+                                        cursor: 'pointer',
+                                        backgroundColor: selectedArabicFont === 'alqalam' ? 'var(--color-primary)' : 'white',
+                                        color: selectedArabicFont === 'alqalam' ? 'white' : 'var(--color-text-main)',
+                                        fontFamily: "'Al Qalam', serif",
+                                        fontSize: '1.2rem'
+                                    }}
+                                    onClick={() => setSelectedArabicFont('alqalam')}
+                                >
+                                    القلم
+                                </button>
+                            </div>
+                        )}
+
                         <h4 style={{ marginTop: '1.5rem' }}>UI Design Style</h4>
                         <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
                             <button
@@ -117,7 +177,7 @@ const SettingsSidebar = ({ persistent = false }) => {
                                 }}
                                 onClick={() => setUiStyle('style1')}
                             >
-                                Style 1
+                                النمط ١
                             </button>
                             <button
                                 className={`tab ${uiStyle === 'style2' ? 'active' : ''}`}
@@ -132,7 +192,7 @@ const SettingsSidebar = ({ persistent = false }) => {
                                 }}
                                 onClick={() => setUiStyle('style2')}
                             >
-                                Style 2
+                                النمط ٢
                             </button>
                         </div>
                     </section>

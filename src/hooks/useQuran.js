@@ -124,8 +124,9 @@ export const useSurahDetail = (number, transliterationType = 'none', selectedScr
 
                             if (transData && transData.ayahs) {
                                 transData.ayahs.forEach(item => {
-                                    // Ensure we map by integer key
-                                    startMap[parseInt(item.number)] = item.text;
+                                    // Use numberInSurah for mapping (1,2,3...) not number (absolute ayah number)
+                                    const key = item.numberInSurah || item.number;
+                                    startMap[key] = item.text;
                                 });
                             }
                         } catch (v2Err) {

@@ -209,6 +209,7 @@ export const translations = {
     "tr.ozturk": { "language_code": "tr", "english_name": "Yasar Nuri Ozturk", "native_name": "Öztürk", "type": "translation" },
     "tr.vakfi": { "language_code": "tr", "english_name": "Diyanet Vakfi", "native_name": "", "type": "translation" },
     "tr.yazir": { "language_code": "tr", "english_name": "Elmalili Hamdi Yazir", "native_name": "", "type": "translation" },
+    "tr.transliteration": { "language_code": "tr", "english_name": "Turkish Transliteration", "native_name": "Türkçe Transliterasyon", "type": "transliteration" },
 
     // Tatar
     "tt.nugman": { "language_code": "tt", "english_name": "Yakub Ibn Nugman", "native_name": "", "type": "translation" },

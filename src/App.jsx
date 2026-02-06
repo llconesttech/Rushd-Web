@@ -146,9 +146,22 @@ const QuranReader = () => {
   const { number } = useParams();
   const navigate = useNavigate();
   const [transliterationType, setTransliterationType] = useState('none');
-  const { selectedScript, selectedTranslation, uiStyle } = useSettings();
+  const { selectedScript, selectedTranslation, uiStyle, selectedArabicFont } = useSettings();
 
   const surahNum = parseInt(number);
+
+  // Helper to map font selection to usage
+  const getArabicFontFamily = () => {
+    if (selectedScript === 'quran-indopak') return 'var(--font-arabic-indopak)';
+
+    switch (selectedArabicFont) {
+      case 'alqalam': return "'Al Qalam', serif";
+      case 'scheherazade': return "'Scheherazade', serif";
+      case 'amiri':
+      default:
+        return "'Amiri Quran', serif";
+    }
+  };
 
   // Pass selected script and translation to the hook
   const { data: surah, loading, error } = useSurahDetail(
@@ -214,7 +227,6 @@ const QuranReader = () => {
               {val.english_name}
             </option>
           ))}
-        <option value="bn_v1">Bengali (Phonetic - Legacy)</option>
       </select>
     </>
   );
@@ -266,7 +278,7 @@ const QuranReader = () => {
                   <div className="word-by-word-container" style={{ padding: 0 }}>
                     {parseWordByWord(ayah.text).map((w, i) => (
                       <div key={i} className="word-block">
-                        <span className="word-arabic">{w.arabic}</span>
+                        <span className="word-arabic" style={{ fontFamily: getArabicFontFamily() }}>{w.arabic}</span>
                         <span className="word-translation">{w.translation}</span>
                       </div>
                     ))}
@@ -277,6 +289,7 @@ const QuranReader = () => {
                     lineHeight: '2.5',
                     textAlign: 'right',
                     margin: 0,
+                    fontFamily: getArabicFontFamily(),
                     color: 'var(--color-text-main)'
                   }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text) }} />
                 ) : (
@@ -285,6 +298,7 @@ const QuranReader = () => {
                     lineHeight: '2.5',
                     textAlign: 'right',
                     margin: 0,
+                    fontFamily: getArabicFontFamily(),
                     color: 'var(--color-text-main)'
                   }}>
                     {ayah.text}
@@ -331,7 +345,7 @@ const QuranReader = () => {
                 <div className="word-by-word-container">
                   {parseWordByWord(ayah.text).map((w, i) => (
                     <div key={i} className="word-block">
-                      <span className="word-arabic">{w.arabic}</span>
+                      <span className="word-arabic" style={{ fontFamily: getArabicFontFamily() }}>{w.arabic}</span>
                       <span className="word-translation">{w.translation}</span>
                     </div>
                   ))}
@@ -342,6 +356,7 @@ const QuranReader = () => {
                   lineHeight: '2.2',
                   textAlign: 'right',
                   marginBottom: '1.5rem',
+                  fontFamily: getArabicFontFamily(),
                   color: 'var(--color-text-main)'
                 }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text) }} />
               ) : (
@@ -350,6 +365,7 @@ const QuranReader = () => {
                   lineHeight: '2.2',
                   textAlign: 'right',
                   marginBottom: '1.5rem',
+                  fontFamily: getArabicFontFamily(),
                   color: 'var(--color-text-main)'
                 }}>
                   {ayah.text}

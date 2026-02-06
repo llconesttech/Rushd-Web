@@ -1,0 +1,239 @@
+{
+  "number": 90,
+  "name": "سُورَةُ البَلَدِ",
+  "englishName": "Al-Balad",
+  "englishNameTranslation": "The City",
+  "revelationType": "Meccan",
+  "numberOfAyahs": 20,
+  "ayahs": [
+    {
+      "number": 6024,
+      "text": "lâ uḳsimü bihâẕe-lbeled.",
+      "numberInSurah": 1,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6025,
+      "text": "veente ḥillüm bihâẕe-lbeled.",
+      "numberInSurah": 2,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6026,
+      "text": "vevâlidiv vemâ veled.",
+      "numberInSurah": 3,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6027,
+      "text": "leḳad ḫalaḳne-l'insâne fî kebed.",
+      "numberInSurah": 4,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6028,
+      "text": "eyaḥsebü el ley yaḳdira `aleyhi eḥad.",
+      "numberInSurah": 5,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6029,
+      "text": "yeḳûlü ehlektü mâlel lübedâ.",
+      "numberInSurah": 6,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6030,
+      "text": "eyaḥsebü el lem yerahû eḥad.",
+      "numberInSurah": 7,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6031,
+      "text": "elem nec`al lehû `ayneyn.",
+      "numberInSurah": 8,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6032,
+      "text": "velisânev veşefeteyn.",
+      "numberInSurah": 9,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6033,
+      "text": "vehedeynâhü-nnecdeyn.",
+      "numberInSurah": 10,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6034,
+      "text": "fele-ḳteḥame-l`aḳabeh.",
+      "numberInSurah": 11,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6035,
+      "text": "vemâ edrâke me-l`aḳabeh.",
+      "numberInSurah": 12,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6036,
+      "text": "fekkü raḳabeh.",
+      "numberInSurah": 13,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6037,
+      "text": "ev iṭ`âmün fî yevmin ẕî mesgabeh.",
+      "numberInSurah": 14,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6038,
+      "text": "yetîmen ẕâ maḳrabeh.",
+      "numberInSurah": 15,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6039,
+      "text": "ev miskînen ẕâ metrabeh.",
+      "numberInSurah": 16,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6040,
+      "text": "ŝümme kâne mine-lleẕîne âmenû vetevâṣav biṣṣabri vetevâṣav bilmerḥameh.",
+      "numberInSurah": 17,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6041,
+      "text": "ülâike aṣḥâbü-lmeymeneh.",
+      "numberInSurah": 18,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6042,
+      "text": "velleẕîne keferû biâyâtinâ hüm aṣḥâbü-lmeş'emeh.",
+      "numberInSurah": 19,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    },
+    {
+      "number": 6043,
+      "text": "`aleyhim nârum mü'ṣadeh.",
+      "numberInSurah": 20,
+      "juz": 30,
+      "manzil": 7,
+      "page": 594,
+      "ruku": 532,
+      "hizbQuarter": 238,
+      "sajda": false
+    }
+  ],
+  "edition": {
+    "identifier": "tr.transliteration",
+    "language": "tr",
+    "name": "Çeviriyazı",
+    "englishName": "Muhammet Abay",
+    "format": "text",
+    "type": "transliteration",
+    "direction": "ltr"
+  }
+}

@@ -20,6 +20,9 @@ export const SettingsProvider = ({ children }) => {
     // UI Style (style1 or style2)
     const [uiStyle, setUiStyle] = useState('style1');
 
+    // Arabic Font (for non-IndoPak scripts) - default Al Qalam
+    const [selectedArabicFont, setSelectedArabicFont] = useState('alqalam');
+
     const toggleSurahList = () => setIsSurahListOpen(!isSurahListOpen);
     const toggleSettings = () => setIsSettingsOpen(!isSettingsOpen);
 
@@ -36,6 +39,8 @@ export const SettingsProvider = ({ children }) => {
         setSelectedReciter,
         uiStyle,
         setUiStyle,
+        selectedArabicFont,
+        setSelectedArabicFont,
     };
 
     return (
