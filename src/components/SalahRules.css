@@ -72,7 +72,7 @@
 
 .rakats-header {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr 1fr;
     padding: 0.75rem 1rem;
     background: var(--color-primary);
     color: white;
@@ -83,10 +83,15 @@
 
 .rakats-row {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr 1fr;
     padding: 0.75rem 1rem;
     border-bottom: 1px solid var(--color-border);
     align-items: center;
+}
+
+.rakat-count.witr {
+    color: #924044;
+    font-weight: 700;
 }
 
 .rakats-row:last-child {
@@ -258,14 +263,208 @@
     line-height: 1.5;
 }
 
+/* Duas List */
+.duas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dua-card {
+    padding: 1rem;
+    background: var(--color-bg-main);
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+}
+
+.dua-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.dua-position {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+}
+
+.dua-when {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.dua-arabic {
+    font-family: var(--font-arabic);
+    font-size: 1.2rem;
+    text-align: right;
+    direction: rtl;
+    color: var(--color-text-main);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background: var(--color-bg-card);
+    border-radius: 0.5rem;
+}
+
+.dua-transliteration {
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.dua-meaning {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+/* Rakat Rules */
+.rakat-rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rakat-rule-card {
+    padding: 1rem;
+    background: var(--color-bg-main);
+    border-radius: 0.75rem;
+    border-left: 4px solid var(--color-primary);
+}
+
+.rakat-rule-header {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.rakat-recitations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.recitation-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.rakat-notes {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+/* Witr Section */
+.witr-section h4 {
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+    color: var(--color-text-main);
+}
+
+.witr-basics {
+    margin-bottom: 1.5rem;
+}
+
+.witr-basics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+}
+
+.witr-basic-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    background: var(--color-bg-main);
+    border-radius: 0.5rem;
+}
+
+.witr-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    letter-spacing: 0.5px;
+}
+
+.witr-value {
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+    font-weight: 500;
+}
+
+.witr-methods {
+    margin-bottom: 1.5rem;
+}
+
+.witr-method-card {
+    padding: 1rem;
+    background: var(--color-bg-main);
+    border-radius: 0.75rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--color-border);
+}
+
+.method-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.method-steps {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--color-text-main);
+    line-height: 1.6;
+}
+
+.method-steps li {
+    margin-bottom: 0.25rem;
+}
+
+.qunut-dua-card {
+    padding: 1rem;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: 0.75rem;
+    border: 1px solid #bbf7d0;
+}
+
+.qunut-dua-card .dua-arabic {
+    background: rgba(255, 255, 255, 0.7);
+    color: #166534;
+}
+
+.qunut-dua-card .dua-transliteration {
+    color: #15803d;
+}
+
+.qunut-dua-card .dua-meaning {
+    color: #166534;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
 
     .rakats-header,
     .rakats-row {
-        grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
-        font-size: 0.75rem;
-        padding: 0.6rem 0.75rem;
+        grid-template-columns: 1.4fr 0.8fr 0.8fr 0.8fr 0.8fr 0.9fr;
+        font-size: 0.7rem;
+        padding: 0.5rem 0.5rem;
     }
 
     .prayer-name .arabic {

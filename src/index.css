@@ -1,3 +1,12 @@
+/* Indo-Pak Nastaleeq Font */
+@font-face {
+  font-family: 'IndoPak Nastaleeq';
+  src: url('/fonts/indopak-nastaleeq.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Rushd Brand Palette (from logo) */
   --color-primary: #0d5c63;
@@ -25,6 +34,7 @@
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-arabic: 'Amiri', 'Scheherazade New', serif;
+  --font-arabic-indopak: 'IndoPak Nastaleeq', 'Noto Nastaliq Urdu', serif;
   /* Need to import these */
 
   /* Spacing */
@@ -62,6 +72,12 @@ h6 {
 .arabic-text {
   font-family: var(--font-arabic);
   direction: rtl;
+}
+
+/* Indo-Pak Nastaleeq script specific styling */
+.arabic-text.indopak {
+  font-family: var(--font-arabic-indopak);
+  line-height: 2.5;
 }
 
 .bg-dots {

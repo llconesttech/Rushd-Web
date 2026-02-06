@@ -1,0 +1,37 @@
+{
+  "number": 110,
+  "name": "سُورَةُ النَّصۡرِ",
+  "englishName": "An-Nasr",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "When comes the Help of Allah, and Victory,",
+      "juz": 30,
+      "manzil": 7,
+      "page": 603,
+      "ruku": 552,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 2,
+      "text": "And thou dost see the people enter Allah's Religion in crowds,",
+      "juz": 30,
+      "manzil": 7,
+      "page": 603,
+      "ruku": 552,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 3,
+      "text": "Celebrate the praises of thy Lord, and pray for His Forgiveness: For He is Oft-Returning (in Grace and Mercy).",
+      "juz": 30,
+      "manzil": 7,
+      "page": 603,
+      "ruku": 552,
+      "hizbQuarter": 240,
+      "sajda": false
+    }
+  ]
+}

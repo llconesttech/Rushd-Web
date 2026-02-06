@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getPrayerTimes, getAvailableMethods } from '../services/prayerTimesService';
+import { getTodayAllCalendars } from '../services/dateService';
 import RamadanWidget from './RamadanWidget';
 import './HomePage.css';
 
@@ -72,6 +73,7 @@ const HomePage = () => {
     const [currentForbidden, setCurrentForbidden] = useState(null);
     const [currentSunnah, setCurrentSunnah] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [todayDates, setTodayDates] = useState(null);
 
     // Load method from localStorage or default
     const [method, setMethod] = useState(() => {
@@ -91,26 +93,64 @@ const HomePage = () => {
             return hours * 60 + minutes;
         };
 
-        // 1. Check Prayer Times
-        const prayers = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
-        let activePrayer = 'Isha'; // Default to Isha for the overnight period
+        // 1. Check Prayer Times with proper end times based on forbidden periods
+        // Prayer validity:
+        // - Fajr: starts at Fajr, ends at Sunrise (forbidden.sunrise.start)
+        // - (Sunrise forbidden: ~15 min after sunrise)
+        // - Ishraq/Duha time: after sunrise, ends at Zawal
+        // - (Zawal forbidden: ~10 min before Dhuhr until Dhuhr)
+        // - Dhuhr: starts at Dhuhr, ends at Asr
+        // - Asr: starts at Asr, ends at Sunset (forbidden.sunset.start)
+        // - (Sunset forbidden: ~15 min before Maghrib)
+        // - Maghrib: starts at Maghrib, ends at Isha
+        // - Isha: starts at Isha, ends at Fajr (next day)
 
-        for (let i = 0; i < prayers.length; i++) {
-            const prayerName = prayers[i];
-            const prayerTime = parseTimeToMinutes(salahTimes[prayerName]);
+        const fajrStart = parseTimeToMinutes(salahTimes.Fajr);
+        const dhuhrStart = parseTimeToMinutes(salahTimes.Dhuhr);
+        const asrStart = parseTimeToMinutes(salahTimes.Asr);
+        const maghribStart = parseTimeToMinutes(salahTimes.Maghrib);
+        const ishaStart = parseTimeToMinutes(salahTimes.Isha);
 
-            // If current time is past this prayer, it's potentially the active one
-            if (currentMinutes >= prayerTime) {
-                activePrayer = prayerName;
-            } else {
-                // If current time is before this prayer, the previous one was the active one
-                break;
-            }
-        }
+        // Get forbidden times for prayer end limits
+        const sunriseStart = salahTimes.forbidden?.sunrise ?
+            parseTimeToMinutes(salahTimes.forbidden.sunrise.start) : dhuhrStart;
+        const sunriseEnd = salahTimes.forbidden?.sunrise ?
+            parseTimeToMinutes(salahTimes.forbidden.sunrise.end) : sunriseStart + 15;
+        const zawalStart = salahTimes.forbidden?.zawal ?
+            parseTimeToMinutes(salahTimes.forbidden.zawal.start) : dhuhrStart - 10;
+        const sunsetStart = salahTimes.forbidden?.sunset ?
+            parseTimeToMinutes(salahTimes.forbidden.sunset.start) : maghribStart - 15;
 
-        // Edge case: Before Fajr it should be Isha
-        if (currentMinutes < parseTimeToMinutes(salahTimes.Fajr)) {
+        let activePrayer = null;
+
+        // Determine current valid prayer based on time windows
+        if (currentMinutes >= ishaStart || currentMinutes < fajrStart) {
+            // Isha: from Isha until Fajr
             activePrayer = 'Isha';
+        } else if (currentMinutes >= fajrStart && currentMinutes < sunriseStart) {
+            // Fajr: from Fajr until Sunrise
+            activePrayer = 'Fajr';
+        } else if (currentMinutes >= sunriseStart && currentMinutes < sunriseEnd) {
+            // Sunrise forbidden period - no prayer
+            activePrayer = null;
+        } else if (currentMinutes >= sunriseEnd && currentMinutes < zawalStart) {
+            // Ishraq/Duha time - no obligatory prayer but Duha is recommended
+            activePrayer = null;
+        } else if (currentMinutes >= zawalStart && currentMinutes < dhuhrStart) {
+            // Zawal forbidden period - no prayer
+            activePrayer = null;
+        } else if (currentMinutes >= dhuhrStart && currentMinutes < asrStart) {
+            // Dhuhr: from Dhuhr until Asr
+            activePrayer = 'Dhuhr';
+        } else if (currentMinutes >= asrStart && currentMinutes < sunsetStart) {
+            // Asr: from Asr until Sunset forbidden time starts
+            activePrayer = 'Asr';
+        } else if (currentMinutes >= sunsetStart && currentMinutes < maghribStart) {
+            // Sunset forbidden period - Asr technically ended
+            activePrayer = null;
+        } else if (currentMinutes >= maghribStart && currentMinutes < ishaStart) {
+            // Maghrib: from Maghrib until Isha
+            activePrayer = 'Maghrib';
         }
 
         setCurrentPrayer(activePrayer);
@@ -233,6 +273,11 @@ const HomePage = () => {
         return () => clearInterval(interval);
     }, [salahTimes]);
 
+    // Initialize today's dates
+    useEffect(() => {
+        setTodayDates(getTodayAllCalendars(new Date()));
+    }, []);
+
     // Recalculate when method changes
     useEffect(() => {
         if (coords) {
@@ -270,7 +315,18 @@ const HomePage = () => {
             {/* Salah Times Card */}
             <section className="salah-card">
                 <div className="salah-header">
-                    <h2>🕌 Daily Salah Times</h2>
+                    <div className="salah-header-left">
+                        <h2>🕌 Daily Salah Times</h2>
+                        {todayDates && (
+                            <div className="salah-date-row">
+                                <span className="date-item gregorian">{todayDates.gregorian.day} {todayDates.gregorian.monthName} {todayDates.gregorian.year}</span>
+                                <span className="date-separator">•</span>
+                                <span className="date-item hijri">{todayDates.hijri.day} {todayDates.hijri.monthName} {todayDates.hijri.year} AH</span>
+                                <span className="date-separator">•</span>
+                                <span className="date-item bengali">{todayDates.bengali.day} {todayDates.bengali.monthName} {todayDates.bengali.year} BS</span>
+                            </div>
+                        )}
+                    </div>
                     <div className="salah-header-right">
                         <select
                             className="method-selector"

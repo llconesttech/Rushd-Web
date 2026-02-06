@@ -1,0 +1,52 @@
+{
+  "number": 100,
+  "name": "سُورَةُ العَادِيَاتِ",
+  "englishName": "Al-Aadiyaat",
+  "edition": "en.transliteration",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "Wal'aadi yaati dabha"
+    },
+    {
+      "number": 2,
+      "text": "Fal moori yaati qadha"
+    },
+    {
+      "number": 3,
+      "text": "Fal mugheeraati subha"
+    },
+    {
+      "number": 4,
+      "text": "Fa atharna bihee naq'a"
+    },
+    {
+      "number": 5,
+      "text": "Fawa satna bihee jam'a"
+    },
+    {
+      "number": 6,
+      "text": "Innal-insana lirabbihee lakanood"
+    },
+    {
+      "number": 7,
+      "text": "Wa innahu 'alaa zaalika la shaheed"
+    },
+    {
+      "number": 8,
+      "text": "Wa innahu lihubbil khairi la shadeed"
+    },
+    {
+      "number": 9,
+      "text": "Afala ya'lamu iza b'uthira ma filquboor"
+    },
+    {
+      "number": 10,
+      "text": "Wa hussila maa fis sudoor"
+    },
+    {
+      "number": 11,
+      "text": "Inna rabbahum bihim yauma 'izil la khabeer"
+    }
+  ]
+}

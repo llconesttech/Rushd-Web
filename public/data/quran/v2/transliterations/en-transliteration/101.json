@@ -1,0 +1,52 @@
+{
+  "number": 101,
+  "name": "سُورَةُ القَارِعَةِ",
+  "englishName": "Al-Qaari'a",
+  "edition": "en.transliteration",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "Al qaari'ah"
+    },
+    {
+      "number": 2,
+      "text": "Mal qaariah"
+    },
+    {
+      "number": 3,
+      "text": "Wa maa adraaka mal qaari'ah"
+    },
+    {
+      "number": 4,
+      "text": "Yauma ya koonun naasu kal farashil mabthooth"
+    },
+    {
+      "number": 5,
+      "text": "Wa ta koonul jibalu kal 'ihnil manfoosh"
+    },
+    {
+      "number": 6,
+      "text": "Fa-amma man thaqulat mawa zeenuh"
+    },
+    {
+      "number": 7,
+      "text": "Fahuwa fee 'ishatir raadiyah"
+    },
+    {
+      "number": 8,
+      "text": "Wa amma man khaffat mawa zeenuh"
+    },
+    {
+      "number": 9,
+      "text": "Fa-ummuhu haawiyah"
+    },
+    {
+      "number": 10,
+      "text": "Wa maa adraaka maa hiyah"
+    },
+    {
+      "number": 11,
+      "text": "Naarun hamiyah"
+    }
+  ]
+}

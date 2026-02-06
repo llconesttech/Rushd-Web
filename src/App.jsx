@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate, u
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useSurahList, useSurahDetail } from './hooks/useQuran';
 import { useSettings } from './context/SettingsContext';
+import { translations } from './data/quranData';
 import SettingsSidebar from './components/SettingsSidebar';
 import SurahListSidebar from './components/SurahListSidebar';
 import HomePage from './components/HomePage';
@@ -166,6 +167,7 @@ const QuranReader = () => {
 
   const isWordByWord = selectedScript === 'quran-kids' || selectedScript === 'quran-wordbyword' || selectedScript === 'quran-wordbyword-2';
   const isTajweed = selectedScript === 'quran-tajweed';
+  const isIndoPak = selectedScript === 'quran-indopak';
 
   // Navigation handlers
   const handleNextSurah = () => {
@@ -201,10 +203,18 @@ const QuranReader = () => {
         value={transliterationType}
         onChange={(e) => setTransliterationType(e.target.value)}
         className="ph-action-btn ph-btn-outline"
-        style={{ padding: '0.4rem 0.75rem' }}
+        style={{ padding: '0.4rem 0.75rem', maxWidth: '200px' }}
       >
         <option value="none">No Transliteration</option>
-        <option value="bn_v1">Bengali (Phonetic)</option>
+        {Object.entries(translations)
+          .filter(([key, val]) => val.type === 'transliteration')
+          .sort((a, b) => a[1].english_name.localeCompare(b[1].english_name))
+          .map(([key, val]) => (
+            <option key={key} value={key}>
+              {val.english_name}
+            </option>
+          ))}
+        <option value="bn_v1">Bengali (Phonetic - Legacy)</option>
       </select>
     </>
   );
@@ -270,7 +280,7 @@ const QuranReader = () => {
                     color: 'var(--color-text-main)'
                   }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text) }} />
                 ) : (
-                  <p className="arabic-text" style={{
+                  <p className={`arabic-text ${isIndoPak ? 'indopak' : ''}`} style={{
                     fontSize: '2.5rem',
                     lineHeight: '2.5',
                     textAlign: 'right',
@@ -335,7 +345,7 @@ const QuranReader = () => {
                   color: 'var(--color-text-main)'
                 }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text) }} />
               ) : (
-                <p className="arabic-text" style={{
+                <p className={`arabic-text ${isIndoPak ? 'indopak' : ''}`} style={{
                   fontSize: '2.5rem',
                   lineHeight: '2.2',
                   textAlign: 'right',

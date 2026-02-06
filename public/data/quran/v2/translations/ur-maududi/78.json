@@ -1,0 +1,407 @@
+{
+  "number": 78,
+  "name": "سُورَةُ النَّبَإِ",
+  "englishName": "An-Naba",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "یہ لوگ کس چیز کے بارے میں پوچھ گچھ کر رہے ہیں؟",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 2,
+      "text": "کیا اُس بڑی خبر کے بارے میں",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 3,
+      "text": "جس کے متعلق یہ مختلف چہ میگوئیاں کرنے میں لگے ہوئے ہیں؟",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 4,
+      "text": "ہرگز نہیں، عنقریب اِنہیں معلوم ہو جائیگا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 5,
+      "text": "ہاں، ہرگز نہیں، عنقریب اِنہیں معلوم ہو جائے گا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 6,
+      "text": "کیا یہ واقعہ نہیں ہے کہ ہم نے زمین کو فرش بنایا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 7,
+      "text": "اور پہاڑوں کو میخوں کی طرح گاڑ دیا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 8,
+      "text": "اور تمہیں (مَردوں اور عورتوں کے) جوڑوں کی شکل میں پیدا کیا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 9,
+      "text": "اور تمہاری نیند کو باعث سکون بنایا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 10,
+      "text": "اور رات کو پردہ پوش",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 11,
+      "text": "اور دن کو معاش کا وقت بنایا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 12,
+      "text": "اور تمہارے اوپر سات مضبوط آسمان قائم کیے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 13,
+      "text": "اور ایک نہایت روشن اور گرم چراغ پیدا کیا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 14,
+      "text": "اور بادلوں سے لگاتار بارش برسائی",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 15,
+      "text": "تاکہ اس کے ذریعہ سے غلہ اور سبزی",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 16,
+      "text": "اور گھنے باغ اگائیں؟",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 17,
+      "text": "بے شک فیصلے کا دن ایک مقرر وقت ہے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 18,
+      "text": "جس روز صور میں پھونک مار دی جائے گی، تم فوج در فوج نکل آؤ گے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 19,
+      "text": "اور آسمان کھول دیا جائے گا حتیٰ کہ وہ دروازے ہی دروازے بن کر رہ جائے گا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 20,
+      "text": "اور پہاڑ چلائے جائیں گے یہاں تک کہ وہ سراب ہو جائیں گے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 21,
+      "text": "درحقیقت جہنم ایک گھات ہے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 22,
+      "text": "سرکشوں کا ٹھکانا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 23,
+      "text": "جس میں وہ مدتوں پڑے رہیں گے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 24,
+      "text": "اُس کے اندر کسی ٹھنڈک اور پینے کے قابل کسی چیز کا مزہ وہ نہ چکھیں گے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 25,
+      "text": "کچھ ملے گا تو بس گرم پانی اور زخموں کا دھوون",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 26,
+      "text": "(اُن کے کرتوتوں) کا بھرپور بدلہ",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 27,
+      "text": "وہ کسی حساب کی توقع نہ رکھتے تھے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 28,
+      "text": "اور ہماری آیات کو انہوں نے بالکل جھٹلا دیا تھا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 29,
+      "text": "اور حال یہ تھا کہ ہم نے ہر چیز گن گن کر لکھ رکھی تھی",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 30,
+      "text": "اب چکھو مزہ، ہم تمہارے لیے عذاب کے سوا کسی چیز میں ہرگز اضافہ نہ کریں گے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 582,
+      "ruku": 518,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 31,
+      "text": "یقیناً متقیوں کے لیے کامرانی کا ایک مقام ہے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 583,
+      "ruku": 519,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 32,
+      "text": "باغ اور انگور",
+      "juz": 30,
+      "manzil": 7,
+      "page": 583,
+      "ruku": 519,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 33,
+      "text": "اور نوخیر ہم سن لڑکیاں",
+      "juz": 30,
+      "manzil": 7,
+      "page": 583,
+      "ruku": 519,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 34,
+      "text": "اور چھلکتے ہوئے جام",
+      "juz": 30,
+      "manzil": 7,
+      "page": 583,
+      "ruku": 519,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 35,
+      "text": "وہاں کوئی لغو اور جھوٹی بات وہ نہ سنیں گے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 583,
+      "ruku": 519,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 36,
+      "text": "جزا اور کافی انعام تمہارے رب کی طرف سے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 583,
+      "ruku": 519,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 37,
+      "text": "اُس نہایت مہربان خدا کی طرف سے جو زمین اور آسمانوں کا اور ان کے درمیان کی ہر چیز کا مالک ہے جس کے سامنے کسی کو بولنے کا یارا نہیں",
+      "juz": 30,
+      "manzil": 7,
+      "page": 583,
+      "ruku": 519,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 38,
+      "text": "جس روز روح اور ملائکہ صف بستہ کھڑے ہونگے، کوئی نہ بولے گا سوائے اُس کے جسے رحمٰن اجازت دے اور جو ٹھیک بات کہے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 583,
+      "ruku": 519,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 39,
+      "text": "وہ دن برحق ہے، اب جس کا جی چاہے اپنے رب کی طرف پلٹنے کا راستہ اختیار کر لے",
+      "juz": 30,
+      "manzil": 7,
+      "page": 583,
+      "ruku": 519,
+      "hizbQuarter": 233,
+      "sajda": false
+    },
+    {
+      "number": 40,
+      "text": "ہم نے تم لوگوں کو اُس عذاب سے ڈرا دیا ہے جو قریب آ لگا ہے جس روز آدمی وہ سب کچھ دیکھ لے گا جو اس کے ہاتھوں نے آگے بھیجا ہے، اور کافر پکار اٹھے گا کہ کاش میں خاک ہوتا",
+      "juz": 30,
+      "manzil": 7,
+      "page": 583,
+      "ruku": 519,
+      "hizbQuarter": 233,
+      "sajda": false
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "number": 74,
+  "name": "سُورَةُ المُدَّثِّرِ",
+  "englishName": "Al-Muddaththir",
+  "edition": "en.transliteration",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "Yaaa ayyuhal muddassir"
+    },
+    {
+      "number": 2,
+      "text": "Qum fa anzir"
+    },
+    {
+      "number": 3,
+      "text": "Wa rabbaka fakabbir"
+    },
+    {
+      "number": 4,
+      "text": "Wa siyaabaka fatahhir"
+    },
+    {
+      "number": 5,
+      "text": "Warrujza fahjur"
+    },
+    {
+      "number": 6,
+      "text": "Wa laa tamnun tastaksir"
+    },
+    {
+      "number": 7,
+      "text": "Wa li Rabbika fasbir"
+    },
+    {
+      "number": 8,
+      "text": "Fa izaa nuqira fin naaqoor"
+    },
+    {
+      "number": 9,
+      "text": "Fazaalika yawma 'iziny yawmun 'aseer"
+    },
+    {
+      "number": 10,
+      "text": "'Alal kaafireena ghayru yaseer"
+    },
+    {
+      "number": 11,
+      "text": "Zamee wa man khalaqtu waheedaa"
+    },
+    {
+      "number": 12,
+      "text": "Wa ja'altu lahoo maalam mamdoodaa"
+    },
+    {
+      "number": 13,
+      "text": "Wa baneena shuhoodaa"
+    },
+    {
+      "number": 14,
+      "text": "Wa mahhattu lahoo tamheeda"
+    },
+    {
+      "number": 15,
+      "text": "Summa yat ma'u an azeed"
+    },
+    {
+      "number": 16,
+      "text": "Kallaaa innahoo kaana li Aayaatinaa 'aneedaa"
+    },
+    {
+      "number": 17,
+      "text": "Sa urhiquhoo sa'oodaa"
+    },
+    {
+      "number": 18,
+      "text": "Innahoo fakkara wa qaddar"
+    },
+    {
+      "number": 19,
+      "text": "Faqutila kayfa qaddar"
+    },
+    {
+      "number": 20,
+      "text": "Summa qutila kaifa qaddar"
+    },
+    {
+      "number": 21,
+      "text": "Summa nazar"
+    },
+    {
+      "number": 22,
+      "text": "Summa 'abasa wa basar"
+    },
+    {
+      "number": 23,
+      "text": "Summaa adbara wastakbar"
+    },
+    {
+      "number": 24,
+      "text": "Faqaala in haazaaa illaa sihruny yu'sar"
+    },
+    {
+      "number": 25,
+      "text": "In haazaaa illaa qawlul bashar"
+    },
+    {
+      "number": 26,
+      "text": "Sa usleehi saqar"
+    },
+    {
+      "number": 27,
+      "text": "Wa maaa adraaka maa saqar"
+    },
+    {
+      "number": 28,
+      "text": "Laa tubqee wa laa tazar"
+    },
+    {
+      "number": 29,
+      "text": "Lawwaahatul lilbashar"
+    },
+    {
+      "number": 30,
+      "text": "'Alaihaa tis'ata 'ashar"
+    },
+    {
+      "number": 31,
+      "text": "Wa maaja''alnaaa As haaban naari illaa malaaa 'ikatanw wa maa ja'alnaa 'iddatahum illaa fitnatal lillazeena kafaroo liyastayqinal lazeena ootul kitaaba wa yazdaadal lazeena aamanooo eemaananw wa laa yartaabal lazeena ootul kitaaba walmu'minoona wa liyaqoolal lazeena fee quloo bihim maradunw walkaafiroona maazaaa araadal laahu bihaazaa masalaa; kazaalika yudillul laahu many yashaaa'u wa yahdee many yashaaa'; wa maa ya'lamu junooda rabbika illaa hoo; wa maa hiya illaa zikraa lil bashar"
+    },
+    {
+      "number": 32,
+      "text": "Kallaa walqamar"
+    },
+    {
+      "number": 33,
+      "text": "Wallaili adbar"
+    },
+    {
+      "number": 34,
+      "text": "Wassub hi izaaa asfar"
+    },
+    {
+      "number": 35,
+      "text": "Innahaa la ihdal kubar"
+    },
+    {
+      "number": 36,
+      "text": "Nazeeral lilbashar"
+    },
+    {
+      "number": 37,
+      "text": "Liman shaaa'a minkum any yataqaddama aw yata akhkhar"
+    },
+    {
+      "number": 38,
+      "text": "Kullu nafsim bim kasabat raheenah"
+    },
+    {
+      "number": 39,
+      "text": "Illaaa as haabal yameen"
+    },
+    {
+      "number": 40,
+      "text": "Fee jannaatiny yata saaa'aloon"
+    },
+    {
+      "number": 41,
+      "text": "'Anil mujrimeen"
+    },
+    {
+      "number": 42,
+      "text": "Maa salakakum fee saqar"
+    },
+    {
+      "number": 43,
+      "text": "Qaaloo lam naku minal musalleen"
+    },
+    {
+      "number": 44,
+      "text": "Wa lam naku nut'imul miskeen"
+    },
+    {
+      "number": 45,
+      "text": "Wa kunnaa nakhoodu ma'al khaaa'ideen"
+    },
+    {
+      "number": 46,
+      "text": "Wa kunnaa nukazzibu bi yawmid Deen"
+    },
+    {
+      "number": 47,
+      "text": "Hattaaa ataanal yaqeen"
+    },
+    {
+      "number": 48,
+      "text": "Famaa tanfa'uhum shafaa'atush shaafi'een"
+    },
+    {
+      "number": 49,
+      "text": "Famaa lahum 'anittazkirati mu'rideen"
+    },
+    {
+      "number": 50,
+      "text": "Ka annahum humurum mustanfirah"
+    },
+    {
+      "number": 51,
+      "text": "Farrat min qaswarah"
+    },
+    {
+      "number": 52,
+      "text": "Bal yureedu kullum ri'im minhum any yu'taa suhufam munashsharah"
+    },
+    {
+      "number": 53,
+      "text": "Kallaa bal laa yakhaafoonal aakhirah"
+    },
+    {
+      "number": 54,
+      "text": "Kallaaa innahoo tazkirah"
+    },
+    {
+      "number": 55,
+      "text": "Fa man shaaa'a zakarah"
+    },
+    {
+      "number": 56,
+      "text": "Wa maa yazkuroona illaaa any yashaaa'al laah; Huwa ahlut taqwaa wa ahlul maghfirah"
+    }
+  ]
+}

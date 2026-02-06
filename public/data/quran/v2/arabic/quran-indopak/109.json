@@ -1,0 +1,61 @@
+{
+  "number": 109,
+  "name": "سُورَةُ الكَافِرُونَ",
+  "englishName": "Al-Kaafiroon",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "قُلْ یٰۤاَیُّهَا الْكٰفِرُوْنَ ۟ۙ",
+      "juz": 30,
+      "page": 603,
+      "ruku": 551,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 2,
+      "text": "لَاۤ اَعْبُدُ مَا تَعْبُدُوْنَ ۟ۙ",
+      "juz": 30,
+      "page": 603,
+      "ruku": 551,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 3,
+      "text": "وَلَاۤ اَنْتُمْ عٰبِدُوْنَ مَاۤ اَعْبُدُ ۟ۚ",
+      "juz": 30,
+      "page": 603,
+      "ruku": 551,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 4,
+      "text": "وَلَاۤ اَنَا عَابِدٌ مَّا عَبَدْتُّمْ ۟ۙ",
+      "juz": 30,
+      "page": 603,
+      "ruku": 551,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 5,
+      "text": "وَلَاۤ اَنْتُمْ عٰبِدُوْنَ مَاۤ اَعْبُدُ ۟ؕ",
+      "juz": 30,
+      "page": 603,
+      "ruku": 551,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6,
+      "text": "لَكُمْ دِیْنُكُمْ وَلِیَ دِیْنِ ۟۠",
+      "juz": 30,
+      "page": 603,
+      "ruku": 551,
+      "hizbQuarter": 240,
+      "sajda": false
+    }
+  ]
+}

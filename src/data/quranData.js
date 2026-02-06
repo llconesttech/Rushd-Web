@@ -59,7 +59,8 @@ export const quranScripts = {
     "quran-simple": { "english_name": "Simple", "native_name": "", "type": "quran" },
     "quran-simple-clean": { "english_name": "Simple Clean", "native_name": "", "type": "quran" },
     "quran-simple-enhanced": { "english_name": "Simple Enhanced", "native_name": "", "type": "quran" },
-    "quran-simple-min": { "english_name": "Simple Minimal", "native_name": "", "type": "quran" }
+    "quran-simple-min": { "english_name": "Simple Minimal", "native_name": "", "type": "quran" },
+    "quran-indopak": { "english_name": "Indo-Pak Nastaleeq", "native_name": "نستعلیق انڈو پاک", "type": "quran" }
 };
 
 // All available translations organized by language
@@ -206,7 +207,6 @@ export const translations = {
     "tr.diyanet": { "language_code": "tr", "english_name": "Diyanet Isleri", "native_name": "Diyanet İşleri", "type": "translation" },
     "tr.golpinarli": { "language_code": "tr", "english_name": "Abdulbaki Golpinarli", "native_name": "Abdulbakî Gölpınarlı", "type": "translation" },
     "tr.ozturk": { "language_code": "tr", "english_name": "Yasar Nuri Ozturk", "native_name": "Öztürk", "type": "translation" },
-    "tr.transliteration": { "language_code": "tr", "english_name": "Transliteration", "native_name": "", "type": "transliteration" },
     "tr.vakfi": { "language_code": "tr", "english_name": "Diyanet Vakfi", "native_name": "", "type": "translation" },
     "tr.yazir": { "language_code": "tr", "english_name": "Elmalili Hamdi Yazir", "native_name": "", "type": "translation" },
 

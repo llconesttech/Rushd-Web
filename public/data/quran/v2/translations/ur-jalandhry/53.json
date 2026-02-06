@@ -1,0 +1,631 @@
+{
+  "number": 53,
+  "name": "سُورَةُ النَّجۡمِ",
+  "englishName": "An-Najm",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "تارے کی قسم جب غائب ہونے لگے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 2,
+      "text": "کہ تمہارے رفیق (محمدﷺ) نہ رستہ بھولے ہیں نہ بھٹکے ہیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 3,
+      "text": "اور نہ خواہش نفس سے منہ سے بات نکالتے ہیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 4,
+      "text": "یہ (قرآن) تو حکم خدا ہے جو (ان کی طرف) بھیجا جاتا ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 5,
+      "text": "ان کو نہایت قوت والے نے سکھایا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 6,
+      "text": "(یعنی جبرائیل) طاقتور نے پھر وہ پورے نظر آئے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 7,
+      "text": "اور وہ (آسمان کے) اونچے کنارے میں تھے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 8,
+      "text": "پھر قریب ہوئے اوراَور آگے بڑھے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 9,
+      "text": "تو دو کمان کے فاصلے پر یا اس سے بھی کم",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 10,
+      "text": "پھر خدا نے اپنے بندے کی طرف جو بھیجا سو بھیجا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 11,
+      "text": "جو کچھ انہوں نے دیکھا ان کے دل نے اس کو جھوٹ نہ مانا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 12,
+      "text": "کیا جو کچھ وہ دیکھتے ہیں تم اس میں ان سے جھگڑتے ہو؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 13,
+      "text": "اور انہوں نے اس کو ایک بار بھی دیکھا ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 14,
+      "text": "پرلی حد کی بیری کے پاس",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 15,
+      "text": "اسی کے پاس رہنے کی جنت ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 16,
+      "text": "جب کہ اس بیری پر چھا رہا تھا جو چھا رہا تھا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 17,
+      "text": "ان کی آنکھ نہ تو اور طرف مائل ہوئی اور نہ (حد سے) آگے بڑھی",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 18,
+      "text": "انہوں نے اپنے پروردگار (کی قدرت) کی کتنی ہی بڑی بڑی نشانیاں دیکھیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 19,
+      "text": "بھلا تم لوگوں نے لات اور عزیٰ کو دیکھا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 20,
+      "text": "اور تیسرے منات کو (کہ یہ بت کہیں خدا ہوسکتے ہیں)",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 21,
+      "text": "(مشرکو!) کیا تمہارے لئے تو بیٹے اور خدا کے لئے بیٹیاں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 22,
+      "text": "یہ تقسیم تو بہت بےانصافی کی ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 23,
+      "text": "وہ تو صرف نام ہی نام ہیں جو تم نے اور تمہارے باپ دادا نے گھڑ لئے ہیں۔ خدا نے تو ان کی کوئی سند نازل نہیں کی۔ یہ لوگ محض ظن (فاسد) اور خواہشات نفس کے پیچھے چل رہے ہیں۔ حالانکہ ان کے پروردگار کی طرف سے ان کے پاس ہدایت آچکی ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 24,
+      "text": "کیا جس چیز کی انسان آرزو کرتا ہے وہ اسے ضرور ملتی ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 25,
+      "text": "آخرت اور دنیا تو الله ہی کے ہاتھ میں ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 460,
+      "hizbQuarter": 210,
+      "sajda": false
+    },
+    {
+      "number": 26,
+      "text": "اور آسمانوں میں بہت سے فرشتے ہیں جن کی سفارش کچھ بھی فائدہ نہیں دیتی مگر اس وقت کہ خدا جس کے لئے چاہے اجازت بخشے اور (سفارش) پسند کرے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 526,
+      "ruku": 461,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 27,
+      "text": "جو لوگ آخرت پر ایمان نہیں لاتے وہ فرشتوں کو (خدا کی) لڑکیوں کے نام سے موسوم کرتے ہیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 461,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 28,
+      "text": "حالانکہ ان کو اس کی کچھ خبر نہیں۔ وہ صرف ظن پر چلتے ہیں۔ اور ظن یقین کے مقابلے میں کچھ کام نہیں آتا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 461,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 29,
+      "text": "تو جو ہماری یاد سے روگردانی اور صرف دنیا ہی کی زندگی کا خواہاں ہو اس سے تم بھی منہ پھیر لو",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 461,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 30,
+      "text": "ان کے علم کی انتہا یہی ہے۔ تمہارا پروردگار اس کو بھی خوب جانتا ہے جو اس کے رستے سے بھٹک گیا اور اس سے بھی خوب واقف ہے جو رستے پر چلا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 461,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 31,
+      "text": "اور جو کچھ آسمانوں میں ہے اور جو کچھ زمین میں ہے سب خدا ہی کا ہے (اور اس نے خلقت کو) اس لئے (پیدا کیا ہے) کہ جن لوگوں نے برے کام کئے ان کو ان کے اعمال کا (برا) بدلا دے اور جنہوں نے نیکیاں کیں ان کو نیک بدلہ دے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 461,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 32,
+      "text": "جو صغیرہ گناہوں کے سوا بڑے بڑے گناہوں اور بےحیائی کی باتوں سے اجتناب کرتے ہیں۔ بےشک تمہارا پروردگار بڑی بخشش والا ہے۔ وہ تم کو خوب جانتا ہے۔ جب اس نے تم کو مٹی سے پیدا کیا اور جب تم اپنی ماؤں کے پیٹ میں بچّے تھے۔ تو اپنے آپ کو پاک صاف نہ جتاؤ۔ جو پرہیزگار ہے وہ اس سے خوب واقف ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 461,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 33,
+      "text": "بھلا تم نے اس شخص کو دیکھا جس نے منہ پھیر لیا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 34,
+      "text": "اور تھوڑا سا دیا (پھر) ہاتھ روک لیا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 35,
+      "text": "کیا اس کے پاس غیب کا علم ہے کہ وہ اس کو دیکھ رہا ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 36,
+      "text": "کیا جو باتیں موسیٰ کے صحیفوں میں ہیں ان کی اس کو خبر نہیں پہنچی",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 37,
+      "text": "اور ابراہیمؑ کی جنہوں نے (حق طاعت ورسالت) پورا کیا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 38,
+      "text": "یہ کہ کوئی شخص دوسرے (کے گناہ) کا بوجھ نہیں اٹھائے گا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 39,
+      "text": "اور یہ کہ انسان کو وہی ملتا ہے جس کی وہ کوشش کرتا ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 40,
+      "text": "اور یہ کہ اس کی کوشش دیکھی جائے گی",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 41,
+      "text": "پھر اس کو اس کا پورا پورا بدلا دیا جائے گا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 42,
+      "text": "اور یہ کہ تمہارے پروردگار ہی کے پاس پہنچنا ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 43,
+      "text": "اور یہ کہ وہ ہنساتا اور رلاتا ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 44,
+      "text": "اور یہ کہ وہی مارتا اور جلاتا ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 527,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 45,
+      "text": "اور یہ کہ وہی نر اور مادہ دو قسم (کے حیوان) پیدا کرتا ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 46,
+      "text": "(یعنی) نطفے سے جو (رحم میں) ڈالا جاتا ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 47,
+      "text": "اور یہ کہ (قیامت کو) اسی پر دوبارہ اٹھانا لازم ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 48,
+      "text": "اور یہ کہ وہی دولت مند بناتا اور مفلس کرتا ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 49,
+      "text": "اور یہ کہ وہی شعریٰ کا مالک ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 50,
+      "text": "اور یہ کہ اسی نے عاد اول کو ہلاک کر ڈالا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 51,
+      "text": "اور ثمود کو بھی۔ غرض کسی کو باقی نہ چھوڑا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 52,
+      "text": "اور ان سے پہلے قوم نوحؑ کو بھی۔ کچھ شک نہیں کہ وہ لوگ بڑے ہی ظالم اور بڑے ہی سرکش تھے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 53,
+      "text": "اور اسی نے الٹی ہوئی بستیوں کو دے پٹکا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 54,
+      "text": "پھر ان پر چھایا جو چھایا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 55,
+      "text": "تو (اے انسان) تو اپنے پروردگار کی کون سی نعمت پر جھگڑے گا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 56,
+      "text": "یہ (محمدﷺ) بھی اگلے ڈر سنانے والوں میں سے ایک ڈر سنانے والے ہیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 57,
+      "text": "آنے والی (یعنی قیامت) قریب آ پہنچی",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 58,
+      "text": "اس (دن کی تکلیفوں) کو خدا کے سوا کوئی دور نہیں کرسکے گا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 59,
+      "text": "اے منکرین خدا) کیا تم اس کلام سے تعجب کرتے ہو؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 60,
+      "text": "اور ہنستے ہو اور روتے نہیں؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 61,
+      "text": "اور تم غفلت میں پڑ رہے ہو",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 62,
+      "text": "تو خدا کے آگے سجدہ کرو اور (اسی کی) عبادت کرو",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 462,
+      "hizbQuarter": 211,
+      "sajda": {
+        "id": 13,
+        "recommended": false,
+        "obligatory": true
+      }
+    }
+  ]
+}

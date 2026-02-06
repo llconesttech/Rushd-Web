@@ -1,0 +1,24 @@
+{
+  "number": 106,
+  "name": "سُورَةُ قُرَيۡشٍ",
+  "englishName": "Quraish",
+  "edition": "en.transliteration",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "Li-ilaafi quraish"
+    },
+    {
+      "number": 2,
+      "text": "Elaafihim rihlatash shitaa-i wass saif"
+    },
+    {
+      "number": 3,
+      "text": "Fal y'abudu rabba haazal-bait"
+    },
+    {
+      "number": 4,
+      "text": "Allazi at'amahum min ju'inw-wa-aamana hum min khawf"
+    }
+  ]
+}

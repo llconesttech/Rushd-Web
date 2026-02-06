@@ -44,14 +44,48 @@
 .salah-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.salah-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
 }
 
 .salah-header h2 {
     margin: 0;
     font-size: 1.5rem;
     color: white;
+}
+
+.salah-date-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.date-item {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.date-item.hijri {
+    color: #86efac;
+}
+
+.date-item.bengali {
+    color: #fcd34d;
+}
+
+.date-separator {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.6rem;
 }
 
 .salah-location {

@@ -1,0 +1,2277 @@
+{
+  "number": 26,
+  "name": "سُورَةُ الشُّعَرَاءِ",
+  "englishName": "Ash-Shu'araa",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "Ta. Sin. Mim.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 2,
+      "text": "These are verses of the Book that makes (things) clear.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 3,
+      "text": "It may be thou frettest thy soul with grief, that they do not become Believers.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 4,
+      "text": "If (such) were Our Will, We could send down to them from the sky a Sign, to which they would bend their necks in humility.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 5,
+      "text": "But there comes not to them a newly-revealed Message from (Allah) Most Gracious, but they turn away therefrom.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 6,
+      "text": "They have indeed rejected (the Message): so they will know soon (enough) the truth of what they mocked at!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 7,
+      "text": "Do they not look at the earth,- how many noble things of all kinds We have produced therein?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 8,
+      "text": "Verily, in this is a Sign: but most of them do not believe.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 9,
+      "text": "And verily, thy Lord is He, the Exalted in Might, Most Merciful.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 10,
+      "text": "Behold, thy Lord called Moses: \"Go to the people of iniquity,-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 11,
+      "text": "\"The people of the Pharaoh: will they not fear Allah?\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 12,
+      "text": "He said: \"O my Lord! I do fear that they will charge me with falsehood:",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 13,
+      "text": "\"My breast will be straitened. And my speech may not go (smoothly): so send unto Aaron.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 14,
+      "text": "\"And (further), they have a charge of crime against me; and I fear they may slay me.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 15,
+      "text": "Allah said: \"By no means! proceed then, both of you, with Our Signs; We are with you, and will listen (to your call).",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 16,
+      "text": "\"So go forth, both of you, to Pharaoh, and say: 'We have been sent by the Lord and Cherisher of the worlds;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 17,
+      "text": "\"'Send thou with us the Children of Israel.'\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 18,
+      "text": "(Pharaoh) said: \"Did we not cherish thee as a child among us, and didst thou not stay in our midst many years of thy life?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 19,
+      "text": "\"And thou didst a deed of thine which (thou knowest) thou didst, and thou art an ungrateful (wretch)!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 20,
+      "text": "Moses said: \"I did it then, when I was in error.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 21,
+      "text": "\"So I fled from you (all) when I feared you; but my Lord has (since) invested me with judgment (and wisdom) and appointed me as one of the messengers.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 22,
+      "text": "\"And this is the favour with which thou dost reproach me,- that thou hast enslaved the Children of Israel!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 23,
+      "text": "Pharaoh said: \"And what is the 'Lord and Cherisher of the worlds'?\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 24,
+      "text": "(Moses) said: \"The Lord and Cherisher of the heavens and the earth, and all between,- if ye want to be quite sure.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 25,
+      "text": "(Pharaoh) said to those around: \"Did ye not listen (to what he says)?\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 26,
+      "text": "(Moses) said: \"Your Lord and the Lord of your fathers from the beginning!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 27,
+      "text": "(Pharaoh) said: \"Truly your messenger who has been sent to you is a veritable madman!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 28,
+      "text": "(Moses) said: \"Lord of the East and the West, and all between! if ye only had sense!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 29,
+      "text": "(Pharaoh) said: \"If thou dost put forward any god other than me, I will certainly put thee in prison!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 30,
+      "text": "(Moses) said: \"Even if I showed you something clear (and) convincing?\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 31,
+      "text": "(Pharaoh) said: \"Show it then, if thou tellest the truth!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 32,
+      "text": "So (Moses) threw his rod, and behold, it was a serpent, plain (for all to see)!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 33,
+      "text": "And he drew out his hand, and behold, it was white to all beholders!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 34,
+      "text": "(Pharaoh) said to the Chiefs around him: \"This is indeed a sorcerer well-versed:",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 35,
+      "text": "\"His plan is to get you out of your land by his sorcery; then what is it ye counsel?\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 36,
+      "text": "They said: \"Keep him and his brother in suspense (for a while), and dispatch to the Cities heralds to collect-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 37,
+      "text": "\"And bring up to thee all (our) sorcerers well-versed.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 38,
+      "text": "So the sorcerers were got together for the appointment of a day well-known,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 39,
+      "text": "And the people were told: \"Are ye (now) assembled?-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 40,
+      "text": "\"That we may follow the sorcerers (in religion) if they win?\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 41,
+      "text": "So when the sorcerers arrived, they said to Pharaoh: \"Of course - shall we have a (suitable) reward if we win?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 42,
+      "text": "He said: \"Yea, (and more),- for ye shall in that case be (raised to posts) nearest (to my person).\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 43,
+      "text": "Moses said to them: \"Throw ye - that which ye are about to throw!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 44,
+      "text": "So they threw their ropes and their rods, and said: \"By the might of Pharaoh, it is we who will certainly win!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 45,
+      "text": "Then Moses threw his rod, when, behold, it straightway swallows up all the falsehoods which they fake!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 46,
+      "text": "Then did the sorcerers fall down, prostrate in adoration,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 47,
+      "text": "Saying: \"We believe in the Lord of the Worlds,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 48,
+      "text": "\"The Lord of Moses and Aaron.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 49,
+      "text": "Said (Pharaoh): \"Believe ye in Him before I give you permission? surely he is your leader, who has taught you sorcery! but soon shall ye know! Be sure I will cut off your hands and your feet on opposite sides, and I will cause you all to die on the cross!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 50,
+      "text": "They said: \"No matter! for us, we shall but return to our Lord!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 51,
+      "text": "\"Only, our desire is that our Lord will forgive us our faults, that we may become foremost among the believers!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 52,
+      "text": "By inspiration we told Moses: \"Travel by night with my servants; for surely ye shall be pursued.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 53,
+      "text": "Then Pharaoh sent heralds to (all) the Cities,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 54,
+      "text": "(Saying): \"These (Israelites) are but a small band,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 55,
+      "text": "\"And they are raging furiously against us;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 56,
+      "text": "\"But we are a multitude amply fore-warned.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 57,
+      "text": "So We expelled them from gardens, springs,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 58,
+      "text": "Treasures, and every kind of honourable position;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 59,
+      "text": "Thus it was, but We made the Children of Israel inheritors of such things.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 60,
+      "text": "So they pursued them at sunrise.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 61,
+      "text": "And when the two bodies saw each other, the people of Moses said: \"We are sure to be overtaken.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 62,
+      "text": "(Moses) said: \"By no means! my Lord is with me! Soon will He guide me!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 63,
+      "text": "Then We told Moses by inspiration: \"Strike the sea with thy rod.\" So it divided, and each separate part became like the huge, firm mass of a mountain.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 64,
+      "text": "And We made the other party approach thither.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 65,
+      "text": "We delivered Moses and all who were with him;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 66,
+      "text": "But We drowned the others.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 67,
+      "text": "Verily in this is a Sign: but most of them do not believe.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 68,
+      "text": "And verily thy Lord is He, the Exalted in Might, Most Merciful.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 69,
+      "text": "And rehearse to them (something of) Abraham's story.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 70,
+      "text": "Behold, he said to his father and his people: \"What worship ye?\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 71,
+      "text": "They said: \"We worship idols, and we remain constantly in attendance on them.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 72,
+      "text": "He said: \"Do they listen to you when ye call (on them)?\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 73,
+      "text": "\"Or do you good or harm?\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 74,
+      "text": "They said: \"Nay, but we found our fathers doing thus (what we do).\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 75,
+      "text": "He said: \"Do ye then see whom ye have been worshipping,-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 76,
+      "text": "\"Ye and your fathers before you?-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 77,
+      "text": "\"For they are enemies to me; not so the Lord and Cherisher of the Worlds;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 78,
+      "text": "\"Who created me, and it is He Who guides me;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 79,
+      "text": "\"Who gives me food and drink,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 80,
+      "text": "\"And when I am ill, it is He Who cures me;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 81,
+      "text": "\"Who will cause me to die, and then to life (again);",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 82,
+      "text": "\"And who, I hope, will forgive me my faults on the day of Judgment.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 83,
+      "text": "\"O my Lord! bestow wisdom on me, and join me with the righteous;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 84,
+      "text": "\"Grant me honourable mention on the tongue of truth among the latest (generations);",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 85,
+      "text": "\"Make me one of the inheritors of the Garden of Bliss;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 86,
+      "text": "\"Forgive my father, for that he is among those astray;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 87,
+      "text": "\"And let me not be in disgrace on the Day when (men) will be raised up;-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 88,
+      "text": "\"The Day whereon neither wealth nor sons will avail,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 89,
+      "text": "\"But only he (will prosper) that brings to Allah a sound heart;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 90,
+      "text": "\"To the righteous, the Garden will be brought near,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 91,
+      "text": "\"And to those straying in Evil, the Fire will be placed in full view;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 92,
+      "text": "\"And it shall be said to them: 'Where are the (gods) ye worshipped-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 93,
+      "text": "\"'Besides Allah? Can they help you or help themselves?'",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 94,
+      "text": "\"Then they will be thrown headlong into the (Fire),- they and those straying in Evil,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 95,
+      "text": "\"And the whole hosts of Iblis together.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 96,
+      "text": "\"They will say there in their mutual bickerings:",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 97,
+      "text": "\"'By Allah, we were truly in an error manifest,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 98,
+      "text": "\"'When we held you as equals with the Lord of the Worlds;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 99,
+      "text": "\"'And our seducers were only those who were steeped in guilt.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 100,
+      "text": "\"'Now, then, we have none to intercede (for us),",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 101,
+      "text": "\"'Nor a single friend to feel (for us).",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 102,
+      "text": "\"'Now if we only had a chance of return we shall truly be of those who believe!'\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 103,
+      "text": "Verily in this is a Sign but most of them do not believe.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 104,
+      "text": "And verily thy Lord is He, the Exalted in Might, Most Merciful.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 105,
+      "text": "The people of Noah rejected the messengers.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 106,
+      "text": "Behold, their brother Noah said to them: \"Will ye not fear (Allah)?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 107,
+      "text": "\"I am to you a messenger worthy of all trust:",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 108,
+      "text": "\"So fear Allah, and obey me.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 109,
+      "text": "\"No reward do I ask of you for it: my reward is only from the Lord of the Worlds:",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 110,
+      "text": "\"So fear Allah, and obey me.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 111,
+      "text": "They said: \"Shall we believe in thee when it is the meanest that follow thee?\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 112,
+      "text": "He said: \"And what do I know as to what they do?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 113,
+      "text": "\"Their account is only with my Lord, if ye could (but) understand.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 114,
+      "text": "\"I am not one to drive away those who believe.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 115,
+      "text": "\"I am sent only to warn plainly in public.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 116,
+      "text": "They said: \"If thou desist not, O Noah! thou shalt be stoned (to death).\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 117,
+      "text": "He said: \"O my Lord! truly my people have rejected me.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 118,
+      "text": "\"Judge Thou, then, between me and them openly, and deliver me and those of the Believers who are with me.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 119,
+      "text": "So We delivered him and those with him, in the Ark filled (with all creatures).",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 120,
+      "text": "Thereafter We drowned those who remained behind.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 121,
+      "text": "Verily in this is a Sign: but most of them do not believe.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 122,
+      "text": "And verily thy Lord is He, the Exalted in Might, Most Merciful.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 123,
+      "text": "The 'Ad (people) rejected the messengers.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 124,
+      "text": "Behold, their brother Hud said to them: \"Will ye not fear (Allah)?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 125,
+      "text": "\"I am to you a messenger worthy of all trust:",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 126,
+      "text": "\"So fear Allah and obey me.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 127,
+      "text": "\"No reward do I ask of you for it: my reward is only from the Lord of the Worlds.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 128,
+      "text": "\"Do ye build a landmark on every high place to amuse yourselves?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 129,
+      "text": "\"And do ye get for yourselves fine buildings in the hope of living therein (for ever)?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 130,
+      "text": "\"And when ye exert your strong hand, do ye do it like men of absolute power?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 131,
+      "text": "\"Now fear Allah, and obey me.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 132,
+      "text": "\"Yea, fear Him Who has bestowed on you freely all that ye know.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 133,
+      "text": "\"Freely has He bestowed on you cattle and sons,-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 134,
+      "text": "\"And Gardens and Springs.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 135,
+      "text": "\"Truly I fear for you the Penalty of a Great Day.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 136,
+      "text": "They said: \"It is the same to us whether thou admonish us or be not among (our) admonishers!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 137,
+      "text": "\"This is no other than a customary device of the ancients,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 138,
+      "text": "\"And we are not the ones to receive Pains and Penalties!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 139,
+      "text": "So they rejected him, and We destroyed them. Verily in this is a Sign: but most of them do not believe.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 140,
+      "text": "And verily thy Lord is He, the Exalted in Might, Most Merciful.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 141,
+      "text": "The Thamud (people) rejected the messengers.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 142,
+      "text": "Behold, their brother Salih said to them: \"Will you not fear (Allah)?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 143,
+      "text": "\"I am to you a messenger worthy of all trust.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 144,
+      "text": "\"So fear Allah, and obey me.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 145,
+      "text": "\"No reward do I ask of you for it: my reward is only from the Lord of the Worlds.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 146,
+      "text": "\"Will ye be left secure, in (the enjoyment of) all that ye have here?-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 147,
+      "text": "\"Gardens and Springs,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 148,
+      "text": "\"And corn-fields and date-palms with spathes near breaking (with the weight of fruit)?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 149,
+      "text": "\"And ye carve houses out of (rocky) mountains with great skill.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 150,
+      "text": "\"But fear Allah and obey me;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 151,
+      "text": "\"And follow not the bidding of those who are extravagant,-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 152,
+      "text": "\"Who make mischief in the land, and mend not (their ways).\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 153,
+      "text": "They said: \"Thou art only one of those bewitched!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 154,
+      "text": "\"Thou art no more than a mortal like us: then bring us a Sign, if thou tellest the truth!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 155,
+      "text": "He said: \"Here is a she-camel: she has a right of watering, and ye have a right of watering, (severally) on a day appointed.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 156,
+      "text": "\"Touch her not with harm, lest the Penalty of a Great Day seize you.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 157,
+      "text": "But they ham-strung her: then did they become full of regrets.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 158,
+      "text": "But the Penalty seized them. Verily in this is a Sign: but most of them do not believe.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 159,
+      "text": "And verily thy Lord is He, the Exalted in Might, Most Merciful.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 160,
+      "text": "The people of Lut rejected the messengers.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 161,
+      "text": "Behold, their brother Lut said to them: \"Will ye not fear (Allah)?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 162,
+      "text": "\"I am to you a messenger worthy of all trust.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 163,
+      "text": "\"So fear Allah and obey me.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 164,
+      "text": "\"No reward do I ask of you for it: my reward is only from the lord of the Worlds.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 165,
+      "text": "\"Of all the creatures in the world, will ye approach males,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 166,
+      "text": "\"And leave those whom Allah has created for you to be your mates? Nay, ye are a people transgressing (all limits)!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 167,
+      "text": "They said: \"If thou desist not, O Lut! thou wilt assuredly be cast out!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 168,
+      "text": "He said: \"I do detest your doings.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 169,
+      "text": "\"O my Lord! deliver me and my family from such things as they do!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 170,
+      "text": "So We delivered him and his family,- all",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 171,
+      "text": "Except an old woman who lingered behind.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 172,
+      "text": "But the rest We destroyed utterly.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 173,
+      "text": "We rained down on them a shower (of brimstone): and evil was the shower on those who were admonished (but heeded not)!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 174,
+      "text": "Verily in this is a Sign: but most of them do not believe.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 175,
+      "text": "And verily thy Lord is He, the Exalted in Might Most Merciful.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 176,
+      "text": "The Companions of the Wood rejected the messengers.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 177,
+      "text": "Behold, Shu'aib said to them: \"Will ye not fear (Allah)?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 178,
+      "text": "\"I am to you a messenger worthy of all trust.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 179,
+      "text": "\"So fear Allah and obey me.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 180,
+      "text": "\"No reward do I ask of you for it: my reward is only from the Lord of the Worlds.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 181,
+      "text": "\"Give just measure, and cause no loss (to others by fraud).",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 182,
+      "text": "\"And weigh with scales true and upright.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 183,
+      "text": "\"And withhold not things justly due to men, nor do evil in the land, working mischief.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 184,
+      "text": "\"And fear Him Who created you and (who created) the generations before (you)\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 185,
+      "text": "They said: \"Thou art only one of those bewitched!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 186,
+      "text": "\"Thou art no more than a mortal like us, and indeed we think thou art a liar!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 187,
+      "text": "\"Now cause a piece of the sky to fall on us, if thou art truthful!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 188,
+      "text": "He said: \"My Lord knows best what ye do.\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 189,
+      "text": "But they rejected him. Then the punishment of a day of overshadowing gloom seized them, and that was the Penalty of a Great Day.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 190,
+      "text": "Verily in that is a Sign: but most of them do not believe.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 191,
+      "text": "And verily thy Lord is He, the Exalted in Might, Most Merciful.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 192,
+      "text": "Verily this is a Revelation from the Lord of the Worlds:",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 193,
+      "text": "With it came down the spirit of Faith and Truth-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 194,
+      "text": "To thy heart and mind, that thou mayest admonish.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 195,
+      "text": "In the perspicuous Arabic tongue.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 196,
+      "text": "Without doubt it is (announced) in the mystic Books of former peoples.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 197,
+      "text": "Is it not a Sign to them that the Learned of the Children of Israel knew it (as true)?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 198,
+      "text": "Had We revealed it to any of the non-Arabs,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 199,
+      "text": "And had he recited it to them, they would not have believed in it.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 200,
+      "text": "Thus have We caused it to enter the hearts of the sinners.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 201,
+      "text": "They will not believe in it until they see the grievous Penalty;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 202,
+      "text": "But the (Penalty) will come to them of a sudden, while they perceive it not;",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 203,
+      "text": "Then they will say: \"Shall we be respited?\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 204,
+      "text": "Do they then ask for Our Penalty to be hastened on?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 205,
+      "text": "Seest thou? If We do let them enjoy (this life) for a few years,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 206,
+      "text": "Yet there comes to them at length the (Punishment) which they were promised!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 207,
+      "text": "It will profit them not that they enjoyed (this life)!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 208,
+      "text": "Never did We destroy a population, but had its warners -",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 209,
+      "text": "By way of reminder; and We never are unjust.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 210,
+      "text": "No evil ones have brought down this (Revelation):",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 211,
+      "text": "It would neither suit them nor would they be able (to produce it).",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 212,
+      "text": "Indeed they have been removed far from even (a chance of) hearing it.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 213,
+      "text": "So call not on any other god with Allah, or thou wilt be among those under the Penalty.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 214,
+      "text": "And admonish thy nearest kinsmen,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 215,
+      "text": "And lower thy wing to the Believers who follow thee.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 216,
+      "text": "Then if they disobey thee, say: \"I am free (of responsibility) for what ye do!\"",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 217,
+      "text": "And put thy trust on the Exalted in Might, the Merciful,-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 218,
+      "text": "Who seeth thee standing forth (in prayer),",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 219,
+      "text": "And thy movements among those who prostrate themselves,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 220,
+      "text": "For it is He Who heareth and knoweth all things.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 221,
+      "text": "Shall I inform you, (O people!), on whom it is that the evil ones descend?",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 222,
+      "text": "They descend on every lying, wicked person,",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 223,
+      "text": "(Into whose ears) they pour hearsay vanities, and most of them are liars.",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 224,
+      "text": "And the Poets,- It is those straying in Evil, who follow them:",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 225,
+      "text": "Seest thou not that they wander distracted in every valley?-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 226,
+      "text": "And that they say what they practise not?-",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 227,
+      "text": "Except those who believe, work righteousness, engage much in the remembrance of Allah, and defend themselves only after they are unjustly attacked. And soon will the unjust assailants know what vicissitudes their affairs will take!",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    }
+  ]
+}
