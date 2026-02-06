@@ -159,6 +159,22 @@ const SettingsSidebar = ({ persistent = false }) => {
                                 >
                                     القلم
                                 </button>
+                                <button
+                                    className={`tab ${selectedArabicFont === 'mequran' ? 'active' : ''}`}
+                                    style={{
+                                        padding: '0.5rem',
+                                        borderRadius: '8px',
+                                        border: '1px solid var(--color-border)',
+                                        cursor: 'pointer',
+                                        backgroundColor: selectedArabicFont === 'mequran' ? 'var(--color-primary)' : 'white',
+                                        color: selectedArabicFont === 'mequran' ? 'white' : 'var(--color-text-main)',
+                                        fontFamily: "'Me Quran', serif",
+                                        fontSize: '1.1rem'
+                                    }}
+                                    onClick={() => setSelectedArabicFont('mequran')}
+                                >
+                                    عثماني
+                                </button>
                             </div>
                         )}
 

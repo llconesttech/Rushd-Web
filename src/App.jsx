@@ -156,6 +156,7 @@ const QuranReader = () => {
 
     switch (selectedArabicFont) {
       case 'alqalam': return "'Al Qalam', serif";
+      case 'mequran': return "'Me Quran', serif";
       case 'scheherazade': return "'Scheherazade', serif";
       case 'amiri':
       default:
@@ -345,13 +346,13 @@ const QuranReader = () => {
                 <div className="word-by-word-container">
                   {parseWordByWord(ayah.text).map((w, i) => (
                     <div key={i} className="word-block">
-                      <span className="word-arabic" style={{ fontFamily: getArabicFontFamily() }}>{w.arabic}</span>
+                      <span className={`word-arabic font-${selectedArabicFont}`} style={{ fontFamily: getArabicFontFamily() }}>{w.arabic}</span>
                       <span className="word-translation">{w.translation}</span>
                     </div>
                   ))}
                 </div>
               ) : isTajweed ? (
-                <p className="arabic-text tajweed-text" style={{
+                <p className={`arabic-text tajweed-text font-${selectedArabicFont}`} style={{
                   fontSize: '2.5rem',
                   lineHeight: '2.2',
                   textAlign: 'right',
@@ -360,7 +361,7 @@ const QuranReader = () => {
                   color: 'var(--color-text-main)'
                 }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text) }} />
               ) : (
-                <p className={`arabic-text ${isIndoPak ? 'indopak' : ''}`} style={{
+                <p className={`arabic-text font-${selectedArabicFont} ${isIndoPak ? 'indopak' : ''}`} style={{
                   fontSize: '2.5rem',
                   lineHeight: '2.2',
                   textAlign: 'right',

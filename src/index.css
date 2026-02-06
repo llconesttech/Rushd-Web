@@ -23,12 +23,15 @@
 }
 
 @font-face {
-  font-family: 'Noor';
-  src: url('/fonts/Noor-e-Hidayah.ttf') format('truetype');
+  font-family: 'Me Quran';
+  src: url('/fonts/me_quran.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
+
+
+
 
 /* Indo-Pak Nastaleeq Font */
 @font-face {
@@ -65,7 +68,7 @@
 
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-arabic: 'Kitab', 'Amiri Quran', 'Scheherazade New', serif;
+  --font-arabic: 'Kitab', 'Amiri Quran', 'Scheherazade', 'Me Quran', serif;
   --font-arabic-indopak: 'IndoPak Nastaleeq', 'Noto Nastaliq Urdu', serif;
   /* Need to import these */
 
@@ -147,7 +150,64 @@ h6 {
   color: #AAA;
 }
 
-/* Hamzatul Wasl, Silent, Lam Shamsiyyah */
+
+
+/* Quran.com V4 Tajweed Rules (Restored) */
+
+/* Qalqalah (Echoing) - Blue */
+.tajweed-text .qlq {
+  color: #0091EA;
+}
+
+/* Ghunnah (Nasalization) - Orange */
+.tajweed-text .ghn,
+.tajweed-text .idgh_ghn,
+.tajweed-text .idgh_w_ghn,
+.tajweed-text .idgh_mus,
+.tajweed-text .idgh_shfw {
+  color: #FF7E1E;
+}
+
+/* Ikhfa (Hiding) - Dark Orange/Brown */
+.tajweed-text .ikhf,
+.tajweed-text .ikhf_shfw {
+  color: #954000;
+}
+
+/* Iqlab (Conversion) - Light Blue */
+.tajweed-text .iqlb {
+  color: #26BFF0;
+}
+
+/* Idgham (Merging) - Grey/Green */
+.tajweed-text .idgh {
+  color: #A1A1A1;
+}
+
+/* Madd (Prolongation) Rules */
+.tajweed-text .madda_normal {
+  color: #532353;
+  /* Purple - 2 Harakat */
+}
+
+.tajweed-text .madda_permissible {
+  color: #8C222C;
+  /* Dark Red - 2/4/6 */
+}
+
+.tajweed-text .madda_necessary,
+.tajweed-text .madda_pbligatory {
+  color: #E53935;
+  /* Bright Red - 6 Harakat */
+}
+
+/* Silent / Hamzat Wasl - Grey */
+.tajweed-text .slnt,
+.tajweed-text .ham_wasl {
+  color: #AAAAAA;
+}
+
+/* Hamzatul Wasl, Silent, Lam Shamsiyyah (Legacy) */
 .tajweed-text .tj-n {
   color: #F00;
   font-weight: bold;
