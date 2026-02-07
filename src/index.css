@@ -42,6 +42,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Saleem';
+  src: url('/fonts/PDMS_Saleem_QuranFont-signed.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Rushd Brand Palette (from logo) */
   --color-primary: #0d5c63;
@@ -144,97 +152,79 @@ h6 {
 }
 
 /* Tajweed Color Coding classes */
-.tajweed-text .tj-h,
-.tajweed-text .tj-s,
-.tajweed-text .tj-l {
-  color: #AAA;
-}
+/* Tajweed Color Coding classes - Detailed Schema */
 
-
-
-/* Quran.com V4 Tajweed Rules (Restored) */
-
-/* Qalqalah (Echoing) - Blue */
-.tajweed-text .qlq {
-  color: #0091EA;
-}
-
-/* Ghunnah (Nasalization) - Orange */
-.tajweed-text .ghn,
-.tajweed-text .idgh_ghn,
-.tajweed-text .idgh_w_ghn,
-.tajweed-text .idgh_mus,
-.tajweed-text .idgh_shfw {
-  color: #FF7E1E;
-}
-
-/* Ikhfa (Hiding) - Dark Orange/Brown */
-.tajweed-text .ikhf,
-.tajweed-text .ikhf_shfw {
-  color: #954000;
-}
-
-/* Iqlab (Conversion) - Light Blue */
-.tajweed-text .iqlb {
-  color: #26BFF0;
-}
-
-/* Idgham (Merging) - Grey/Green */
-.tajweed-text .idgh {
-  color: #A1A1A1;
-}
-
-/* Madd (Prolongation) Rules */
-.tajweed-text .madda_normal {
-  color: #532353;
-  /* Purple - 2 Harakat */
-}
-
-.tajweed-text .madda_permissible {
-  color: #8C222C;
-  /* Dark Red - 2/4/6 */
-}
-
-.tajweed-text .madda_necessary,
-.tajweed-text .madda_pbligatory {
-  color: #E53935;
-  /* Bright Red - 6 Harakat */
-}
-
-/* Silent / Hamzat Wasl - Grey */
+/* Hamzat ul Wasl - Grey */
+.tajweed-text .ham_wasl,
 .tajweed-text .slnt,
-.tajweed-text .ham_wasl {
+.tajweed-text .l {
   color: #AAAAAA;
 }
 
-/* Hamzatul Wasl, Silent, Lam Shamsiyyah (Legacy) */
-.tajweed-text .tj-n {
-  color: #F00;
-  font-weight: bold;
+/* Normal Prolongation (2 Vowels) - Light Blue/Purple */
+.tajweed-text .madda_normal {
+  color: #537FFF;
 }
 
-/* Ghunnah */
-.tajweed-text .tj-m,
-.tajweed-text .tj-p {
-  color: #00F;
+/* Permissible Prolongation (2, 4, 6) - Blue */
+.tajweed-text .madda_permissible {
+  color: #4050FF;
 }
 
-/* Medd */
-.tajweed-text .tj-i {
-  color: #10b981;
+/* Necessary Prolongation (6) - Dark Blue */
+.tajweed-text .madda_necessary {
+  color: #000EBC;
 }
 
-/* Ikhfa */
-.tajweed-text .tj-d {
-  color: #1e40af;
+/* Qalqalah - Red */
+.tajweed-text .qlq {
+  color: #DD0008;
 }
 
-/* Idgham */
-.tajweed-text .tj-a {
-  color: #059669;
+/* Obligatory Prolongation (4-5) - Medium Blue */
+.tajweed-text .madda_pbligatory {
+  color: #2144C1;
 }
 
-/* Qalqalah */
+/* Ikhfa Shafawi (With Meem) - Pink/Magenta */
+.tajweed-text .ikhf_shfw {
+  color: #D500B7;
+}
+
+/* Ikhfa - Purple */
+.tajweed-text .ikhf {
+  color: #9400A8;
+}
+
+/* Idgham Shafawi (With Meem) - Lime Green */
+.tajweed-text .idghm_shfw {
+  color: #58B800;
+}
+
+/* Iqlab - Sky Blue */
+.tajweed-text .iqlb {
+  color: #26BFFD;
+}
+
+/* Idgham With Ghunnah - Teal Green */
+.tajweed-text .idgh_ghn {
+  color: #169777;
+}
+
+/* Idgham Without Ghunnah - Green */
+.tajweed-text .idgh_w_ghn {
+  color: #169200;
+}
+
+/* Idgham Mutajanisayn / Mutaqaribayn - Grey */
+.tajweed-text .idgh_mus {
+  color: #A1A1A1;
+}
+
+/* Ghunnah (2 Vowels) - Orange */
+.tajweed-text .ghn {
+  color: #FF7E1E;
+}
 
 .word-by-word-container {
   display: flex;

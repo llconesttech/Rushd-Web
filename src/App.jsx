@@ -9,6 +9,7 @@ import SurahListSidebar from './components/SurahListSidebar';
 import HomePage from './components/HomePage';
 import AudioPlayer from './components/AudioPlayer';
 import PageHeader from './components/PageHeader'; // Import new component
+import TajweedLegend from './components/TajweedLegend';
 import QiblaFinder from './components/QiblaFinder';
 import TasbihCounter from './components/TasbihCounter';
 import ZakatCalculator from './components/ZakatCalculator';
@@ -123,10 +124,32 @@ const SurahList = () => {
 };
 
 // ... parsing utilities omitted for brevity as they are unchanged ...
+// Tajweed Class Mapping
+const tajweedClassMap = {
+  'h': 'ham_wasl',
+  's': 'slnt',
+  'l': 'slnt',
+  'n': 'madda_normal',
+  'p': 'madda_permissible',
+  'm': 'madda_necessary',
+  'q': 'qlq',
+  'o': 'madda_pbligatory',
+  'c': 'ikhf_shfw',
+  'f': 'ikhf',
+  'w': 'idghm_shfw',
+  'i': 'iqlb',
+  'a': 'idgh_ghn',
+  'u': 'idgh_w_ghn',
+  'd': 'idgh_mus',
+  'b': 'idgh_mus',
+  'g': 'ghn'
+};
+
 const parseTajweed = (text) => {
   if (!text) return "";
   return text.replace(/\[([a-z])(?::\d+)?\[([^\]]+)\]/g, (match, type, content) => {
-    return `<span class="tj-${type}">${content}</span>`;
+    const className = tajweedClassMap[type] || `tj-${type}`;
+    return `<span class="${className}">${content}</span>`;
   });
 };
 
@@ -158,6 +181,7 @@ const QuranReader = () => {
       case 'alqalam': return "'Al Qalam', serif";
       case 'mequran': return "'Me Quran', serif";
       case 'scheherazade': return "'Scheherazade', serif";
+      case 'saleem': return "'Saleem', serif";
       case 'amiri':
       default:
         return "'Amiri Quran', serif";
@@ -254,6 +278,7 @@ const QuranReader = () => {
       {/* Audio Player */}
       <div style={{ padding: '0 2rem' }}>
         <AudioPlayer surahNumber={parseInt(number)} totalAyahs={surah.numberOfAyahs} />
+        {isTajweed && <TajweedLegend />}
       </div>
 
       {/* Main Content */}
@@ -285,7 +310,7 @@ const QuranReader = () => {
                     ))}
                   </div>
                 ) : isTajweed ? (
-                  <p className="arabic-text tajweed-text" style={{
+                  <p className={`arabic-text tajweed-text ${isIndoPak ? 'indopak' : `font-${selectedArabicFont}`}`} style={{
                     fontSize: '2.5rem',
                     lineHeight: '2.5',
                     textAlign: 'right',
@@ -294,7 +319,7 @@ const QuranReader = () => {
                     color: 'var(--color-text-main)'
                   }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text) }} />
                 ) : (
-                  <p className={`arabic-text ${isIndoPak ? 'indopak' : ''}`} style={{
+                  <p className={`arabic-text ${isIndoPak ? 'indopak' : `font-${selectedArabicFont}`}`} style={{
                     fontSize: '2.5rem',
                     lineHeight: '2.5',
                     textAlign: 'right',
@@ -352,7 +377,7 @@ const QuranReader = () => {
                   ))}
                 </div>
               ) : isTajweed ? (
-                <p className={`arabic-text tajweed-text font-${selectedArabicFont}`} style={{
+                <p className={`arabic-text tajweed-text ${isIndoPak ? 'indopak' : `font-${selectedArabicFont}`}`} style={{
                   fontSize: '2.5rem',
                   lineHeight: '2.2',
                   textAlign: 'right',

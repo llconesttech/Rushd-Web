@@ -175,6 +175,22 @@ const SettingsSidebar = ({ persistent = false }) => {
                                 >
                                     عثماني
                                 </button>
+                                <button
+                                    className={`tab ${selectedArabicFont === 'saleem' ? 'active' : ''}`}
+                                    style={{
+                                        padding: '0.5rem',
+                                        borderRadius: '8px',
+                                        border: '1px solid var(--color-border)',
+                                        cursor: 'pointer',
+                                        backgroundColor: selectedArabicFont === 'saleem' ? 'var(--color-primary)' : 'white',
+                                        color: selectedArabicFont === 'saleem' ? 'white' : 'var(--color-text-main)',
+                                        fontFamily: "'Saleem', serif",
+                                        fontSize: '1.2rem'
+                                    }}
+                                    onClick={() => setSelectedArabicFont('saleem')}
+                                >
+                                    سليم
+                                </button>
                             </div>
                         )}
 
