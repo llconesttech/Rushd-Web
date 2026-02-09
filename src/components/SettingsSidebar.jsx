@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { X, Settings, Check, Volume2, Type, BookOpen, MessageCircle } from 'lucide-react'; // Added MessageCircle for tooltip icon
 import { useSettings } from '../context/SettingsContext';
-import { quranScripts, translations, reciters, languageList } from '../data/quranData';
+import { quranScripts, translations, languageList } from '../data/quranData';
 import './SettingsSidebar.css';
 
 const SettingsSidebar = ({ persistent = false }) => {
@@ -16,7 +17,9 @@ const SettingsSidebar = ({ persistent = false }) => {
         uiStyle,
         setUiStyle,
         selectedArabicFont,
-        setSelectedArabicFont
+        setSelectedArabicFont,
+        showTajweedTooltips,
+        setShowTajweedTooltips
     } = useSettings();
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -191,6 +194,56 @@ const SettingsSidebar = ({ persistent = false }) => {
                                 >
                                     سليم
                                 </button>
+                            </div>
+                        )}
+
+                        {/* Tajweed Tooltips Toggle */}
+                        {(selectedScript === 'quran-tajweed' || selectedScript === 'quran-indopak-tajweed') && (
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                marginTop: '1.5rem',
+                                padding: '0.75rem',
+                                backgroundColor: 'var(--color-bg-card)',
+                                border: '1px solid var(--color-border)',
+                                borderRadius: '8px'
+                            }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    <MessageCircle size={18} color="var(--color-text-muted)" />
+                                    <span style={{ fontSize: '0.95rem', fontWeight: 500 }}>Tajweed Tooltips</span>
+                                </div>
+                                <label className="switch" style={{ position: 'relative', display: 'inline-block', width: '40px', height: '24px' }}>
+                                    <input
+                                        type="checkbox"
+                                        checked={showTajweedTooltips}
+                                        onChange={(e) => setShowTajweedTooltips(e.target.checked)}
+                                        style={{ opacity: 0, width: 0, height: 0 }}
+                                    />
+                                    <span className="slider round" style={{
+                                        position: 'absolute',
+                                        cursor: 'pointer',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        backgroundColor: showTajweedTooltips ? 'var(--color-primary)' : '#ccc',
+                                        transition: '.4s',
+                                        borderRadius: '34px'
+                                    }}>
+                                        <span style={{
+                                            position: 'absolute',
+                                            content: "",
+                                            height: '16px',
+                                            width: '16px',
+                                            left: showTajweedTooltips ? '20px' : '4px',
+                                            bottom: '4px',
+                                            backgroundColor: 'white',
+                                            transition: '.4s',
+                                            borderRadius: '50%'
+                                        }}></span>
+                                    </span>
+                                </label>
                             </div>
                         )}
 

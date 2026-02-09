@@ -23,6 +23,9 @@ export const SettingsProvider = ({ children }) => {
     // Arabic Font (for non-IndoPak scripts) - default Me Quran
     const [selectedArabicFont, setSelectedArabicFont] = useState('mequran');
 
+    // Tajweed Tooltips
+    const [showTajweedTooltips, setShowTajweedTooltips] = useState(true);
+
     const toggleSurahList = () => setIsSurahListOpen(!isSurahListOpen);
     const toggleSettings = () => setIsSettingsOpen(!isSettingsOpen);
 
@@ -41,6 +44,8 @@ export const SettingsProvider = ({ children }) => {
         setUiStyle,
         selectedArabicFont,
         setSelectedArabicFont,
+        showTajweedTooltips,
+        setShowTajweedTooltips,
     };
 
     return (

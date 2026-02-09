@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate, useLocation, matchPath } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useSurahList, useSurahDetail } from './hooks/useQuran';
-import { useSettings } from './context/SettingsContext';
 import { translations } from './data/quranData';
 import SettingsSidebar from './components/SettingsSidebar';
 import SurahListSidebar from './components/SurahListSidebar';
@@ -10,6 +9,9 @@ import HomePage from './components/HomePage';
 import AudioPlayer from './components/AudioPlayer';
 import PageHeader from './components/PageHeader'; // Import new component
 import TajweedLegend from './components/TajweedLegend';
+import quranService from './services/quranService';
+import { TAJWEED_RULES } from './data/tajweedData';
+import { useSettings } from './context/SettingsContext';
 import QiblaFinder from './components/QiblaFinder';
 import TasbihCounter from './components/TasbihCounter';
 import ZakatCalculator from './components/ZakatCalculator';
@@ -124,32 +126,14 @@ const SurahList = () => {
 };
 
 // ... parsing utilities omitted for brevity as they are unchanged ...
-// Tajweed Class Mapping
-const tajweedClassMap = {
-  'h': 'ham_wasl',
-  's': 'slnt',
-  'l': 'slnt',
-  'n': 'madda_normal',
-  'p': 'madda_permissible',
-  'm': 'madda_necessary',
-  'q': 'qlq',
-  'o': 'madda_pbligatory',
-  'c': 'ikhf_shfw',
-  'f': 'ikhf',
-  'w': 'idghm_shfw',
-  'i': 'iqlb',
-  'a': 'idgh_ghn',
-  'u': 'idgh_w_ghn',
-  'd': 'idgh_mus',
-  'b': 'idgh_mus',
-  'g': 'ghn'
-};
-
-const parseTajweed = (text) => {
+// Parse Tajweed Function
+const parseTajweed = (text, showTooltips = false) => {
   if (!text) return "";
   return text.replace(/\[([a-z])(?::\d+)?\[([^\]]+)\]/g, (match, type, content) => {
-    const className = tajweedClassMap[type] || `tj-${type}`;
-    return `<span class="${className}">${content}</span>`;
+    const rule = TAJWEED_RULES[type];
+    const className = rule ? rule.css : `tj-${type}`;
+    const tooltipAttr = (showTooltips && rule) ? ` data-tooltip="${rule.label}"` : '';
+    return `<span class="${className} tajweed-char"${tooltipAttr}>${content}</span>`;
   });
 };
 
@@ -169,7 +153,7 @@ const QuranReader = () => {
   const { number } = useParams();
   const navigate = useNavigate();
   const [transliterationType, setTransliterationType] = useState('none');
-  const { selectedScript, selectedTranslation, uiStyle, selectedArabicFont } = useSettings();
+  const { selectedScript, selectedTranslation, uiStyle, selectedArabicFont, showTajweedTooltips } = useSettings();
 
   const surahNum = parseInt(number);
 
@@ -317,7 +301,7 @@ const QuranReader = () => {
                     margin: 0,
                     fontFamily: getArabicFontFamily(),
                     color: 'var(--color-text-main)'
-                  }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text) }} />
+                  }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text, showTajweedTooltips) }} />
                 ) : (
                   <p className={`arabic-text ${isIndoPak ? 'indopak' : `font-${selectedArabicFont}`}`} style={{
                     fontSize: '2.5rem',
@@ -384,7 +368,7 @@ const QuranReader = () => {
                   marginBottom: '1.5rem',
                   fontFamily: getArabicFontFamily(),
                   color: 'var(--color-text-main)'
-                }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text) }} />
+                }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text, showTajweedTooltips) }} />
               ) : (
                 <p className={`arabic-text font-${selectedArabicFont} ${isIndoPak ? 'indopak' : ''}`} style={{
                   fontSize: '2.5rem',
