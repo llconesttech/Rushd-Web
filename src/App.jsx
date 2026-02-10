@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate, useLocation, matchPath } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useSurahList, useSurahDetail } from './hooks/useQuran';
-import { translations } from './data/quranData';
+import { translations, languageList } from './data/quranData';
+import { getArabicSurahName, getSurahName } from './data/surahNames';
 import SettingsSidebar from './components/SettingsSidebar';
 import SurahListSidebar from './components/SurahListSidebar';
 import HomePage from './components/HomePage';
@@ -153,13 +154,13 @@ const QuranReader = () => {
   const { number } = useParams();
   const navigate = useNavigate();
   const [transliterationType, setTransliterationType] = useState('none');
-  const { selectedScript, selectedTranslation, uiStyle, selectedArabicFont, showTajweedTooltips } = useSettings();
+  const { selectedScript, selectedTranslation, selectedTafsir, uiStyle, selectedArabicFont, showTajweedTooltips } = useSettings();
 
   const surahNum = parseInt(number);
 
   // Helper to map font selection to usage
   const getArabicFontFamily = () => {
-    if (selectedScript === 'quran-indopak') return 'var(--font-arabic-indopak)';
+    if (selectedScript === 'quran-indopak' || selectedScript === 'quran-indopak-tajweed') return 'var(--font-arabic-indopak)';
 
     switch (selectedArabicFont) {
       case 'alqalam': return "'Al Qalam', serif";
@@ -177,8 +178,16 @@ const QuranReader = () => {
     number,
     transliterationType,
     selectedScript,
-    selectedTranslation
+    selectedTranslation,
+    selectedTafsir
   );
+
+  // Determine subtitle language from selected translation
+  const translationMeta = translations[selectedTranslation];
+  const subtitleLangCode = translationMeta?.language_code || 'en';
+  const localizedSurahName = getSurahName(surahNum, subtitleLangCode);
+  const arabicCalligraphicName = getArabicSurahName(surahNum);
+
 
   // Get complete metadata from our comprehensive data
   const surahInfo = getSurahInfo(surahNum);
@@ -188,8 +197,8 @@ const QuranReader = () => {
   if (!surah) return null;
 
   const isWordByWord = selectedScript === 'quran-kids' || selectedScript === 'quran-wordbyword' || selectedScript === 'quran-wordbyword-2';
-  const isTajweed = selectedScript === 'quran-tajweed';
-  const isIndoPak = selectedScript === 'quran-indopak';
+  const isTajweed = selectedScript === 'quran-tajweed' || selectedScript === 'quran-indopak-tajweed';
+  const isIndoPak = selectedScript === 'quran-indopak' || selectedScript === 'quran-indopak-tajweed';
 
   // Navigation handlers
   const handleNextSurah = () => {
@@ -246,6 +255,34 @@ const QuranReader = () => {
     </span>
   );
 
+  // Calligraphic Arabic Surah Header
+  const surahHeader = (
+    <div style={{ textAlign: 'center', padding: '1.5rem 0 1rem', borderBottom: '1px solid var(--color-border)', marginBottom: '1rem' }}>
+      <h1 style={{
+        fontFamily: "'Al Qalam', 'Amiri Quran', serif",
+        fontSize: '3.5rem',
+        fontWeight: 'normal',
+        margin: 0,
+        lineHeight: 1.5,
+        color: 'var(--color-text-main)',
+        direction: 'rtl'
+      }}>
+        ﴿ سورة {arabicCalligraphicName} ﴾
+      </h1>
+      <p style={{
+        fontSize: '1.1rem',
+        color: 'var(--color-text-muted)',
+        margin: '0.25rem 0 0',
+        fontWeight: 500
+      }}>
+        {subtitleLangCode !== 'ar' ? localizedSurahName : surah.englishName}
+      </p>
+      <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', margin: '0.25rem 0 0' }}>
+        {surah.numberOfAyahs} Ayahs • {surahInfo?.revelationType} • Juz {surahInfo?.juz?.[0]}
+      </p>
+    </div>
+  );
+
   return (
     <div className="container" style={{ maxWidth: '800px', padding: 0 }}>
       <PageHeader
@@ -263,6 +300,11 @@ const QuranReader = () => {
       <div style={{ padding: '0 2rem' }}>
         <AudioPlayer surahNumber={parseInt(number)} totalAyahs={surah.numberOfAyahs} />
         {isTajweed && <TajweedLegend />}
+      </div>
+
+      {/* Calligraphic Surah Header */}
+      <div style={{ padding: '0 2rem' }}>
+        {surahHeader}
       </div>
 
       {/* Main Content */}
@@ -315,16 +357,35 @@ const QuranReader = () => {
                   </p>
                 )}
 
-                <div className="translation-container">
-                  <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'var(--color-text-main)', margin: 0 }}>
-                    {ayah.translation}
-                  </p>
-                </div>
-
                 {ayah.transliteration && (
-                  <p style={{ fontSize: '1.1rem', color: 'var(--color-primary-dark)', fontStyle: 'italic', margin: 0, borderLeft: '3px solid var(--color-primary)', paddingLeft: '1rem' }}>
+                  <p style={{ fontSize: '1.1rem', color: 'var(--color-primary-dark)', fontStyle: 'italic', margin: '0.5rem 0 1rem', borderLeft: '3px solid var(--color-primary)', paddingLeft: '1rem' }}>
                     {ayah.transliteration}
                   </p>
+                )}
+
+                {ayah.translation && (
+                  <div className="translation-container">
+                    <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'var(--color-text-main)', margin: 0 }}>
+                      {ayah.translation}
+                    </p>
+                  </div>
+                )}
+
+                {ayah.tafsir && (
+                  <div style={{
+                    marginTop: '0.75rem',
+                    padding: '0.75rem 1rem',
+                    backgroundColor: 'var(--color-bg-main)',
+                    borderLeft: '3px solid var(--color-primary)',
+                    borderRadius: '0 0.5rem 0.5rem 0',
+                    fontSize: '1rem',
+                    lineHeight: '1.8',
+                    color: 'var(--color-text-main)',
+                    opacity: 0.9
+                  }}>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontWeight: 600, textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>Tafsir</span>
+                    <p style={{ margin: 0 }}>{ayah.tafsir}</p>
+                  </div>
                 )}
               </div>
 
@@ -382,16 +443,33 @@ const QuranReader = () => {
                 </p>
               )}
 
-              <div style={{ marginBottom: '1rem' }}>
-                <p style={{ fontSize: '1.125rem', lineHeight: '1.6', color: 'var(--color-text-main)' }}>
-                  {ayah.translation}
-                </p>
-              </div>
-
               {ayah.transliteration && (
-                <div style={{ marginTop: '0.75rem', padding: '0.75rem', backgroundColor: 'var(--color-primary-light)', borderRadius: '0.5rem' }}>
+                <div style={{ marginBottom: '1rem', padding: '0.75rem', backgroundColor: 'var(--color-primary-light)', borderRadius: '0.5rem' }}>
                   <p style={{ fontSize: '1rem', color: 'var(--color-primary-dark)', fontStyle: 'italic', margin: 0 }}>
                     {ayah.transliteration}
+                  </p>
+                </div>
+              )}
+
+              {ayah.translation && (
+                <div style={{ marginBottom: '1rem' }}>
+                  <p style={{ fontSize: '1.125rem', lineHeight: '1.6', color: 'var(--color-text-main)' }}>
+                    {ayah.translation}
+                  </p>
+                </div>
+              )}
+
+              {ayah.tafsir && (
+                <div style={{
+                  marginBottom: '1rem',
+                  padding: '0.75rem 1rem',
+                  backgroundColor: 'var(--color-primary-light)',
+                  borderLeft: '3px solid var(--color-primary)',
+                  borderRadius: '0 0.5rem 0.5rem 0'
+                }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontWeight: 600, textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>Tafsir</span>
+                  <p style={{ fontSize: '1rem', lineHeight: '1.6', color: 'var(--color-text-main)', margin: 0 }}>
+                    {ayah.tafsir}
                   </p>
                 </div>
               )}

@@ -3,25 +3,26 @@
  * Handles fetching of Surah lists, details, and transliterations.
  */
 
-import { API_BASE_URL } from './api';
+
 
 const quranService = {
     /**
      * Get list of all Surahs
      */
+    /**
+     * Get list of all Surahs
+     * @deprecated Use quranServiceV2.getAllSurahs() instead
+     */
     getAllSurahs: async () => {
-        const response = await fetch(`${API_BASE_URL}/surah`);
-        return response.json();
+        throw new Error("Direct API access removed. Use quranServiceV2 for local data.");
     },
 
     /**
      * Get detailed data for a specific Surah
-     * @param {number} number - Surah number
-     * @param {string} editions - Comma-separated edition identifiers (e.g., "quran-uthmani,en.sahih")
+     * @deprecated Use quranServiceV2.getSurah() instead
      */
     getSurahDetails: async (number, editions) => {
-        const response = await fetch(`${API_BASE_URL}/surah/${number}/editions/${editions}`);
-        return response.json();
+        throw new Error("Direct API access removed. Use quranServiceV2 for local data.");
     },
 
     transliteration: {

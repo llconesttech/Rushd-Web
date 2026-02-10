@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getPrayerTimes, getAvailableMethods } from '../services/prayerTimesService';
+import { getPrayerTimes, getAvailableMethods, getAvailableMadhabs, getAutoCalculationMethod } from '../services/prayerTimesService';
 import { getTodayAllCalendars } from '../services/dateService';
 import RamadanWidget from './RamadanWidget';
 import './HomePage.css';
@@ -77,7 +77,11 @@ const HomePage = () => {
 
     // Load method from localStorage or default
     const [method, setMethod] = useState(() => {
-        return localStorage.getItem('prayerMethod') || 'MuslimWorldLeague';
+        return localStorage.getItem('prayerMethod') || null; // Null initially to trigger auto-detection if not set
+    });
+
+    const [madhab, setMadhab] = useState(() => {
+        return localStorage.getItem('prayerMadhab') || 'Hanafi';
     });
 
     // Check for current prayer and forbidden status
@@ -200,8 +204,8 @@ const HomePage = () => {
         try {
             const today = new Date();
             const times = getPrayerTimes(today, lat, lng, {
-                method: selectedMethod,
-                madhab: 'Hanafi'
+                method: selectedMethod || 'MuslimWorldLeague',
+                madhab: madhab
             });
 
             setSalahTimes({
@@ -241,21 +245,43 @@ const HomePage = () => {
                     const lat = position.coords.latitude;
                     const lng = position.coords.longitude;
                     setCoords({ lat, lng });
-                    calculatePrayerTimes(lat, lng, method);
+
+                    // Auto-detect method if not set
+                    let activeMethod = method;
+                    if (!activeMethod) {
+                        activeMethod = getAutoCalculationMethod(lat, lng);
+                        setMethod(activeMethod);
+                    }
+
+                    calculatePrayerTimes(lat, lng, activeMethod);
                     getLocationName();
                 },
                 (error) => {
                     console.error('Geolocation error:', error);
                     const defaultCoords = { lat: 23.8103, lng: 90.4125 };
                     setCoords(defaultCoords);
-                    calculatePrayerTimes(defaultCoords.lat, defaultCoords.lng, method);
+
+                    let activeMethod = method;
+                    if (!activeMethod) {
+                        activeMethod = getAutoCalculationMethod(defaultCoords.lat, defaultCoords.lng);
+                        setMethod(activeMethod);
+                    }
+
+                    calculatePrayerTimes(defaultCoords.lat, defaultCoords.lng, activeMethod);
                     setLocation({ city: 'Dhaka', country: 'Bangladesh' });
                 }
             );
         } else {
             const defaultCoords = { lat: 23.8103, lng: 90.4125 };
             setCoords(defaultCoords);
-            calculatePrayerTimes(defaultCoords.lat, defaultCoords.lng, method);
+
+            let activeMethod = method;
+            if (!activeMethod) {
+                activeMethod = getAutoCalculationMethod(defaultCoords.lat, defaultCoords.lng);
+                setMethod(activeMethod);
+            }
+
+            calculatePrayerTimes(defaultCoords.lat, defaultCoords.lng, activeMethod);
             setLocation({ city: 'Dhaka', country: 'Bangladesh' });
         }
     }, []);
@@ -282,14 +308,21 @@ const HomePage = () => {
     useEffect(() => {
         if (coords) {
             calculatePrayerTimes(coords.lat, coords.lng, method);
-            localStorage.setItem('prayerMethod', method);
+            if (method) localStorage.setItem('prayerMethod', method);
+            localStorage.setItem('prayerMadhab', madhab);
         }
-    }, [method, coords]);
+    }, [method, madhab, coords]);
 
     // Handle method change
     const handleMethodChange = (e) => {
         setMethod(e.target.value);
     };
+
+    const handleMadhabChange = (e) => {
+        setMadhab(e.target.value);
+    };
+
+
 
 
     return (
@@ -330,13 +363,27 @@ const HomePage = () => {
                     <div className="salah-header-right">
                         <select
                             className="method-selector"
-                            value={method}
+                            value={madhab}
+                            onChange={handleMadhabChange}
+                            style={{ marginRight: '0.5rem' }}
+                        >
+                            {getAvailableMadhabs().map((m) => (
+                                <option key={m} value={m}>{m}</option>
+                            ))}
+                        </select>
+                        <select
+                            className="method-selector"
+                            value={method || ''}
                             onChange={handleMethodChange}
                         >
+                            {/* Wait for method to be set, or show loading/default */}
                             {getAvailableMethods().map((m) => (
                                 <option key={m} value={m}>{m.replace(/([A-Z])/g, ' $1').trim()}</option>
                             ))}
                         </select>
+
+
+
                         <span className="salah-location">
                             📍 {location.city}{location.country ? `, ${location.country}` : ''}
                         </span>

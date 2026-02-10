@@ -207,9 +207,78 @@ export const getAvailableMethods = () => Object.keys(METHODS);
  */
 export const getAvailableMadhabs = () => Object.keys(MADHABS);
 
+/**
+ * Get recommended calculation method based on location
+ * @param {number} latitude 
+ * @param {number} longitude 
+ * @returns {string} Method name
+ */
+export const getAutoCalculationMethod = (latitude, longitude) => {
+    // Kuwait (approx lat 28-30, lng 46-48)
+    if (latitude >= 28 && latitude <= 31 && longitude >= 46 && longitude <= 49) {
+        return 'Kuwait';
+    }
+
+    // Qatar (approx lat 24-27, lng 50-52)
+    if (latitude >= 24 && latitude <= 27 && longitude >= 50 && longitude <= 52) {
+        return 'Qatar';
+    }
+
+    // Dubai/UAE (approx lat 22-26, lng 51-57)
+    // Note: Checked after Qatar to avoid overlap (Doha is near 51.5)
+    if (latitude >= 22 && latitude <= 27 && longitude >= 51 && longitude <= 57) {
+        return 'Dubai';
+    }
+
+    // Singapore/Malaysia/Indonesia (Southeast Asia)
+    if (latitude >= -11 && latitude <= 8 && longitude >= 95 && longitude <= 141) {
+        return 'Singapore';
+    }
+
+    // Turkey
+    if (latitude >= 35 && latitude <= 42 && longitude >= 25 && longitude <= 45) {
+        return 'Turkey';
+    }
+
+    // Iran
+    if (latitude >= 25 && latitude <= 40 && longitude >= 44 && longitude <= 64) {
+        return 'Tehran';
+    }
+
+    // Egypt
+    if (latitude >= 22 && latitude <= 32 && longitude >= 24 && longitude <= 37) {
+        return 'Egyptian';
+    }
+
+    // Saudi Arabia (UmmAlQura) - Broader check, keep after specific Gulf countries
+    if (latitude >= 16 && latitude <= 32 && longitude >= 34 && longitude <= 56) {
+        return 'UmmAlQura';
+    }
+
+    // Pakistan, India, Bangladesh (Karachi)
+    // Combined bbox: lat 8-37, lng 60-97
+    if (latitude >= 8 && latitude <= 37 && longitude >= 60 && longitude <= 97) {
+        return 'Karachi';
+    }
+
+    // UK (Moonsighting)
+    if (latitude >= 49 && latitude <= 61 && longitude >= -8 && longitude <= 2) {
+        return 'MoonsightingCommittee';
+    }
+
+    // North America (Moonsighting)
+    if (latitude >= 24 && latitude <= 72 && longitude >= -172 && longitude <= -50) {
+        return 'MoonsightingCommittee';
+    }
+
+    // Default
+    return 'MuslimWorldLeague';
+};
+
 export default {
     getPrayerTimes,
     getAvailableMethods,
     getAvailableMadhabs,
-    getQiblaDirection
+    getQiblaDirection,
+    getAutoCalculationMethod
 };

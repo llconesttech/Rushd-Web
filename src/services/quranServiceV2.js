@@ -80,6 +80,13 @@ export const getTranslationSurah = async (surahNumber, translationId = 'en-sahih
 };
 
 /**
+ * Get tafsir for a surah
+ */
+export const getTafsirSurah = async (surahNumber, tafsirId) => {
+    return getSurah(surahNumber, tafsirId, 'tafsir');
+};
+
+/**
  * Get a single ayah
  */
 export const getAyah = async (surahNumber, ayahNumber, edition, type = 'arabic') => {
@@ -191,6 +198,7 @@ const quranServiceV2 = {
     getArabicScripts,
     getTranslations,
     search,
+    getTafsirSurah,
     clearCache
 };
 

@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSettings } from '../context/SettingsContext';
 import { reciters } from '../data/quranData';
-import { getAbsoluteAyahNumber } from '../hooks/useQuran';
 import audioService from '../services/audioService';
 import './AudioPlayer.css';
 
@@ -16,13 +15,23 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
     const [isAutoPlay, setIsAutoPlay] = useState(true);
     const [audioError, setAudioError] = useState(null);
 
-    // Calculate absolute ayah number for the audio CDN
-    const absoluteAyahNumber = getAbsoluteAyahNumber(surahNumber, currentAyah);
-    const audioUrl = audioService.getUrl(selectedReciter, absoluteAyahNumber);
+    // Get local and remote URLs
+    const localUrl = audioService.getLocalUrl(selectedReciter, surahNumber, currentAyah);
+    const remoteUrl = audioService.getRemoteUrl(selectedReciter, surahNumber, currentAyah);
+
+    // State to hold the effective source (starts as local, fallback to remote)
+    const [currentSrc, setCurrentSrc] = useState(localUrl);
+
+    // Reset to local URL when ayah/reciter changes
+    useEffect(() => {
+        setCurrentSrc(localUrl);
+        setAudioError(null);
+    }, [localUrl]);
 
     useEffect(() => {
         if (audioRef.current) {
-            setAudioError(null);
+            // setAudioError(null); // Managed in the other effect to avoid clearing error during fallback? 
+            // Actually, if src changes, we clear error.
             audioRef.current.load();
             if (isPlaying) {
                 audioRef.current.play().catch(e => {
@@ -31,7 +40,7 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                 });
             }
         }
-    }, [audioUrl]);
+    }, [currentSrc]);
 
     // Reset to ayah 1 when surah changes
     useEffect(() => {
@@ -62,12 +71,17 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
 
     const handleError = (e) => {
         console.error('Audio error:', e);
-        // Special message for 404 or other network errors
-        if (audioRef.current && audioRef.current.networkState === 3) { // NETWORK_NO_SOURCE
-            setAudioError(`Audio file not found on server for this reciter at bitrate 128kbps.`);
-        } else {
-            setAudioError(`Audio unavailable for this reciter/ayah`);
+
+        // If we were trying local and it failed, switch to remote
+        if (currentSrc === localUrl && localUrl !== remoteUrl) {
+            console.log('Local audio not found, switching to remote:', remoteUrl);
+            setCurrentSrc(remoteUrl);
+            // Don't stop playing, the src change will trigger load() and play() via useEffect
+            return;
         }
+
+        // If even remote failed, or we are otherwise stuck
+        setAudioError(`Audio unavailable for this reciter/ayah`);
         setIsPlaying(false);
     };
 
@@ -122,7 +136,7 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         <div className="audio-player">
             <audio
                 ref={audioRef}
-                src={audioUrl}
+                src={currentSrc}
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleLoadedMetadata}
                 onEnded={handleEnded}

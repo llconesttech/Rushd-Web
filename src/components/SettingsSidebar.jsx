@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, Settings, Check, Volume2, Type, BookOpen, MessageCircle } from 'lucide-react'; // Added MessageCircle for tooltip icon
 import { useSettings } from '../context/SettingsContext';
-import { quranScripts, translations, languageList } from '../data/quranData';
+import { quranScripts, translations, languageList, reciters } from '../data/quranData';
 import './SettingsSidebar.css';
 
 const SettingsSidebar = ({ persistent = false }) => {
@@ -12,6 +12,8 @@ const SettingsSidebar = ({ persistent = false }) => {
         setSelectedScript,
         selectedTranslation,
         setSelectedTranslation,
+        selectedTafsir,
+        setSelectedTafsir,
         selectedReciter,
         setSelectedReciter,
         uiStyle,
@@ -108,7 +110,7 @@ const SettingsSidebar = ({ persistent = false }) => {
                         </ul>
 
                         <h4 style={{ marginTop: '1.5rem' }}>Arabic Font</h4>
-                        {selectedScript === 'quran-indopak' ? (
+                        {(selectedScript === 'quran-indopak' || selectedScript === 'quran-indopak-tajweed') ? (
                             <p style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', fontStyle: 'italic' }}>
                                 IndoPak script uses a fixed Nastaleeq font.
                             </p>
@@ -342,8 +344,14 @@ const SettingsSidebar = ({ persistent = false }) => {
                                                 {group.items.map(item => (
                                                     <li
                                                         key={item.key}
-                                                        className={`settings-item ${selectedTranslation === item.key ? 'active' : ''}`}
-                                                        onClick={() => setSelectedTranslation(item.key)}
+                                                        className={`settings-item ${(activeSection === 'tafsir' ? selectedTafsir : selectedTranslation) === item.key ? 'active' : ''}`}
+                                                        onClick={() => {
+                                                            if (activeSection === 'tafsir') {
+                                                                setSelectedTafsir(selectedTafsir === item.key ? 'none' : item.key);
+                                                            } else {
+                                                                setSelectedTranslation(selectedTranslation === item.key ? 'none' : item.key);
+                                                            }
+                                                        }}
                                                     >
                                                         <span className="item-name">{item.english_name}</span>
                                                         {item.native_name && <span className="native-name">{item.native_name}</span>}
@@ -370,7 +378,7 @@ const SettingsSidebar = ({ persistent = false }) => {
                                     onClick={() => setSelectedReciter(key)}
                                 >
                                     <span className="item-name">{value.english_name}</span>
-                                    <span className="item-type">{value.type}</span>
+                                    <span className="item-type">{value.style || value.type}</span>
                                 </li>
                             ))}
                         </ul>

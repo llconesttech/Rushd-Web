@@ -14,8 +14,11 @@ export const SettingsProvider = ({ children }) => {
     // Language/Translation (default En-Sahih)
     const [selectedTranslation, setSelectedTranslation] = useState('en.sahih');
 
+    // Tafsir (default none — independent from translation)
+    const [selectedTafsir, setSelectedTafsir] = useState('none');
+
     // Audio Reciter (default to Alafasy or user preference)
-    const [selectedReciter, setSelectedReciter] = useState('ar.alafasy');
+    const [selectedReciter, setSelectedReciter] = useState('mishary_rashid');
 
     // UI Style (style1 or style2)
     const [uiStyle, setUiStyle] = useState('style1');
@@ -38,6 +41,8 @@ export const SettingsProvider = ({ children }) => {
         setSelectedScript,
         selectedTranslation,
         setSelectedTranslation,
+        selectedTafsir,
+        setSelectedTafsir,
         selectedReciter,
         setSelectedReciter,
         uiStyle,

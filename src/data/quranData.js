@@ -60,7 +60,8 @@ export const quranScripts = {
     "quran-simple-clean": { "english_name": "Simple Clean", "native_name": "", "type": "quran" },
     "quran-simple-enhanced": { "english_name": "Simple Enhanced", "native_name": "", "type": "quran" },
     "quran-simple-min": { "english_name": "Simple Minimal", "native_name": "", "type": "quran" },
-    "quran-indopak": { "english_name": "Indo-Pak Nastaleeq", "native_name": "نستعلیق انڈو پاک", "type": "quran" }
+    "quran-indopak": { "english_name": "Indo-Pak Nastaleeq", "native_name": "نستعلیق انڈو پاک", "type": "quran" },
+    "quran-indopak-tajweed": { "english_name": "Indo-Pak Tajweed", "native_name": "نستعلیق تجوید", "type": "quran" }
 };
 
 // All available translations organized by language
@@ -75,6 +76,7 @@ export const translations = {
 
     // Bengali
     "bn.bengali": { "language_code": "bn", "english_name": "Maulana Muhiuddin Khan", "native_name": "মুহিউদ্দীন খান", "type": "translation" },
+
 
     // Bosnian
     "bs.korkut": { "language_code": "bs", "english_name": "Korkut", "native_name": "Besim Korkut", "type": "translation" },
@@ -108,6 +110,7 @@ export const translations = {
     "en.yusufali": { "language_code": "en", "english_name": "Abdullah Yusuf Ali", "native_name": "", "type": "translation" },
     "en.maududi": { "language_code": "en", "english_name": "Sayyid Abul Ala Maududi", "native_name": "", "type": "translation" },
     "en.shakir": { "language_code": "en", "english_name": "Mohammad Habib Shakir", "native_name": "", "type": "translation" },
+    "en.ibnkathir": { "language_code": "en", "english_name": "Tafsir Ibn Kathir (Abridged)", "native_name": "", "type": "tafsir" },
     "en.transliteration": { "language_code": "en", "english_name": "Transliteration", "native_name": "", "type": "transliteration" },
 
     // Spanish
@@ -227,36 +230,54 @@ export const translations = {
 
     // Chinese
     "zh.jian": { "language_code": "zh", "english_name": "Ma Jian", "native_name": "Ma Jian", "type": "translation" },
+
+    // --- Offline Tafsirs (from spa5k) ---
+    "bn-tafisr-fathul-majid": { "language_code": "bn", "english_name": "Tafsir Fathul Majid", "native_name": "AbdulRahman Bin Hasan Al-Alshaikh", "type": "tafsir" },
+    "en-tafisr-ibn-kathir": { "language_code": "en", "english_name": "Tafsir Ibn Kathir (abridged)", "native_name": "Hafiz Ibn Kathir", "type": "tafsir" },
+    "ar-tafsir-ibn-kathir": { "language_code": "ar", "english_name": "Tafsir Ibn Kathir", "native_name": "Hafiz Ibn Kathir", "type": "tafsir" },
+    "bn-tafseer-ibn-e-kaseer": { "language_code": "bn", "english_name": "Tafseer ibn Kathir", "native_name": "Tawheed Publication", "type": "tafsir" },
+    "bn-tafsir-ahsanul-bayaan": { "language_code": "bn", "english_name": "Tafsir Ahsanul Bayaan", "native_name": "Bayaan Foundation", "type": "tafsir" },
+    "bn-tafsir-abu-bakr-zakaria": { "language_code": "bn", "english_name": "Tafsir Abu Bakr Zakaria", "native_name": "King Fahd Quran Printing Complex", "type": "tafsir" },
+
+    "en-tafsir-maarif-ul-quran": { "language_code": "en", "english_name": "Maarif-ul-Quran", "native_name": "Mufti Muhammad Shafi", "type": "tafsir" },
+    "ru-tafseer-al-saddi": { "language_code": "ru", "english_name": "Tafseer Al Saddi", "native_name": "Saddi", "type": "tafsir" },
+    "ar-tafseer-al-saddi": { "language_code": "ar", "english_name": "Tafseer Al Saddi", "native_name": "Saddi", "type": "tafsir" },
+    "ar-tafsir-al-baghawi": { "language_code": "ar", "english_name": "Tafseer Al-Baghawi", "native_name": "Baghawy", "type": "tafsir" },
+    "ar-tafseer-tanwir-al-miqbas": { "language_code": "ar", "english_name": "Tafseer Tanwir al-Miqbas", "native_name": "Tanweer", "type": "tafsir" },
+    "ar-tafsir-al-wasit": { "language_code": "ar", "english_name": "Tafsir Al Wasit", "native_name": "Waseet", "type": "tafsir" },
+    "ar-tafsir-al-tabari": { "language_code": "ar", "english_name": "Tafsir al-Tabari", "native_name": "Tabari", "type": "tafsir" },
+    "ar-tafsir-muyassar": { "language_code": "ar", "english_name": "Tafsir Muyassar", "native_name": "المیسر", "type": "tafsir" },
+    "ar-tafseer-al-qurtubi": { "language_code": "ar", "english_name": "Tafseer Al Qurtubi", "native_name": "Qurtubi", "type": "tafsir" },
+    "kurd-tafsir-rebar": { "language_code": "ku", "english_name": "Rebar Kurdish Tafsir", "native_name": "Rebar Kurdish Tafsir", "type": "tafsir" },
+    "ur-tafseer-ibn-e-kaseer": { "language_code": "ur", "english_name": "Tafsir Ibn Kathir", "native_name": "Hafiz Ibn Kathir", "type": "tafsir" },
+    "ur-tafsir-bayan-ul-quran": { "language_code": "ur", "english_name": "Tafsir Bayan ul Quran", "native_name": "Dr. Israr Ahmad", "type": "tafsir" },
+    "ur-tazkirul-quran": { "language_code": "ur", "english_name": "Tazkirul Quran", "native_name": "Maulana Wahid Uddin Khan", "type": "tafsir" },
+    "en-tazkirul-quran": { "language_code": "en", "english_name": "Tazkirul Quran", "native_name": "Maulana Wahid Uddin Khan", "type": "tafsir" },
+    "en-kashf-al-asrar-tafsir": { "language_code": "en", "english_name": "Kashf Al-Asrar Tafsir", "native_name": "Kashf Al-Asrar Tafsir", "type": "tafsir" },
+    "en-al-qushairi-tafsir": { "language_code": "en", "english_name": "Al Qushairi Tafsir", "native_name": "Al Qushairi Tafsir", "type": "tafsir" },
+    "en-kashani-tafsir": { "language_code": "en", "english_name": "Kashani Tafsir", "native_name": "Kashani Tafsir", "type": "tafsir" },
+    "en-tafsir-al-tustari": { "language_code": "en", "english_name": "Tafsir al-Tustari", "native_name": "Tafsir al-Tustari", "type": "tafsir" },
+    "en-asbab-al-nuzul-by-al-wahidi": { "language_code": "en", "english_name": "Asbab Al-Nuzul by Al-Wahidi", "native_name": "Asbab Al-Nuzul by Al-Wahidi", "type": "tafsir" },
+    "en-tafsir-ibn-abbas": { "language_code": "en", "english_name": "Tanwîr al-Miqbâs min Tafsîr Ibn ‘Abbâs", "native_name": "Tanwîr al-Miqbâs min Tafsîr Ibn ‘Abbâs", "type": "tafsir" },
+    "en-al-jalalayn": { "language_code": "en", "english_name": "Al-Jalalayn", "native_name": "Al-Jalalayn", "type": "tafsir" },
     "zh.majian": { "language_code": "zh", "english_name": "Ma Jian", "native_name": "Ma Jian (Traditional)", "type": "translation" }
 };
 
 // All available reciters (Audio)
 export const reciters = {
-    "ar.abdulbasitmurattal": { "english_name": "Abdul Basit", "native_name": "", "type": "murattal" },
-    "ar.abdulbasitmujawwad": { "english_name": "Abdul Basit (Mujawwad)", "native_name": "", "type": "mujawwad" },
-    "ar.abdullahbasfar": { "english_name": "Abdullah Basfar", "native_name": "", "type": "versebyverse" },
-    "ar.abdurrahmaansudais": { "english_name": "Abdurrahmaan As-Sudais", "native_name": "", "type": "versebyverse" },
-    "ar.abdulsamad": { "english_name": "Abdul Samad", "native_name": "", "type": "versebyverse" },
-    "ar.shaatree": { "english_name": "Abu Bakr Ash-Shaatree", "native_name": "", "type": "versebyverse" },
-    "ar.ahmedajamy": { "english_name": "Ahmed ibn Ali al-Ajamy", "native_name": "", "type": "versebyverse" },
-    "ar.alafasy": { "english_name": "Alafasy", "native_name": "", "type": "versebyverse" },
-    "ar.ghamadi": { "english_name": "Ghamadi", "native_name": "", "type": "versebyverse" },
-    "ar.hanirifai": { "english_name": "Hani Rifai", "native_name": "", "type": "versebyverse" },
-    "ar.husary": { "english_name": "Husary", "native_name": "", "type": "versebyverse" },
-    "ar.husarymujawwad": { "english_name": "Husary (Mujawwad)", "native_name": "", "type": "mujawwad" },
-    "ar.hudhaify": { "english_name": "Hudhaify", "native_name": "", "type": "versebyverse" },
-    "ar.ibrahimakhbar": { "english_name": "Ibrahim Akhdar", "native_name": "", "type": "versebyverse" },
-    "ar.mahermuaiqly": { "english_name": "Maher Al Muaiqly", "native_name": "", "type": "versebyverse" },
-    "ar.minshawi": { "english_name": "Minshawi", "native_name": "", "type": "murattal" },
-    "ar.minshawimujawwad": { "english_name": "Minshawy (Mujawwad)", "native_name": "", "type": "mujawwad" },
-    "ar.muhammadayyoub": { "english_name": "Muhammad Ayyoub", "native_name": "", "type": "versebyverse" },
-    "ar.muhammadjibreel": { "english_name": "Muhammad Jibreel", "native_name": "", "type": "versebyverse" },
-    "ar.saoodshuraym": { "english_name": "Saood bin Ibraaheem Ash-Shuraym", "native_name": "", "type": "versebyverse" },
-    "ar.parhizgar": { "english_name": "Parhizgar", "native_name": "", "type": "versebyverse" },
-    "en.walk": { "english_name": "Ibrahim Walk (English)", "native_name": "", "type": "versebyverse" },
-    "fr.leclerc": { "english_name": "Youssouf Leclerc (French)", "native_name": "", "type": "versebyverse" },
-    "ur.khan": { "english_name": "Shamshad Ali Khan (Urdu)", "native_name": "", "type": "versebyverse" },
-    "zh.chinese": { "english_name": "Chinese", "native_name": "中文", "type": "versebyverse" }
+    "mishary_rashid": { "english_name": "Mishary Rashid Alafasy", "style": "Murattal", "subfolder": "Alafasy_64kbps", "bitRate": "64" },
+    "abdulbaset": { "english_name": "AbdulBaset AbdulSamad", "style": "Murattal", "subfolder": "Abdul_Basit_Murattal_64kbps", "bitRate": "64" },
+    "abdulbaset_mujawwad": { "english_name": "AbdulBaset AbdulSamad (Mujawwad)", "style": "Mujawwad", "subfolder": "Abdul_Basit_Mujawwad_128kbps", "bitRate": "128" },
+    "minshawi_mujawwad": { "english_name": "Mohamed Siddiq Al-Minshawi (Mujawwad)", "style": "Mujawwad", "subfolder": "Minshawy_Mujawwad_192kbps", "bitRate": "192" },
+    "hudhaify": { "english_name": "Ali Al-Hudhaify", "style": "Madani", "subfolder": "Hudhaify_64kbps", "bitRate": "64" },
+    "sudais": { "english_name": "Abdur-Rahman as-Sudais", "style": "Madani", "subfolder": "Abdurrahmaan_As-Sudais_64kbps", "bitRate": "64" },
+    "shuraim": { "english_name": "Saud Al-Shuraim", "style": "Madani", "subfolder": "Saood_ash-Shuraym_64kbps", "bitRate": "64" },
+    "ghamadi": { "english_name": "Saad Al-Ghamdi", "style": "Murattal", "subfolder": "Ghamadi_40kbps", "bitRate": "40" },
+    "husary": { "english_name": "Mahmoud Khalil Al-Husary", "style": "Murattal", "subfolder": "Husary_64kbps", "bitRate": "64" },
+    "maher": { "english_name": "Maher Al Muaiqly", "style": "Madani", "subfolder": "MaherAlMuaiqly_128kbps", "bitRate": "128" },
+    "yasser_dosari": { "english_name": "Yasser Al-Dosari", "style": "Meccan", "subfolder": "Yasser_Ad-Dussary_128kbps", "bitRate": "128" },
+    "juhany": { "english_name": "Abdullah Awad al-Juhany", "style": "Meccan", "subfolder": "Abdullah_Juhany_128kbps", "bitRate": "128" },
+    "baleela": { "english_name": "Bandar Baleela", "style": "Meccan", "subfolder": "Bandar_Baleela_64kbps", "bitRate": "64" }
 };
 
 // Complete Surah metadata with Juz information
