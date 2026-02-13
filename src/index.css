@@ -444,8 +444,8 @@ h6 {
 /* ============================================
    QuranReader — Extracted Styles
    ============================================ */
-.quran-reader {
-  max-width: 960px;
+.quran-reader-container {
+  max-width: 1600px;
   padding: 0;
   width: 100%;
 }
@@ -594,7 +594,7 @@ h6 {
 /* ---- Ayah Container (Style 1) ---- */
 .ayah-content-wrap {
   margin-top: 0.5rem;
-  padding: 0 1rem 1.5rem;
+  padding: 0 0.5rem 1.5rem;
   background: var(--color-bg-card);
   border-radius: 1rem;
   box-shadow: var(--shadow-md);
