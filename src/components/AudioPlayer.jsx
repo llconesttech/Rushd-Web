@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Play, Pause, SkipBack, SkipForward, Mic, Repeat, ChevronDown } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
 import { reciters } from '../data/quranData';
 import audioService from '../services/audioService';
@@ -14,15 +15,12 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
     const [showReciterMenu, setShowReciterMenu] = useState(false);
     const [isAutoPlay, setIsAutoPlay] = useState(true);
     const [audioError, setAudioError] = useState(null);
+    const [isExpanded, setIsExpanded] = useState(false);
 
-    // Get local and remote URLs
     const localUrl = audioService.getLocalUrl(selectedReciter, surahNumber, currentAyah);
     const remoteUrl = audioService.getRemoteUrl(selectedReciter, surahNumber, currentAyah);
-
-    // State to hold the effective source (starts as local, fallback to remote)
     const [currentSrc, setCurrentSrc] = useState(localUrl);
 
-    // Reset to local URL when ayah/reciter changes
     useEffect(() => {
         setCurrentSrc(localUrl);
         setAudioError(null);
@@ -30,8 +28,6 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
 
     useEffect(() => {
         if (audioRef.current) {
-            // setAudioError(null); // Managed in the other effect to avoid clearing error during fallback? 
-            // Actually, if src changes, we clear error.
             audioRef.current.load();
             if (isPlaying) {
                 audioRef.current.play().catch(e => {
@@ -42,16 +38,13 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         }
     }, [currentSrc]);
 
-    // Reset to ayah 1 when surah changes
     useEffect(() => {
         setCurrentAyah(1);
         setIsPlaying(false);
     }, [surahNumber]);
 
     const handleTimeUpdate = () => {
-        if (audioRef.current) {
-            setCurrentTime(audioRef.current.currentTime);
-        }
+        if (audioRef.current) setCurrentTime(audioRef.current.currentTime);
     };
 
     const handleLoadedMetadata = () => {
@@ -71,17 +64,12 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
 
     const handleError = (e) => {
         console.error('Audio error:', e);
-
-        // If we were trying local and it failed, switch to remote
         if (currentSrc === localUrl && localUrl !== remoteUrl) {
             console.log('Local audio not found, switching to remote:', remoteUrl);
             setCurrentSrc(remoteUrl);
-            // Don't stop playing, the src change will trigger load() and play() via useEffect
             return;
         }
-
-        // If even remote failed, or we are otherwise stuck
-        setAudioError(`Audio unavailable for this reciter/ayah`);
+        setAudioError('Audio unavailable for this reciter/ayah');
         setIsPlaying(false);
     };
 
@@ -101,17 +89,11 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
     };
 
     const handlePrevious = () => {
-        if (currentAyah > 1) {
-            setCurrentAyah(prev => prev - 1);
-            setIsPlaying(true);
-        }
+        if (currentAyah > 1) { setCurrentAyah(prev => prev - 1); setIsPlaying(true); }
     };
 
     const handleNext = () => {
-        if (currentAyah < totalAyahs) {
-            setCurrentAyah(prev => prev + 1);
-            setIsPlaying(true);
-        }
+        if (currentAyah < totalAyahs) { setCurrentAyah(prev => prev + 1); setIsPlaying(true); }
     };
 
     const formatTime = (time) => {
@@ -131,9 +113,10 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
     };
 
     const currentReciter = reciters[selectedReciter];
+    const progress = duration ? (currentTime / duration) * 100 : 0;
 
     return (
-        <div className="audio-player">
+        <div className={`floating-player ${isExpanded ? 'expanded' : ''}`}>
             <audio
                 ref={audioRef}
                 src={currentSrc}
@@ -146,23 +129,87 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                 preload="auto"
             />
 
-            <div className="player-controls">
-                {/* Reciter Selector */}
-                <div className="reciter-selector">
-                    <button
-                        className="reciter-btn"
-                        onClick={() => setShowReciterMenu(!showReciterMenu)}
-                    >
-                        🎙️ {currentReciter?.english_name || 'Select Reciter'}
+            {/* Progress bar (top edge of pill) */}
+            <div className="fp-progress-track" onClick={handleSeek}>
+                <div className="fp-progress-fill" style={{ width: `${progress}%` }} />
+            </div>
+
+            {/* Main controls row */}
+            <div className="fp-main">
+                {/* Left: Ayah info */}
+                <button
+                    className="fp-ayah-badge"
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    title="Show reciter options"
+                >
+                    <span className="fp-ayah-text">
+                        {currentAyah}<span className="fp-ayah-divider">/</span>{totalAyahs}
+                    </span>
+                    <ChevronDown size={12} className={`fp-expand-icon ${isExpanded ? 'rotated' : ''}`} />
+                </button>
+
+                {/* Desktop: Reciter name chip (visible on wider screens) */}
+                <button
+                    className="fp-reciter-chip"
+                    onClick={() => { setIsExpanded(true); setShowReciterMenu(true); }}
+                    title="Change reciter"
+                >
+                    <Mic size={12} strokeWidth={2} />
+                    <span className="fp-reciter-chip-name">
+                        {currentReciter?.english_name?.split(' ').slice(0, 2).join(' ') || 'Reciter'}
+                    </span>
+                </button>
+
+                {/* Center: Transport controls */}
+                <div className="fp-controls">
+                    <button className="fp-btn" onClick={handlePrevious} disabled={currentAyah <= 1} aria-label="Previous Ayah">
+                        <SkipBack size={16} strokeWidth={2} />
                     </button>
+                    <button className="fp-btn fp-play" onClick={togglePlay} aria-label={isPlaying ? 'Pause' : 'Play'}>
+                        {isPlaying
+                            ? <Pause size={18} strokeWidth={2.5} />
+                            : <Play size={18} fill="currentColor" strokeWidth={0} />
+                        }
+                    </button>
+                    <button className="fp-btn" onClick={handleNext} disabled={currentAyah >= totalAyahs} aria-label="Next Ayah">
+                        <SkipForward size={16} strokeWidth={2} />
+                    </button>
+                </div>
+
+                {/* Right: Time + Auto-play */}
+                <div className="fp-right">
+                    <span className="fp-time">{formatTime(currentTime)}</span>
+                    <button
+                        className={`fp-btn fp-auto ${isAutoPlay ? 'active' : ''}`}
+                        onClick={() => setIsAutoPlay(!isAutoPlay)}
+                        title={isAutoPlay ? 'Auto-play ON' : 'Auto-play OFF'}
+                        aria-label="Toggle auto-play"
+                    >
+                        <Repeat size={14} strokeWidth={2} />
+                    </button>
+                </div>
+            </div>
+
+            {/* Expandable section: reciter selector */}
+            {isExpanded && (
+                <div className="fp-expanded-section">
+                    <div className="fp-reciter-row">
+                        <Mic size={14} />
+                        <button
+                            className="fp-reciter-trigger"
+                            onClick={() => setShowReciterMenu(!showReciterMenu)}
+                        >
+                            {currentReciter?.english_name || 'Select Reciter'}
+                            <ChevronDown size={12} className={showReciterMenu ? 'rotated' : ''} />
+                        </button>
+                    </div>
 
                     {showReciterMenu && (
-                        <div className="reciter-menu">
-                            <div className="reciter-menu-header">Select Reciter</div>
+                        <div className="fp-reciter-list">
                             {Object.entries(reciters).map(([key, reciter]) => (
-                                <div
+                                <button
                                     key={key}
-                                    className={`reciter-option ${selectedReciter === key ? 'active' : ''}`}
+                                    className={`fp-reciter-option ${selectedReciter === key ? 'active' : ''}`}
                                     onClick={() => {
                                         setSelectedReciter(key);
                                         setShowReciterMenu(false);
@@ -170,54 +217,15 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                                     }}
                                 >
                                     {reciter.english_name}
-                                </div>
+                                </button>
                             ))}
                         </div>
                     )}
                 </div>
-
-                {/* Playback Controls */}
-                <div className="playback-controls">
-                    <button className="control-btn" onClick={handlePrevious} disabled={currentAyah <= 1}>
-                        ⏮️
-                    </button>
-                    <button className="control-btn play-btn" onClick={togglePlay}>
-                        {isPlaying ? '⏸️' : '▶️'}
-                    </button>
-                    <button className="control-btn" onClick={handleNext} disabled={currentAyah >= totalAyahs}>
-                        ⏭️
-                    </button>
-                </div>
-
-                {/* Progress Bar */}
-                <div className="progress-section">
-                    <span className="time">{formatTime(currentTime)}</span>
-                    <div className="progress-bar" onClick={handleSeek}>
-                        <div
-                            className="progress-fill"
-                            style={{ width: `${duration ? (currentTime / duration) * 100 : 0}%` }}
-                        />
-                    </div>
-                    <span className="time">{formatTime(duration)}</span>
-                </div>
-
-                {/* Ayah Info */}
-                <div className="ayah-info">
-                    <span>Ayah {currentAyah} / {totalAyahs}</span>
-                    <button
-                        className={`auto-btn ${isAutoPlay ? 'active' : ''}`}
-                        onClick={() => setIsAutoPlay(!isAutoPlay)}
-                        title={isAutoPlay ? 'Auto-play ON' : 'Auto-play OFF'}
-                    >
-                        🔁
-                    </button>
-                </div>
-            </div>
+            )}
 
             {audioError && (
-                <div className="audio-error">
-                    {audioError}
-                </div>
+                <div className="fp-error">{audioError}</div>
             )}
         </div>
     );

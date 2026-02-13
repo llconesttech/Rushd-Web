@@ -3,20 +3,36 @@ import { Link } from 'react-router-dom';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import './PageHeader.css';
 
-const PageHeader = ({ breadcrumbs = [], title, subtitle, actions }) => {
-    // Determine back link (second to last item in breadcrumb, or home)
+const PageHeader = ({ breadcrumbs = [], title, subtitle, badge, actions, isScrolled: externalIsScrolled }) => {
     const backLink = breadcrumbs.length > 1
         ? breadcrumbs[breadcrumbs.length - 2].path
         : '/';
 
+    const [internalIsScrolled, setInternalIsScrolled] = React.useState(false);
+    const isScrolled = externalIsScrolled !== undefined ? externalIsScrolled : internalIsScrolled;
+
+    React.useEffect(() => {
+        if (externalIsScrolled !== undefined) return; // Skip internal logic if controlled externally
+
+        const scroller = document.querySelector('.reader-main-content') || window;
+        const handleScroll = () => {
+            const scrollTop = scroller === window ? window.scrollY : scroller.scrollTop;
+            setInternalIsScrolled(scrollTop > 50); // Sync with App.jsx threshold
+        };
+
+        scroller.addEventListener('scroll', handleScroll);
+        // Initial check
+        handleScroll();
+
+        return () => scroller.removeEventListener('scroll', handleScroll);
+    }, [externalIsScrolled]);
+
     return (
-        <div className="page-header">
-            {/* Top Navigation Bar */}
+        <div className={`page-header ${isScrolled ? 'scrolled' : ''}`}>
             <div className="page-header-nav">
                 <Link to={backLink} className="ph-back-btn" title="Go Back">
                     <ChevronLeft size={18} />
                 </Link>
-                <div style={{ width: '1px', height: '16px', background: 'var(--color-border)', margin: '0 0.5rem' }}></div>
 
                 <nav className="ph-breadcrumbs">
                     {breadcrumbs.map((crumb, index) => {
@@ -37,10 +53,12 @@ const PageHeader = ({ breadcrumbs = [], title, subtitle, actions }) => {
                 </nav>
             </div>
 
-            {/* Main Header Content */}
             <div className="page-header-content">
                 <div className="ph-titles">
-                    <h1 className="ph-title">{title}</h1>
+                    <h1 className="ph-title">
+                        {title}
+                        {badge && <span className="ph-title-badge">{badge}</span>}
+                    </h1>
                     {subtitle && <p className="ph-subtitle">{subtitle}</p>}
                 </div>
 

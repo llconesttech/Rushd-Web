@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Settings, Check, Volume2, Type, BookOpen, MessageCircle } from 'lucide-react'; // Added MessageCircle for tooltip icon
+import { X, Settings, MessageCircle } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
 import { quranScripts, translations, languageList, reciters } from '../data/quranData';
 import './SettingsSidebar.css';
@@ -25,74 +25,48 @@ const SettingsSidebar = ({ persistent = false }) => {
     } = useSettings();
 
     const [searchTerm, setSearchTerm] = useState('');
-    const [activeSection, setActiveSection] = useState('quran'); // quran, translations, reciters
+    const [activeSection, setActiveSection] = useState('quran');
 
-    // Filter translations by search term
-    const filteredTranslations = Object.entries(translations).filter(([key, value]) =>
-        value.english_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        value.native_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        languageList[value.language_code]?.english_name?.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const isIndoPak = selectedScript === 'quran-indopak' || selectedScript === 'quran-indopak-tajweed';
+    const isTajweed = selectedScript === 'quran-tajweed' || selectedScript === 'quran-indopak-tajweed';
 
-    // Group translations by language
-    const groupedTranslations = {};
-    filteredTranslations.forEach(([key, value]) => {
-        const langCode = value.language_code;
-        if (!groupedTranslations[langCode]) {
-            groupedTranslations[langCode] = {
-                name: languageList[langCode]?.english_name || langCode,
-                nativeName: languageList[langCode]?.native_name || '',
-                items: []
-            };
-        }
-        groupedTranslations[langCode].items.push({ key, ...value });
-    });
+    const fontOptions = [
+        { key: 'amiri', label: 'أميري', english: 'Amiri', family: "'Amiri Quran', serif" },
+        { key: 'scheherazade', label: 'شهرزاد', english: 'Scheherazade', family: "'Scheherazade', serif" },
+        { key: 'alqalam', label: 'القلم', english: 'Al Qalam', family: "'Al Qalam', serif" },
+        { key: 'mequran', label: 'عثماني', english: 'Uthmani', family: "'Me Quran', serif" },
+        { key: 'saleem', label: 'سليم', english: 'Saleem', family: "'Saleem', serif" },
+    ];
 
-    if (!persistent && !isSettingsOpen) {
-        return (
-            <button className="settings-toggle-btn" onClick={toggleSettings} title="Open Settings">
-                ⚙️
-            </button>
-        );
-    }
+    const className = [
+        'settings-sidebar',
+        persistent ? 'persistent' : '',
+        isSettingsOpen ? 'open' : ''
+    ].filter(Boolean).join(' ');
 
     return (
-        <aside className={`settings-sidebar ${persistent ? 'persistent' : ''}`}>
+        <aside className={className}>
             <div className="settings-header">
                 <h3>Settings</h3>
-                {!persistent && <button className="close-btn" onClick={toggleSettings}>×</button>}
+                <button className="close-btn" onClick={toggleSettings} aria-label="Close settings">
+                    <X size={18} />
+                </button>
             </div>
 
-            {/* Section Tabs */}
             <div className="section-tabs">
-                <button
-                    className={`tab ${activeSection === 'quran' ? 'active' : ''}`}
-                    onClick={() => setActiveSection('quran')}
-                >
-                    Quran
-                </button>
-                <button
-                    className={`tab ${activeSection === 'translations' ? 'active' : ''}`}
-                    onClick={() => setActiveSection('translations')}
-                >
-                    Languages
-                </button>
-                <button
-                    className={`tab ${activeSection === 'tafsir' ? 'active' : ''}`}
-                    onClick={() => setActiveSection('tafsir')}
-                >
-                    Tafsir
-                </button>
-                <button
-                    className={`tab ${activeSection === 'reciters' ? 'active' : ''}`}
-                    onClick={() => setActiveSection('reciters')}
-                >
-                    Reciters
-                </button>
+                {['quran', 'translations', 'tafsir', 'reciters'].map(section => (
+                    <button
+                        key={section}
+                        className={`tab ${activeSection === section ? 'active' : ''}`}
+                        onClick={() => setActiveSection(section)}
+                    >
+                        {section === 'quran' ? 'Quran' : section === 'translations' ? 'Languages' : section === 'tafsir' ? 'Tafsir' : 'Reciters'}
+                    </button>
+                ))}
             </div>
 
             <div className="settings-content">
-                {/* Quran Scripts Section */}
+                {/* Quran Scripts */}
                 {activeSection === 'quran' && (
                     <section className="settings-section">
                         <h4>Arabic Script Style</h4>
@@ -109,174 +83,55 @@ const SettingsSidebar = ({ persistent = false }) => {
                             ))}
                         </ul>
 
-                        <h4 style={{ marginTop: '1.5rem' }}>Arabic Font</h4>
-                        {(selectedScript === 'quran-indopak' || selectedScript === 'quran-indopak-tajweed') ? (
+                        <h4 style={{ marginTop: '1rem' }}>Arabic Font</h4>
+                        {isIndoPak ? (
                             <p style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', fontStyle: 'italic' }}>
                                 IndoPak script uses a fixed Nastaleeq font.
                             </p>
                         ) : (
-                            <div className="font-selector-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem' }}>
-                                <button
-                                    className={`tab ${selectedArabicFont === 'amiri' ? 'active' : ''}`}
-                                    style={{
-                                        padding: '0.5rem',
-                                        borderRadius: '8px',
-                                        border: '1px solid var(--color-border)',
-                                        cursor: 'pointer',
-                                        backgroundColor: selectedArabicFont === 'amiri' ? 'var(--color-primary)' : 'white',
-                                        color: selectedArabicFont === 'amiri' ? 'white' : 'var(--color-text-main)',
-                                        fontFamily: "'Amiri Quran', serif",
-                                        fontSize: '1.1rem'
-                                    }}
-                                    onClick={() => setSelectedArabicFont('amiri')}
-                                >
-                                    أميري
-                                </button>
-                                <button
-                                    className={`tab ${selectedArabicFont === 'scheherazade' ? 'active' : ''}`}
-                                    style={{
-                                        padding: '0.5rem',
-                                        borderRadius: '8px',
-                                        border: '1px solid var(--color-border)',
-                                        cursor: 'pointer',
-                                        backgroundColor: selectedArabicFont === 'scheherazade' ? 'var(--color-primary)' : 'white',
-                                        color: selectedArabicFont === 'scheherazade' ? 'white' : 'var(--color-text-main)',
-                                        fontFamily: "'Scheherazade', serif",
-                                        fontSize: '1.1rem'
-                                    }}
-                                    onClick={() => setSelectedArabicFont('scheherazade')}
-                                >
-                                    شهرزاد
-                                </button>
-                                <button
-                                    className={`tab ${selectedArabicFont === 'alqalam' ? 'active' : ''}`}
-                                    style={{
-                                        padding: '0.5rem',
-                                        borderRadius: '8px',
-                                        border: '1px solid var(--color-border)',
-                                        cursor: 'pointer',
-                                        backgroundColor: selectedArabicFont === 'alqalam' ? 'var(--color-primary)' : 'white',
-                                        color: selectedArabicFont === 'alqalam' ? 'white' : 'var(--color-text-main)',
-                                        fontFamily: "'Al Qalam', serif",
-                                        fontSize: '1.2rem'
-                                    }}
-                                    onClick={() => setSelectedArabicFont('alqalam')}
-                                >
-                                    القلم
-                                </button>
-                                <button
-                                    className={`tab ${selectedArabicFont === 'mequran' ? 'active' : ''}`}
-                                    style={{
-                                        padding: '0.5rem',
-                                        borderRadius: '8px',
-                                        border: '1px solid var(--color-border)',
-                                        cursor: 'pointer',
-                                        backgroundColor: selectedArabicFont === 'mequran' ? 'var(--color-primary)' : 'white',
-                                        color: selectedArabicFont === 'mequran' ? 'white' : 'var(--color-text-main)',
-                                        fontFamily: "'Me Quran', serif",
-                                        fontSize: '1.1rem'
-                                    }}
-                                    onClick={() => setSelectedArabicFont('mequran')}
-                                >
-                                    عثماني
-                                </button>
-                                <button
-                                    className={`tab ${selectedArabicFont === 'saleem' ? 'active' : ''}`}
-                                    style={{
-                                        padding: '0.5rem',
-                                        borderRadius: '8px',
-                                        border: '1px solid var(--color-border)',
-                                        cursor: 'pointer',
-                                        backgroundColor: selectedArabicFont === 'saleem' ? 'var(--color-primary)' : 'white',
-                                        color: selectedArabicFont === 'saleem' ? 'white' : 'var(--color-text-main)',
-                                        fontFamily: "'Saleem', serif",
-                                        fontSize: '1.2rem'
-                                    }}
-                                    onClick={() => setSelectedArabicFont('saleem')}
-                                >
-                                    سليم
-                                </button>
+                            <div className="font-selector-grid">
+                                {fontOptions.map(font => (
+                                    <button
+                                        key={font.key}
+                                        className={`font-selector-btn ${selectedArabicFont === font.key ? 'active' : ''}`}
+                                        style={{ fontFamily: font.family }}
+                                        onClick={() => setSelectedArabicFont(font.key)}
+                                    >
+                                        <span className="font-arabic-label">{font.label}</span>
+                                        <span className="font-english-label">{font.english}</span>
+                                    </button>
+                                ))}
                             </div>
                         )}
 
                         {/* Tajweed Tooltips Toggle */}
-                        {(selectedScript === 'quran-tajweed' || selectedScript === 'quran-indopak-tajweed') && (
-                            <div style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                marginTop: '1.5rem',
-                                padding: '0.75rem',
-                                backgroundColor: 'var(--color-bg-card)',
-                                border: '1px solid var(--color-border)',
-                                borderRadius: '8px'
-                            }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        {isTajweed && (
+                            <div className="tajweed-toggle-row">
+                                <div className="tajweed-toggle-label">
                                     <MessageCircle size={18} color="var(--color-text-muted)" />
-                                    <span style={{ fontSize: '0.95rem', fontWeight: 500 }}>Tajweed Tooltips</span>
+                                    <span>Tajweed Tooltips</span>
                                 </div>
-                                <label className="switch" style={{ position: 'relative', display: 'inline-block', width: '40px', height: '24px' }}>
+                                <label className="toggle-switch">
                                     <input
                                         type="checkbox"
                                         checked={showTajweedTooltips}
                                         onChange={(e) => setShowTajweedTooltips(e.target.checked)}
-                                        style={{ opacity: 0, width: 0, height: 0 }}
                                     />
-                                    <span className="slider round" style={{
-                                        position: 'absolute',
-                                        cursor: 'pointer',
-                                        top: 0,
-                                        left: 0,
-                                        right: 0,
-                                        bottom: 0,
-                                        backgroundColor: showTajweedTooltips ? 'var(--color-primary)' : '#ccc',
-                                        transition: '.4s',
-                                        borderRadius: '34px'
-                                    }}>
-                                        <span style={{
-                                            position: 'absolute',
-                                            content: "",
-                                            height: '16px',
-                                            width: '16px',
-                                            left: showTajweedTooltips ? '20px' : '4px',
-                                            bottom: '4px',
-                                            backgroundColor: 'white',
-                                            transition: '.4s',
-                                            borderRadius: '50%'
-                                        }}></span>
-                                    </span>
+                                    <span className="toggle-slider" />
                                 </label>
                             </div>
                         )}
 
-                        <h4 style={{ marginTop: '1.5rem' }}>UI Design Style</h4>
-                        <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+                        <h4 style={{ marginTop: '1rem' }}>UI Design Style</h4>
+                        <div className="ui-style-group">
                             <button
-                                className={`tab ${uiStyle === 'style1' ? 'active' : ''}`}
-                                style={{
-                                    flex: 1,
-                                    padding: '0.5rem',
-                                    borderRadius: '8px',
-                                    border: '1px solid var(--color-border)',
-                                    cursor: 'pointer',
-                                    backgroundColor: uiStyle === 'style1' ? 'var(--color-primary)' : 'white',
-                                    color: uiStyle === 'style1' ? 'white' : 'var(--color-text-main)'
-                                }}
+                                className={`ui-style-btn ${uiStyle === 'style1' ? 'active' : ''}`}
                                 onClick={() => setUiStyle('style1')}
                             >
                                 النمط ١
                             </button>
                             <button
-                                className={`tab ${uiStyle === 'style2' ? 'active' : ''}`}
-                                style={{
-                                    flex: 1,
-                                    padding: '0.5rem',
-                                    borderRadius: '8px',
-                                    border: '1px solid var(--color-border)',
-                                    cursor: 'pointer',
-                                    backgroundColor: uiStyle === 'style2' ? 'var(--color-primary)' : 'white',
-                                    color: uiStyle === 'style2' ? 'white' : 'var(--color-text-main)'
-                                }}
+                                className={`ui-style-btn ${uiStyle === 'style2' ? 'active' : ''}`}
                                 onClick={() => setUiStyle('style2')}
                             >
                                 النمط ٢
@@ -285,7 +140,7 @@ const SettingsSidebar = ({ persistent = false }) => {
                     </section>
                 )}
 
-                {/* Translations & Tafsir Section */}
+                {/* Translations & Tafsir */}
                 {(activeSection === 'translations' || activeSection === 'tafsir') && (
                     <section className="settings-section">
                         <input
@@ -298,7 +153,6 @@ const SettingsSidebar = ({ persistent = false }) => {
 
                         <div className="translations-grouped">
                             {(() => {
-                                // Filter items based on active section and search term
                                 const filteredItems = Object.entries(translations).filter(([key, value]) => {
                                     const matchesSearch =
                                         value.english_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -306,15 +160,9 @@ const SettingsSidebar = ({ persistent = false }) => {
                                         languageList[value.language_code]?.english_name?.toLowerCase().includes(searchTerm.toLowerCase());
 
                                     if (!matchesSearch) return false;
-
-                                    if (activeSection === 'tafsir') {
-                                        return value.type === 'tafsir';
-                                    } else {
-                                        return value.type !== 'tafsir';
-                                    }
+                                    return activeSection === 'tafsir' ? value.type === 'tafsir' : value.type !== 'tafsir';
                                 });
 
-                                // Group by language
                                 const groups = {};
                                 filteredItems.forEach(([key, value]) => {
                                     const langCode = value.language_code;
@@ -366,7 +214,7 @@ const SettingsSidebar = ({ persistent = false }) => {
                     </section>
                 )}
 
-                {/* Reciters Section */}
+                {/* Reciters */}
                 {activeSection === 'reciters' && (
                     <section className="settings-section">
                         <h4>Audio Reciters</h4>

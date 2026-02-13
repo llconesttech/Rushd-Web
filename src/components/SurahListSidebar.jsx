@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { X } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
 import { surahData } from '../data/quranData';
 import './SurahListSidebar.css';
@@ -14,29 +15,35 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) =
         surah.number.toString() === searchTerm
     );
 
-    // Auto-scroll to active surah
     React.useEffect(() => {
-        if (currentSurah && persistent) {
+        if (currentSurah && (persistent || isSurahListOpen)) {
             const activeElement = document.querySelector(`.surah-item[data-surah="${currentSurah}"]`);
             if (activeElement) {
                 activeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
-    }, [currentSurah, persistent]);
+    }, [currentSurah, persistent, isSurahListOpen]);
 
-    if (!persistent && !isSurahListOpen) {
-        return (
-            <button className="surah-toggle-btn" onClick={toggleSurahList} title="Open Surah List">
-                📖
-            </button>
-        );
-    }
+    const handleSelect = (surahNumber) => {
+        onSurahSelect(surahNumber);
+        if (!persistent || window.innerWidth < 1280) {
+            toggleSurahList();
+        }
+    };
+
+    const className = [
+        'surah-sidebar',
+        persistent ? 'persistent' : '',
+        isSurahListOpen ? 'open' : ''
+    ].filter(Boolean).join(' ');
 
     return (
-        <aside className={`surah-sidebar ${persistent ? 'persistent' : ''}`}>
+        <aside className={className}>
             <div className="surah-header">
                 <h3>Surahs</h3>
-                {!persistent && <button className="close-btn" onClick={toggleSurahList}>×</button>}
+                <button className="close-btn" onClick={toggleSurahList} aria-label="Close Surah list">
+                    <X size={18} />
+                </button>
             </div>
 
             <div className="surah-search">
@@ -54,7 +61,7 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) =
                         key={surah.number}
                         data-surah={surah.number}
                         className={`surah-item ${currentSurah === surah.number ? 'active' : ''}`}
-                        onClick={() => onSurahSelect(surah.number)}
+                        onClick={() => handleSelect(surah.number)}
                     >
                         <span className="surah-number">{surah.number}</span>
                         <div className="surah-info">
@@ -63,6 +70,7 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) =
                         </div>
                         <div className="surah-meta">
                             <span className="surah-ayahs">{surah.ayahs} Ayahs</span>
+                            {surah.rukus > 1 && <span className="surah-rukus">{surah.rukus} Rukus</span>}
                             <span className="surah-juz">Juz {surah.juz.length > 1 ? `${surah.juz[0]}-${surah.juz[surah.juz.length - 1]}` : surah.juz[0]}</span>
                         </div>
                     </li>

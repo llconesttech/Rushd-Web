@@ -1,23 +1,67 @@
 .page-header {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--color-border);
-    padding: 1rem 2rem;
+    padding: 0.75rem 1rem;
     position: sticky;
     top: 0;
     z-index: 50;
-    /* Ensure it floats above content */
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Smoother transition */
 }
 
+/* Scrolled State: Compact */
+.page-header.scrolled {
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    /* Fixed height to prevent layout thrashing loops */
+    height: 60px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .page-header {
+        padding: 1rem 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .page-header.scrolled {
+        padding: 0 2rem;
+        /* Compact padding */
+        height: 72px;
+    }
+}
+
+/* ---- Navigation ---- */
 .page-header-nav {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    transition: margin 0.3s ease;
+}
+
+.page-header.scrolled .page-header-nav {
+    margin-bottom: 0.25rem;
+    /* Tighter spacing */
+}
+
+@media (min-width: 768px) {
+    .page-header-nav {
+        gap: 1rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .page-header.scrolled .page-header-nav {
+        margin-bottom: 0.25rem;
+    }
 }
 
 .ph-back-btn {
@@ -28,19 +72,45 @@
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
-    padding-right: 1rem;
-    border-right: 1px solid var(--color-border);
+    padding: 0.25rem;
+    border-radius: 6px;
 }
 
 .ph-back-btn:hover {
     color: var(--color-primary);
+    background: var(--color-primary-light);
 }
 
+/* ---- Breadcrumbs ---- */
 .ph-breadcrumbs {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 0.5rem;
     color: var(--color-text-muted);
+    transition: opacity 0.2s ease;
+}
+
+.page-header.scrolled .ph-breadcrumbs {
+    /* Optional: Hide breadcrumbs on scroll to save space? 
+       Or keep them but make them smaller? 
+       User said "too large". Hiding crumb trail helps. */
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    overflow: hidden;
+    margin: 0;
+}
+
+@media (min-width: 640px) {
+    .ph-breadcrumbs {
+        display: flex;
+    }
+
+    /* On larger screens, maybe keep breadcrumbs? Or hide them too? */
+    /* Let's keep them hidden for max compactness */
+    .page-header.scrolled .ph-breadcrumbs {
+        display: none;
+    }
 }
 
 .ph-crumb-link {
@@ -51,11 +121,10 @@
 
 .ph-crumb-link:hover {
     color: var(--color-primary);
-    text-decoration: underline;
 }
 
 .ph-crumb-separator {
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 .ph-crumb-current {
@@ -63,45 +132,116 @@
     font-weight: 600;
 }
 
+/* ---- Header Content ---- */
 .page-header-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
+}
+
+.page-header.scrolled .page-header-content {
+    align-items: center;
+    /* Center vertically when compact */
+}
+
+@media (min-width: 768px) {
+    .page-header-content {
+        align-items: center;
+        gap: 1rem;
+    }
 }
 
 .ph-title {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--color-primary-dark);
-    margin: 0 0 0.25rem 0;
+    margin: 0 0 0.125rem 0;
+    transition: font-size 0.3s ease, margin 0.3s ease;
+}
+
+.page-header.scrolled .ph-title {
+    font-size: 1rem;
+    /* Smaller title */
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .ph-title {
+        font-size: 1.75rem;
+        margin: 0 0 0.25rem 0;
+    }
+
+    .page-header.scrolled .ph-title {
+        font-size: 1.25rem;
+        /* Smaller desktop title */
+        margin: 0;
+    }
 }
 
 .ph-subtitle {
     margin: 0;
     color: var(--color-text-muted);
-    font-size: 0.95rem;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    max-height: 2rem;
+    /* Allow height */
+    opacity: 1;
 }
 
+.page-header.scrolled .ph-subtitle {
+    /* Collapse subtitle */
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .ph-subtitle {
+        font-size: 0.95rem;
+    }
+}
+
+/* ---- Actions ---- */
 .ph-actions {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.5rem;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-/* Reusable Action Button Styles */
+.ph-actions-group {
+    display: flex;
+    gap: 0.25rem;
+}
+
 .ph-action-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
     border-radius: 0.5rem;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     cursor: pointer;
     transition: all 0.2s;
     border: 1px solid transparent;
+}
+
+@media (min-width: 768px) {
+    .ph-action-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Slightly smaller actions in scrolled state? */
+    .page-header.scrolled .ph-action-btn {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.85rem;
+    }
 }
 
 .ph-btn-primary {
@@ -125,6 +265,11 @@
     color: var(--color-primary);
 }
 
+.ph-btn-outline:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 .ph-btn-ghost {
     background: transparent;
     color: var(--color-text-muted);
@@ -133,4 +278,99 @@
 .ph-btn-ghost:hover {
     background: rgba(0, 0, 0, 0.05);
     color: var(--color-primary-dark);
+}
+
+/* ---- Reading Progress Bar (Sticky) ---- */
+.scrolled-reading-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Push to right */
+    flex: 1;
+    min-width: 0;
+    /* Allow shrinking */
+    gap: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.ph-title-badge {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.75rem;
+    font-size: 0.5em;
+    /* Scale relative to title size */
+    opacity: 0.9;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reading-info-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* IE 10+ */
+}
+
+.reading-info-group::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+/* Base Reading Chip */
+.reading-chip {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    background: var(--color-bg-base, #ffffff);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+}
+
+/* Highlight the first chip (Ayah) */
+.reading-chip:first-child {
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    border-color: transparent;
+}
+
+.reading-settings-group {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* Transliteration Dropdown Styling */
+.reading-select {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 0.375rem;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-base, #fff);
+    color: var(--color-text-main);
+    cursor: pointer;
+    outline: none;
+}
+
+.reading-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-light);
 }

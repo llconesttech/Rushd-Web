@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate, useLocation, matchPath } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, BookOpen, Settings, Home } from 'lucide-react';
 import { useSurahList, useSurahDetail } from './hooks/useQuran';
 import { translations, languageList } from './data/quranData';
 import { getArabicSurahName, getSurahName } from './data/surahNames';
 import SettingsSidebar from './components/SettingsSidebar';
 import SurahListSidebar from './components/SurahListSidebar';
 import HomePage from './components/HomePage';
+import ReadingProgress from './components/ReadingProgress';
 import AudioPlayer from './components/AudioPlayer';
-import PageHeader from './components/PageHeader'; // Import new component
-import TajweedLegend from './components/TajweedLegend';
+import PageHeader from './components/PageHeader';
+import TajweedFab from './components/TajweedFab';
+import TajweedLegendBar from './components/TajweedLegendBar';
 import quranService from './services/quranService';
 import { TAJWEED_RULES } from './data/tajweedData';
 import { useSettings } from './context/SettingsContext';
@@ -26,14 +28,13 @@ import LaylatulQadr from './components/LaylatulQadr';
 import Sadaqah from './components/Sadaqah';
 import { surahData, getSurahInfo } from './data/quranData';
 
-// Components
+// ─── Surah List (Grid Page) ───
 const SurahList = () => {
   const { data: surahs, loading, error } = useSurahList();
 
   if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error">Error loading Surahs</div>;
 
-  // Merge API data with our comprehensive metadata
   const enhancedSurahs = surahs.map(surah => {
     const metadata = surahData.find(s => s.number === surah.number);
     return { ...surah, ...metadata };
@@ -108,7 +109,7 @@ const SurahList = () => {
                 alignItems: 'center'
               }}>
                 <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
-                  {surah.numberOfAyahs || surah.ayahs} Ayahs
+                  {surah.numberOfAyahs || surah.ayahs} Ayahs {surah.rukus > 1 && <>&bull; {surah.rukus} Rukus</>}
                 </span>
                 <span style={{
                   fontFamily: 'var(--font-arabic)',
@@ -126,8 +127,7 @@ const SurahList = () => {
   );
 };
 
-// ... parsing utilities omitted for brevity as they are unchanged ...
-// Parse Tajweed Function
+// ─── Tajweed Parser ───
 const parseTajweed = (text, showTooltips = false) => {
   if (!text) return "";
   return text.replace(/\[([a-z])(?::\d+)?\[([^\]]+)\]/g, (match, type, content) => {
@@ -138,30 +138,28 @@ const parseTajweed = (text, showTooltips = false) => {
   });
 };
 
+// ─── Word-by-Word Parser ───
 const parseWordByWord = (text) => {
   if (!text) return [];
   const words = text.split('$').filter(w => w.trim());
   return words.map(w => {
     const parts = w.split('|');
-    return {
-      arabic: parts[0],
-      translation: parts[1]
-    };
+    return { arabic: parts[0], translation: parts[1] };
   });
 };
 
+// ─── Quran Reader (Surah Detail Page) ───
 const QuranReader = () => {
   const { number } = useParams();
   const navigate = useNavigate();
   const [transliterationType, setTransliterationType] = useState('none');
   const { selectedScript, selectedTranslation, selectedTafsir, uiStyle, selectedArabicFont, showTajweedTooltips } = useSettings();
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const surahNum = parseInt(number);
 
-  // Helper to map font selection to usage
   const getArabicFontFamily = () => {
     if (selectedScript === 'quran-indopak' || selectedScript === 'quran-indopak-tajweed') return 'var(--font-arabic-indopak)';
-
     switch (selectedArabicFont) {
       case 'alqalam': return "'Al Qalam', serif";
       case 'mequran': return "'Me Quran', serif";
@@ -173,23 +171,23 @@ const QuranReader = () => {
     }
   };
 
-  // Pass selected script and translation to the hook
   const { data: surah, loading, error } = useSurahDetail(
-    number,
-    transliterationType,
-    selectedScript,
-    selectedTranslation,
-    selectedTafsir
+    number, transliterationType, selectedScript, selectedTranslation, selectedTafsir
   );
 
-  // Determine subtitle language from selected translation
+  // Track scroll position for sticky header
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const translationMeta = translations[selectedTranslation];
   const subtitleLangCode = translationMeta?.language_code || 'en';
   const localizedSurahName = getSurahName(surahNum, subtitleLangCode);
   const arabicCalligraphicName = getArabicSurahName(surahNum);
-
-
-  // Get complete metadata from our comprehensive data
   const surahInfo = getSurahInfo(surahNum);
 
   if (loading) return <div className="container" style={{ marginTop: '2rem' }}>Loading Surah...</div>;
@@ -199,329 +197,243 @@ const QuranReader = () => {
   const isWordByWord = selectedScript === 'quran-kids' || selectedScript === 'quran-wordbyword' || selectedScript === 'quran-wordbyword-2';
   const isTajweed = selectedScript === 'quran-tajweed' || selectedScript === 'quran-indopak-tajweed';
   const isIndoPak = selectedScript === 'quran-indopak' || selectedScript === 'quran-indopak-tajweed';
+  const isStyle2 = uiStyle === 'style2';
 
-  // Navigation handlers
-  const handleNextSurah = () => {
-    if (surahNum < 114) navigate(`/quran/${surahNum + 1}`);
+  const handleNextSurah = () => { if (surahNum < 114) navigate(`/quran/${surahNum + 1}`); };
+  const handlePrevSurah = () => { if (surahNum > 1) navigate(`/quran/${surahNum - 1}`); };
+
+  // Actions removed in favor of inline header controls
+  const actions = null;
+
+  const getManzil = (n) => {
+    if (n >= 1 && n <= 4) return 1;
+    if (n >= 5 && n <= 9) return 2;
+    if (n >= 10 && n <= 16) return 3;
+    if (n >= 17 && n <= 25) return 4;
+    if (n >= 26 && n <= 36) return 5;
+    if (n >= 37 && n <= 49) return 6;
+    if (n >= 50 && n <= 114) return 7;
+    return 0;
   };
 
-  const handlePrevSurah = () => {
-    if (surahNum > 1) navigate(`/quran/${surahNum - 1}`);
-  };
-
-  const actions = (
-    <>
-      <div className="ph-actions-group">
-        <button
-          className="ph-action-btn ph-btn-outline"
-          onClick={handlePrevSurah}
-          disabled={surahNum <= 1}
-          title="Previous Surah"
-        >
-          <ChevronLeft size={16} /> Prev
-        </button>
-        <button
-          className="ph-action-btn ph-btn-outline"
-          onClick={handleNextSurah}
-          disabled={surahNum >= 114}
-          title="Next Surah"
-        >
-          Next <ChevronRight size={16} />
-        </button>
-      </div>
-
-      <select
-        value={transliterationType}
-        onChange={(e) => setTransliterationType(e.target.value)}
-        className="ph-action-btn ph-btn-outline"
-        style={{ padding: '0.4rem 0.75rem', maxWidth: '200px' }}
-      >
-        <option value="none">No Transliteration</option>
-        {Object.entries(translations)
-          .filter(([key, val]) => val.type === 'transliteration')
-          .sort((a, b) => a[1].english_name.localeCompare(b[1].english_name))
-          .map(([key, val]) => (
-            <option key={key} value={key}>
-              {val.english_name}
-            </option>
-          ))}
-      </select>
-    </>
-  );
-
-  const subtitle = (
-    <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-      {surah.englishNameTranslation} • {surah.numberOfAyahs} Ayahs • {surahInfo?.revelationType}
+  // Badge Element
+  const surahBadge = (
+    <span className={`revelation-badge ${surahInfo?.revelationType.toLowerCase()}`}>
+      {surahInfo?.revelationType}
     </span>
   );
 
-  // Calligraphic Arabic Surah Header
-  const surahHeader = (
-    <div style={{ textAlign: 'center', padding: '1.5rem 0 1rem', borderBottom: '1px solid var(--color-border)', marginBottom: '1rem' }}>
-      <h1 style={{
-        fontFamily: "'Al Qalam', 'Amiri Quran', serif",
-        fontSize: '3.5rem',
-        fontWeight: 'normal',
-        margin: 0,
-        lineHeight: 1.5,
-        color: 'var(--color-text-main)',
-        direction: 'rtl'
-      }}>
-        ﴿ سورة {arabicCalligraphicName} ﴾
-      </h1>
-      <p style={{
-        fontSize: '1.1rem',
-        color: 'var(--color-text-muted)',
-        margin: '0.25rem 0 0',
-        fontWeight: 500
-      }}>
-        {subtitleLangCode !== 'ar' ? localizedSurahName : surah.englishName}
+  // Compact subtitle for sticky header
+  const subtitle = (
+    <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+      {surahInfo?.meaning}
+      <span style={{ color: 'var(--color-border)' }}>&bull;</span>
+      {surahInfo?.rukus} Rukus
+      <span style={{ color: 'var(--color-border)' }}>&bull;</span>
+      Manzil {getManzil(surahNum)}
+    </span>
+  );
+
+
+
+  // ─── Render an Ayah ───
+  const renderAyah = (ayah, index) => {
+    const arabicContent = isWordByWord ? (
+      <div className="word-by-word-container" style={{ padding: 0 }}>
+        {parseWordByWord(ayah.text).map((w, i) => (
+          <div key={i} className="word-block">
+            <span className="word-arabic" style={{ fontFamily: getArabicFontFamily() }}>{w.arabic}</span>
+            <span className="word-translation">{w.translation}</span>
+          </div>
+        ))}
+      </div>
+    ) : isTajweed ? (
+      <p className={`ayah-arabic arabic-text tajweed-text ${isIndoPak ? 'indopak' : `font-${selectedArabicFont}`}`}
+        style={{ fontFamily: getArabicFontFamily() }}
+        dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text, showTajweedTooltips) }} />
+    ) : (
+      <p className={`ayah-arabic arabic-text font-${selectedArabicFont} ${isIndoPak ? 'indopak' : ''}`}
+        style={{ fontFamily: getArabicFontFamily() }}>
+        {ayah.text}
       </p>
-      <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', margin: '0.25rem 0 0' }}>
-        {surah.numberOfAyahs} Ayahs • {surahInfo?.revelationType} • Juz {surahInfo?.juz?.[0]}
-      </p>
-    </div>
+    );
+
+    if (isStyle2) {
+      return (
+        <div
+          key={ayah.number}
+          className="ayah-card-style2"
+          data-ayah-num={ayah.numberInSurah} // For scroll tracking
+        >
+          <span className="ayah-badge">Ayah {ayah.numberInSurah}</span>
+          <button className="play-btn-circle" title="Play Ayah">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </button>
+          <div className="ayah-text-container">
+            {arabicContent}
+            {ayah.transliteration && <p className="ayah-transliteration">{ayah.transliteration}</p>}
+            {ayah.translation && <div className="translation-container"><p className="ayah-translation">{ayah.translation}</p></div>}
+          </div>
+        </div>
+      );
+    }
+
+    // Style 1
+    return (
+      <div
+        key={ayah.number}
+        className="ayah-row"
+        data-ayah-num={ayah.numberInSurah} // For scroll tracking
+        style={{
+          backgroundColor: index % 2 === 0 ? 'var(--color-bg-card)' : 'var(--color-bg-main)'
+        }}
+      >
+        <div className="ayah-number-badge">
+          <span>{surah.number}:{ayah.numberInSurah}</span>
+        </div>
+        {arabicContent}
+        {ayah.transliteration && <p className="ayah-transliteration">{ayah.transliteration}</p>}
+        {ayah.translation && <div className="translation-container"><p className="ayah-translation">{ayah.translation}</p></div>}
+      </div>
+    );
+  };
+
+  // Transliteration Selector (Always Visible)
+  const transliterationSelector = (
+    <select
+      value={transliterationType}
+      onChange={(e) => setTransliterationType(e.target.value)}
+      className="reading-select"
+      title="Transliteration"
+      style={{ marginLeft: 'auto' }}
+    >
+      <option value="none">No Translit.</option>
+      {Object.entries(translations)
+        .filter(([key, val]) => val.type === 'transliteration')
+        .sort((a, b) => a[1].english_name.localeCompare(b[1].english_name))
+        .map(([key, val]) => (
+          <option key={key} value={key}>{val.english_name}</option>
+        ))}
+    </select>
   );
 
   return (
-    <div className="container" style={{ maxWidth: '800px', padding: 0 }}>
-      <PageHeader
-        title={surah.englishName}
-        subtitle={subtitle}
-        breadcrumbs={[
-          { label: 'Home', path: '/' },
-          { label: 'Quran', path: '/quran' },
-          { label: surah.englishName, path: `/quran/${surahNum}` }
-        ]}
-        actions={actions}
-      />
+    <div className="quran-reader-container" style={{ '--arabic-font': getArabicFontFamily() }}>
+      {/* Header Group */}
+      <div className="quran-header-group">
+        <PageHeader
+          title={`Surah ${surah.englishName}`}
+          badge={surahBadge}
+          subtitle={subtitle}
+          breadcrumbs={[
+            { label: 'Home', path: '/' },
+            { label: 'Quran', path: '/quran' },
+            { label: surah.englishName, path: `/quran/${surahNum}` }
+          ]}
+          isScrolled={isScrolled}
+          actions={
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '100%', justifyContent: 'flex-end' }}>
+              <ReadingProgress surah={surah} />
+              {transliterationSelector}
+            </div>
+          }
+        />
 
-      {/* Audio Player */}
-      <div style={{ padding: '0 2rem' }}>
-        <AudioPlayer surahNumber={parseInt(number)} totalAyahs={surah.numberOfAyahs} />
-        {isTajweed && <TajweedLegend />}
+        {/* Tajweed Legend Bar */}
+        {isTajweed && <TajweedLegendBar />}
       </div>
 
       {/* Calligraphic Surah Header */}
-      <div style={{ padding: '0 2rem' }}>
-        {surahHeader}
+      <div className="quran-reader-inner">
+        <div className="surah-calligraphic-header">
+          <h1>{'\uFD3F'} {'سورة'} {arabicCalligraphicName} {'\uFD3E'}</h1>
+
+          <div className="surah-subtitle">
+            <span>{subtitleLangCode !== 'ar' ? localizedSurahName : surah.englishName}</span>
+            <span className={`revelation-badge ${surahInfo?.revelationType.toLowerCase()}`}>
+              {surahInfo?.revelationType}
+            </span>
+          </div>
+
+        </div>
       </div>
 
-      {/* Main Content */}
-      <div className={uiStyle === 'style2' ? '' : ''} style={{
-        marginTop: '1rem',
-        padding: '0 2rem 2rem 2rem',
-        backgroundColor: uiStyle === 'style2' ? 'transparent' : 'var(--color-bg-card)',
-        borderRadius: uiStyle === 'style2' ? '0' : '1rem',
-        boxShadow: uiStyle === 'style2' ? 'none' : 'var(--shadow-md)',
-        overflow: 'hidden'
-      }}>
-        {/* ... Ayah Mapping (Content) ... */}
-        {surah.ayahs.map((ayah, index) => (
-          uiStyle === 'style2' ? (
-            <div key={ayah.number} className="ayah-card-style2">
-              <span className="ayah-badge">Ayah {ayah.numberInSurah}</span>
-              <button className="play-btn-circle" title="Play Ayah">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-              </button>
-
-              <div className="ayah-text-container">
-                {isWordByWord ? (
-                  <div className="word-by-word-container" style={{ padding: 0 }}>
-                    {parseWordByWord(ayah.text).map((w, i) => (
-                      <div key={i} className="word-block">
-                        <span className="word-arabic" style={{ fontFamily: getArabicFontFamily() }}>{w.arabic}</span>
-                        <span className="word-translation">{w.translation}</span>
-                      </div>
-                    ))}
-                  </div>
-                ) : isTajweed ? (
-                  <p className={`arabic-text tajweed-text ${isIndoPak ? 'indopak' : `font-${selectedArabicFont}`}`} style={{
-                    fontSize: '2.5rem',
-                    lineHeight: '2.5',
-                    textAlign: 'right',
-                    margin: 0,
-                    fontFamily: getArabicFontFamily(),
-                    color: 'var(--color-text-main)'
-                  }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text, showTajweedTooltips) }} />
-                ) : (
-                  <p className={`arabic-text ${isIndoPak ? 'indopak' : `font-${selectedArabicFont}`}`} style={{
-                    fontSize: '2.5rem',
-                    lineHeight: '2.5',
-                    textAlign: 'right',
-                    margin: 0,
-                    fontFamily: getArabicFontFamily(),
-                    color: 'var(--color-text-main)'
-                  }}>
-                    {ayah.text}
-                  </p>
-                )}
-
-                {ayah.transliteration && (
-                  <p style={{ fontSize: '1.1rem', color: 'var(--color-primary-dark)', fontStyle: 'italic', margin: '0.5rem 0 1rem', borderLeft: '3px solid var(--color-primary)', paddingLeft: '1rem' }}>
-                    {ayah.transliteration}
-                  </p>
-                )}
-
-                {ayah.translation && (
-                  <div className="translation-container">
-                    <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'var(--color-text-main)', margin: 0 }}>
-                      {ayah.translation}
-                    </p>
-                  </div>
-                )}
-
-                {ayah.tafsir && (
-                  <div style={{
-                    marginTop: '0.75rem',
-                    padding: '0.75rem 1rem',
-                    backgroundColor: 'var(--color-bg-main)',
-                    borderLeft: '3px solid var(--color-primary)',
-                    borderRadius: '0 0.5rem 0.5rem 0',
-                    fontSize: '1rem',
-                    lineHeight: '1.8',
-                    color: 'var(--color-text-main)',
-                    opacity: 0.9
-                  }}>
-                    <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontWeight: 600, textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>Tafsir</span>
-                    <p style={{ margin: 0 }}>{ayah.tafsir}</p>
-                  </div>
-                )}
-              </div>
-
-              {/* Footnote/Note Box if data exists (mocking it for now as per style 2) */}
-              <div className="footnote-box">
-                <p className="footnote-text">
-                  Note: This ayah highlights the importance of faith and guidance.
-                </p>
-              </div>
-            </div>
-          ) : (
-            <div key={ayah.number} style={{
-              padding: '2rem',
-              borderBottom: '1px solid var(--color-border)',
-              backgroundColor: index % 2 === 0 ? 'var(--color-bg-card)' : 'var(--color-bg-main)'
-            }}>
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                marginBottom: '1.5rem',
-                color: 'var(--color-text-muted)',
-                fontSize: '0.875rem'
-              }}>
-                <span>{surah.number}:{ayah.numberInSurah}</span>
-              </div>
-
-              {isWordByWord ? (
-                <div className="word-by-word-container">
-                  {parseWordByWord(ayah.text).map((w, i) => (
-                    <div key={i} className="word-block">
-                      <span className={`word-arabic font-${selectedArabicFont}`} style={{ fontFamily: getArabicFontFamily() }}>{w.arabic}</span>
-                      <span className="word-translation">{w.translation}</span>
-                    </div>
-                  ))}
-                </div>
-              ) : isTajweed ? (
-                <p className={`arabic-text tajweed-text ${isIndoPak ? 'indopak' : `font-${selectedArabicFont}`}`} style={{
-                  fontSize: '2.5rem',
-                  lineHeight: '2.2',
-                  textAlign: 'right',
-                  marginBottom: '1.5rem',
-                  fontFamily: getArabicFontFamily(),
-                  color: 'var(--color-text-main)'
-                }} dangerouslySetInnerHTML={{ __html: parseTajweed(ayah.text, showTajweedTooltips) }} />
-              ) : (
-                <p className={`arabic-text font-${selectedArabicFont} ${isIndoPak ? 'indopak' : ''}`} style={{
-                  fontSize: '2.5rem',
-                  lineHeight: '2.2',
-                  textAlign: 'right',
-                  marginBottom: '1.5rem',
-                  fontFamily: getArabicFontFamily(),
-                  color: 'var(--color-text-main)'
-                }}>
-                  {ayah.text}
-                </p>
-              )}
-
-              {ayah.transliteration && (
-                <div style={{ marginBottom: '1rem', padding: '0.75rem', backgroundColor: 'var(--color-primary-light)', borderRadius: '0.5rem' }}>
-                  <p style={{ fontSize: '1rem', color: 'var(--color-primary-dark)', fontStyle: 'italic', margin: 0 }}>
-                    {ayah.transliteration}
-                  </p>
+      {/* Ayahs */}
+      <div className={`ayah-content-wrap ${isStyle2 ? 'transparent' : ''}`}>
+        {surah.ayahs.map((ayah, index) => {
+          const prevRuku = index > 0 ? surah.ayahs[index - 1].ruku : ayah.ruku;
+          const showRukuDivider = index > 0 && ayah.ruku !== prevRuku;
+          return (
+            <React.Fragment key={ayah.numberInSurah || ayah.number}>
+              {showRukuDivider && (
+                <div className="ruku-divider">
+                  <span>Ruku {ayah.ruku}</span>
                 </div>
               )}
-
-              {ayah.translation && (
-                <div style={{ marginBottom: '1rem' }}>
-                  <p style={{ fontSize: '1.125rem', lineHeight: '1.6', color: 'var(--color-text-main)' }}>
-                    {ayah.translation}
-                  </p>
-                </div>
-              )}
-
-              {ayah.tafsir && (
-                <div style={{
-                  marginBottom: '1rem',
-                  padding: '0.75rem 1rem',
-                  backgroundColor: 'var(--color-primary-light)',
-                  borderLeft: '3px solid var(--color-primary)',
-                  borderRadius: '0 0.5rem 0.5rem 0'
-                }}>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontWeight: 600, textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>Tafsir</span>
-                  <p style={{ fontSize: '1rem', lineHeight: '1.6', color: 'var(--color-text-main)', margin: 0 }}>
-                    {ayah.tafsir}
-                  </p>
-                </div>
-              )}
-            </div>
-          )
-        ))}
+              {renderAyah(ayah, index)}
+            </React.Fragment>
+          );
+        })}
       </div>
     </div>
   );
 };
 
+// ─── Layout ───
 const Layout = ({ children }) => {
   const { uiStyle } = useSettings();
   const location = window.location.pathname;
   const isGridView = location === '/' || location === '/quran';
+  const bgClass = (uiStyle === 'style2' || isGridView) ? 'app-layout bg-dots' : 'app-layout';
 
   return (
-    <div style={{
+    <div className={bgClass} style={{
       display: 'flex',
-      height: '100vh',
+      height: '100dvh',
       width: '100vw',
       overflow: 'hidden',
       backgroundColor: (uiStyle === 'style2' || isGridView) ? 'var(--color-bg-main)' : undefined
-    }} className={(uiStyle === 'style2' || isGridView) ? 'bg-dots' : ''}>
+    }}>
       {children}
     </div>
   );
 };
 
+
+const TajweedFabWrapper = () => {
+  const { selectedScript } = useSettings();
+  const isTajweed = selectedScript === 'quran-tajweed' || selectedScript === 'quran-indopak-tajweed';
+  if (!isTajweed) return null;
+  return <TajweedFab />;
+};
+
+// ─── App ───
 function App() {
   const navigate = useNavigate();
+  const { isSurahListOpen, isSettingsOpen, toggleSurahList, toggleSettings } = useSettings();
 
   const handleSurahSelect = (surahNumber) => {
-    navigate(`/quran/${surahNumber}`);
+    navigate(`/ quran / ${surahNumber} `);
   };
 
-  // const { number } = useParams();
-  // const surahNumber = number ? parseInt(number) : null;
-
-  // Determine if we are on the Reader page
   const location = useLocation();
   const readerMatch = matchPath("/quran/:number", location.pathname);
   const surahNumber = readerMatch ? parseInt(readerMatch.params.number) : null;
   const isReaderPage = !!readerMatch;
 
+  const surahMeta = surahNumber ? getSurahInfo(surahNumber) : null;
+  const totalAyahs = surahMeta?.ayahs || 0;
+
+  const anySidebarOpen = isSurahListOpen || isSettingsOpen;
+
+  const handleBackdropClick = () => {
+    if (isSurahListOpen) toggleSurahList();
+    if (isSettingsOpen) toggleSettings();
+  };
+
   return (
     <Layout>
-      {/* 
-          Surah Sidebar:
-          - Pass 'persistent={true}' if on Reader page to keep it open and sticky.
-          - In Flex layout, this becomes the first flex item.
-      */}
+      {/* Surah Sidebar */}
       {isReaderPage && (
         <SurahListSidebar
           onSurahSelect={handleSurahSelect}
@@ -530,56 +442,82 @@ function App() {
         />
       )}
 
-      {/* Main Content Area */}
-      <main style={{
-        flex: 1,
-        overflowY: 'auto',
-        display: 'flex', // To center the inner container
-        justifyContent: 'center', // Center content horizontally
-        backgroundColor: 'transparent'
-      }}>
-        {/* Inner Content Container */}
-        <div style={{
-          width: '100%',
-          maxWidth: isReaderPage ? '864px' : '1200px', // 800px content + 64px padding
-          padding: '2rem', // Reduced padding
-          // Margin auto is handled by flex justify-center, but good for safety
-          margin: isReaderPage ? '0 auto' : '0 auto',
-        }}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/quran" element={<SurahList />} />
-            {/* Reader Page */}
-            <Route path="/quran/:number" element={<QuranReader />} />
-            <Route path="/qibla" element={<QiblaFinder />} />
-            <Route path="/tasbih" element={<TasbihCounter />} />
-            <Route path="/zakat" element={<ZakatCalculator />} />
-            <Route path="/salah-rules" element={<SalahRules />} />
-            <Route path="/names" element={<AsmaUlHusna />} />
-            <Route path="/calendar" element={<IslamicCalendar />} />
-            <Route path="/ramadan" element={<RamadanCalendar />} />
-            <Route path="/fasting" element={<FastingRules />} />
-            <Route path="/taraweeh" element={<Taraweeh />} />
-            <Route path="/laylatul-qadr" element={<LaylatulQadr />} />
-            <Route path="/sadaqah" element={<Sadaqah />} />
-            <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
-          </Routes>
-        </div>
-      </main>
+      {/* Backdrop Overlay (mobile/tablet) */}
+      {isReaderPage && (
+        <div
+          className={`sidebar - backdrop ${anySidebarOpen ? 'visible' : ''} `}
+          onClick={handleBackdropClick}
+        />
+      )}
 
-      {/* 
-         Settings Sidebar:
-         - Pass 'persistent={true}' but control visibility via context/props if needed.
-         - The request was "Can toggle the settings on right".
-      */}
+      {/* Main Content Wrapper */}
+      <div className="main-content-wrapper">
+
+        {/* Scrollable content */}
+        <main className="reader-main-content">
+          <div style={{
+            width: '100%',
+            maxWidth: isReaderPage ? '864px' : '1200px',
+            padding: isReaderPage ? '0.5rem' : '2rem',
+            margin: '0 auto',
+          }}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/quran" element={<SurahList />} />
+              <Route path="/quran/:number" element={<QuranReader />} />
+              <Route path="/qibla" element={<QiblaFinder />} />
+              <Route path="/tasbih" element={<TasbihCounter />} />
+              <Route path="/zakat" element={<ZakatCalculator />} />
+              <Route path="/salah-rules" element={<SalahRules />} />
+              <Route path="/names" element={<AsmaUlHusna />} />
+              <Route path="/calendar" element={<IslamicCalendar />} />
+              <Route path="/ramadan" element={<RamadanCalendar />} />
+              <Route path="/fasting" element={<FastingRules />} />
+              <Route path="/taraweeh" element={<Taraweeh />} />
+              <Route path="/laylatul-qadr" element={<LaylatulQadr />} />
+              <Route path="/sadaqah" element={<Sadaqah />} />
+              <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
+            </Routes>
+          </div>
+        </main>
+
+        {/* Audio Player Dock (bottom of content, above mobile nav) */}
+        {isReaderPage && surahNumber > 0 && (
+          <div className="audio-player-dock">
+            <AudioPlayer surahNumber={surahNumber} totalAyahs={totalAyahs} />
+          </div>
+        )}
+      </div>
+
+      {/* Settings Sidebar */}
       {isReaderPage && (
         <SettingsSidebar persistent={true} />
+      )}
+
+      {/* Tajweed FAB (mobile only via CSS) */}
+      {isReaderPage && <TajweedFabWrapper />}
+
+      {/* Mobile Bottom Action Bar */}
+      {isReaderPage && (
+        <div className="mobile-bottom-bar">
+          <button className={`bar - btn ${isSurahListOpen ? 'active' : ''} `} onClick={toggleSurahList}>
+            <BookOpen size={22} />
+            <span>Surahs</span>
+          </button>
+          <button className="bar-btn" onClick={() => navigate('/')}>
+            <Home size={22} />
+            <span>Home</span>
+          </button>
+          <button className={`bar - btn ${isSettingsOpen ? 'active' : ''} `} onClick={toggleSettings}>
+            <Settings size={22} />
+            <span>Settings</span>
+          </button>
+        </div>
       )}
     </Layout>
   );
 }
 
-// Wrap App with Router for useNavigate
 function AppWrapper() {
   return (
     <Router>

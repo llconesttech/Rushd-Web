@@ -1,0 +1,172 @@
+/* Sticky Wrapper for Header + Legend */
+.quran-header-group {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  /* No visual styles on wrapper, let children handle them */
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+/* Override PageHeader margin when inside group to allow tab attachment */
+.quran-header-group .page-header {
+  margin-bottom: 0 !important;
+  /* Ensure PageHeader keeps its own visual styles (bg, border, etc.) */
+  position: relative !important;
+  z-index: 50 !important;
+  /* Header on top of tab */
+}
+
+/* Container: Transparent, no border */
+.tajweed-legend-bar-container {
+  background: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-top: none;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+
+  /* Attachment Logic */
+  margin-top: -1px;
+  /* Overlap the header bottom border */
+  z-index: 49;
+  /* Behind header to hide top edge */
+}
+
+.tajweed-legend-bar {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Trigger: Hanging Half-Pill Tab */
+.tajweed-bar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+
+  /* Style as tab attached to top */
+  background: var(--color-bg-card);
+  /* Card bg or white */
+  border: 1px solid var(--color-border);
+  border-top: none;
+  /* No top border */
+
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+
+  /* Half-pill shape: Top flat, Bottom rounded */
+  border-radius: 0 0 1rem 1rem;
+
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  pointer-events: auto;
+}
+
+.tajweed-bar-toggle:hover,
+.tajweed-bar-toggle.active {
+  background: var(--color-bg-main);
+  color: var(--color-primary);
+  box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.08);
+}
+
+.tajweed-bar-toggle-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tajweed-icon {
+  display: none;
+}
+
+.tajweed-dots-preview {
+  display: none;
+}
+
+/* Dropdown Card: Floating, Centered */
+.tajweed-rules-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+
+  position: absolute;
+  top: 100%;
+  margin-top: 0.5rem;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  width: max-content;
+  max-width: 100%;
+  /* Constrain to content width to avoid sidebar overlap */
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-out;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.tajweed-rules-strip.expanded {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%);
+}
+
+.tajweed-strip-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  padding: 0.25rem 0.5rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+
+.tajweed-strip-item:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.tajweed-strip-item .tajweed-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.tajweed-strip-item .tajweed-rule-name {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+/* Hide on mobile/tablet (up to 1279px) where FAB is used */
+@media (max-width: 1279px) {
+  .tajweed-legend-bar-container {
+    display: none !important;
+  }
+}
