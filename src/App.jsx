@@ -350,9 +350,6 @@ const QuranReader = () => {
 
           <div className="surah-subtitle">
             <span>{subtitleLangCode !== 'ar' ? localizedSurahName : surah.englishName}</span>
-            <span className={`revelation-badge ${surahInfo?.revelationType.toLowerCase()}`}>
-              {surahInfo?.revelationType}
-            </span>
           </div>
 
         </div>
