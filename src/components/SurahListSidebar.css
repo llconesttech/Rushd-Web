@@ -187,7 +187,28 @@
     font-family: var(--font-arabic);
 }
 
-.surah-item.active .surah-name,
+/* Vector Styling */
+.surah-arabic-container {
+    display: flex;
+    align-items: center;
+}
+
+.surah-vector-sidebar {
+    height: 1.25rem;
+    width: auto;
+    /* Default Teal */
+    filter: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(674%) hue-rotate(138deg) brightness(91%) contrast(92%);
+}
+
+.surah-item.active .surah-name {
+    color: white;
+}
+
+.surah-item.active .surah-vector-sidebar {
+    /* Make White when active */
+    filter: brightness(0) invert(1);
+}
+
 .surah-item.active .surah-arabic {
     color: white;
 }

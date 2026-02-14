@@ -111,13 +111,20 @@ const SurahList = () => {
                 <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
                   {surah.numberOfAyahs || surah.ayahs} Ayahs {surah.rukus > 1 && <>&bull; {surah.rukus} Rukus</>}
                 </span>
-                <span style={{
-                  fontFamily: 'var(--font-arabic)',
-                  fontSize: '1.35rem',
-                  color: 'var(--color-primary)'
-                }}>
-                  {surah.arabicName || (surah.name && surah.name.replace('سورة ', ''))}
-                </span>
+                <div className="surah-name-calligraphy">
+                  <img
+                    src={`/fonts/Tuluth/Vector-${surah.number - 1}.svg`}
+                    alt={surah.arabicName}
+                    className="surah-vector-name"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                    }}
+                  />
+                  <span style={{ display: 'none' }}>
+                    {surah.arabicName || (surah.name && surah.name.replace('سورة ', ''))}
+                  </span>
+                </div>
               </div>
             </div>
           </Link>
@@ -346,7 +353,16 @@ const QuranReader = () => {
       {/* Calligraphic Surah Header */}
       <div className="quran-reader-inner">
         <div className="surah-calligraphic-header">
-          <h1>{'\uFD3F'} {'سورة'} {arabicCalligraphicName} {'\uFD3E'}</h1>
+          <img
+            src={`/fonts/Tuluth/Vector-${surah.number - 1}.svg`}
+            alt={surah.arabicName}
+            className="surah-vector-name-header"
+            onError={(e) => {
+              e.target.style.display = 'none';
+              if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+            }}
+          />
+          <h1 style={{ display: 'none' }}>{'\uFD3F'} {'سورة'} {arabicCalligraphicName} {'\uFD3E'}</h1>
 
           <div className="surah-subtitle">
             <span>{subtitleLangCode !== 'ar' ? localizedSurahName : surah.englishName}</span>

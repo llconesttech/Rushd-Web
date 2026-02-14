@@ -66,7 +66,18 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) =
                         <span className="surah-number">{surah.number}</span>
                         <div className="surah-info">
                             <span className="surah-name">{surah.name}</span>
-                            <span className="surah-arabic">{surah.arabicName}</span>
+                            <div className="surah-arabic-container">
+                                <img
+                                    src={`/fonts/Tuluth/Vector-${surah.number - 1}.svg`}
+                                    alt={surah.arabicName}
+                                    className="surah-vector-sidebar"
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                                    }}
+                                />
+                                <span className="surah-arabic" style={{ display: 'none' }}>{surah.arabicName}</span>
+                            </div>
                         </div>
                         <div className="surah-meta">
                             <span className="surah-ayahs">{surah.ayahs} Ayahs</span>

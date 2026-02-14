@@ -470,7 +470,7 @@ h6 {
 
 .surah-calligraphic-header h1 {
   font-family: "'Al Qalam', 'Amiri Quran', serif";
-  font-size: 2.25rem;
+  font-size: 1.8rem;
   font-weight: normal;
   margin: 0;
   line-height: 1.4;
@@ -480,7 +480,7 @@ h6 {
 
 @media (min-width: 768px) {
   .surah-calligraphic-header h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -906,7 +906,7 @@ h6 {
 
 /* ---- Ayah Card Style 2 (Beige Cards) ---- */
 .ayah-card-style2 {
-  background-color: #fcfbf4;
+  background-color: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
   padding: 1.25rem;
@@ -927,4 +927,49 @@ h6 {
 .ayah-card-style2 .ayah-arabic {
   margin-top: 0;
   margin-right: 0;
+}
+
+/* ---- Calligraphic Surah Name in List ---- */
+.surah-name-calligraphy {
+  font-family: 'Amiri Quran', serif;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--color-primary);
+  text-align: right;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+
+/* ---- Calligraphic Surah Vector ---- */
+.surah-vector-name {
+  height: 2.2rem;
+  width: auto;
+  display: block;
+  /* Filter to turn white #FFFFFF into Teal #0d5c63 */
+  filter: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(674%) hue-rotate(138deg) brightness(91%) contrast(92%);
+  transition: transform 0.2s ease;
+}
+
+.surah-card:hover .surah-vector-name {
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .surah-vector-name {
+    height: 2.5rem;
+  }
+}
+
+.surah-vector-name-header {
+  height: 3.5rem;
+  width: auto;
+  margin: 0 auto;
+  display: block;
+  filter: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(674%) hue-rotate(138deg) brightness(91%) contrast(92%);
+}
+
+@media (min-width: 768px) {
+  .surah-vector-name-header {
+    height: 5rem;
+  }
 }
