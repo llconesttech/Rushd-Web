@@ -102,6 +102,27 @@ body {
   margin: 0;
   line-height: 1.5;
   transition: background-color 0.3s ease;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Deep Linking Highlight */
+@keyframes highlightFlash {
+  0% {
+    background-color: rgba(13, 92, 99, 0.2);
+    border-color: var(--color-primary);
+  }
+
+  100% {
+    background-color: var(--color-bg-card);
+    border-color: var(--color-border);
+  }
+}
+
+.highlight-ayah {
+  animation: highlightFlash 2s ease-out;
+  border-color: var(--color-primary) !important;
 }
 
 h1,
@@ -747,6 +768,13 @@ h6 {
   .reader-main-content {
     padding-bottom: 60px;
   }
+}
+
+.reader-main-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* ============================================

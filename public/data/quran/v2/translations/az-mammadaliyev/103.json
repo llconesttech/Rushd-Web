@@ -1,18 +1,1 @@
-{
-  "number": 103,
-  "edition": "az.mammadaliyev",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " وَٱلْعَصْرِ"
-    },
-    {
-      "number": "2",
-      "text": "إِنَّ ٱلْإِنسَـٰنَ لَفِى خُسْرٍ"
-    },
-    {
-      "number": "3",
-      "text": "إِلَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ وَتَوَاصَوْا۟ بِٱلْحَقِّ وَتَوَاصَوْا۟ بِٱلصَّبْرِ"
-    }
-  ]
-}
+{"number":103,"edition":"az.mammadaliyev","ayahs":[{"number":1,"text":"And olsun axşam çağına (ikindi vaxtına, əsr namazına, zamana və ya Peyğəmbərin əsrinə) ki"},{"number":2,"text":"İnsan (ömrünü bihudə işlərə sərf etməklə, dünyanı axirətdən üstün tutmaqla) ziyan içindədir"},{"number":3,"text":"Yalnız iman gətirib yaxşı əməllər edən, bir-birinə haqqı tövsiyə edən və səbri tövsiyə edən kimsələrdən başqa! (Belələri Cənnətə nail olub əbədi səadətə qovuşanlardır)"}]}

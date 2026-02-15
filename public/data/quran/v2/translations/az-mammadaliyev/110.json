@@ -1,18 +1,1 @@
-{
-  "number": 110,
-  "edition": "az.mammadaliyev",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " إِذَا جَآءَ نَصْرُ ٱللَّهِ وَٱلْفَتْحُ"
-    },
-    {
-      "number": "2",
-      "text": "وَرَأَيْتَ ٱلنَّاسَ يَدْخُلُونَ فِى دِينِ ٱللَّهِ أَفْوَاجًا"
-    },
-    {
-      "number": "3",
-      "text": "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَٱسْتَغْفِرْهُ ۚ إِنَّهُۥ كَانَ تَوَّابًۢا"
-    }
-  ]
-}
+{"number":110,"edition":"az.mammadaliyev","ayahs":[{"number":1,"text":"(Ya Peyğəmbər!) Allahın köməyi və zəfər (Məkkənin fəthi) gəldiyi zaman"},{"number":2,"text":"İnsanların dəstə-dəstə Allahın dininə (islama) daxil olduqlarını gördüyün zaman"},{"number":3,"text":"Rəbbini həmd-səna ilə təqdis et (Onu bütün naqis sifətlərdən uzaq tutub pak bil, “Sübhanəkə Allahümmə və bihəmdikə” kəlməsini de) və Ondan bağışlanmağını dilə. Həqiqətən, O, tövbələri qəbul edəndir"}]}

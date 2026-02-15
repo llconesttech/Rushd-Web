@@ -1,18 +1,1 @@
-{
-  "number": 103,
-  "edition": "de.zaidan",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " وَٱلْعَصْرِ"
-    },
-    {
-      "number": "2",
-      "text": "إِنَّ ٱلْإِنسَـٰنَ لَفِى خُسْرٍ"
-    },
-    {
-      "number": "3",
-      "text": "إِلَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ وَتَوَاصَوْا۟ بِٱلْحَقِّ وَتَوَاصَوْا۟ بِٱلصَّبْرِ"
-    }
-  ]
-}
+{"number":103,"edition":"de.zaidan","ayahs":[{"number":1,"text":"Bei Al-'asr"},{"number":2,"text":"Gewiß, der Mensch ist im Verlust"},{"number":3,"text":"außer denjenigen, die den Iman verinnerlicht, gottgefällig Gutes getan, einander zur Wahrheit ermahnt und einander zur Geduld ermahnt haben"}]}

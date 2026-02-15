@@ -22,7 +22,7 @@ const featureSections = [
         icon: '📚',
         features: [
             { id: 'read', title: 'Read Quran', icon: '📖', link: '/quran' },
-            { id: 'tafsir', title: 'Tafsir', icon: '📝', link: '/tafsir' },
+            { id: 'shan-e-nuzool', title: 'Shan-e-Nuzool', icon: '📜', link: '/shan-e-nuzool' },
             { id: 'tajweed', title: 'Tajweed', icon: '🎯', link: '/tajweed' },
             { id: 'memorize', title: 'Memorization', icon: '🧠', link: '/memorize' },
             { id: 'audio', title: 'Audio Recitation', icon: '🎧', link: '/audio' },

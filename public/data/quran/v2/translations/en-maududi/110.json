@@ -1,18 +1,1 @@
-{
-  "number": 110,
-  "edition": "en.maududi",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " إِذَا جَآءَ نَصْرُ ٱللَّهِ وَٱلْفَتْحُ"
-    },
-    {
-      "number": "2",
-      "text": "وَرَأَيْتَ ٱلنَّاسَ يَدْخُلُونَ فِى دِينِ ٱللَّهِ أَفْوَاجًا"
-    },
-    {
-      "number": "3",
-      "text": "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَٱسْتَغْفِرْهُ ۚ إِنَّهُۥ كَانَ تَوَّابًۢا"
-    }
-  ]
-}
+{"number":110,"edition":"en.maududi","ayahs":[{"number":1,"text":"When the help comes from Allah, and victory (is granted)"},{"number":2,"text":"and you see people entering Allah's religion in multitudes"},{"number":3,"text":"then extol the praise of your Lord and pray to Him for forgiveness. For He indeed is ever disposed to accept repentance"}]}

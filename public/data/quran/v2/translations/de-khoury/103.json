@@ -1,18 +1,1 @@
-{
-  "number": 103,
-  "edition": "de.khoury",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " وَٱلْعَصْرِ"
-    },
-    {
-      "number": "2",
-      "text": "إِنَّ ٱلْإِنسَـٰنَ لَفِى خُسْرٍ"
-    },
-    {
-      "number": "3",
-      "text": "إِلَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ وَتَوَاصَوْا۟ بِٱلْحَقِّ وَتَوَاصَوْا۟ بِٱلصَّبْرِ"
-    }
-  ]
-}
+{"number":103,"edition":"de.khoury","ayahs":[{"number":1,"text":"Beim Nachmittag"},{"number":2,"text":"Der Mensch erleidet bestimmt Verlust"},{"number":3,"text":"Außer denjenigen, die glauben und die guten Werke tun, und einander die Wahrheit nahelegen und die Geduld nahelegen"}]}

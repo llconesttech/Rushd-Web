@@ -1,18 +1,1 @@
-{
-  "number": 103,
-  "edition": "ro.grigore",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " وَٱلْعَصْرِ"
-    },
-    {
-      "number": "2",
-      "text": "إِنَّ ٱلْإِنسَـٰنَ لَفِى خُسْرٍ"
-    },
-    {
-      "number": "3",
-      "text": "إِلَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ وَتَوَاصَوْا۟ بِٱلْحَقِّ وَتَوَاصَوْا۟ بِٱلصَّبْرِ"
-    }
-  ]
-}
+{"number":103,"edition":"ro.grigore","ayahs":[{"number":1,"text":"Pe amiază"},{"number":2,"text":"Omul este sortit pierzaniei"},{"number":3,"text":"Nu şi cei care cred însă, cei care săvârşesc fapte bune, cei care se îndeamnă întru adevăr, cei care se îndeamnă întru răbdare"}]}

@@ -1,18 +1,1 @@
-{
-  "number": 108,
-  "edition": "en.shakir",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " إِنَّآ أَعْطَيْنَـٰكَ ٱلْكَوْثَرَ"
-    },
-    {
-      "number": "2",
-      "text": "فَصَلِّ لِرَبِّكَ وَٱنْحَرْ"
-    },
-    {
-      "number": "3",
-      "text": "إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ"
-    }
-  ]
-}
+{"number":108,"edition":"en.shakir","ayahs":[{"number":1,"text":"Surely We have given you Kausar"},{"number":2,"text":"Therefore pray to your Lord and make a sacrifice"},{"number":3,"text":"Surely your enemy is the one who shall be without posterity"}]}

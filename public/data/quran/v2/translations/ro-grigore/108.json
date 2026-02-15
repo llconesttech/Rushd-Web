@@ -1,18 +1,1 @@
-{
-  "number": 108,
-  "edition": "ro.grigore",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " إِنَّآ أَعْطَيْنَـٰكَ ٱلْكَوْثَرَ"
-    },
-    {
-      "number": "2",
-      "text": "فَصَلِّ لِرَبِّكَ وَٱنْحَرْ"
-    },
-    {
-      "number": "3",
-      "text": "إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ"
-    }
-  ]
-}
+{"number":108,"edition":"ro.grigore","ayahs":[{"number":1,"text":"Noi ţie ţi-am dăruit belşugul"},{"number":2,"text":"Tu, roagă-te Domnului tău şi Lui îi jertfeşte"},{"number":3,"text":"şi lipsit de urmaşi va fi cel care te urăşte"}]}

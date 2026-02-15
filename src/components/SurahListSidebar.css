@@ -49,19 +49,29 @@
 }
 
 /* ---- Header ---- */
+/* ---- Header with Tabs ---- */
 .surah-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.875rem 1rem;
+    flex-direction: column;
+    padding: 0;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: white;
     flex-shrink: 0;
 }
 
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.875rem 1rem;
+    /* Original padding */
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .surah-header h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: white;
 }
@@ -85,28 +95,170 @@
     background: rgba(255, 255, 255, 0.3);
 }
 
+/* ---- Modern Tabs ---- */
+.sidebar-tabs {
+    display: flex;
+    padding: 0 1rem 0.75rem;
+    gap: 1rem;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 0.5rem 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.tab-btn.active {
+    color: white;
+    font-weight: 600;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: white;
+    border-radius: 2px 2px 0 0;
+    animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
 /* ---- Search ---- */
 .surah-search {
     padding: 0.75rem;
     border-bottom: 1px solid var(--color-border);
     flex-shrink: 0;
+    background: white;
 }
 
 .surah-search input {
     width: 100%;
-    padding: 0.6rem 0.875rem;
+    padding: 0.75rem 1rem;
     border: 1px solid var(--color-border);
-    border-radius: 8px;
-    font-size: 0.875rem;
+    border-radius: 0.75rem;
+    font-size: 0.95rem;
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
     box-sizing: border-box;
-    background: white;
+    background: var(--color-bg-card);
 }
 
 .surah-search input:focus {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(13, 92, 99, 0.12);
+    background: white;
+}
+
+/* ---- Juz List Styles ---- */
+.juz-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    padding: 0.75rem;
+    overflow-y: auto;
+}
+
+.juz-item {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.juz-item:hover {
+    border-color: var(--color-primary);
+    background: var(--color-bg-main);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.juz-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.juz-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+/* ---- Page Input Styles ---- */
+.page-nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.page-input-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.page-input {
+    width: 80px;
+    padding: 0.75rem;
+    border: 2px solid var(--color-border);
+    border-radius: 0.75rem;
+    font-size: 1.25rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.page-input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.page-go-btn {
+    padding: 0 1.5rem;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.page-go-btn:hover {
+    background: var(--color-primary-dark);
 }
 
 /* ---- Surah List ---- */

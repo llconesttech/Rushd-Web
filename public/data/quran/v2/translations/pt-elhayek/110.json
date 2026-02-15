@@ -1,18 +1,1 @@
-{
-  "number": 110,
-  "edition": "pt.elhayek",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " إِذَا جَآءَ نَصْرُ ٱللَّهِ وَٱلْفَتْحُ"
-    },
-    {
-      "number": "2",
-      "text": "وَرَأَيْتَ ٱلنَّاسَ يَدْخُلُونَ فِى دِينِ ٱللَّهِ أَفْوَاجًا"
-    },
-    {
-      "number": "3",
-      "text": "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَٱسْتَغْفِرْهُ ۚ إِنَّهُۥ كَانَ تَوَّابًۢا"
-    }
-  ]
-}
+{"number":110,"edition":"pt.elhayek","ayahs":[{"number":1,"text":"Quando te chegar o socorro de Deus e o triunfo"},{"number":2,"text":"E vires entrar a gente, em massa, na religião de Deus"},{"number":3,"text":"Celebra, então, os louvores do teu Senhor, e implora o Seu perdão, porque Ele é Remissório"}]}

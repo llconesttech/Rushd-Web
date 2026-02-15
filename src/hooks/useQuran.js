@@ -25,6 +25,7 @@ const V2_TRANSLATIONS = [
     'en-asbab-al-nuzul-by-al-wahidi', 'en-tafsir-ibn-abbas', 'en-al-jalalayn'
 ];
 
+
 // Normalize edition ID (dots to dashes for V2 paths)
 const normalizeEditionId = (id) => id.replace('.', '-');
 
@@ -71,8 +72,9 @@ export const useSurahDetail = (number, transliterationType = 'none', selectedScr
             const normalizedTafsir = selectedTafsir !== 'none' ? normalizeEditionId(selectedTafsir) : 'none';
 
             const useV2Script = V2_SCRIPTS.includes(normalizedScript);
-            const useV2Translation = normalizedTranslation !== 'none' && V2_TRANSLATIONS.includes(normalizedTranslation);
-            const useV2Tafsir = normalizedTafsir !== 'none' && V2_TRANSLATIONS.includes(normalizedTafsir);
+            // Allow any selected translation/tafsir to attempt fetch, don't whitelist
+            const useV2Translation = normalizedTranslation !== 'none';
+            const useV2Tafsir = normalizedTafsir !== 'none';
 
             try {
                 let arabic, translation, tafsirData;

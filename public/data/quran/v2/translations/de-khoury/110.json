@@ -1,18 +1,1 @@
-{
-  "number": 110,
-  "edition": "de.khoury",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " إِذَا جَآءَ نَصْرُ ٱللَّهِ وَٱلْفَتْحُ"
-    },
-    {
-      "number": "2",
-      "text": "وَرَأَيْتَ ٱلنَّاسَ يَدْخُلُونَ فِى دِينِ ٱللَّهِ أَفْوَاجًا"
-    },
-    {
-      "number": "3",
-      "text": "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَٱسْتَغْفِرْهُ ۚ إِنَّهُۥ كَانَ تَوَّابًۢا"
-    }
-  ]
-}
+{"number":110,"edition":"de.khoury","ayahs":[{"number":1,"text":"Wenn die Unterstützung Gottes kommt, und auch der Erfolg"},{"number":2,"text":"Und du die Menschen in Scharen in die Religion Gottes eintreten siehst"},{"number":3,"text":"Dann sing das Lob deines Herrn und bitte Ihn um Vergebung. Siehe, Er wendet sich gnädig wieder zu"}]}

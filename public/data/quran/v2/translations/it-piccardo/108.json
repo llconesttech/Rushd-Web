@@ -1,18 +1,1 @@
-{
-  "number": 108,
-  "edition": "it.piccardo",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " إِنَّآ أَعْطَيْنَـٰكَ ٱلْكَوْثَرَ"
-    },
-    {
-      "number": "2",
-      "text": "فَصَلِّ لِرَبِّكَ وَٱنْحَرْ"
-    },
-    {
-      "number": "3",
-      "text": "إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ"
-    }
-  ]
-}
+{"number":108,"edition":"it.piccardo","ayahs":[{"number":1,"text":"In verità ti abbiamo dato l’abbondanza"},{"number":2,"text":"Esegui l’orazione per il tuo Signore e sacrifica"},{"number":3,"text":"In verità sarà colui che ti odia a non avere seguito"}]}

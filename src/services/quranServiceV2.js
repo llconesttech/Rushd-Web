@@ -25,6 +25,7 @@ const cache = {
 const fetchJSON = async (path) => {
     const response = await fetch(`${DATA_BASE}/${path}`);
     if (!response.ok) {
+        console.error(`Fetch failed for ${DATA_BASE}/${path}: ${response.status} ${response.statusText}`);
         throw new Error(`Failed to load: ${path}`);
     }
     return response.json();
@@ -146,7 +147,7 @@ export const search = async (query, options = {}) => {
     } = options;
 
     const results = [];
-    const queryLower = query.toLowerCase();
+    const queryLower = query.trim().toLowerCase();
 
     // Search through all surahs
     for (let surah = 1; surah <= 114; surah++) {
@@ -171,7 +172,7 @@ export const search = async (query, options = {}) => {
             }
         } catch (error) {
             // Skip if surah not available for this edition
-            console.warn(`Search: Skipping surah ${surah} for ${edition}`);
+            console.warn(`Search: Error loading Surah ${surah} for ${edition}:`, error);
         }
     }
 

@@ -60,7 +60,9 @@ const SettingsSidebar = ({ persistent = false }) => {
                         className={`tab ${activeSection === section ? 'active' : ''}`}
                         onClick={() => setActiveSection(section)}
                     >
-                        {section === 'quran' ? 'Quran' : section === 'translations' ? 'Languages' : section === 'tafsir' ? 'Tafsir' : 'Reciters'}
+                        {section === 'quran' ? 'Quran' :
+                            section === 'translations' ? 'Languages' :
+                                section === 'tafsir' ? 'Tafsir' : 'Reciters'}
                     </button>
                 ))}
             </div>
@@ -139,6 +141,8 @@ const SettingsSidebar = ({ persistent = false }) => {
                         </div>
                     </section>
                 )}
+
+
 
                 {/* Translations & Tafsir */}
                 {(activeSection === 'translations' || activeSection === 'tafsir') && (

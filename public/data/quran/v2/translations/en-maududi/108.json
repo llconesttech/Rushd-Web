@@ -1,18 +1,1 @@
-{
-  "number": 108,
-  "edition": "en.maududi",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " إِنَّآ أَعْطَيْنَـٰكَ ٱلْكَوْثَرَ"
-    },
-    {
-      "number": "2",
-      "text": "فَصَلِّ لِرَبِّكَ وَٱنْحَرْ"
-    },
-    {
-      "number": "3",
-      "text": "إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ"
-    }
-  ]
-}
+{"number":108,"edition":"en.maududi","ayahs":[{"number":1,"text":"(O Prophet), We have surely bestowed upon you good in abundance"},{"number":2,"text":"So offer Prayer and sacrifice to your Lord alone"},{"number":3,"text":"Verily your enemy alone has been cut off from the roots"}]}

@@ -1,18 +1,1 @@
-{
-  "number": 108,
-  "edition": "bs.korkut",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " إِنَّآ أَعْطَيْنَـٰكَ ٱلْكَوْثَرَ"
-    },
-    {
-      "number": "2",
-      "text": "فَصَلِّ لِرَبِّكَ وَٱنْحَرْ"
-    },
-    {
-      "number": "3",
-      "text": "إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ"
-    }
-  ]
-}
+{"number":108,"edition":"bs.korkut","ayahs":[{"number":1,"text":"Mi smo ti, uistinu, mnogō dobro dali"},{"number":2,"text":"zato se Gospodaru svome moli i kurban kolji"},{"number":3,"text":"onaj koji tebe mrzi sigurno će on bez spomena ostati"}]}

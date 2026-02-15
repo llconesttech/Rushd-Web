@@ -10,8 +10,10 @@ import HomePage from './components/HomePage';
 import ReadingProgress from './components/ReadingProgress';
 import AudioPlayer from './components/AudioPlayer';
 import PageHeader from './components/PageHeader';
-import TajweedFab from './components/TajweedFab';
-import TajweedLegendBar from './components/TajweedLegendBar';
+
+import TajweedLegendDropdown from './components/TajweedLegendDropdown';
+import TajweedPage from './components/TajweedPage';
+import { parseTajweed } from './utils/tajweedParser';
 import quranService from './services/quranService';
 import { TAJWEED_RULES } from './data/tajweedData';
 import { useSettings } from './context/SettingsContext';
@@ -26,6 +28,7 @@ import FastingRules from './components/FastingRules';
 import Taraweeh from './components/Taraweeh';
 import LaylatulQadr from './components/LaylatulQadr';
 import Sadaqah from './components/Sadaqah';
+import ShanENuzool from './components/ShanENuzool';
 import { surahData, getSurahInfo } from './data/quranData';
 
 // ─── Surah List (Grid Page) ───
@@ -134,16 +137,7 @@ const SurahList = () => {
   );
 };
 
-// ─── Tajweed Parser ───
-const parseTajweed = (text, showTooltips = false) => {
-  if (!text) return "";
-  return text.replace(/\[([a-z])(?::\d+)?\[([^\]]+)\]/g, (match, type, content) => {
-    const rule = TAJWEED_RULES[type];
-    const className = rule ? rule.css : `tj-${type}`;
-    const tooltipAttr = (showTooltips && rule) ? ` data-tooltip="${rule.label}"` : '';
-    return `<span class="${className} tajweed-char"${tooltipAttr}>${content}</span>`;
-  });
-};
+
 
 // ─── Word-by-Word Parser ───
 const parseWordByWord = (text) => {
@@ -159,8 +153,17 @@ const parseWordByWord = (text) => {
 const QuranReader = () => {
   const { number } = useParams();
   const navigate = useNavigate();
-  const [transliterationType, setTransliterationType] = useState('none');
-  const { selectedScript, selectedTranslation, selectedTafsir, uiStyle, selectedArabicFont, showTajweedTooltips } = useSettings();
+  // removed local state: const [transliterationType, setTransliterationType] = useState('none');
+  const {
+    selectedScript,
+    selectedTranslation,
+    selectedTafsir,
+    selectedTransliteration,
+    setSelectedTransliteration,
+    uiStyle,
+    selectedArabicFont,
+    showTajweedTooltips
+  } = useSettings();
   const [isScrolled, setIsScrolled] = useState(false);
 
   const surahNum = parseInt(number);
@@ -179,8 +182,11 @@ const QuranReader = () => {
   };
 
   const { data: surah, loading, error } = useSurahDetail(
-    number, transliterationType, selectedScript, selectedTranslation, selectedTafsir
+    number, selectedTransliteration, selectedScript, selectedTranslation, selectedTafsir
   );
+
+  const location = useLocation();
+  const highlightAyah = location.state?.highlightAyah;
 
   // Track scroll position for sticky header
   useEffect(() => {
@@ -190,6 +196,22 @@ const QuranReader = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Handle Deep Linking to Ayah
+  useEffect(() => {
+    if (highlightAyah && !loading && surah) {
+      // Small delay to ensure rendering
+      setTimeout(() => {
+        const element = document.getElementById(`ayah-${highlightAyah}`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Optional: Add highlight class and remove it
+          element.classList.add('highlight-ayah');
+          setTimeout(() => element.classList.remove('highlight-ayah'), 2000);
+        }
+      }, 500);
+    }
+  }, [highlightAyah, loading, surah]);
 
   const translationMeta = translations[selectedTranslation];
   const subtitleLangCode = translationMeta?.language_code || 'en';
@@ -241,8 +263,6 @@ const QuranReader = () => {
     </span>
   );
 
-
-
   // ─── Render an Ayah ───
   const renderAyah = (ayah, index) => {
     const arabicContent = isWordByWord ? (
@@ -280,6 +300,26 @@ const QuranReader = () => {
             {arabicContent}
             {ayah.transliteration && <p className="ayah-transliteration">{ayah.transliteration}</p>}
             {ayah.translation && <div className="translation-container"><p className="ayah-translation">{ayah.translation}</p></div>}
+            {ayah.tafsir && (
+              <div className="tafsir-container" style={{
+                marginTop: '1rem',
+                padding: '1rem',
+                backgroundColor: 'var(--color-surface)',
+                borderLeft: '4px solid var(--color-secondary)',
+                borderRadius: '0 8px 8px 0'
+              }}>
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: '0.5rem',
+                  fontSize: '0.85rem', fontWeight: '700', textTransform: 'uppercase',
+                  color: 'var(--color-secondary)', marginBottom: '0.5rem'
+                }}>
+                  <BookOpen size={14} /> Tafsir
+                </div>
+                <p className="ayah-tafsir" style={{ fontSize: '1rem', lineHeight: '1.6', color: 'var(--color-text-main)' }}>
+                  {ayah.tafsir}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       );
@@ -289,6 +329,7 @@ const QuranReader = () => {
     return (
       <div
         key={ayah.number}
+        id={`ayah-${ayah.number}`}
         className="ayah-row"
         data-ayah-num={ayah.numberInSurah} // For scroll tracking
         style={{
@@ -301,6 +342,26 @@ const QuranReader = () => {
         {arabicContent}
         {ayah.transliteration && <p className="ayah-transliteration">{ayah.transliteration}</p>}
         {ayah.translation && <div className="translation-container"><p className="ayah-translation">{ayah.translation}</p></div>}
+        {ayah.tafsir && (
+          <div className="tafsir-container" style={{
+            marginTop: '1rem',
+            padding: '1rem',
+            backgroundColor: 'var(--color-surface)',
+            borderLeft: '4px solid var(--color-secondary)',
+            borderRadius: '0 8px 8px 0'
+          }}>
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: '0.5rem',
+              fontSize: '0.85rem', fontWeight: '700', textTransform: 'uppercase',
+              color: 'var(--color-secondary)', marginBottom: '0.5rem'
+            }}>
+              <BookOpen size={14} /> Tafsir
+            </div>
+            <p className="ayah-tafsir" style={{ fontSize: '1rem', lineHeight: '1.6', color: 'var(--color-text-main)' }}>
+              {ayah.tafsir}
+            </p>
+          </div>
+        )}
       </div>
     );
   };
@@ -308,8 +369,8 @@ const QuranReader = () => {
   // Transliteration Selector (Always Visible)
   const transliterationSelector = (
     <select
-      value={transliterationType}
-      onChange={(e) => setTransliterationType(e.target.value)}
+      value={selectedTransliteration}
+      onChange={(e) => setSelectedTransliteration(e.target.value)}
       className="reading-select"
       title="Transliteration"
       style={{ marginLeft: 'auto' }}
@@ -327,7 +388,7 @@ const QuranReader = () => {
   return (
     <div className="quran-reader-container" style={{ '--arabic-font': getArabicFontFamily() }}>
       {/* Header Group */}
-      <div className="quran-header-group">
+      <div className="quran-header-group" style={{ position: 'sticky', top: 0, zIndex: 40 }}>
         <PageHeader
           title={`Surah ${surah.englishName}`}
           badge={surahBadge}
@@ -346,8 +407,12 @@ const QuranReader = () => {
           }
         />
 
-        {/* Tajweed Legend Bar */}
-        {isTajweed && <TajweedLegendBar />}
+        {/* Tajweed Legend Dropdown (replaces Bar) */}
+        {isTajweed && (
+          <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 60 }}>
+            <TajweedLegendDropdown />
+          </div>
+        )}
       </div>
 
       {/* Calligraphic Surah Header */}
@@ -413,26 +478,24 @@ const Layout = ({ children }) => {
 };
 
 
-const TajweedFabWrapper = () => {
-  const { selectedScript } = useSettings();
-  const isTajweed = selectedScript === 'quran-tajweed' || selectedScript === 'quran-indopak-tajweed';
-  if (!isTajweed) return null;
-  return <TajweedFab />;
-};
+
 
 // ─── App ───
 function App() {
   const navigate = useNavigate();
   const { isSurahListOpen, isSettingsOpen, toggleSurahList, toggleSettings } = useSettings();
 
-  const handleSurahSelect = (surahNumber) => {
-    navigate(`/ quran / ${surahNumber} `);
+  const handleSurahSelect = (surahNumber, ayahNumber = null) => {
+    navigate(`/quran/${surahNumber}`, { state: { highlightAyah: ayahNumber } });
   };
 
   const location = useLocation();
   const readerMatch = matchPath("/quran/:number", location.pathname);
   const surahNumber = readerMatch ? parseInt(readerMatch.params.number) : null;
   const isReaderPage = !!readerMatch;
+
+  const isShanENuzoolPage = !!matchPath("/shan-e-nuzool/:surahId?", location.pathname);
+  const showSidebars = isReaderPage || isShanENuzoolPage;
 
   const surahMeta = surahNumber ? getSurahInfo(surahNumber) : null;
   const totalAyahs = surahMeta?.ayahs || 0;
@@ -447,16 +510,19 @@ function App() {
   return (
     <Layout>
       {/* Surah Sidebar */}
-      {isReaderPage && (
+      {showSidebars && (
         <SurahListSidebar
-          onSurahSelect={handleSurahSelect}
-          currentSurah={surahNumber}
+          onSurahSelect={(num) => {
+            if (isShanENuzoolPage) navigate(`/shan-e-nuzool/${num}`);
+            else handleSurahSelect(num);
+          }}
+          currentSurah={isShanENuzoolPage ? (parseInt(location.pathname.split('/').pop()) || 1) : surahNumber}
           persistent={true}
         />
       )}
 
       {/* Backdrop Overlay (mobile/tablet) */}
-      {isReaderPage && (
+      {showSidebars && (
         <div
           className={`sidebar - backdrop ${anySidebarOpen ? 'visible' : ''} `}
           onClick={handleBackdropClick}
@@ -470,8 +536,8 @@ function App() {
         <main className="reader-main-content">
           <div style={{
             width: '100%',
-            maxWidth: isReaderPage ? '864px' : '1200px',
-            padding: isReaderPage ? '0.5rem' : '2rem',
+            maxWidth: (isReaderPage || isShanENuzoolPage) ? '864px' : '1200px',
+            padding: (isReaderPage || isShanENuzoolPage) ? '0.5rem' : '2rem',
             margin: '0 auto',
           }}>
             <Routes>
@@ -489,6 +555,9 @@ function App() {
               <Route path="/taraweeh" element={<Taraweeh />} />
               <Route path="/laylatul-qadr" element={<LaylatulQadr />} />
               <Route path="/sadaqah" element={<Sadaqah />} />
+              <Route path="/shan-e-nuzool" element={<ShanENuzool />} />
+              <Route path="/shan-e-nuzool/:surahId" element={<ShanENuzool />} />
+              <Route path="/tajweed" element={<TajweedPage />} />
               <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
             </Routes>
           </div>
@@ -503,15 +572,14 @@ function App() {
       </div>
 
       {/* Settings Sidebar */}
-      {isReaderPage && (
+      {showSidebars && (
         <SettingsSidebar persistent={true} />
       )}
 
-      {/* Tajweed FAB (mobile only via CSS) */}
-      {isReaderPage && <TajweedFabWrapper />}
+      {/* Tajweed FAB Removed */}
 
       {/* Mobile Bottom Action Bar */}
-      {isReaderPage && (
+      {showSidebars && (
         <div className="mobile-bottom-bar">
           <button className={`bar - btn ${isSurahListOpen ? 'active' : ''} `} onClick={toggleSurahList}>
             <BookOpen size={22} />

@@ -1,18 +1,1 @@
-{
-  "number": 108,
-  "edition": "de.bubenheim",
-  "ayahs": [
-    {
-      "number": "1",
-      "text": " إِنَّآ أَعْطَيْنَـٰكَ ٱلْكَوْثَرَ"
-    },
-    {
-      "number": "2",
-      "text": "فَصَلِّ لِرَبِّكَ وَٱنْحَرْ"
-    },
-    {
-      "number": "3",
-      "text": "إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ"
-    }
-  ]
-}
+{"number":108,"edition":"de.bubenheim","ayahs":[{"number":1,"text":"Wir haben dir ja al-Kautar gegeben"},{"number":2,"text":"So bete zu deinem Herrn und opfere"},{"number":3,"text":"Gewiß, derjenige, der dich haßt, - er ist vom Guten abgetrennt"}]}

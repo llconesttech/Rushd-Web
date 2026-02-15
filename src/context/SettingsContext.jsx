@@ -29,6 +29,9 @@ export const SettingsProvider = ({ children }) => {
     // Tajweed Tooltips
     const [showTajweedTooltips, setShowTajweedTooltips] = useState(true);
 
+    // Transliteration (default none)
+    const [selectedTransliteration, setSelectedTransliteration] = useState('none');
+
     const toggleSurahList = () => setIsSurahListOpen(!isSurahListOpen);
     const toggleSettings = () => setIsSettingsOpen(!isSettingsOpen);
 
@@ -43,6 +46,8 @@ export const SettingsProvider = ({ children }) => {
         setSelectedTranslation,
         selectedTafsir,
         setSelectedTafsir,
+        selectedTransliteration,
+        setSelectedTransliteration,
         selectedReciter,
         setSelectedReciter,
         uiStyle,
