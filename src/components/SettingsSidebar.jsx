@@ -4,7 +4,12 @@ import { useSettings } from '../context/SettingsContext';
 import { quranScripts, translations, languageList, reciters } from '../data/quranData';
 import './SettingsSidebar.css';
 
+import { useLocation } from 'react-router-dom';
+
 const SettingsSidebar = ({ persistent = false }) => {
+    const location = useLocation();
+    const isShanENuzool = location.pathname.startsWith('/shan-e-nuzool');
+
     const {
         isSettingsOpen,
         toggleSettings,
@@ -25,7 +30,15 @@ const SettingsSidebar = ({ persistent = false }) => {
     } = useSettings();
 
     const [searchTerm, setSearchTerm] = useState('');
-    const [activeSection, setActiveSection] = useState('quran');
+
+    // Default to 'translations' if on Shan-e-Nuzool page, else 'quran'
+    const [activeSection, setActiveSection] = useState(isShanENuzool ? 'translations' : 'quran');
+
+    // Update active section if path changes (e.g. navigating to/from Shan-e-Nuzool)
+    React.useEffect(() => {
+        if (isShanENuzool) setActiveSection('translations');
+        else if (activeSection === 'translations' && !isShanENuzool) setActiveSection('quran'); // Optional reset
+    }, [isShanENuzool]);
 
     const isIndoPak = selectedScript === 'quran-indopak' || selectedScript === 'quran-indopak-tajweed';
     const isTajweed = selectedScript === 'quran-tajweed' || selectedScript === 'quran-indopak-tajweed';
@@ -44,6 +57,10 @@ const SettingsSidebar = ({ persistent = false }) => {
         isSettingsOpen ? 'open' : ''
     ].filter(Boolean).join(' ');
 
+    const tabs = isShanENuzool
+        ? ['translations']
+        : ['quran', 'translations', 'tafsir', 'reciters'];
+
     return (
         <aside className={className}>
             <div className="settings-header">
@@ -54,11 +71,12 @@ const SettingsSidebar = ({ persistent = false }) => {
             </div>
 
             <div className="section-tabs">
-                {['quran', 'translations', 'tafsir', 'reciters'].map(section => (
+                {tabs.map(section => (
                     <button
                         key={section}
                         className={`tab ${activeSection === section ? 'active' : ''}`}
                         onClick={() => setActiveSection(section)}
+                        style={{ flex: isShanENuzool ? 1 : undefined }}
                     >
                         {section === 'quran' ? 'Quran' :
                             section === 'translations' ? 'Languages' :
