@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { pageMapping } from '../data/pageMapping';
 import { X } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
 import { surahData } from '../data/quranData';
@@ -13,6 +15,10 @@ const JUZ_START_SURAHS = {
     27: 51, 28: 58, 29: 67, 30: 78
 };
 
+const toArabicNumerals = (n) => {
+    return n.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+};
+
 const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) => {
     const {
         isSurahListOpen,
@@ -25,6 +31,7 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) =
     const [searchTerm, setSearchTerm] = useState('');
     const [activeTab, setActiveTab] = useState('surah'); // 'surah', 'juz', 'page', 'search'
     const [pageInput, setPageInput] = useState('');
+    const navigate = useNavigate();
 
     // Verse Search State
     const [verseQuery, setVerseQuery] = useState('');
@@ -76,8 +83,16 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) =
 
     const handlePageSubmit = (e) => {
         e.preventDefault();
-        // Placeholder for Page navigation
-        alert("Page navigation requires page-to-surah mapping data which is currently being implemented.");
+        const pageNum = parseInt(pageInput);
+        if (pageNum >= 1 && pageNum <= 604) {
+            const mapping = pageMapping[pageNum];
+            if (mapping && mapping.start) {
+                navigate(`/quran/${mapping.start.surah}?page=${pageNum}`);
+                if (!persistent || window.innerWidth < 1280) {
+                    toggleSurahList();
+                }
+            }
+        }
     };
 
     // Verse Search Handler
@@ -235,7 +250,7 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) =
                 <div className="juz-list">
                     {juzList.map(juz => (
                         <div key={juz} className="juz-item" onClick={() => handleJuzSelect(juz)}>
-                            <span className="juz-number">{juz}</span>
+                            <span className="juz-number">{toArabicNumerals(juz)}</span>
                             <span className="juz-label">Juz {juz}</span>
                         </div>
                     ))}

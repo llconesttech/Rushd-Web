@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getPrayerTimes, getAvailableMethods, getAvailableMadhabs, getAutoCalculationMethod } from '../services/prayerTimesService';
 import { getTodayAllCalendars } from '../services/dateService';
+import { useAppLocation } from '../context/LocationContext';
 import RamadanWidget from './RamadanWidget';
 import './HomePage.css';
 
@@ -66,9 +67,10 @@ const featureSections = [
 ];
 
 const HomePage = () => {
+    // Alias global state to local names to match existing JSX usage
+    const { location, coords, loading: locationLoading } = useAppLocation();
+
     const [salahTimes, setSalahTimes] = useState(null);
-    const [location, setLocation] = useState({ city: 'Loading...', country: '' });
-    const [coords, setCoords] = useState(null);
     const [currentPrayer, setCurrentPrayer] = useState(null);
     const [currentForbidden, setCurrentForbidden] = useState(null);
     const [currentSunnah, setCurrentSunnah] = useState(null);
@@ -77,7 +79,7 @@ const HomePage = () => {
 
     // Load method from localStorage or default
     const [method, setMethod] = useState(() => {
-        return localStorage.getItem('prayerMethod') || null; // Null initially to trigger auto-detection if not set
+        return localStorage.getItem('prayerMethod') || null;
     });
 
     const [madhab, setMadhab] = useState(() => {
@@ -96,18 +98,6 @@ const HomePage = () => {
             const [hours, minutes] = timeStr.split(':').map(Number);
             return hours * 60 + minutes;
         };
-
-        // 1. Check Prayer Times with proper end times based on forbidden periods
-        // Prayer validity:
-        // - Fajr: starts at Fajr, ends at Sunrise (forbidden.sunrise.start)
-        // - (Sunrise forbidden: ~15 min after sunrise)
-        // - Ishraq/Duha time: after sunrise, ends at Zawal
-        // - (Zawal forbidden: ~10 min before Dhuhr until Dhuhr)
-        // - Dhuhr: starts at Dhuhr, ends at Asr
-        // - Asr: starts at Asr, ends at Sunset (forbidden.sunset.start)
-        // - (Sunset forbidden: ~15 min before Maghrib)
-        // - Maghrib: starts at Maghrib, ends at Isha
-        // - Isha: starts at Isha, ends at Fajr (next day)
 
         const fajrStart = parseTimeToMinutes(salahTimes.Fajr);
         const dhuhrStart = parseTimeToMinutes(salahTimes.Dhuhr);
@@ -198,7 +188,6 @@ const HomePage = () => {
         }
     };
 
-
     // Calculate prayer times
     const calculatePrayerTimes = (lat, lng, selectedMethod) => {
         try {
@@ -226,65 +215,22 @@ const HomePage = () => {
         }
     };
 
-    // Get location name from timezone
-    const getLocationName = () => {
-        try {
-            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            const city = timezone.split('/')[1]?.replace(/_/g, ' ') || 'Unknown';
-            setLocation({ city, country: '' });
-        } catch {
-            setLocation({ city: 'Unknown', country: '' });
-        }
-    };
-
-    // Initial geolocation and calculation
+    // Effect to calculate times when location or method changes
     useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const lat = position.coords.latitude;
-                    const lng = position.coords.longitude;
-                    setCoords({ lat, lng });
+        if (locationLoading) return;
 
-                    // Auto-detect method if not set
-                    let activeMethod = method;
-                    if (!activeMethod) {
-                        activeMethod = getAutoCalculationMethod(lat, lng);
-                        setMethod(activeMethod);
-                    }
-
-                    calculatePrayerTimes(lat, lng, activeMethod);
-                    getLocationName();
-                },
-                (error) => {
-                    console.error('Geolocation error:', error);
-                    const defaultCoords = { lat: 23.8103, lng: 90.4125 };
-                    setCoords(defaultCoords);
-
-                    let activeMethod = method;
-                    if (!activeMethod) {
-                        activeMethod = getAutoCalculationMethod(defaultCoords.lat, defaultCoords.lng);
-                        setMethod(activeMethod);
-                    }
-
-                    calculatePrayerTimes(defaultCoords.lat, defaultCoords.lng, activeMethod);
-                    setLocation({ city: 'Dhaka', country: 'Bangladesh' });
-                }
-            );
-        } else {
-            const defaultCoords = { lat: 23.8103, lng: 90.4125 };
-            setCoords(defaultCoords);
-
+        if (coords) {
+            // Auto-detect method if not set
             let activeMethod = method;
             if (!activeMethod) {
-                activeMethod = getAutoCalculationMethod(defaultCoords.lat, defaultCoords.lng);
+                activeMethod = getAutoCalculationMethod(coords.lat, coords.lng);
                 setMethod(activeMethod);
             }
 
-            calculatePrayerTimes(defaultCoords.lat, defaultCoords.lng, activeMethod);
-            setLocation({ city: 'Dhaka', country: 'Bangladesh' });
+            calculatePrayerTimes(coords.lat, coords.lng, activeMethod);
         }
-    }, []);
+    }, [coords, locationLoading, method, madhab]);
+
 
     // Timer to update status every 30 seconds
     useEffect(() => {
@@ -341,7 +287,7 @@ const HomePage = () => {
             {/* Ramadan Widget - Shows Sehri/Iftar countdown */}
             {coords && (
                 <section className="container">
-                    <RamadanWidget latitude={coords.latitude} longitude={coords.longitude} />
+                    <RamadanWidget latitude={coords.lat} longitude={coords.lng} />
                 </section>
             )}
 
@@ -385,7 +331,7 @@ const HomePage = () => {
 
 
                         <span className="salah-location">
-                            📍 {location.city}{location.country ? `, ${location.country}` : ''}
+                            📍 {location ? location.city : 'Loading...'}{location?.country ? `, ${location.country}` : ''}
                         </span>
                     </div>
                 </div>

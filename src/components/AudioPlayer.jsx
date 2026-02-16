@@ -54,8 +54,17 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         }
     };
 
+    // Refs to ensure event handlers access latest state
+    const stateRef = useRef({ isAutoPlay, currentAyah, totalAyahs, isPlaying });
+    useEffect(() => {
+        stateRef.current = { isAutoPlay, currentAyah, totalAyahs, isPlaying };
+    }, [isAutoPlay, currentAyah, totalAyahs, isPlaying]);
+
     const handleEnded = () => {
-        if (isAutoPlay && currentAyah < totalAyahs) {
+        const state = stateRef.current;
+
+        if (state.isAutoPlay && state.currentAyah < state.totalAyahs) {
+            setIsPlaying(true); // Ensure playing plays next track
             setCurrentAyah(prev => prev + 1);
         } else {
             setIsPlaying(false);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, Settings, MessageCircle } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
-import { quranScripts, translations, languageList, reciters } from '../data/quranData';
+import { quranScripts, translations, languageList, reciters, shanENuzoolList } from '../data/quranData';
 import './SettingsSidebar.css';
 
 import { useLocation } from 'react-router-dom';
@@ -26,7 +26,9 @@ const SettingsSidebar = ({ persistent = false }) => {
         selectedArabicFont,
         setSelectedArabicFont,
         showTajweedTooltips,
-        setShowTajweedTooltips
+        setShowTajweedTooltips,
+        selectedShanENuzool,
+        setSelectedShanENuzool
     } = useSettings();
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -58,7 +60,7 @@ const SettingsSidebar = ({ persistent = false }) => {
     ].filter(Boolean).join(' ');
 
     const tabs = isShanENuzool
-        ? ['translations']
+        ? ['translations', 'shan-e-nuzool']
         : ['quran', 'translations', 'tafsir', 'reciters'];
 
     return (
@@ -80,7 +82,8 @@ const SettingsSidebar = ({ persistent = false }) => {
                     >
                         {section === 'quran' ? 'Quran' :
                             section === 'translations' ? 'Languages' :
-                                section === 'tafsir' ? 'Tafsir' : 'Reciters'}
+                                section === 'shan-e-nuzool' ? 'Context' :
+                                    section === 'tafsir' ? 'Tafsir' : 'Reciters'}
                     </button>
                 ))}
             </div>
@@ -233,6 +236,25 @@ const SettingsSidebar = ({ persistent = false }) => {
                                     ));
                             })()}
                         </div>
+                    </section>
+                )}
+
+                {/* Shan-e-Nuzool Context */}
+                {activeSection === 'shan-e-nuzool' && (
+                    <section className="settings-section">
+                        <h4>Context Source</h4>
+                        <ul className="settings-list">
+                            {Object.entries(shanENuzoolList).map(([key, value]) => (
+                                <li
+                                    key={key}
+                                    className={`settings-item ${selectedShanENuzool === key ? 'active' : ''}`}
+                                    onClick={() => setSelectedShanENuzool(selectedShanENuzool === key ? 'none' : key)}
+                                >
+                                    <span className="item-name">{value.english_name}</span>
+                                    {value.native_name && <span className="native-name">{value.native_name}</span>}
+                                </li>
+                            ))}
+                        </ul>
                     </section>
                 )}
 

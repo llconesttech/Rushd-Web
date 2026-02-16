@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate, useLocation, matchPath } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate, useLocation, matchPath, useSearchParams } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, BookOpen, Settings, Home } from 'lucide-react';
 import { useSurahList, useSurahDetail } from './hooks/useQuran';
 import { translations, languageList } from './data/quranData';
@@ -58,7 +58,8 @@ const SurahList = () => {
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
         gap: '1rem',
-        marginTop: '1rem'
+        marginTop: '1rem',
+        direction: 'rtl'
       }}>
         {enhancedSurahs.map(surah => (
           <Link to={`/quran/${surah.number}`} key={surah.number} style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -69,7 +70,8 @@ const SurahList = () => {
               boxShadow: 'var(--shadow-sm)',
               border: '1px solid var(--color-border)',
               transition: 'all 0.2s',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              direction: 'rtl'
             }} className="surah-card">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                 <span style={{
@@ -164,6 +166,8 @@ const QuranReader = () => {
     selectedArabicFont,
     showTajweedTooltips
   } = useSettings();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageFilter = searchParams.get('page');
   const [isScrolled, setIsScrolled] = useState(false);
 
   const surahNum = parseInt(number);
@@ -401,8 +405,14 @@ const QuranReader = () => {
           isScrolled={isScrolled}
           actions={
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '100%', justifyContent: 'flex-end' }}>
-              <ReadingProgress surah={surah} />
-              {transliterationSelector}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <ReadingProgress
+                  surah={surah}
+                  pageFilter={pageFilter}
+                  onClearFilter={() => setSearchParams({})}
+                />
+                {transliterationSelector}
+              </div>
             </div>
           }
         />
@@ -438,7 +448,7 @@ const QuranReader = () => {
 
       {/* Ayahs */}
       <div className={`ayah-content-wrap ${isStyle2 ? 'transparent' : ''}`}>
-        {surah.ayahs.map((ayah, index) => {
+        {(pageFilter ? surah.ayahs.filter(a => a.page === parseInt(pageFilter)) : surah.ayahs).map((ayah, index) => {
           const prevRuku = index > 0 ? surah.ayahs[index - 1].ruku : ayah.ruku;
           const showRukuDivider = index > 0 && ayah.ruku !== prevRuku;
           return (

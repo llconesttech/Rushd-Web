@@ -32,6 +32,9 @@ export const SettingsProvider = ({ children }) => {
     // Transliteration (default none)
     const [selectedTransliteration, setSelectedTransliteration] = useState('none');
 
+    // Shan-e-Nuzool Settings
+    const [selectedShanENuzool, setSelectedShanENuzool] = useState('en-al-wahidi');
+
     const toggleSurahList = () => setIsSurahListOpen(!isSurahListOpen);
     const toggleSettings = () => setIsSettingsOpen(!isSettingsOpen);
 
@@ -56,6 +59,8 @@ export const SettingsProvider = ({ children }) => {
         setSelectedArabicFont,
         showTajweedTooltips,
         setShowTajweedTooltips,
+        selectedShanENuzool,
+        setSelectedShanENuzool
     };
 
     return (

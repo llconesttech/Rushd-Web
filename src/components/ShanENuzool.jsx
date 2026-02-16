@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { BookOpen, ArrowLeft, Loader, Settings } from 'lucide-react';
-import { surahData, translations } from '../data/quranData';
+import { surahData, translations, shanENuzoolList } from '../data/quranData';
 import { useSurahDetail } from '../hooks/useQuran';
 import { useSettings } from '../context/SettingsContext';
 import './ShanENuzool.css';
@@ -21,7 +21,8 @@ const ShanENuzool = () => {
     const {
         selectedTranslation,
         isSettingsOpen,
-        toggleSettings
+        toggleSettings,
+        selectedShanENuzool
     } = useSettings();
 
     // Determine Language for Shan-e-Nuzool
@@ -43,21 +44,17 @@ const ShanENuzool = () => {
     // Load Shan-e-Nuzool Data
     useEffect(() => {
         const fetchShanData = async () => {
+            if (selectedShanENuzool === 'none') {
+                setShanData({});
+                setLoadingShan(false);
+                return;
+            }
+
             setLoadingShan(true);
             try {
-                // Dynamic source based on language
-                // Currently only 'en' is fully supported with 'en-al-wahidi.json'
-                // For others, we'd look for `${langCode}-shan-e-nuzool.json`
-                let sourceUrl = '/data/quran/v2/shan-e-nuzool/en-al-wahidi.json';
-
-                if (langCode !== 'en') {
-                    // Try to load language specific file if it exists (e.g. bn-shan-e-nuzool.json)
-                    // For now, this will likely 404 for non-en, which is expected behavior until data is added
-                    sourceUrl = `/data/quran/v2/shan-e-nuzool/${langCode}-shan-e-nuzool.json`;
-                }
-
-                // Temporary fallback for dev: if 'bn', maybe fallback to english if bn missing?
-                // User said "language wise shan-e-nuzuls". Let's try strict loading.
+                // Dynamic source based on selected setting
+                const sourceId = selectedShanENuzool || 'en-al-wahidi';
+                let sourceUrl = `/data/quran/v2/shan-e-nuzool/${sourceId}.json`;
 
                 const response = await fetch(sourceUrl);
                 if (!response.ok) throw new Error('Language data not found');
@@ -76,12 +73,7 @@ const ShanENuzool = () => {
                 }
                 setShanData(dataMap);
             } catch (error) {
-                console.warn(`Failed to load Shan-e-Nuzool data for ${langCode}`, error);
-                // Fallback to empty (or maybe English?)
-                // setShanData({}); // Clear data if not found
-
-                // OPTIONAL: Fallback to English if current lang fails?
-                // For now, let's just clear it to show "No entries" so user knows content is missing for this lang.
+                console.warn(`Failed to load Shan-e-Nuzool data`, error);
                 setShanData({});
             } finally {
                 setLoadingShan(false);
@@ -89,9 +81,11 @@ const ShanENuzool = () => {
         };
 
         fetchShanData();
-    }, [selectedSurahNum, langCode]);
+    }, [selectedSurahNum, selectedShanENuzool]);
 
-    const isLoading = loadingShan || loadingQuran;
+    // We don't block UI on Quran text loading, only Shan-e-Nuzool loading
+    // because the main purpose of this page is Shan-e-Nuzool
+    const isLoading = loadingShan;
 
     return (
         <div className="shan-e-nuzool-page" style={{ '--arabic-font': FORCED_FONT }}>
@@ -120,34 +114,47 @@ const ShanENuzool = () => {
                     <>
                         <div className="info-card">
                             <p className="source-citation">
-                                <strong>Language:</strong> {langCode.toUpperCase()}
+                                <strong>Source:</strong> {shanENuzoolList[selectedShanENuzool]?.english_name || selectedShanENuzool}
                                 {Object.keys(shanData).length === 0 && <span className="no-data-badge"> (No entries found for this language)</span>}
                             </p>
                         </div>
 
                         <div className="ayahs-list">
-                            {quranContent?.ayahs.map((ayah, index) => {
-                                const contextText = shanData[ayah.numberInSurah];
+                            {/* Use static Ayah count to drive list, allowing independence from quranContent loading/success */}
+                            {Array.from({ length: currentSurah.ayahs }, (_, i) => i + 1).map((ayahNum) => {
+                                const ayahIndex = ayahNum - 1;
+                                const ayahData = quranContent?.ayahs?.[ayahIndex];
+                                const contextText = shanData[ayahNum];
+
+                                // Skip rendering if we have absolutely nothing (no text, no context)
+                                // But usually we want to show numbers at least?
+                                // Let's show card if we have ANY data or if we are just waiting
 
                                 return (
-                                    <div key={ayah.number} className={`ayah-card ${contextText ? 'has-context' : ''}`} id={`ayah-${ayah.numberInSurah}`}>
+                                    <div key={ayahNum} className={`ayah-card ${contextText ? 'has-context' : ''}`} id={`ayah-${ayahNum}`}>
                                         <div className="ayah-header-badge">
-                                            <span className="ayah-num-badge">{currentSurah.number}:{ayah.numberInSurah}</span>
+                                            <span className="ayah-num-badge">{currentSurah.number}:{ayahNum}</span>
                                         </div>
 
                                         {/* Arabic Text - Wired to IndoPak */}
-                                        <p className="ayah-arabic arabic-text indopak"
-                                            style={{ fontFamily: FORCED_FONT }}>
-                                            {ayah.text}
-                                        </p>
+                                        {ayahData?.text ? (
+                                            <p className="ayah-arabic arabic-text indopak"
+                                                style={{ fontFamily: FORCED_FONT }}>
+                                                {ayahData.text}
+                                            </p>
+                                        ) : (
+                                            !loadingQuran && <p className="text-muted text-center text-sm py-4">Arabic text unavailable</p>
+                                        )}
 
                                         {/* Translation */}
-                                        <p className="ayah-translation">
-                                            {ayah.translation}
-                                        </p>
+                                        {selectedTranslation !== 'none' && (
+                                            <p className="ayah-translation">
+                                                {ayahData?.translation || (loadingQuran ? "Loading..." : "")}
+                                            </p>
+                                        )}
 
                                         {/* Shan-e-Nuzool Context */}
-                                        {contextText && (
+                                        {selectedShanENuzool !== 'none' && contextText && (
                                             <div className="shan-context-box">
                                                 <div className="context-label">
                                                     <BookOpen size={16} /> Context of Revelation

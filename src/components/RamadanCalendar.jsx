@@ -2,37 +2,20 @@ import React, { useState, useEffect, useMemo } from 'react';
 import PageHeader from './PageHeader';
 import { Moon, Sun, Clock, Minus, Plus, MapPin, RefreshCw } from 'lucide-react';
 import { getRamadanInfo, getRamadanTimetable, getTodaySehriIftar } from '../services/ramadanService';
+import { useAppLocation } from '../context/LocationContext';
 import './RamadanCalendar.css';
 
 const RamadanCalendar = () => {
-    const [location, setLocation] = useState(null);
-    const [locationError, setLocationError] = useState(null);
+    // Use Global Location Context
+    const { location, loading: locationLoading, error: locationError } = useAppLocation();
+
+    // Local state
     const [dateOffset, setDateOffset] = useState(0);
     const [countdown, setCountdown] = useState(null);
-    const [loading, setLoading] = useState(true);
 
-    // Get user's location
-    useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    setLocation({
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude
-                    });
-                    setLoading(false);
-                },
-                (error) => {
-                    setLocationError('Unable to get location. Using default (Dhaka).');
-                    setLocation({ latitude: 23.8103, longitude: 90.4125 }); // Dhaka
-                    setLoading(false);
-                }
-            );
-        } else {
-            setLocation({ latitude: 23.8103, longitude: 90.4125 });
-            setLoading(false);
-        }
-    }, []);
+    // Combine loading states if needed, or just rely on location loading
+    const loading = locationLoading;
+
 
     // Get Ramadan info
     const ramadanInfo = useMemo(() => {

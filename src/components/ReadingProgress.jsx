@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
  * Tracks the current reading position (Page, Juz, Hizb) using IntersectionObserver.
  * Robustly detects which Ayah is currently at the top of the viewport.
  */
-const ReadingProgress = ({ surah }) => {
+const ReadingProgress = ({ surah, pageFilter, onClearFilter }) => {
   // Initialize with first ayah
   const getInitialPos = () => {
     if (!surah?.ayahs?.[0]) return null;
@@ -97,7 +97,18 @@ const ReadingProgress = ({ surah }) => {
   return (
     <div className="scrolled-reading-bar">
       <div className="reading-info-group">
-        <span className="reading-chip">Page {currentPos.page}</span>
+        {pageFilter ? (
+          <span
+            className="reading-chip"
+            onClick={onClearFilter}
+            style={{ cursor: 'pointer', backgroundColor: '#fee2e2', color: '#991b1b', display: 'flex', alignItems: 'center', gap: '4px' }}
+            title="Clear Page Filter"
+          >
+            Page {pageFilter} <span>×</span>
+          </span>
+        ) : (
+          <span className="reading-chip">Page {currentPos.page}</span>
+        )}
         <span className="reading-chip">Juz {currentPos.juz}</span>
         <span className="reading-chip">Hizb {currentPos.hizb}</span>
       </div>
