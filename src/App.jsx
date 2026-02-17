@@ -28,7 +28,10 @@ import FastingRules from './components/FastingRules';
 import Taraweeh from './components/Taraweeh';
 import LaylatulQadr from './components/LaylatulQadr';
 import Sadaqah from './components/Sadaqah';
-import ShanENuzool from './components/ShanENuzool';
+import HadithBooks from './components/HadithBooks';
+import HadithChapters from './components/HadithChapters';
+import HadithReader from './components/HadithReader';
+import NarratorDetail from './components/NarratorDetail';
 import { surahData, getSurahInfo } from './data/quranData';
 
 // ─── Surah List (Grid Page) ───
@@ -505,8 +508,7 @@ function App() {
   const surahNumber = readerMatch ? parseInt(readerMatch.params.number) : null;
   const isReaderPage = !!readerMatch;
 
-  const isShanENuzoolPage = !!matchPath("/shan-e-nuzool/:surahId?", location.pathname);
-  const showSidebars = isReaderPage || isShanENuzoolPage;
+  const showSidebars = isReaderPage;
 
   const surahMeta = surahNumber ? getSurahInfo(surahNumber) : null;
   const totalAyahs = surahMeta?.ayahs || 0;
@@ -523,11 +525,8 @@ function App() {
       {/* Surah Sidebar */}
       {showSidebars && (
         <SurahListSidebar
-          onSurahSelect={(num) => {
-            if (isShanENuzoolPage) navigate(`/shan-e-nuzool/${num}`);
-            else handleSurahSelect(num);
-          }}
-          currentSurah={isShanENuzoolPage ? (parseInt(location.pathname.split('/').pop()) || 1) : surahNumber}
+          onSurahSelect={(num) => handleSurahSelect(num)}
+          currentSurah={surahNumber}
           persistent={true}
         />
       )}
@@ -547,8 +546,8 @@ function App() {
         <main className="reader-main-content">
           <div style={{
             width: '100%',
-            maxWidth: (isReaderPage || isShanENuzoolPage) ? '864px' : '1200px',
-            padding: (isReaderPage || isShanENuzoolPage) ? '0.5rem' : '2rem',
+            maxWidth: isReaderPage ? '864px' : '1200px',
+            padding: isReaderPage ? '0.5rem' : '2rem',
             margin: '0 auto',
           }}>
             <Routes>
@@ -566,8 +565,10 @@ function App() {
               <Route path="/taraweeh" element={<Taraweeh />} />
               <Route path="/laylatul-qadr" element={<LaylatulQadr />} />
               <Route path="/sadaqah" element={<Sadaqah />} />
-              <Route path="/shan-e-nuzool" element={<ShanENuzool />} />
-              <Route path="/shan-e-nuzool/:surahId" element={<ShanENuzool />} />
+              <Route path="/hadith" element={<HadithBooks />} />
+              <Route path="/hadith/:bookId" element={<HadithChapters />} />
+              <Route path="/hadith/narrator/:narratorId" element={<NarratorDetail />} />
+              <Route path="/hadith/:bookId/:sectionId" element={<HadithReader />} />
               <Route path="/tajweed" element={<TajweedPage />} />
               <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
             </Routes>
