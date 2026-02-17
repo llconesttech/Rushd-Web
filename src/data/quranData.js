@@ -250,7 +250,13 @@ export const translations = {
     "ur-tafsir-bayan-ul-quran": { "language_code": "ur", "english_name": "Tafsir Bayan ul Quran", "native_name": "Dr. Israr Ahmad", "type": "tafsir" },
     "ur-tazkirul-quran": { "language_code": "ur", "english_name": "Tazkirul Quran", "native_name": "Maulana Wahid Uddin Khan", "type": "tafsir" },
 
-    "zh.majian": { "language_code": "zh", "english_name": "Ma Jian", "native_name": "Ma Jian (Traditional)", "type": "translation" }
+    "zh.majian": { "language_code": "zh", "english_name": "Ma Jian", "native_name": "Ma Jian (Traditional)", "type": "translation" },
+
+    // --- Transliterations ---
+    "en.transliteration": { "language_code": "en", "english_name": "English Transliteration", "native_name": "Transliteration", "type": "transliteration" },
+    "ru.transliteration": { "language_code": "ru", "english_name": "Russian Transliteration", "native_name": "Транслитерация", "type": "transliteration" },
+    "tr.transliteration": { "language_code": "tr", "english_name": "Turkish Transliteration", "native_name": "Transliterasyon", "type": "transliteration" },
+    "bn.transliteration": { "language_code": "bn", "english_name": "Bengali Transliteration", "native_name": "বাংলা উচ্চারণ", "type": "transliteration" }
 };
 
 // All available reciters (Audio)

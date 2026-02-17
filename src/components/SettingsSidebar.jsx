@@ -61,7 +61,7 @@ const SettingsSidebar = ({ persistent = false }) => {
 
     const tabs = isShanENuzool
         ? ['translations', 'shan-e-nuzool']
-        : ['quran', 'translations', 'tafsir', 'reciters'];
+        : ['quran', 'translations', 'tafsir', 'transliteration', 'reciters'];
 
     return (
         <aside className={className}>
@@ -83,7 +83,8 @@ const SettingsSidebar = ({ persistent = false }) => {
                         {section === 'quran' ? 'Quran' :
                             section === 'translations' ? 'Languages' :
                                 section === 'shan-e-nuzool' ? 'Context' :
-                                    section === 'tafsir' ? 'Tafsir' : 'Reciters'}
+                                    section === 'tafsir' ? 'Tafsir' :
+                                        section === 'transliteration' ? 'Transliteration' : 'Reciters'}
                     </button>
                 ))}
             </div>
@@ -165,12 +166,15 @@ const SettingsSidebar = ({ persistent = false }) => {
 
 
 
-                {/* Translations & Tafsir */}
-                {(activeSection === 'translations' || activeSection === 'tafsir') && (
+                {/* Translations, Tafsir & Transliteration */}
+                {(activeSection === 'translations' || activeSection === 'tafsir' || activeSection === 'transliteration') && (
                     <section className="settings-section">
                         <input
                             type="text"
-                            placeholder={activeSection === 'tafsir' ? "Search tafsirs..." : "Search translations..."}
+                            placeholder={
+                                activeSection === 'tafsir' ? "Search tafsirs..." :
+                                    activeSection === 'transliteration' ? "Search transliterations..." : "Search translations..."
+                            }
                             className="search-input"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
@@ -185,7 +189,10 @@ const SettingsSidebar = ({ persistent = false }) => {
                                         languageList[value.language_code]?.english_name?.toLowerCase().includes(searchTerm.toLowerCase());
 
                                     if (!matchesSearch) return false;
-                                    return activeSection === 'tafsir' ? value.type === 'tafsir' : value.type !== 'tafsir';
+
+                                    if (activeSection === 'tafsir') return value.type === 'tafsir';
+                                    if (activeSection === 'transliteration') return value.type === 'transliteration';
+                                    return value.type === 'translation';
                                 });
 
                                 const groups = {};
@@ -217,10 +224,16 @@ const SettingsSidebar = ({ persistent = false }) => {
                                                 {group.items.map(item => (
                                                     <li
                                                         key={item.key}
-                                                        className={`settings-item ${(activeSection === 'tafsir' ? selectedTafsir : selectedTranslation) === item.key ? 'active' : ''}`}
+                                                        className={`settings-item ${(() => {
+                                                            if (activeSection === 'tafsir') return selectedTafsir === item.key;
+                                                            if (activeSection === 'transliteration') return selectedTransliteration === item.key;
+                                                            return selectedTranslation === item.key;
+                                                        })() ? 'active' : ''}`}
                                                         onClick={() => {
                                                             if (activeSection === 'tafsir') {
                                                                 setSelectedTafsir(selectedTafsir === item.key ? 'none' : item.key);
+                                                            } else if (activeSection === 'transliteration') {
+                                                                setSelectedTransliteration(selectedTransliteration === item.key ? 'none' : item.key);
                                                             } else {
                                                                 setSelectedTranslation(selectedTranslation === item.key ? 'none' : item.key);
                                                             }
