@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PageHeader from './PageHeader';
-import { Calculator, DollarSign, Coins, TrendingUp, Home, Car, Briefcase, RefreshCw } from 'lucide-react';
+import { Calculator, RefreshCw, ChevronDown, ChevronUp, Info, Settings, Globe, Scale, Coins } from 'lucide-react';
 import './ZakatCalculator.css';
+import ZakatCategoryCard from './ZakatCategoryCard';
+import { ZAKAT_CATEGORIES, LIABILITIES_CATEGORY } from '../data/zakatData';
 
-// Nisab thresholds (fixed gram amounts per Islamic jurisprudence)
+// Nisab thresholds (fixed gram amounts)
 const NISAB_VALUES = {
-    gold: { grams: 87.48, label: 'Gold (87.48g)' },
-    silver: { grams: 612.36, label: 'Silver (612.36g)' },
-};
-
-// Default metal prices per gram (user should update with local prices)
-const DEFAULT_METAL_PRICES_BDT = {
-    gold: 9500,    // ~৳9500/gram in Bangladesh
-    silver: 130,   // ~৳130/gram in Bangladesh
+    gold: { grams: 87.48, label: 'Gold Standard', sub: '87.48g', desc: 'Use if your wealth is mostly gold.' },
+    silver: { grams: 612.36, label: 'Silver Standard', sub: '612.36g', desc: 'Recommended: Safer for ensuring Zakat is paid.' },
 };
 
 const CURRENCIES = [
@@ -26,42 +22,29 @@ const CURRENCIES = [
     { code: 'PKR', symbol: '₨', name: 'Pakistani Rupee', defaultGold: 18200, defaultSilver: 238 },
 ];
 
-const ASSET_CATEGORIES = [
-    { key: 'cash', label: 'Cash & Bank Balance', icon: DollarSign, description: 'Money in hand, savings, current accounts' },
-    { key: 'gold', label: 'Gold', icon: Coins, description: 'Jewelry, coins, bars (in grams or value)' },
-    { key: 'silver', label: 'Silver', icon: Coins, description: 'Jewelry, coins, bars (in grams or value)' },
-    { key: 'investments', label: 'Investments', icon: TrendingUp, description: 'Stocks, mutual funds, bonds, crypto' },
-    { key: 'businessAssets', label: 'Business Assets', icon: Briefcase, description: 'Inventory, receivables, merchandise' },
-    { key: 'property', label: 'Investment Property', icon: Home, description: 'Rental properties (market value)' },
-    { key: 'other', label: 'Other Zakatable Assets', icon: Car, description: 'Any other assets for trade' },
-];
+const InfoTooltip = ({ text }) => {
+    const [isVisible, setIsVisible] = useState(false);
 
-const LIABILITIES = [
-    { key: 'debts', label: 'Debts & Loans', description: 'Money you owe to others' },
-    { key: 'expenses', label: 'Immediate Expenses', description: 'Bills due within the year' },
-];
+    return (
+        <div className="info-tooltip-container"
+            onMouseEnter={() => setIsVisible(true)}
+            onMouseLeave={() => setIsVisible(false)}
+            onClick={() => setIsVisible(!isVisible)}>
+            <Info size={15} className="info-icon" />
+            {isVisible && <div className="tooltip-content">{text}</div>}
+        </div>
+    );
+};
 
 const ZakatCalculator = () => {
     const [currency, setCurrency] = useState(CURRENCIES[0]);
-    const [nisabType, setNisabType] = useState('gold');
-    const [assets, setAssets] = useState({
-        cash: '',
-        gold: '',
-        silver: '',
-        investments: '',
-        businessAssets: '',
-        property: '',
-        other: '',
-    });
-    const [liabilities, setLiabilities] = useState({
-        debts: '',
-        expenses: '',
-    });
-    // Metal prices in user's LOCAL currency (not USD!)
+    const [nisabType, setNisabType] = useState('silver'); // Safe default
     const [metalPrices, setMetalPrices] = useState({
         gold: CURRENCIES[0].defaultGold,
         silver: CURRENCIES[0].defaultSilver,
     });
+
+    const [values, setValues] = useState({});
 
     // Update metal prices when currency changes
     const handleCurrencyChange = (newCurrency) => {
@@ -72,35 +55,84 @@ const ZakatCalculator = () => {
         });
     };
 
-    // Calculate Nisab in selected currency (grams × local price per gram)
-    const calculateNisab = () => {
-        const grams = NISAB_VALUES[nisabType].grams;
-        const pricePerGram = metalPrices[nisabType];
-        return grams * pricePerGram;
+    const handleInputChange = (category, id, value) => {
+        setValues(prev => ({
+            ...prev,
+            [`${category}_${id}`]: value
+        }));
     };
 
-    // Calculate totals
-    const totalAssets = Object.values(assets).reduce((sum, val) => sum + (parseFloat(val) || 0), 0);
-    const totalLiabilities = Object.values(liabilities).reduce((sum, val) => sum + (parseFloat(val) || 0), 0);
-    const netWorth = totalAssets - totalLiabilities;
-    const nisab = calculateNisab();
-    const isZakatDue = netWorth >= nisab;
-    const zakatAmount = isZakatDue ? netWorth * 0.025 : 0;
+    const getVal = (key) => parseFloat(values[key] || 0);
 
-    const handleAssetChange = (key, value) => {
-        setAssets(prev => ({ ...prev, [key]: value }));
-    };
+    // --- Calculation Logic ---
 
-    const handleLiabilityChange = (key, value) => {
-        setLiabilities(prev => ({ ...prev, [key]: value }));
+    // 1. Money
+    const moneyTotal = getVal('money_cashInHand') + getVal('money_cashInBank') + getVal('money_deposited');
+
+    // 2. Gold & Silver
+    const goldTotal = getVal('gold_goldGrams') * metalPrices.gold;
+    const silverTotal = getVal('silver_silverGrams') * metalPrices.silver;
+
+    // 3. Investments
+    const investmentsTotal = getVal('investments_stocks') + getVal('investments_mutualFunds') + getVal('investments_profits');
+
+    // 4. Properties
+    const propertyTotal = getVal('property_investmentProperty') + getVal('property_rentalIncome');
+
+    // 5. Business
+    const businessTotal = getVal('business_stockInTrade') + getVal('business_receivables');
+
+    // 6. Agriculture (Special Rates)
+    const agriRate = () => {
+        const type = values['agriculture_irrigationType'];
+        if (type === 'rain') return 0.10;
+        if (type === 'artificial') return 0.05;
+        if (type === 'mixed') return 0.075;
+        return 0.10; // Default
     };
+    const agriZakat = getVal('agriculture_agriProduceValue') * agriRate();
+
+    // 7. Cattle (Sheep/Goat Standard Tiers)
+    const cattleCount = getVal('cattle_cattleCount');
+    const getCattleHeadCount = (count) => {
+        if (count < 40) return 0;
+        if (count <= 120) return 1;
+        if (count <= 200) return 2;
+        if (count <= 300) return 3;
+        // Beyond 300, 1 for every 100
+        return Math.floor(count / 100);
+    };
+    const cattleZakat = getCattleHeadCount(cattleCount) * getVal('cattle_pricePerAnimal');
+
+    // 8. Precious Stones
+    const preciousTotal = getVal('precious_stonesValue');
+
+    // 9. Others
+    const othersTotal = getVal('others_loansGiven') + getVal('others_otherAssets');
+
+    // Total Zakatable Assets (Excluding Agri/Cattle which have specific rules, but usually added to wealth if converted to cash. 
+    // HOWEVER, standard Zakat calc usually separates Agri. For simplicity in this UI, we'll sum the 2.5% items and add Agri/Cattle Zakat amounts directly to final Zakat Due)
+
+    // Standard 2.5% Assets
+    const zakatableAssets = moneyTotal + goldTotal + silverTotal + investmentsTotal + propertyTotal + businessTotal + preciousTotal + othersTotal;
+
+    // Liabilities
+    const liabilitiesTotal = getVal('liabilities_debts') + getVal('liabilities_expenses');
+
+    // Net Worth for 2.5% calculation
+    const netWorth = Math.max(0, zakatableAssets - liabilitiesTotal);
+
+    // Nisab
+    const nisabThreshold = NISAB_VALUES[nisabType].grams * metalPrices[nisabType];
+    const isNisabMet = netWorth >= nisabThreshold;
+
+    // Final Zakat
+    const zakatOnWealth = isNisabMet ? netWorth * 0.025 : 0;
+    const totalZakatDue = zakatOnWealth + agriZakat + cattleZakat; // Agri & Cattle are separate from Nisab of wealth usually, keeping simple.
 
     const resetAll = () => {
-        setAssets({
-            cash: '', gold: '', silver: '', investments: '',
-            businessAssets: '', property: '', other: '',
-        });
-        setLiabilities({ debts: '', expenses: '' });
+        setValues({});
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const formatCurrency = (amount) => {
@@ -108,205 +140,203 @@ const ZakatCalculator = () => {
     };
 
     return (
-        <div className="container">
-            <PageHeader
-                title="Zakat Calculator"
-                subtitle="Calculate your annual Zakat obligation"
-                breadcrumbs={[
-                    { label: 'Home', path: '/' },
-                    { label: 'Zakat', path: '/zakat' }
-                ]}
-            />
+        <div className="zakat-page-background">
+            <div className="container">
+                <PageHeader
+                    title="Zakat Calculator"
+                    subtitle="Calculate your annual Zakat obligation"
+                    breadcrumbs={[
+                        { label: 'Home', path: '/' },
+                        { label: 'Zakat', path: '/zakat' }
+                    ]}
+                />
 
-            <div className="zakat-container">
-                {/* Settings Row */}
-                <div className="zakat-settings">
-                    <div className="setting-group">
-                        <label>Currency</label>
-                        <select
-                            value={currency.code}
-                            onChange={(e) => handleCurrencyChange(CURRENCIES.find(c => c.code === e.target.value))}
-                        >
-                            {CURRENCIES.map(c => (
-                                <option key={c.code} value={c.code}>{c.symbol} {c.code} - {c.name}</option>
+                <div className="zakat-container">
+                    {/* Global Settings Control Panel */}
+                    <div className="zakat-config-panel">
+                        <div className="config-header">
+                            <div className="config-title">
+                                <Settings size={20} className="text-primary" />
+                                <h3>Configuration</h3>
+                            </div>
+                            <button className="reset-action-btn" onClick={resetAll} title="Reset all fields">
+                                <RefreshCw size={14} /> Clear All
+                            </button>
+                        </div>
+
+                        <div className="config-grid">
+                            {/* Currency Selector */}
+                            <div className="config-group">
+                                <div className="config-label">
+                                    <Globe size={16} className="text-muted" />
+                                    <span>Currency</span>
+                                    <InfoTooltip text="Select the currency for your assets. Metal prices will update automatically based on default values." />
+                                </div>
+                                <div className="select-container">
+                                    <select
+                                        className="modern-select"
+                                        value={currency.code}
+                                        onChange={(e) => handleCurrencyChange(CURRENCIES.find(c => c.code === e.target.value))}
+                                    >
+                                        {CURRENCIES.map(c => (
+                                            <option key={c.code} value={c.code}>{c.symbol} {c.code} - {c.name}</option>
+                                        ))}
+                                    </select>
+                                    <ChevronDown size={14} className="select-arrow" />
+                                </div>
+                            </div>
+
+                            {/* Nisab Selector */}
+                            <div className="config-group">
+                                <div className="config-label">
+                                    <Scale size={16} className="text-muted" />
+                                    <span>Nisab Standard</span>
+                                    <InfoTooltip text={
+                                        <>
+                                            <p><strong>Silver Standard:</strong> Lower threshold (~${(NISAB_VALUES.silver.grams * metalPrices.silver).toFixed(0)}), safer to ensure obligation is met.</p>
+                                            <div style={{ height: 4 }}></div>
+                                            <p><strong>Gold Standard:</strong> Higher threshold (~${(NISAB_VALUES.gold.grams * metalPrices.gold).toFixed(0)}), used if wealth is purely gold.</p>
+                                        </>
+                                    } />
+                                </div>
+                                <div className="segment-control">
+                                    <button
+                                        className={`segment-option ${nisabType === 'silver' ? 'active' : ''}`}
+                                        onClick={() => setNisabType('silver')}
+                                    >
+                                        Silver
+                                    </button>
+                                    <button
+                                        className={`segment-option ${nisabType === 'gold' ? 'active' : ''}`}
+                                        onClick={() => setNisabType('gold')}
+                                    >
+                                        Gold
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Metal Prices */}
+                            <div className="config-group full-width-mobile">
+                                <div className="config-label">
+                                    <Coins size={16} className="text-muted" />
+                                    <span>Metal Prices ({currency.code})</span>
+                                    <InfoTooltip text="These are default estimated market rates. You can edit them to match your local market rates." />
+                                </div>
+                                <div className="metal-prices-row">
+                                    <div className="metal-input-wrapper">
+                                        <label>Gold/g</label>
+                                        <div className="price-input">
+                                            <span className="currency-symbol">{currency.symbol}</span>
+                                            <input
+                                                type="number"
+                                                value={metalPrices.gold}
+                                                onChange={(e) => setMetalPrices({ ...metalPrices, gold: parseFloat(e.target.value) || 0 })}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="metal-input-wrapper">
+                                        <label>Silver/g</label>
+                                        <div className="price-input">
+                                            <span className="currency-symbol">{currency.symbol}</span>
+                                            <input
+                                                type="number"
+                                                value={metalPrices.silver}
+                                                onChange={(e) => setMetalPrices({ ...metalPrices, silver: parseFloat(e.target.value) || 0 })}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="zakat-main-layout">
+                        {/* Asset Columns */}
+                        <div className="zakat-cards-column">
+                            {ZAKAT_CATEGORIES.map(category => (
+                                <ZakatCategoryCard
+                                    key={category.id}
+                                    category={category}
+                                    values={Object.keys(values).filter(k => k.startsWith(category.id)).reduce((obj, k) => {
+                                        obj[k.replace(`${category.id}_`, '')] = values[k];
+                                        return obj;
+                                    }, {})}
+                                    onChange={(id, val) => handleInputChange(category.id, id, val)}
+                                    currencySymbol={currency.symbol}
+                                />
                             ))}
-                        </select>
-                    </div>
 
-                    <div className="setting-group">
-                        <label>Nisab Standard</label>
-                        <select value={nisabType} onChange={(e) => setNisabType(e.target.value)}>
-                            <option value="gold">{NISAB_VALUES.gold.label}</option>
-                            <option value="silver">{NISAB_VALUES.silver.label}</option>
-                        </select>
-                    </div>
-
-                    <button className="reset-btn" onClick={resetAll}>
-                        <RefreshCw size={16} /> Reset
-                    </button>
-                </div>
-
-                {/* Metal Prices Section */}
-                <div className="metal-prices-section">
-                    <div className="metal-prices-header">
-                        <Coins size={18} />
-                        <span>Current Metal Prices (per gram in {currency.code})</span>
-                    </div>
-                    <div className="metal-prices-inputs">
-                        <div className="metal-input">
-                            <label>Gold Price</label>
-                            <div className="input-field">
-                                <span className="currency-symbol">{currency.symbol}</span>
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    value={metalPrices.gold}
-                                    onChange={(e) => setMetalPrices(prev => ({ ...prev, gold: parseFloat(e.target.value) || 0 }))}
-                                />
-                                <span className="unit">/gram</span>
-                            </div>
+                            <ZakatCategoryCard
+                                category={LIABILITIES_CATEGORY}
+                                values={Object.keys(values).filter(k => k.startsWith('liabilities')).reduce((obj, k) => {
+                                    obj[k.replace('liabilities_', '')] = values[k];
+                                    return obj;
+                                }, {})}
+                                onChange={(id, val) => handleInputChange('liabilities', id, val)}
+                                currencySymbol={currency.symbol}
+                            />
                         </div>
-                        <div className="metal-input">
-                            <label>Silver Price</label>
-                            <div className="input-field">
-                                <span className="currency-symbol">{currency.symbol}</span>
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    value={metalPrices.silver}
-                                    onChange={(e) => setMetalPrices(prev => ({ ...prev, silver: parseFloat(e.target.value) || 0 }))}
-                                />
-                                <span className="unit">/gram</span>
-                            </div>
-                        </div>
-                    </div>
-                    <p className="metal-prices-note">
-                        💡 Check current usd prices at: <a href="https://goldprice.org" target="_blank" rel="noopener noreferrer">GoldPrice.org</a> or <a href="https://www.kitco.com" target="_blank" rel="noopener noreferrer">Kitco.com</a>
-                    </p>
-                </div>
 
-                {/* Assets Section */}
-                <div className="zakat-section">
-                    <h3 className="section-header">
-                        <TrendingUp size={20} />
-                        Assets
-                    </h3>
-                    <div className="input-grid">
-                        {ASSET_CATEGORIES.map(({ key, label, icon: Icon, description }) => (
-                            <div key={key} className="input-card">
-                                <div className="input-header">
-                                    <Icon size={18} className="input-icon" />
-                                    <div>
-                                        <div className="input-label">{label}</div>
-                                        <div className="input-description">{description}</div>
+                        {/* Summary Sticky Details */}
+                        <div className="zakat-summary-sidebar">
+                            <div className="summary-sticky-wrapper">
+                                <div className="zakat-summary-card">
+                                    <div className="summary-header">
+                                        <h3><Calculator size={20} /> Summary</h3>
+                                    </div>
+
+                                    <div className="summary-content">
+                                        <div className="summary-item">
+                                            <span className="label">Zakatable Assets</span>
+                                            <span className="value">{formatCurrency(zakatableAssets)}</span>
+                                        </div>
+                                        <div className="summary-item expense">
+                                            <span className="label">Liabilities</span>
+                                            <span className="value">- {formatCurrency(liabilitiesTotal)}</span>
+                                        </div>
+
+                                        <div className="divider"></div>
+
+                                        <div className="summary-item net-worth">
+                                            <span className="label">Net Wealth</span>
+                                            <span className="value">{formatCurrency(netWorth)}</span>
+                                        </div>
+
+                                        <div className="nisab-indicator">
+                                            <div className="nisab-info">
+                                                <span className="label">Nisab ({nisabType})</span>
+                                                <span className="amount">{formatCurrency(nisabThreshold)}</span>
+                                            </div>
+                                            {isNisabMet ?
+                                                <div className="status-badge success">Nisab Met</div> :
+                                                <div className="status-badge warning">Below Nisab</div>
+                                            }
+                                        </div>
+
+                                        {(agriZakat > 0 || cattleZakat > 0) && <div className="divider"></div>}
+
+                                        {agriZakat > 0 && (
+                                            <div className="summary-item">
+                                                <span className="label">Agriculture Zakat</span>
+                                                <span className="value">+ {formatCurrency(agriZakat)}</span>
+                                            </div>
+                                        )}
+                                        {cattleZakat > 0 && (
+                                            <div className="summary-item">
+                                                <span className="label">Cattle Zakat</span>
+                                                <span className="value">+ {formatCurrency(cattleZakat)}</span>
+                                            </div>
+                                        )}
+
+                                        <div className="total-due-card">
+                                            <span className="due-label">Total Zakat Due</span>
+                                            <h2 className="due-amount">{formatCurrency(totalZakatDue)}</h2>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="input-field">
-                                    <span className="currency-symbol">{currency.symbol}</span>
-                                    <input
-                                        type="number"
-                                        value={assets[key]}
-                                        onChange={(e) => handleAssetChange(key, e.target.value)}
-                                        placeholder="0.00"
-                                    />
-                                </div>
                             </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Liabilities Section */}
-                <div className="zakat-section">
-                    <h3 className="section-header">
-                        <DollarSign size={20} />
-                        Liabilities (Deductible)
-                    </h3>
-                    <div className="input-grid liabilities-grid">
-                        {LIABILITIES.map(({ key, label, description }) => (
-                            <div key={key} className="input-card">
-                                <div className="input-header">
-                                    <DollarSign size={18} className="input-icon liability-icon" />
-                                    <div>
-                                        <div className="input-label">{label}</div>
-                                        <div className="input-description">{description}</div>
-                                    </div>
-                                </div>
-                                <div className="input-field">
-                                    <span className="currency-symbol">{currency.symbol}</span>
-                                    <input
-                                        type="number"
-                                        value={liabilities[key]}
-                                        onChange={(e) => handleLiabilityChange(key, e.target.value)}
-                                        placeholder="0.00"
-                                    />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Results Section */}
-                <div className="zakat-results">
-                    <h3 className="section-header">
-                        <Calculator size={20} />
-                        Calculation Results
-                    </h3>
-
-                    <div className="results-grid">
-                        <div className="result-item">
-                            <span className="result-label">Total Assets</span>
-                            <span className="result-value">{formatCurrency(totalAssets)}</span>
-                        </div>
-                        <div className="result-item">
-                            <span className="result-label">Total Liabilities</span>
-                            <span className="result-value minus">- {formatCurrency(totalLiabilities)}</span>
-                        </div>
-                        <div className="result-item highlight">
-                            <span className="result-label">Net Zakatable Wealth</span>
-                            <span className="result-value">{formatCurrency(netWorth)}</span>
-                        </div>
-                        <div className="result-item">
-                            <span className="result-label">Nisab Threshold ({nisabType})</span>
-                            <span className="result-value">{formatCurrency(nisab)}</span>
                         </div>
                     </div>
-
-                    <div className={`zakat-due-card ${isZakatDue ? 'due' : 'not-due'}`}>
-                        {isZakatDue ? (
-                            <>
-                                <div className="due-status">✓ Zakat is Due</div>
-                                <div className="zakat-amount">
-                                    <span className="amount-label">Your Zakat (2.5%)</span>
-                                    <span className="amount-value">{formatCurrency(zakatAmount)}</span>
-                                </div>
-                                <p className="due-message">
-                                    Your wealth exceeds the Nisab. Pay this amount to fulfill your Zakat obligation.
-                                </p>
-                            </>
-                        ) : (
-                            <>
-                                <div className="due-status">Zakat Not Due</div>
-                                <p className="due-message">
-                                    Your net wealth ({formatCurrency(netWorth)}) is below the Nisab threshold ({formatCurrency(nisab)}).
-                                    Zakat becomes obligatory when your wealth exceeds this amount for one lunar year.
-                                </p>
-                            </>
-                        )}
-                    </div>
-                </div>
-
-                {/* Info Section */}
-                <div className="zakat-info">
-                    <h4>📖 About Zakat</h4>
-                    <ul>
-                        <li><strong>Rate:</strong> 2.5% of net zakatable wealth</li>
-                        <li><strong>Nisab (Gold):</strong> 87.48 grams of gold</li>
-                        <li><strong>Nisab (Silver):</strong> 612.36 grams of silver</li>
-                        <li><strong>Hawl:</strong> Wealth must be held for one lunar year</li>
-                    </ul>
-                    <p className="disclaimer">
-                        ⚠️ This calculator provides an estimate. Consult a scholar for specific rulings about your situation.
-                    </p>
                 </div>
             </div>
         </div>

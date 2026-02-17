@@ -472,7 +472,8 @@ const Layout = ({ children }) => {
   const { uiStyle } = useSettings();
   const location = window.location.pathname;
   const isGridView = location === '/' || location === '/quran';
-  const bgClass = (uiStyle === 'style2' || isGridView) ? 'app-layout bg-dots' : 'app-layout';
+  const isZakatPage = location === '/zakat';
+  const bgClass = (uiStyle === 'style2' || isGridView || isZakatPage) ? 'app-layout bg-dots' : 'app-layout';
 
   return (
     <div className={bgClass} style={{
@@ -480,7 +481,7 @@ const Layout = ({ children }) => {
       height: '100dvh',
       width: '100vw',
       overflow: 'hidden',
-      backgroundColor: (uiStyle === 'style2' || isGridView) ? 'var(--color-bg-main)' : undefined
+      backgroundColor: (uiStyle === 'style2' || isGridView || isZakatPage) ? 'var(--color-bg-main)' : undefined
     }}>
       {children}
     </div>
