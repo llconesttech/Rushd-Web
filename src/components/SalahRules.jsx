@@ -198,36 +198,67 @@ const WITR_INFO = {
     basics: [
         { label: 'Status', value: 'Wajib (obligatory) in Hanafi; Sunnah Muakkadah in others' },
         { label: 'Time', value: 'After Isha until Fajr (best in last third of night)' },
-        { label: 'Rakats', value: '1, 3, 5, 7, 9, or 11 rakats (odd number)' },
-        { label: 'Common', value: '3 rakats (most common practice)' },
+        { label: 'Rakats', value: '3 Rakats (standard)' },
     ],
     methods: [
         {
-            name: 'Hanafi Method (3 Rakats)',
+            name: 'Hanafi Method',
             steps: [
-                'Pray 3 rakats continuously like Maghrib',
-                'Sit for Tashahhud after 2nd rakat, then stand for 3rd',
-                'In 3rd rakat: Fatiha + Surah, then raise hands and recite Dua Qunut',
-                'Say "Allahu Akbar" before Qunut, not after',
-                'Complete with Ruku, Sujud, and Salam',
+                'Perform 2 rakats as usual, sit for first Tashahhud.',
+                'Stand for 3rd rakat, recite Fatiha + Surah.',
+                'Say "Allahu Akbar" and raise hands to ears before bowing.',
+                'Recite Dua Qunut (silently).',
+                'Bow and complete prayer as usual.'
             ],
         },
         {
-            name: 'Other Madhabs (1 or 3 Rakats)',
+            name: 'Other Madhabs (2+1)',
             steps: [
-                'Option 1: Pray 2 rakats, give salam, then pray 1 rakat separately',
-                'Option 2: Pray 3 rakats with one salam at end (like Maghrib but Qunut in last rakat)',
+                'Perform 2 rakats and end with Taslim.',
+                'Stand for a separate 1 rakat.',
+                'Recite Qunut after Ruku or before bowing.',
                 'Qunut can be before or after Ruku depending on madhab',
                 'Some recite Qunut only in second half of Ramadan',
             ],
         },
     ],
     qunutDua: {
-        arabic: 'اللَّهُمَّ إِنَّا نَسْتَعِينُكَ وَنَسْتَغْفِرُكَ وَنُؤْمِنُ بِكَ وَنَتَوَكَّلُ عَلَيْكَ وَنُثْنِي عَلَيْكَ الْخَيْرَ وَنَشْكُرُكَ وَلَا نَكْفُرُكَ وَنَخْلَعُ وَنَتْرُكُ مَنْ يَفْجُرُكَ، اللَّهُمَّ إِيَّاكَ نَعْبُدُ وَلَكَ نُصَلِّي وَنَسْجُدُ وَإِلَيْكَ نَسْعَى وَنَحْفِدُ وَنَرْجُو رَحْمَتَكَ وَنَخْشَى عَذَابَكَ إِنَّ عَذَابَكَ بِالْكُفَّارِ مُلْحِقٌ',
-        transliteration: 'Allahumma inna nasta\'inuka wa nastaghfiruka wa nu\'minu bika wa natawakkalu \'alayka wa nuthni \'alaykal-khayr. Wa nashkuruka wa la nakfuruka wa nakhla\'u wa natruku man yafjuruk. Allahumma iyyaka na\'budu wa laka nusalli wa nasjudu wa ilayka nas\'a wa nahfidu wa narju rahmataka wa nakhsha \'adhabaka inna \'adhabaka bil-kuffari mulhiq',
-        meaning: 'O Allah, we seek Your help and ask for Your forgiveness, and we believe in You and rely on You, and we praise You with all good. We thank You and do not deny You. We abandon and forsake whoever disobeys You. O Allah, You alone we worship, to You we pray and prostrate, to You we hasten. We hope for Your mercy and fear Your punishment. Indeed, Your punishment will reach the disbelievers.',
+        arabic: 'اللَّهُمَّ اهْدِنِي فِيمَنْ هَدَيْتَ، وَعَافِنِي فِيمَنْ عَافَيْتَ، وَتَوَلَّنِي فِيمَنْ تَوَلَّيْتَ، وَبَارِكْ لِي فِيمَا أَعْطَيْتَ، وَقِنِي شَرَّ مَا قَضَيْتَ، فَإِنَّكَ تَقْضِي وَلَا يُقْضَى عَلَيْكَ، وَإِنَّهُ لَا يَذِلُّ مَنْ وَالَيْتَ، تَبَارَكَ رَبَّنَا وَتَعَالَيْتَ',
+        transliteration: 'Allahumma ihdini fiman hadayt, wa \'afini fiman \'afayt, wa tawallani fiman tawallayt, wa barik li fima a\'tayt, wa qini sharra ma qadayt, fa innaka taqdi wa la yuqda \'alayk, wa innahu la yadhillu man walayt, tabaraka Rabbana wa ta\'alayt',
+        meaning: 'O Allah, guide me among those You have guided, grant me well-being among those You have granted well-being, take me into Your care among those You have taken into Your care, bless me in what You have given, and protect me from the evil of what You have decreed. For indeed, You decree and none can decree over You. Indeed, he whom You take as a friend is not humiliated. Blessed are You, our Lord, and Exalted.',
     },
 };
+
+const VOLUNTARY_PRAYERS = [
+    {
+        name: 'Ishraq',
+        arabic: 'الإشراق',
+        rakats: '2 Rakats',
+        time: '15-20 minutes after sunrise',
+        guideline: 'Performed after the sun has fully risen. A great reward is mentioned for those who stay in their place after Fajr until Ishraq time.'
+    },
+    {
+        name: 'Duha (Chasht)',
+        arabic: 'الضحى',
+        rakats: '2 to 12 Rakats',
+        time: 'After Ishraq until before Zawal (noon)',
+        guideline: 'Best performed when the sun\'s heat becomes intense. At least 2 rakats should be performed regularly.'
+    },
+    {
+        name: 'Awwabin',
+        arabic: 'الأوابين',
+        rakats: '6 Rakats',
+        time: 'Between Maghrib and Isha',
+        guideline: 'Usually performed in sets of 2 rakats each. It is highly recommended to engage in worship during this time.'
+    },
+    {
+        name: 'Tahajjud',
+        arabic: 'تهجد',
+        rakats: '2 to 12 Rakats',
+        time: 'After Isha until Fajr (best in last 3rd)',
+        guideline: 'The most virtuous of voluntary prayers. Ideally performed after waking up from sleep in the middle of the night.'
+    }
+];
 
 const AccordionSection = ({ title, icon: Icon, children, defaultOpen = false }) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
@@ -398,7 +429,30 @@ const SalahRules = () => {
                     </div>
                 </AccordionSection>
 
-                {/* Witr Prayer */}
+                {/* Voluntary Prayers Section */}
+                <AccordionSection title="Voluntary (Sunnah) Prayers" icon={Moon}>
+                    <p className="section-intro">Highly recommended prayers performed outside the five daily obligatory times.</p>
+                    <div className="voluntary-prayers-grid">
+                        {VOLUNTARY_PRAYERS.map((prayer) => (
+                            <div key={prayer.name} className="sunnah-card">
+                                <div className="sunnah-card-header">
+                                    <div className="sunnah-name-group">
+                                        <span className="sunnah-arabic">{prayer.arabic}</span>
+                                        <h4 className="sunnah-english">{prayer.name}</h4>
+                                    </div>
+                                    <span className="sunnah-rakats-badge">{prayer.rakats}</span>
+                                </div>
+                                <div className="sunnah-info-row">
+                                    <Clock size={14} />
+                                    <span>{prayer.time}</span>
+                                </div>
+                                <p className="sunnah-guideline">{prayer.guideline}</p>
+                            </div>
+                        ))}
+                    </div>
+                </AccordionSection>
+
+                {/* Witr Prayer Guidelines */}
                 <AccordionSection title="Witr Prayer Guidelines" icon={Moon}>
                     <div className="witr-section">
                         <div className="witr-basics">
