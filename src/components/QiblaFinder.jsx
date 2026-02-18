@@ -88,6 +88,34 @@ const QiblaFinder = () => {
         ? qiblaAngle - compassHeading
         : qiblaAngle; // Static if no compass
 
+    // Human-readable direction from bearing
+    const getCardinalLabel = (angle) => {
+        const a = ((angle % 360) + 360) % 360;
+        const dirs = [
+            { label: 'North', min: 348.75, max: 360 },
+            { label: 'North', min: 0, max: 11.25 },
+            { label: 'North-Northeast', min: 11.25, max: 33.75 },
+            { label: 'Northeast', min: 33.75, max: 56.25 },
+            { label: 'East-Northeast', min: 56.25, max: 78.75 },
+            { label: 'East', min: 78.75, max: 101.25 },
+            { label: 'East-Southeast', min: 101.25, max: 123.75 },
+            { label: 'Southeast', min: 123.75, max: 146.25 },
+            { label: 'South-Southeast', min: 146.25, max: 168.75 },
+            { label: 'South', min: 168.75, max: 191.25 },
+            { label: 'South-Southwest', min: 191.25, max: 213.75 },
+            { label: 'Southwest', min: 213.75, max: 236.25 },
+            { label: 'West-Southwest', min: 236.25, max: 258.75 },
+            { label: 'West', min: 258.75, max: 281.25 },
+            { label: 'West-Northwest', min: 281.25, max: 303.75 },
+            { label: 'Northwest', min: 303.75, max: 326.25 },
+            { label: 'North-Northwest', min: 326.25, max: 348.75 },
+        ];
+        const match = dirs.find(d => a >= d.min && a < d.max);
+        return match ? match.label : 'North';
+    };
+
+    const qiblaCardinal = getCardinalLabel(qiblaAngle);
+
     return (
         <div className="container">
             <PageHeader
@@ -115,22 +143,6 @@ const QiblaFinder = () => {
                     <div className="needle-container" style={{
                         transform: 'none'
                     }}>
-                        {/* 
-                            Logic Check:
-                            - Check 1 (Static): Compass disabled. transform: rotate(QiblaAngle).
-                              Result: Needle points to absolute angle on screen. North is Top. Correct.
-                            
-                            - Check 2 (Dynamic): Compass enabled. 
-                              Outer `compass-nav` rotates NEGATIVE heading (keeping "N" pointing real North).
-                              Inner `needle-container` stays at 0 (relative to outer?) NO.
-                              
-                              Let's simplify:
-                              We want the Kaaba icon to Physically point to the Qibla.
-                              Angle = QiblaAngle - DeviceHeading.
-                              
-                              Implementation:
-                              Apply rotation directly to a "kaaba pointer" wrapper.
-                          */}
                         <div style={{
                             position: 'absolute',
                             top: 0, left: 0, width: '100%', height: '100%',
@@ -145,9 +157,15 @@ const QiblaFinder = () => {
                     </div>
                 </div>
 
+                {/* Human-readable direction label */}
+                <div className="qibla-direction-label">
+                    <Navigation size={18} style={{ color: 'var(--color-primary)', flexShrink: 0 }} />
+                    <span>Qibla is on <strong>{qiblaCardinal}</strong> from your location.</span>
+                </div>
+
                 <div className="qibla-info">
                     <h3>Qibla Direction</h3>
-                    <div className="qibla-angle">{Math.round(qiblaAngle)}°N</div>
+                    <div className="qibla-angle">{Math.round(qiblaAngle)}° from North</div>
                     <p className="qibla-location">
                         {location ? `${location.latitude.toFixed(2)}, ${location.longitude.toFixed(2)}` : 'Calculated for default location'}
                     </p>

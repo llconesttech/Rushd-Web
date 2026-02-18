@@ -94,8 +94,29 @@
     margin-top: 5px;
 }
 
+.qibla-direction-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.85rem 1.5rem;
+    background: var(--color-primary-light);
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    color: var(--color-primary-dark);
+    font-weight: 500;
+    max-width: 400px;
+    width: 100%;
+}
+
+.qibla-direction-label strong {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
 .qibla-info {
-    margin-top: 2rem;
+    margin-top: 1.25rem;
     background: white;
     padding: 1.5rem;
     border-radius: 1rem;
