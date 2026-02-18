@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Sun, Moon as MoonIcon } from 'lucide-react';
 import { getPrayerTimes, getAvailableMethods, getAvailableMadhabs, getAutoCalculationMethod } from '../services/prayerTimesService';
 import { getTodayAllCalendars } from '../services/dateService';
 import { useAppLocation } from '../context/LocationContext';
+import { useSettings } from '../context/SettingsContext';
 import RamadanWidget from './RamadanWidget';
 import './HomePage.css';
 
@@ -69,6 +71,7 @@ const featureSections = [
 const HomePage = () => {
     // Alias global state to local names to match existing JSX usage
     const { location, coords, loading: locationLoading } = useAppLocation();
+    const { theme, toggleTheme } = useSettings();
 
     const [salahTimes, setSalahTimes] = useState(null);
     const [currentPrayer, setCurrentPrayer] = useState(null);
@@ -275,8 +278,16 @@ const HomePage = () => {
         <div className="homepage">
             {/* Hero Section */}
             <section className="hero-section">
+                <button
+                    className="theme-toggle-btn"
+                    onClick={toggleTheme}
+                    title={theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}
+                    aria-label="Toggle theme"
+                >
+                    {theme === 'dark' ? <Sun size={20} /> : <MoonIcon size={20} />}
+                </button>
                 <img
-                    src="/logo.png"
+                    src={theme === 'dark' ? '/light_gold.png' : '/logo.png'}
                     alt="Rushd Logo"
                     className="hero-logo"
                 />

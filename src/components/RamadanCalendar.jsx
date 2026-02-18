@@ -9,8 +9,11 @@ const RamadanCalendar = () => {
     // Use Global Location Context
     const { location, loading: locationLoading, error: locationError } = useAppLocation();
 
-    // Local state
-    const [dateOffset, setDateOffset] = useState(0);
+    // Local state — persist moon sighting offset to localStorage
+    const [dateOffset, setDateOffset] = useState(() => {
+        const stored = localStorage.getItem('rushdMoonOffset');
+        return stored ? parseInt(stored, 10) : 0;
+    });
     const [countdown, setCountdown] = useState(null);
 
     // Combine loading states if needed, or just rely on location loading
@@ -48,7 +51,11 @@ const RamadanCalendar = () => {
     }, [location]);
 
     const adjustOffset = (delta) => {
-        setDateOffset(prev => Math.max(-3, Math.min(3, prev + delta)));
+        setDateOffset(prev => {
+            const next = Math.max(-3, Math.min(3, prev + delta));
+            localStorage.setItem('rushdMoonOffset', next.toString());
+            return next;
+        });
     };
 
     if (loading) {

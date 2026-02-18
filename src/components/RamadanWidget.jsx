@@ -14,7 +14,9 @@ const RamadanWidget = ({ latitude, longitude }) => {
     const [ramadanInfo, setRamadanInfo] = useState(null);
 
     useEffect(() => {
-        setRamadanInfo(getRamadanInfo());
+        const storedOffset = localStorage.getItem('rushdMoonOffset');
+        const dateOffset = storedOffset ? parseInt(storedOffset, 10) : 0;
+        setRamadanInfo(getRamadanInfo(null, dateOffset));
     }, []);
 
     useEffect(() => {

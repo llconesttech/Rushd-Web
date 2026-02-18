@@ -1,6 +1,7 @@
 /* ====================================================================
-   Ramadan Widget — Spiritual & Refined
-   Deep navy-emerald gradient, gold accents, geometric overlay
+   Ramadan Widget — Dual Theme
+   Dark: Navy-emerald + gold (default)
+   Light: Teal gradient (matches salah card)
    ==================================================================== */
 
 .ramadan-widget {
@@ -197,6 +198,67 @@
     margin-top: 0.5rem;
     position: relative;
     z-index: 1;
+}
+
+/* ══════════════════════════════════════════════════════
+   LIGHT THEME OVERRIDES
+   ══════════════════════════════════════════════════════ */
+
+[data-theme="light"] .ramadan-widget {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+    border-top: none;
+    box-shadow: 0 4px 20px rgba(30, 58, 95, 0.3);
+}
+
+[data-theme="light"] .rw-pattern-overlay {
+    opacity: 0.03;
+    background-image:
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+[data-theme="light"] .rw-icon-gold {
+    color: #fcd34d;
+}
+
+[data-theme="light"] .rw-time-card {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .rw-time-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .rw-countdown-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="light"] .rw-countdown-card:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="light"] .rw-countdown-card .rw-card-icon {
+    color: #fcd34d;
+}
+
+[data-theme="light"] .rw-days-count {
+    color: #fcd34d;
+}
+
+[data-theme="light"] .rw-coming-soon {
+    border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .rw-eid-notice {
+    border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .ramadan-widget.eid-mode {
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    border-top: none;
 }
 
 /* ── Responsive ─────────────────────────────────────── */

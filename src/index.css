@@ -95,6 +95,20 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  --color-bg-main: #0a1a1f;
+  --color-bg-card: #13282f;
+  --color-text-main: #f0f0f0;
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-primary-light: rgba(13, 92, 99, 0.2);
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--color-bg-main);

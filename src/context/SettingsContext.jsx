@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const SettingsContext = createContext();
 
@@ -7,6 +7,19 @@ export const useSettings = () => useContext(SettingsContext);
 export const SettingsProvider = ({ children }) => {
     const [isSurahListOpen, setIsSurahListOpen] = useState(false); // Left Sidebar
     const [isSettingsOpen, setIsSettingsOpen] = useState(true); // Right Sidebar (Default open as per screenshot)
+
+    // Theme (dark/light) - persisted to localStorage
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem('rushdTheme') || 'dark';
+    });
+
+    // Apply theme to document root
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('rushdTheme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
     // Quran Script Style (default to Tajweed or user preference)
     const [selectedScript, setSelectedScript] = useState('quran-tajweed');
@@ -39,6 +52,8 @@ export const SettingsProvider = ({ children }) => {
     const toggleSettings = () => setIsSettingsOpen(!isSettingsOpen);
 
     const value = {
+        theme,
+        toggleTheme,
         isSurahListOpen,
         toggleSurahList,
         isSettingsOpen,
