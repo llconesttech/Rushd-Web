@@ -102,7 +102,7 @@ export const getRamadanInfo = (hijriYear = null, dateOffset = 0, eidOffset = 0) 
     // Current day of Ramadan (1-30) if in Ramadan
     let currentRamadanDay = null;
     if (isCurrentlyRamadan) {
-        currentRamadanDay = Math.ceil((today - ramadanStart) / (1000 * 60 * 60 * 24)) + 1;
+        currentRamadanDay = Math.floor((today - ramadanStart) / (1000 * 60 * 60 * 24)) + 1;
     }
 
     // Show Eid adjustment after day 28 of Ramadan

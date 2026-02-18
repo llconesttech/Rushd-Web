@@ -41,13 +41,13 @@ const RamadanWidget = ({ latitude, longitude }) => {
     if (ramadanInfo.isEidPeriod && !ramadanInfo.isCurrentlyRamadan) {
         return (
             <div className="ramadan-widget eid-mode">
-                <div className="ramadan-widget-header">
-                    <div className="widget-title">
-                        <Star size={18} />
-                        <span>Eid Mubarak! 🎉</span>
+                <div className="rw-header">
+                    <div className="rw-title">
+                        <Star size={18} className="rw-icon-gold" />
+                        <span>Eid Mubarak!</span>
                     </div>
-                    <Link to="/ramadan" className="widget-link">
-                        View Details <ChevronRight size={16} />
+                    <Link to="/ramadan" className="rw-link">
+                        View Details <ChevronRight size={14} />
                     </Link>
                 </div>
                 <div className="eid-message">
@@ -59,55 +59,63 @@ const RamadanWidget = ({ latitude, longitude }) => {
 
     return (
         <div className="ramadan-widget">
-            <div className="ramadan-widget-header">
-                <div className="widget-title">
-                    <Moon size={18} />
+            {/* Geometric overlay via CSS */}
+            <div className="rw-pattern-overlay" aria-hidden="true" />
+
+            <div className="rw-header">
+                <div className="rw-title">
+                    <Moon size={18} className="rw-icon-gold" />
                     <span>
                         {ramadanInfo.isCurrentlyRamadan
-                            ? `Ramadan Day ${ramadanInfo.currentDay}`
-                            : 'Ramadan Coming'}
+                            ? `Ramadan Mubarak — Day ${ramadanInfo.currentDay}`
+                            : 'Ramadan is Coming'}
                     </span>
                 </div>
-                <Link to="/ramadan" className="widget-link">
-                    View Calendar <ChevronRight size={16} />
+                <Link to="/ramadan" className="rw-link">
+                    View Calendar <ChevronRight size={14} />
                 </Link>
             </div>
 
+            {/* During Ramadan: Sehri / Iftar / Countdown grid */}
             {countdown && ramadanInfo.isCurrentlyRamadan && (
-                <div className="widget-times">
-                    <div className="widget-time-box">
-                        <Moon size={14} />
-                        <span className="time-type">Sehri</span>
-                        <span className="time-value">{countdown.sehri}</span>
+                <div className="rw-times-grid">
+                    <div className="rw-time-card">
+                        <Moon size={16} className="rw-card-icon" />
+                        <span className="rw-card-label">Sehri</span>
+                        <span className="rw-card-value">{countdown.sehri}</span>
                     </div>
-                    <div className="widget-time-box">
-                        <Sun size={14} />
-                        <span className="time-type">Iftar</span>
-                        <span className="time-value">{countdown.iftar}</span>
+                    <div className="rw-time-card">
+                        <Sun size={16} className="rw-card-icon" />
+                        <span className="rw-card-label">Iftar</span>
+                        <span className="rw-card-value">{countdown.iftar}</span>
                     </div>
-                    <div className="widget-countdown">
-                        <Clock size={14} />
-                        <span className="countdown-text">
-                            {countdown.timeUntil.display} until {countdown.nextEvent}
+                    <div className="rw-time-card rw-countdown-card">
+                        <Clock size={16} className="rw-card-icon" />
+                        <span className="rw-card-label">
+                            Until {countdown.nextEvent}
+                        </span>
+                        <span className="rw-card-value rw-mono">
+                            {countdown.timeUntil.display}
                         </span>
                     </div>
                 </div>
             )}
 
+            {/* Before Ramadan: Days countdown */}
             {!ramadanInfo.isCurrentlyRamadan && (
-                <div className="widget-countdown-days">
-                    <span className="days-count">{ramadanInfo.daysUntil}</span>
-                    <span className="days-label">days until Ramadan</span>
-                    <span className="moonsighting-note">* Depends on moon sighting</span>
+                <div className="rw-coming-soon">
+                    <span className="rw-days-count">{ramadanInfo.daysUntil}</span>
+                    <span className="rw-days-label">days until Ramadan</span>
+                    <span className="rw-moonsighting">* Depends on moon sighting</span>
                 </div>
             )}
 
             {/* Eid countdown after day 28 */}
             {ramadanInfo.showEidAdjustment && (
-                <div className="eid-countdown">
-                    <Star size={14} />
+                <div className="rw-eid-notice">
+                    <Star size={14} className="rw-icon-gold" />
                     <span>Eid in ~{ramadanInfo.daysUntilEid} days</span>
-                    <span className="moonsighting-note">* Depends on moon sighting</span>
+                    <span className="rw-moonsighting">* Depends on moon sighting</span>
                 </div>
             )}
         </div>
