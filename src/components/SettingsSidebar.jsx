@@ -61,7 +61,7 @@ const SettingsSidebar = ({ persistent = false }) => {
 
     const tabs = isShanENuzool
         ? ['translations', 'shan-e-nuzool']
-        : ['quran', 'translations', 'tafsir', 'transliteration', 'reciters'];
+        : ['quran', 'translations', 'tafsir','reciters'];
 
     return (
         <aside className={className}>
@@ -83,8 +83,7 @@ const SettingsSidebar = ({ persistent = false }) => {
                         {section === 'quran' ? 'Quran' :
                             section === 'translations' ? 'Languages' :
                                 section === 'shan-e-nuzool' ? 'Context' :
-                                    section === 'tafsir' ? 'Tafsir' :
-                                        section === 'transliteration' ? 'Transliteration' : 'Reciters'}
+                                    section === 'tafsir' ? 'Tafsir' : 'Reciters'}
                     </button>
                 ))}
             </div>
@@ -166,14 +165,13 @@ const SettingsSidebar = ({ persistent = false }) => {
 
 
 
-                {/* Translations, Tafsir & Transliteration */}
-                {(activeSection === 'translations' || activeSection === 'tafsir' || activeSection === 'transliteration') && (
+                {/* Translations, Tafsir */}
+                {(activeSection === 'translations' || activeSection === 'tafsir') && (
                     <section className="settings-section">
                         <input
                             type="text"
                             placeholder={
-                                activeSection === 'tafsir' ? "Search tafsirs..." :
-                                    activeSection === 'transliteration' ? "Search transliterations..." : "Search translations..."
+                                activeSection === 'tafsir' ? "Search tafsirs..." : "Search translations..."
                             }
                             className="search-input"
                             value={searchTerm}
@@ -191,7 +189,6 @@ const SettingsSidebar = ({ persistent = false }) => {
                                     if (!matchesSearch) return false;
 
                                     if (activeSection === 'tafsir') return value.type === 'tafsir';
-                                    if (activeSection === 'transliteration') return value.type === 'transliteration';
                                     return value.type === 'translation';
                                 });
 
@@ -226,14 +223,11 @@ const SettingsSidebar = ({ persistent = false }) => {
                                                         key={item.key}
                                                         className={`settings-item ${(() => {
                                                             if (activeSection === 'tafsir') return selectedTafsir === item.key;
-                                                            if (activeSection === 'transliteration') return selectedTransliteration === item.key;
                                                             return selectedTranslation === item.key;
                                                         })() ? 'active' : ''}`}
                                                         onClick={() => {
                                                             if (activeSection === 'tafsir') {
                                                                 setSelectedTafsir(selectedTafsir === item.key ? 'none' : item.key);
-                                                            } else if (activeSection === 'transliteration') {
-                                                                setSelectedTransliteration(selectedTransliteration === item.key ? 'none' : item.key);
                                                             } else {
                                                                 setSelectedTranslation(selectedTranslation === item.key ? 'none' : item.key);
                                                             }
