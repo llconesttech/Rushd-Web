@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import ReactDOM from 'react-dom';
 import { Link, useParams } from 'react-router-dom';
-import { Search, BookOpen, Filter } from 'lucide-react';
+import { Search, BookOpen, Info } from 'lucide-react';
 import { HADITH_BOOKS, HADITH_LANGUAGES } from '../data/hadithData';
-import { getBookChapters, getAvailableLanguages } from '../services/hadithService';
+import { getBookChapters, getAvailableLanguages, getBookStats } from '../services/hadithService';
 import PageHeader from './PageHeader';
 import './Hadith.css';
 
@@ -14,6 +15,24 @@ const HadithChapters = () => {
     const [selectedLang, setSelectedLang] = useState('eng');
     const [availableLangs, setAvailableLangs] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [bookStats, setBookStats] = useState(null);
+    const [countPos, setCountPos] = useState(null);
+    const countTriggerRef = React.useRef(null);
+
+    const showCount = () => {
+        if (!countTriggerRef.current) return;
+        const rect = countTriggerRef.current.getBoundingClientRect();
+        const popupWidth = 260;
+        let left = rect.left + rect.width / 2 - popupWidth / 2;
+        if (left < 8) left = 8;
+        if (left + popupWidth > window.innerWidth - 8) left = window.innerWidth - popupWidth - 8;
+        setCountPos({
+            bottom: window.innerHeight - rect.top + 8,
+            left,
+            width: popupWidth,
+        });
+    };
+    const hideCount = () => setCountPos(null);
 
     const book = HADITH_BOOKS[bookId];
 
@@ -38,6 +57,7 @@ const HadithChapters = () => {
             setLoading(false);
         };
         load();
+        getBookStats(bookId).then(setBookStats).catch(() => { });
     }, [bookId]);
 
     useEffect(() => {
@@ -61,7 +81,10 @@ const HadithChapters = () => {
         );
     }, [chapters, searchTerm]);
 
-    const totalHadiths = chapters.reduce((sum, ch) => sum + ch.hadithCount, 0);
+    const chapterWiseTotal = chapters.reduce((sum, ch) => sum + ch.hadithCount, 0);
+    const hasDiscrepancy = bookStats?.hasDiscrepancy;
+    const countMin = hasDiscrepancy ? Math.min(bookStats.chapterWiseCount, bookStats.canonicalCount, bookStats.totalRecords) : chapterWiseTotal;
+    const countMax = hasDiscrepancy ? Math.max(bookStats.chapterWiseCount, bookStats.canonicalCount, bookStats.totalRecords) : chapterWiseTotal;
 
     if (!book) return <div className="container">Book not found</div>;
 
@@ -85,7 +108,37 @@ const HadithChapters = () => {
                     </div>
                     <div>
                         <h2 className="book-title-big">{book.name}</h2>
-                        <p className="book-author-big">by {book.author} · {chapters.length} Chapters · {totalHadiths.toLocaleString()} Hadiths</p>
+                        <p className="book-author-big">
+                            by {book.author} · {chapters.length} Chapters ·{' '}
+                            <span className="hadith-count-inline-wrap">
+                                {hasDiscrepancy
+                                    ? `${countMin.toLocaleString()}–${countMax.toLocaleString()} Hadiths`
+                                    : `${chapterWiseTotal.toLocaleString()} Hadiths`
+                                }
+                                {hasDiscrepancy && (
+                                    <span
+                                        ref={countTriggerRef}
+                                        className="hadith-info-trigger inline"
+                                        onMouseEnter={showCount}
+                                        onMouseLeave={hideCount}
+                                        onClick={(e) => { e.stopPropagation(); countPos ? hideCount() : showCount(); }}
+                                    >
+                                        <Info size={13} />
+                                        {countPos && ReactDOM.createPortal(
+                                            <div
+                                                className="hadith-info-popup"
+                                                style={{ position: 'fixed', bottom: countPos.bottom, left: countPos.left, width: countPos.width, zIndex: 9999 }}
+                                                onMouseLeave={hideCount}
+                                                onClick={(e) => e.stopPropagation()}
+                                            >
+                                                Different counting methods yield different totals — traditional numbering, chapter-wise sums, and recorded entries each differ slightly.
+                                            </div>,
+                                            document.getElementById('root') || document.body
+                                        )}
+                                    </span>
+                                )}
+                            </span>
+                        </p>
                     </div>
                     {book.isSahihSittah && <span className="sahih-badge-inline">Sahih Sittah</span>}
                 </div>

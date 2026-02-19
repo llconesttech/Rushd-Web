@@ -1,10 +1,82 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-import { Search, BookOpen, User } from 'lucide-react';
+import { Search, BookOpen, User, Info, ChevronDown } from 'lucide-react';
 import { HADITH_BOOKS } from '../data/hadithData';
 import { getBookStats, getAllNarrators } from '../services/hadithService';
 import PageHeader from './PageHeader';
 import './Hadith.css';
+
+const NARRATORS_PER_SECTION = 20;
+const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#'.split('');
+
+const HadithCountInfo = ({ stats }) => {
+    const [pos, setPos] = useState(null); // null = hidden
+    const triggerRef = React.useRef(null);
+
+    if (!stats || stats.totalRecords === 0) return null;
+
+    const { chapterWiseCount, canonicalCount, totalRecords, hasDiscrepancy, decimalCount, gapCount } = stats;
+    const min = Math.min(chapterWiseCount, canonicalCount, totalRecords);
+    const max = Math.max(chapterWiseCount, canonicalCount, totalRecords);
+
+    const show = () => {
+        if (!triggerRef.current) return;
+        const rect = triggerRef.current.getBoundingClientRect();
+        const popupWidth = 260;
+        let left = rect.left + rect.width / 2 - popupWidth / 2;
+        if (left < 8) left = 8;
+        if (left + popupWidth > window.innerWidth - 8) left = window.innerWidth - popupWidth - 8;
+        setPos({
+            bottom: window.innerHeight - rect.top + 8,
+            left,
+            width: popupWidth,
+        });
+    };
+
+    const hide = () => setPos(null);
+
+    const toggle = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (pos) { hide(); } else { show(); }
+    };
+
+    const popup = pos && ReactDOM.createPortal(
+        <div
+            className="hadith-info-popup"
+            style={{ position: 'fixed', bottom: pos.bottom, left: pos.left, width: pos.width, zIndex: 9999 }}
+            onMouseLeave={hide}
+            onClick={(e) => e.stopPropagation()}
+        >
+            Different counting methods yield different totals — traditional numbering, chapter-wise sums, and recorded entries each differ slightly.
+        </div>,
+        document.getElementById('root') || document.body
+    );
+
+    return (
+        <span className="hadith-count-range-wrap">
+            <span className="stat-badge hadiths">
+                {hasDiscrepancy
+                    ? `${min.toLocaleString()}–${max.toLocaleString()} Hadiths`
+                    : `${totalRecords.toLocaleString()} Hadiths`
+                }
+            </span>
+            {hasDiscrepancy && (
+                <span
+                    ref={triggerRef}
+                    className="hadith-info-trigger"
+                    onMouseEnter={show}
+                    onMouseLeave={hide}
+                    onClick={toggle}
+                >
+                    <Info size={13} />
+                    {popup}
+                </span>
+            )}
+        </span>
+    );
+};
 
 const HadithBooks = () => {
     const [stats, setStats] = useState({});
@@ -13,6 +85,8 @@ const HadithBooks = () => {
     const [viewMode, setViewMode] = useState('books'); // 'books' | 'narrators'
     const [narrators, setNarrators] = useState([]);
     const [narratorsLoading, setNarratorsLoading] = useState(false);
+    const [expandedLetters, setExpandedLetters] = useState({});
+    const sectionRefs = useRef({});
 
     useEffect(() => {
         const loadStats = async () => {
@@ -52,6 +126,22 @@ const HadithBooks = () => {
         );
     }, [searchTerm]);
 
+    // Group narrators by first letter for alphabet view
+    const narratorsByLetter = useMemo(() => {
+        const groups = {};
+        for (const letter of ALPHABET) groups[letter] = [];
+        for (const n of narrators) {
+            const first = (n.canonical || '').charAt(0).toUpperCase();
+            const letter = /[A-Z]/.test(first) ? first : '#';
+            groups[letter].push(n);
+        }
+        // Sort within each letter by count descending
+        for (const letter of ALPHABET) {
+            groups[letter].sort((a, b) => b.totalCount - a.totalCount);
+        }
+        return groups;
+    }, [narrators]);
+
     const filteredNarrators = useMemo(() => {
         if (!searchTerm.trim()) return narrators;
         const term = searchTerm.toLowerCase();
@@ -60,6 +150,28 @@ const HadithBooks = () => {
             n.aliases?.some(a => a.toLowerCase().includes(term))
         );
     }, [narrators, searchTerm]);
+
+    // Group filtered narrators by letter (for search mode)
+    const filteredByLetter = useMemo(() => {
+        if (!searchTerm.trim()) return narratorsByLetter;
+        const groups = {};
+        for (const letter of ALPHABET) groups[letter] = [];
+        for (const n of filteredNarrators) {
+            const first = (n.canonical || '').charAt(0).toUpperCase();
+            const letter = /[A-Z]/.test(first) ? first : '#';
+            groups[letter].push(n);
+        }
+        return groups;
+    }, [filteredNarrators, searchTerm, narratorsByLetter]);
+
+    const scrollToLetter = useCallback((letter) => {
+        const el = sectionRefs.current[letter];
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, []);
+
+    const toggleLetter = useCallback((letter) => {
+        setExpandedLetters(prev => ({ ...prev, [letter]: !prev[letter] }));
+    }, []);
 
     const sahihBooks = filteredBooks.filter(b => b.isSahihSittah);
     const otherBooks = filteredBooks.filter(b => !b.isSahihSittah);
@@ -88,9 +200,7 @@ const HadithBooks = () => {
                                     {bookStats.totalChapters > 0 && (
                                         <span className="stat-badge chapters">{bookStats.totalChapters} Chapters</span>
                                     )}
-                                    {bookStats.totalHadiths > 0 && (
-                                        <span className="stat-badge hadiths">{bookStats.totalHadiths.toLocaleString()} Hadiths</span>
-                                    )}
+                                    <HadithCountInfo stats={bookStats} />
                                 </div>
                             )}
                         </div>
@@ -195,46 +305,93 @@ const HadithBooks = () => {
                             <div className="narrators-summary">
                                 <span>{filteredNarrators.length} narrators found across {Object.keys(HADITH_BOOKS).length} books</span>
                             </div>
-                            <div className="narrators-grid">
-                                {filteredNarrators.slice(0, 200).map((narrator) => (
-                                    <Link
-                                        key={narrator.id}
-                                        to={`/hadith/narrator/${narrator.id}`}
-                                        className="narrator-card"
-                                        style={{ textDecoration: 'none' }}
-                                    >
-                                        <div className="narrator-avatar">
-                                            <User size={18} />
-                                        </div>
-                                        <div className="narrator-info">
-                                            <h4 className="narrator-name">{narrator.canonical}</h4>
-                                            <span className="narrator-count">{narrator.totalCount.toLocaleString()} Hadiths</span>
-                                            <div className="narrator-books">
-                                                {narrator.books.map(bId => {
-                                                    const book = HADITH_BOOKS[bId];
-                                                    if (!book) return null;
-                                                    const count = narrator.hadiths.filter(h => h.book === bId).length;
-                                                    return (
-                                                        <span
-                                                            key={bId}
-                                                            className="narrator-book-tag"
-                                                            style={{ borderColor: book.color + '60', color: book.color }}
-                                                        >
-                                                            {book.name.split(' ').pop()} ({count})
-                                                        </span>
-                                                    );
-                                                })}
-                                            </div>
-                                        </div>
-                                    </Link>
-                                ))}
+
+                            {/* Alphabet Navigation Bar */}
+                            <div className="narrator-alpha-bar">
+                                {ALPHABET.map(letter => {
+                                    const count = filteredByLetter[letter]?.length || 0;
+                                    return (
+                                        <button
+                                            key={letter}
+                                            className={`narrator-alpha-letter ${count === 0 ? 'disabled' : ''}`}
+                                            disabled={count === 0}
+                                            onClick={() => scrollToLetter(letter)}
+                                            title={`${count} narrator${count !== 1 ? 's' : ''}`}
+                                        >
+                                            {letter}
+                                            {count > 0 && <span className="alpha-count">{count}</span>}
+                                        </button>
+                                    );
+                                })}
                             </div>
 
-                            {filteredNarrators.length > 200 && (
-                                <div className="hadith-empty-state">
-                                    <p>Showing top 200 of {filteredNarrators.length} narrators. Use search to find specific narrators.</p>
-                                </div>
-                            )}
+                            {/* Letter Sections */}
+                            {ALPHABET.map(letter => {
+                                const items = filteredByLetter[letter];
+                                if (!items || items.length === 0) return null;
+                                const isExpanded = expandedLetters[letter];
+                                const visible = isExpanded ? items : items.slice(0, NARRATORS_PER_SECTION);
+                                const hasMore = items.length > NARRATORS_PER_SECTION;
+
+                                return (
+                                    <section
+                                        key={letter}
+                                        className="narrator-letter-section"
+                                        ref={el => sectionRefs.current[letter] = el}
+                                    >
+                                        <div className="narrator-letter-header">
+                                            <span className="narrator-letter-char">{letter}</span>
+                                            <span className="narrator-letter-count">{items.length} narrator{items.length !== 1 ? 's' : ''}</span>
+                                        </div>
+                                        <div className="narrators-grid">
+                                            {visible.map(narrator => (
+                                                <Link
+                                                    key={narrator.id}
+                                                    to={`/hadith/narrator/${narrator.id}`}
+                                                    className="narrator-card"
+                                                    style={{ textDecoration: 'none' }}
+                                                >
+                                                    <div className="narrator-avatar">
+                                                        <User size={18} />
+                                                    </div>
+                                                    <div className="narrator-info">
+                                                        <h4 className="narrator-name">{narrator.canonical}</h4>
+                                                        <span className="narrator-count">{narrator.totalCount.toLocaleString()} Hadiths</span>
+                                                        <div className="narrator-books">
+                                                            {narrator.books.map(bId => {
+                                                                const book = HADITH_BOOKS[bId];
+                                                                if (!book) return null;
+                                                                const count = narrator.hadiths.filter(h => h.book === bId).length;
+                                                                return (
+                                                                    <span
+                                                                        key={bId}
+                                                                        className="narrator-book-tag"
+                                                                        style={{ borderColor: book.color + '60', color: book.color }}
+                                                                    >
+                                                                        {book.name.split(' ').pop()} ({count})
+                                                                    </span>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            ))}
+                                        </div>
+                                        {hasMore && (
+                                            <button
+                                                className="narrator-show-more"
+                                                onClick={() => toggleLetter(letter)}
+                                            >
+                                                {isExpanded
+                                                    ? 'Show less'
+                                                    : `Show all ${items.length} narrators`
+                                                }
+                                                <ChevronDown size={14} className={isExpanded ? 'rotated' : ''} />
+                                            </button>
+                                        )}
+                                    </section>
+                                );
+                            })}
 
                             {filteredNarrators.length === 0 && searchTerm && (
                                 <div className="hadith-empty-state">

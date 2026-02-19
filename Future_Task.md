@@ -1,5 +1,5 @@
-[ ] Wrong Day of Ramadan
-[ ] Wrong Hadith Counts
+[x] Wrong Day of Ramadan
+[x] Wrong Hadith Counts
 [ ] And will separate names like aisha and ibn abbas, they will be separated and hadith will shown under both names.
 [ ] Special Prayer Rules
     [ ] Janazah
@@ -9,3 +9,4 @@
 [ ] Lunar Phase Page
 [ ] Sehri & Iftar Duas
 [ ] Wishlist of Surah 
+[ ] Surah Read History to again start from there

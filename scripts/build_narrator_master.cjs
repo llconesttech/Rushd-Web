@@ -18,15 +18,17 @@ const CANONICAL_ALIASES = {
     "Abu Hurairah": [
         "abu huraira", "abu hurairah", "abu hurayrah", "abuhurayrah",
         "abuhuraira", "abuhurairah", "abu huraira al-dawsi",
-        "abu huraira al-dusi", "abu hurairah al-dawsi"
+        "abu huraira al-dusi", "abu hurairah al-dawsi", "abu huraira ad-dausi",
+        "abu huraira-", "ata (while abu huraira was narrating (see previous hadith))",
+        "abi huraira", "abnu hurairah", "abu hurairh", "abu-huraira"
     ],
-    "'A'ishah bint Abi Bakr": [
+    "Aishah bint Abi Bakr": [
         "aisha", "'aisha", "`aisha", "aishah", "'a'ishah", "'aishah",
         "ummul mu'minin 'aishah", "ummul mu'minin aishah",
         "a'ishah", "a'isha", "umm al-mu'minin 'aisha",
         "'a'isha", "a'isha (the mother of the faithful believers)",
         "'aishah",
-        // Honorific suffixes
+        // Honorific suffixes/prefixes
         "aishah the mother of the believers", "'aishah the mother of the believers",
         "aishah [may allah be pleased with her]",
         "aisha the wife of the prophet", "aishah the wife of the prophet",
@@ -34,7 +36,14 @@ const CANONICAL_ALIASES = {
         "aisha the mother of the faithful believers",
         "aisha may allah be pleased with her",
         "the mother of the belivers aishah",
-        "ummul mu'minin"
+        "ummul mu'minin",
+        // Narrative variations (X from Aisha, Aisha said, etc)
+        "urwa from aisha", "urwa on the authority of `aisha", "urwa from `aisha",
+        "amra bint `abdur-rahman from `aisha",
+        "a freed slave of 'aishah", "abu yunus, the freed slave of 'aishah",
+        "aishah said that the prophet", "from aishah that the messenger of allah",
+        "aishah mentioned a similar report and",
+        "aishah was asked about drinks and she"
     ],
     "'Abdullah ibn 'Abbas": [
         "ibn `abbas", "ibn 'abbas", "ibn abbas",
@@ -54,7 +63,8 @@ const CANONICAL_ALIASES = {
         "abdullah bin umar", "'abdullah ibn 'umar",
         "abdullah bin 'umar", "abdullah ibn umar",
         "'abdullah bin umar", "ibn 'umar from 'umar",
-        "ibn' `umar", "ibn. `umar"
+        "ibn' `umar", "ibn. `umar",
+        "nafi` from ibn `umar", "nafi' from ibn 'umar"
     ],
     "Jabir ibn 'Abdullah": [
         "jabir bin `abdullah", "jabir bin 'abdullah",
@@ -479,6 +489,49 @@ function main() {
 
         console.log(`  ✅ ${bookId}: ${matched}/${data.hadiths.length} extracted`);
     }
+
+    // ─── Split Multi-Narrator Entries ("X and Y" → X + Y) ────────────────
+    // Helper: resolve a name to an existing narrator (alias lookup + direct ID match)
+    const resolveToNarrator = (name) => {
+        // Try canonical alias lookup first
+        const resolved = resolveCanonical(name, aliasLookup);
+        if (resolved && narrators[resolved.id]) return resolved.id;
+        // Fallback: try direct ID match against existing narrators
+        const directId = toId(name);
+        if (narrators[directId]) return directId;
+        return null;
+    };
+
+    const multiKeys = Object.keys(narrators).filter(k =>
+        narrators[k].canonical.includes(' and ')
+    );
+    let splitCount = 0;
+    for (const key of multiKeys) {
+        const entry = narrators[key];
+        const parts = entry.canonical.split(/ and /i);
+        if (parts.length !== 2) continue;
+
+        const leftId = resolveToNarrator(parts[0].trim());
+        const rightId = resolveToNarrator(parts[1].trim());
+        if (!leftId || !rightId) continue;
+        if (leftId === key || rightId === key) continue; // self-reference guard
+
+        // Merge hadiths into both individual narrators (dedup by book+number)
+        for (const targetId of [leftId, rightId]) {
+            const existing = new Set(
+                narrators[targetId].hadiths.map(h => `${h.book}:${h.number}`)
+            );
+            for (const h of entry.hadiths) {
+                if (!existing.has(`${h.book}:${h.number}`)) {
+                    narrators[targetId].hadiths.push(h);
+                    narrators[targetId].books.add(h.book);
+                }
+            }
+        }
+        delete narrators[key];
+        splitCount++;
+    }
+    console.log(`  🔀 Split ${splitCount}/${multiKeys.length} multi-narrator entries`);
 
     // Convert to output format
     const narratorList = Object.values(narrators)

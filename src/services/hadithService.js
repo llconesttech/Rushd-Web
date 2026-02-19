@@ -95,22 +95,61 @@ export async function getArabicEdition(bookId) {
     return getEdition(bookId, 'ara');
 }
 
-/** Get total hadith count for a book */
+/** Compute detailed stats from an edition object */
+function computeBookStats(edition) {
+    const { metadata, hadiths } = edition;
+    const sections = metadata?.sections || {};
+    const sectionDetails = metadata?.section_details || {};
+    const totalChapters = Object.keys(sections).filter(k => k !== '0').length;
+    const totalRecords = hadiths?.length || 0;
+
+    // Canonical count: last integer hadith number
+    let canonicalCount = 0;
+    if (hadiths?.length) {
+        const lastHadith = hadiths[hadiths.length - 1];
+        canonicalCount = Math.floor(lastHadith.hadithnumber) || 0;
+    }
+
+    // Chapter-wise count: sum of (last - first + 1) per section range
+    let chapterWiseCount = 0;
+    Object.keys(sectionDetails)
+        .filter(k => k !== '0')
+        .forEach(sectionId => {
+            const det = sectionDetails[sectionId];
+            if (det?.hadithnumber_first != null && det?.hadithnumber_last != null) {
+                chapterWiseCount += det.hadithnumber_last - det.hadithnumber_first + 1;
+            }
+        });
+
+    // Count sub-numbered (decimal) hadiths and gap numbers
+    const decimalCount = hadiths?.filter(h => h.hadithnumber % 1 !== 0).length || 0;
+    const gapCount = canonicalCount - chapterWiseCount;
+
+    return {
+        totalChapters,
+        totalRecords,
+        canonicalCount,
+        chapterWiseCount: chapterWiseCount || totalRecords,
+        decimalCount,
+        gapCount,
+        hasDiscrepancy: totalRecords !== chapterWiseCount || canonicalCount !== chapterWiseCount,
+    };
+}
+
+/** Get detailed hadith counts for a book */
 export async function getBookStats(bookId) {
     try {
         const edition = await getEdition(bookId, 'eng');
-        const totalHadiths = edition.metadata?.last_hadithnumber || edition.hadiths?.length || 0;
-        const totalChapters = Object.keys(edition.metadata?.sections || {}).filter(k => k !== '0').length;
-        return { totalHadiths, totalChapters };
+        return computeBookStats(edition);
     } catch {
-        // Fallback: try Arabic if English not available
         try {
             const edition = await getEdition(bookId, 'ara');
-            const totalHadiths = edition.metadata?.last_hadithnumber || edition.hadiths?.length || 0;
-            const totalChapters = Object.keys(edition.metadata?.sections || {}).filter(k => k !== '0').length;
-            return { totalHadiths, totalChapters };
+            return computeBookStats(edition);
         } catch {
-            return { totalHadiths: 0, totalChapters: 0 };
+            return {
+                totalChapters: 0, totalRecords: 0, canonicalCount: 0,
+                chapterWiseCount: 0, decimalCount: 0, gapCount: 0, hasDiscrepancy: false,
+            };
         }
     }
 }
