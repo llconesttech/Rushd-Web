@@ -356,6 +356,12 @@ const HadithBooks = () => {
                                                     </div>
                                                     <div className="narrator-info">
                                                         <h4 className="narrator-name">{narrator.canonical}</h4>
+                                                        {(narrator.grade || narrator.death) && (
+                                                            <div className="narrator-meta-row">
+                                                                {narrator.grade && <span className="narrator-grade-badge">{narrator.grade}</span>}
+                                                                {narrator.death && <span className="narrator-death-date">{narrator.death}</span>}
+                                                            </div>
+                                                        )}
                                                         <span className="narrator-count">{narrator.totalCount.toLocaleString()} Hadiths</span>
                                                         <div className="narrator-books">
                                                             {narrator.books.map(bId => {

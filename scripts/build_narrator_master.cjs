@@ -20,9 +20,24 @@ const CANONICAL_ALIASES = {
         "abuhuraira", "abuhurairah", "abu huraira al-dawsi",
         "abu huraira al-dusi", "abu hurairah al-dawsi", "abu huraira ad-dausi",
         "abu huraira-", "ata (while abu huraira was narrating (see previous hadith))",
-        "abi huraira", "abnu hurairah", "abu hurairh", "abu-huraira"
+        "abi huraira", "abnu hurairah", "abu hurairh", "abu-huraira",
+        // Typos & Variations
+        "au hurairah", "abu huraitah", ".abu huraira",
+        "abu hurairah from the prophet",
+        // Extended phrases / "From" chains
+        "it was narrated that abu hurairah said",
+        "abu hurairah said; \"the messenger of allah",
+        "abu hurairah said \" the messenger of allah",
+        "abu hurairah said the messenger of allah",
+        "abu salih reported a narration from abu hurairah",
+        "az-zuhri, from abu salamah, from abu hurairah",
+        "ayyub, from al-hasan, from abu hurairah",
+        "hafs bin 'asim, from abu hurairah",
+        "hammam heard abu hurairah saying that 'abul-qasim (ﷺ)",
+        // Trailing context/duas
+        "abu hurairah that :the messenger of allah (saas)"
     ],
-    "Aishah bint Abi Bakr": [
+    "'Aisha bint Abi Bakr": [
         "aisha", "'aisha", "`aisha", "aishah", "'a'ishah", "'aishah",
         "ummul mu'minin 'aishah", "ummul mu'minin aishah",
         "a'ishah", "a'isha", "umm al-mu'minin 'aisha",
@@ -44,6 +59,25 @@ const CANONICAL_ALIASES = {
         "aishah said that the prophet", "from aishah that the messenger of allah",
         "aishah mentioned a similar report and",
         "aishah was asked about drinks and she"
+    ],
+    "Amr bin Shu'aib": [
+        "amr bin shu'aib", "amr b. shu'aib",
+        "amr bin shu'aib 5th generation",
+        "amr bin shu'aib, from his father",
+        "amr bin shu'aib from his father",
+        "amr bin shu'aib, from his father, from his grandfather",
+        "amr bin shu'aib from his father, from his grandfather",
+        "amr bin shu'aib, from his father, from 'abdullah bin 'amr",
+        "amr bin shu'aib from his father, from' abdullah bin 'amr",
+        "amr bin shu'aib, from tawus, from ibn 'umar and ibn 'abbas",
+        "amr bin shuaib, from his fahther",
+        "amr bin shu'aib, from his father , form his grandfather",
+        "amr bin:shu'aib, form his father",
+        "amr bin shu'aib, from his father, from his grand father",
+        "amr bin shu'aib, from this father, from his grandfather",
+        "amr bin shu'aib, from his grandfather",
+        "arm bin shu'aib, from his father, from his grandfather",
+        "shu'aib", "shuaib bin 'abdullah bin 'amr"
     ],
     "'Abdullah ibn 'Abbas": [
         "ibn `abbas", "ibn 'abbas", "ibn abbas",
@@ -78,7 +112,34 @@ const CANONICAL_ALIASES = {
         "abu said al-khudri", "abusa'id al-khudri",
         "abu sa`id", "abu sa'id", "abu said",
         "abusa'id", "abu sa'eed al-khudri",
-        "abu saeed al-khudri"
+        "abu saeed al-khudri", "abu sa'eed", "abu saeed"
+    ],
+    "Abu Shuraih": [
+        "abu shuraih al-khuza`i", "abu shuraih al-ka`bi",
+        "abu shuraih al-adawi", "suraih",
+        "abushurayh al-khuza'i", "abushurayb al-ka'bi",
+        "al-miqdam - abu shuraih -", "al-miqdam bin shuraih, from his father"
+    ],
+    "Abu Umamah al-Bahili": [
+        "abu umamah al-bahili", "abu umama al-bahili",
+        "abu umamah", "abu umama",
+        "abu 'umamah al-bahili", "abu 'umama al-bahili",
+        "abu 'umamah", "abu 'umama",
+        "abuumamah", "abu umamah al bahili",
+        "abu umamah, or one of the companion of the prophet",
+        "abu umamah al - bahilie"
+    ],
+    "Abu Umamah bin Sahl bin Hunaif": [
+        "abu umamah bin sahl bin hunaif", "abu umama bin sahl bin hunaif",
+        "abu umamah ibn sahl", "abu umama ibn sahl",
+        "abu umamah bin sahl", "abu umama bin sahl",
+        "abu umamah b. sahl hunaif", "abu umama b. sahl hunaif",
+        "abuumamah ibn sahl", "abu umamah bin sahi",
+        "abu umamah bin sahl hunaif"
+    ],
+    "Thumama bin 'Abdullah bin Anas": [
+        "thumama bin `abdullah", "thumama bin `abdullah bin anas",
+        "thumama", "thumamah bin 'abdullah"
     ],
     "Abu Musa al-Ash'ari": [
         "abu musa", "abu musa al-ash'ari",
@@ -268,9 +329,7 @@ const CANONICAL_ALIASES = {
         "buraida", "buraidah", "buraida bin al-husaib",
         "buraidah bin al-husaib", "buraydah"
     ],
-    "Abu Umamah al-Bahili": [
-        "abu umamah", "abu umamah al-bahili", "abuumamah"
-    ],
+
     "Mu'awiyah ibn Abi Sufyan": [
         "mu'awiyah", "muawiyah", "mu'awiya", "muawiya",
         "mu'awiyah bin abi sufyan"
@@ -279,7 +338,10 @@ const CANONICAL_ALIASES = {
         "abdullah bin 'amr", "'abdullah bin 'amr",
         "abdullah bin amr", "`abdullah bin `amr",
         "abdullah bin 'amr bin al-'as", "'abdullah bin 'amr bin al-'as",
-        "abdullah bin amr bin al-as"
+        "abdullah bin amr bin al-as", "abdullah bin 'amr bin 'as",
+        "abdullah bin amr bin as", "abdullah bin `amr bin al-as",
+        "abdullah bin amr bin al aas", "abdullah bin amr bin al-aas",
+        "abdullah bin `amr bin al `aas"
     ],
     "'Abdullah ibn Az-Zubair": [
         "abdullah bin az-zubair", "'abdullah bin az-zubair",
@@ -305,6 +367,34 @@ const CANONICAL_ALIASES = {
         "zainab", "zaynab", "zainab bint jahsh",
         "zaynab bint jahsh"
     ],
+    "An-Nu'man bin Bashir": [
+        "an-nu'man bin bashir", "an-nu`man bin 'bashir", "an-nu`man bin bashir",
+        "an-numan bin bashir", "an-nu'man ibn bashir", "nu’man bin bashir",
+        "nu'man bin bashir", "al-nu'man b. bashir", "al-nu'man bin bashir",
+        "al-nu'man bin bashir ibn sa'd", "an-nu'man bin bashir ibn sa'd",
+        "an-nu'man said that his father took him to the prophet and"
+    ],
+    "Abu Dharr al-Ghifari": [
+        "abu dhar", "abu dharr", "abu dharr al-ghifari",
+        "abudharr", "abu dhar al-ghifar", "ahu dharr",
+        "anas bin malik that abu dhar said",
+        "zaid bin zabyan who attributed it to abu dharr",
+        "zaid bin zibyan, and attributed to abu dharr",
+        "‘abdullah bin samit from abu dharr"
+    ],
+    "Bashir ibn al-Khasasiyyah": [
+        "bashir bin khasasiyyah", "bashir bin al-khasasiyyah", "bashir ibn al-khasasiyyah"
+    ],
+    "Abu Bakrah": [
+        "abu bakra", "abubakrah", "abu bakrah", "abi bakr"
+    ],
+    "Asma' bint Abu Bakr": [
+        "asma bint abu bakr", "asma 'bint abu bakr", "asma’ bint abu bakr",
+        "asm’a bint abu bakr", "asma 'bint abi bakr", "asma bint abi bakr",
+        "asma’ bint abi bakr", "asma' bint abi bakr", "asma' bint abubakr",
+        "asma' daughter of abu bakr", "asma' daughter of abubakr",
+        "asma bint abubakr", "asma daughter of abubakr"
+    ]
 };
 
 // ─── Extraction Patterns ────────────────────────────────────────────────
@@ -358,6 +448,12 @@ function buildAliasLookup() {
 function toId(canonical) {
     return canonical
         .toLowerCase()
+        .replace(/\b(ibn|bin|b)\b/g, 'bin')
+        .replace(/(?:^|\s)b\.(?=\s|$)/g, ' bin ')
+        .replace(/ghaffari/g, 'ghifari')
+        .replace(/ah\b/g, 'a')
+        .replace(/['`\u2018\u2019ʿʾ]a+/g, 'a')
+        .replace(/aa+/g, 'a')
         .replace(/['`\u2018\u2019ʿʾ]/g, '')
         .replace(/\s+/g, '-')
         .replace(/[^a-z0-9\-]/g, '')
@@ -366,6 +462,7 @@ function toId(canonical) {
 }
 
 function normalizeForLookup(name) {
+    if (!name) return '';
     return name
         .toLowerCase()
         .replace(/\.\s*([`'\u2018\u2019ʿʾ])/g, ' $1')  // "Ibn." before apostrophe -> "Ibn "
@@ -376,10 +473,18 @@ function normalizeForLookup(name) {
         .replace(/\s+'/g, " '")              // normalize space-apostrophe
         .replace(/\s*\([^)]*\)\s*/g, ' ')
         .replace(/\s*\[[^\]]*\]\s*/g, ' ')
-        .replace(/,\s*(may allah|r\.a|the mother|from his|who|wife of).*/gi, '')
+        .replace(/,\s*(may allah|r\.a|the mother|from his|who|wife of|on the authority of).*/gi, '')
         .replace(/\s+(the mother of the (faithful )?believers?)$/gi, '')
         .replace(/\s+may allah be pleased with (him|her|them)$/gi, '')
         .replace(/\s+(the wife of the prophet.*)$/gi, '')
+        .replace(/\s+(who said|from whom).*$/gi, '')
+        .replace(/\s+on the authority of.*$/gi, '')
+        .replace(/\b(ibn|bin|b)\b/g, 'bin')
+        .replace(/(?:^|\s)b\.(?=\s|$)/g, ' bin ')
+        .replace(/ghaffari/g, 'ghifari')
+        .replace(/ah\b/g, 'a') // Universal ta-marbuta normalization
+        .replace(/['`\u2018\u2019ʿʾ]a+/g, 'a') // Normalize 'a, 'aa to a
+        .replace(/aa+/g, 'a') // Normalize aa to a
         .replace(/\s+/g, ' ')
         .trim();
 }
@@ -454,9 +559,13 @@ function main() {
                 canonical = resolved.canonical;
                 canonicalMatches++;
             } else {
-                // Unmatched — use raw name as-is
-                canonical = rawName;
-                narratorId = toId(rawName);
+                // Unmatched — use raw name, but strip informational suffixes for the canonical grouping name
+                canonical = rawName
+                    .replace(/,\s*(may allah|from his|who|r\.a|the mother|the wife|on the authority of).*/gi, '')
+                    .replace(/\s+(who said|from whom).*$/gi, '')
+                    .replace(/\s+on the authority of.*$/gi, '')
+                    .trim();
+                narratorId = toId(canonical);
             }
 
             if (!narrators[narratorId]) {
@@ -545,6 +654,43 @@ function main() {
         }))
         .sort((a, b) => b.totalCount - a.totalCount);
 
+    // ─── CSV ENRICHMENT ────────────────────────────────────────────────────────
+    let enrichedCount = 0;
+    try {
+        const csvMapPath = path.join(__dirname, 'narrator_csv_map.json');
+        if (fs.existsSync(csvMapPath)) {
+            console.log('📖 Loading CSV Metadata Map...');
+            const csvMap = JSON.parse(fs.readFileSync(csvMapPath, 'utf8'));
+
+            narratorList.forEach(n => {
+                if (csvMap[n.canonical]) {
+                    const meta = csvMap[n.canonical];
+                    n.grade = meta.grade;
+                    n.death = meta.death;
+                    n.full_name = meta.full_name;
+                    n.parents = meta.parents;
+                    n.spouse = meta.spouse;
+                    n.siblings = meta.siblings;
+                    n.children = meta.children;
+                    n.birth_date_place = meta.birth_date_place;
+                    n.places_of_stay = meta.places_of_stay;
+                    n.teachers = meta.teachers;
+                    n.students = meta.students;
+                    n.area_of_interest = meta.area_of_interest;
+                    n.tags = meta.tags;
+                    enrichedCount++;
+                }
+            });
+            console.log(`✨ Enriched ${enrichedCount} narrators with metadata.`);
+        } else {
+            console.warn('⚠️ CSV Map not found at:', csvMapPath);
+        }
+    } catch (e) {
+        console.error('❌ Error enriching data:', e);
+    }
+    // ──────────────────────────────────────────────────────────────────────────
+
+
     // Build alias index for quick lookups
     const aliasIndex = {};
     for (const n of narratorList) {
@@ -573,12 +719,16 @@ function main() {
     console.log(`📊 ${narratorList.length} unique narrators`);
     console.log(`📊 ${totalExtracted}/${totalHadiths} hadiths with narrator`);
     console.log(`📊 ${canonicalMatches} matched to canonical names (${Math.round(canonicalMatches / totalExtracted * 100)}%)`);
+    if (typeof enrichedCount !== 'undefined' && enrichedCount > 0) {
+        console.log(`📊 ${enrichedCount} narrators enriched with CSV data (${Math.round(enrichedCount / narratorList.length * 100)}%)`);
+    }
 
     // Show top 20
     console.log(`\n🏆 Top 20 narrators:`);
     narratorList.slice(0, 20).forEach((n, i) => {
         const aliases = n.aliases.length > 0 ? ` (aliases: ${n.aliases.slice(0, 3).join(', ')})` : '';
-        console.log(`  ${i + 1}. ${n.canonical} — ${n.totalCount} hadiths${aliases}`);
+        const grade = n.grade ? ` [${n.grade}]` : '';
+        console.log(`  ${i + 1}. ${n.canonical} — ${n.totalCount} hadiths${grade}${aliases}`);
     });
 }
 
