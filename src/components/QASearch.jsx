@@ -15,9 +15,9 @@ const QASearch = () => {
   const [questions, setQuestions] = useState([]);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
 
-  // Load topics initially
+  // Load macro topics initially
   useEffect(() => {
-    fetch('/data/hadith-qa/qa_topics.json')
+    fetch('/data/hadith-qa/qa_macro_index.json')
       .then(res => res.json())
       .then(data => {
         setTopics(data);
@@ -84,9 +84,13 @@ const QASearch = () => {
         }
       }
 
-      const results = await Promise.all(fetchPromises);
+      const results = await Promise.allSettled(fetchPromises);
       for (const res of results) {
-        loaded = loaded.concat(res);
+        if (res.status === 'fulfilled') {
+          loaded = loaded.concat(res.value);
+        } else {
+          console.warn("Failed to load a QA chunk", res.reason);
+        }
       }
       // Sort by Book then ID
       setQuestions(loaded);
@@ -127,15 +131,12 @@ const QASearch = () => {
             <div className="hadith-loading">Loading Categories...</div>
           ) : (
             <div className="qa-topics-grid">
-              {topics.slice(0, 24).map(topic => (
+              {topics.map(topic => (
                 <button key={topic.name} onClick={() => handleTopicClick(topic)} className="qa-topic-card cursor-pointer">
                   <h3 className="qa-topic-title">{topic.name}</h3>
-                  <span className="qa-topic-count">{topic.total} Q&A</span>
+                  <span className="qa-topic-count">{topic.total.toLocaleString()} Q&A</span>
                 </button>
               ))}
-              <div className="qa-topic-card empty-card">
-                <span>+ {topics.length - 24} more concepts</span>
-              </div>
             </div>
           )}
         </div>
@@ -171,7 +172,7 @@ const QASearch = () => {
               <div className="qa-pill-container">
                 {filteredTopics.slice(0, 8).map(t => (
                   <button key={t.name} onClick={() => { setSearchTerm(''); handleTopicClick(t); }} className="qa-topic-pill">
-                    {t.name} <span className="pill-count">{t.total}</span>
+                    {t.name} <span className="pill-count">{t.total.toLocaleString()}</span>
                   </button>
                 ))}
               </div>
