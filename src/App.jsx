@@ -173,7 +173,6 @@ const QuranReader = () => {
   } = useSettings();
   const [searchParams, setSearchParams] = useSearchParams();
   const pageFilter = searchParams.get('page');
-  const [isScrolled, setIsScrolled] = useState(false);
 
   const surahNum = parseInt(number);
 
@@ -196,15 +195,6 @@ const QuranReader = () => {
 
   const location = useLocation();
   const highlightAyah = location.state?.highlightAyah;
-
-  // Track scroll position for sticky header
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Handle Deep Linking to Ayah
   useEffect(() => {
@@ -407,7 +397,6 @@ const QuranReader = () => {
             { label: 'Quran', path: '/quran' },
             { label: surah.englishName, path: `/quran/${surahNum}` }
           ]}
-          isScrolled={isScrolled}
           actions={
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '100%', justifyContent: 'flex-end' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>

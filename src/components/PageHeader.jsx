@@ -17,7 +17,13 @@ const PageHeader = ({ breadcrumbs = [], title, subtitle, badge, actions, isScrol
         const scroller = document.querySelector('.reader-main-content') || window;
         const handleScroll = () => {
             const scrollTop = scroller === window ? window.scrollY : scroller.scrollTop;
-            setInternalIsScrolled(scrollTop > 50); // Sync with App.jsx threshold
+            setInternalIsScrolled(prev => {
+                // The header physically shrinks by ~50-60px. 
+                // Setting the gap to 100px (120 - 20) ensures no layout thrashing loops.
+                if (!prev && scrollTop > 120) return true;
+                if (prev && scrollTop < 20) return false;
+                return prev;
+            });
         };
 
         scroller.addEventListener('scroll', handleScroll);
