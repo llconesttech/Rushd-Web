@@ -29,6 +29,7 @@ const featureSections = [
             { id: 'tajweed', title: 'Tajweed', icon: '🎯', link: '/tajweed' },
             { id: 'memorize', title: 'Memorization', icon: '🧠', link: '/memorize' },
             { id: 'audio', title: 'Audio Recitation', icon: '🎧', link: '/audio' },
+            { id: 'qa', title: 'Hadith Q&A', icon: '💡', link: '/qa-search' },
         ]
     },
     {

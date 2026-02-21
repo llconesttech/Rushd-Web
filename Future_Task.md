@@ -2,9 +2,9 @@
 [x] Wrong Hadith Counts
 [x] Arabic number mention in hadith
 [x] Language wise chapter name 
-[ ] Topic wise search in hadith
-[ ] Hadith QA devide in smaller jsons each large json to optimize loading
-[ ] Add Musaf view in Quran Page
+[x] Topic wise search in hadith
+[x] Hadith QA devide in smaller jsons each large json to optimize loading
+[x] Add Musaf view in Quran Page
 [x] And will separate names like aisha and ibn abbas, they will be separated and hadith will shown under both names.
 [ ] Special Prayer Rules
     [ ] Janazah

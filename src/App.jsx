@@ -32,6 +32,8 @@ import HadithBooks from './components/HadithBooks';
 import HadithChapters from './components/HadithChapters';
 import HadithReader from './components/HadithReader';
 import NarratorDetail from './components/NarratorDetail';
+import QASearch from './components/QASearch';
+import MushafReader from './components/MushafReader';
 import { surahData, getSurahInfo } from './data/quranData';
 
 // ─── Surah List (Grid Page) ───
@@ -420,12 +422,17 @@ const QuranReader = () => {
           }
         />
 
-        {/* Tajweed Legend Dropdown (replaces Bar) */}
         {isTajweed && (
           <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 60 }}>
             <TajweedLegendDropdown />
           </div>
         )}
+      </div>
+
+      <div className="container" style={{ textAlign: 'right', marginTop: '0.5rem', marginBottom: '0.5rem' }}>
+        <Link to={`/quran/mushaf/${surah.ayahs[0]?.page || 1}`} className="quran-switch-btn" style={{ display: 'inline-flex', width: 'fit-content' }}>
+          <BookOpen size={16} /> Mushaf View
+        </Link>
       </div>
 
       {/* Calligraphic Surah Header */}
@@ -515,6 +522,20 @@ function App() {
 
   const anySidebarOpen = isSurahListOpen || isSettingsOpen;
 
+  // Auto-hide bottom nav logic
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const handleMainScroll = (e) => {
+    const currentScrollY = e.target.scrollTop;
+    if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      setIsNavVisible(false); // Scrolling down, hide
+    } else {
+      setIsNavVisible(true);  // Scrolling up, show
+    }
+    setLastScrollY(currentScrollY);
+  };
+
   const handleBackdropClick = () => {
     if (isSurahListOpen) toggleSurahList();
     if (isSettingsOpen) toggleSettings();
@@ -543,7 +564,7 @@ function App() {
       <div className="main-content-wrapper">
 
         {/* Scrollable content */}
-        <main className="reader-main-content">
+        <main className="reader-main-content" onScroll={handleMainScroll}>
           <div style={{
             width: '100%',
             maxWidth: isReaderPage ? '864px' : '1200px',
@@ -554,6 +575,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/quran" element={<SurahList />} />
               <Route path="/quran/:number" element={<QuranReader />} />
+              <Route path="/quran/mushaf/:page" element={<MushafReader />} />
               <Route path="/qibla" element={<QiblaFinder />} />
               <Route path="/tasbih" element={<TasbihCounter />} />
               <Route path="/zakat" element={<ZakatCalculator />} />
@@ -570,6 +592,7 @@ function App() {
               <Route path="/hadith/narrator/:narratorId" element={<NarratorDetail />} />
               <Route path="/hadith/:bookId/:sectionId" element={<HadithReader />} />
               <Route path="/tajweed" element={<TajweedPage />} />
+              <Route path="/qa-search" element={<QASearch />} />
               <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
             </Routes>
           </div>
@@ -590,23 +613,27 @@ function App() {
 
       {/* Tajweed FAB Removed */}
 
-      {/* Mobile Bottom Action Bar */}
-      {showSidebars && (
-        <div className="mobile-bottom-bar">
-          <button className={`bar - btn ${isSurahListOpen ? 'active' : ''} `} onClick={toggleSurahList}>
-            <BookOpen size={22} />
-            <span>Surahs</span>
-          </button>
-          <button className="bar-btn" onClick={() => navigate('/')}>
-            <Home size={22} />
-            <span>Home</span>
-          </button>
-          <button className={`bar - btn ${isSettingsOpen ? 'active' : ''} `} onClick={toggleSettings}>
-            <Settings size={22} />
-            <span>Settings</span>
-          </button>
-        </div>
-      )}
+      {/* Mobile Bottom Action Bar - Ubiquitous PWA layout */}
+      <div
+        className="mobile-bottom-bar"
+        style={{
+          transform: isNavVisible ? 'translateY(0)' : 'translateY(150%)',
+          transition: 'transform 0.3s ease-in-out'
+        }}
+      >
+        <button className={`bar-btn ${isSurahListOpen ? 'active' : ''}`} onClick={toggleSurahList}>
+          <BookOpen size={22} />
+          <span>Surahs</span>
+        </button>
+        <button className="bar-btn" onClick={() => navigate('/')}>
+          <Home size={22} />
+          <span>Home</span>
+        </button>
+        <button className={`bar-btn ${isSettingsOpen ? 'active' : ''}`} onClick={toggleSettings}>
+          <Settings size={22} />
+          <span>Settings</span>
+        </button>
+      </div>
     </Layout>
   );
 }
