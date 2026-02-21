@@ -77,7 +77,7 @@
 
 
   /* Typography */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
   --font-arabic: 'Kitab', 'Amiri Quran', 'Scheherazade', 'Me Quran', serif;
   --font-arabic-indopak: 'IndoPak Nastaleeq', 'Noto Nastaliq Urdu', serif;
   /* Need to import these */

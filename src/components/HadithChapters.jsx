@@ -75,10 +75,35 @@ const HadithChapters = () => {
     const filteredChapters = useMemo(() => {
         if (!searchTerm.trim()) return chapters;
         const term = searchTerm.toLowerCase();
-        return chapters.filter(ch =>
-            ch.name?.toLowerCase().includes(term) ||
-            ch.id.toString().includes(term)
-        );
+
+        const isNum = /^\d+$/.test(term);
+        const searchNum = isNum ? parseInt(term, 10) : null;
+
+        return chapters.filter(ch => {
+            // Basic text or exact ID match
+            if (ch.name?.toLowerCase().includes(term) || ch.id.toString() === term) {
+                return true;
+            }
+
+            // Range match for hadith number
+            if (isNum) {
+                if (ch.firstHadith && ch.lastHadith) {
+                    const first = typeof ch.firstHadith === 'number' ? ch.firstHadith : parseFloat(ch.firstHadith);
+                    const last = typeof ch.lastHadith === 'number' ? ch.lastHadith : parseFloat(ch.lastHadith);
+                    if (!isNaN(first) && !isNaN(last) && searchNum >= Math.floor(first) && searchNum <= Math.ceil(last)) {
+                        return true;
+                    }
+                }
+                if (ch.firstArabic && ch.lastArabic && ch.firstArabic !== 0) {
+                    const firstAra = typeof ch.firstArabic === 'number' ? ch.firstArabic : parseFloat(ch.firstArabic);
+                    const lastAra = typeof ch.lastArabic === 'number' ? ch.lastArabic : parseFloat(ch.lastArabic);
+                    if (!isNaN(firstAra) && !isNaN(lastAra) && searchNum >= Math.floor(firstAra) && searchNum <= Math.ceil(lastAra)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        });
     }, [chapters, searchTerm]);
 
     const chapterWiseTotal = chapters.reduce((sum, ch) => sum + ch.hadithCount, 0);
@@ -164,7 +189,7 @@ const HadithChapters = () => {
                 <Search size={18} className="search-icon" />
                 <input
                     type="text"
-                    placeholder={`Search ${chapters.length} chapters by name or number...`}
+                    placeholder={`Search ${chapters.length} chapters by name, or find by hadith number...`}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="hadith-search-input"
@@ -203,6 +228,11 @@ const HadithChapters = () => {
                             <div className="chapter-card-range">
                                 {chapter.firstHadith && chapter.lastHadith && (
                                     <span>#{chapter.firstHadith} – #{chapter.lastHadith}</span>
+                                )}
+                                {chapter.firstArabic && chapter.lastArabic && chapter.firstArabic !== 0 && (
+                                    <span className="chapter-card-arabic-range">
+                                        Arabic: {chapter.firstArabic} – {chapter.lastArabic}
+                                    </span>
                                 )}
                             </div>
                         </Link>

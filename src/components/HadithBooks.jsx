@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Search, BookOpen, User, Info, ChevronDown } from 'lucide-react';
 import { HADITH_BOOKS } from '../data/hadithData';
-import { getBookStats, getAllNarrators } from '../services/hadithService';
+import { getBookStats, getAllNarrators, searchAllChapters } from '../services/hadithService';
 import PageHeader from './PageHeader';
 import './Hadith.css';
 
@@ -88,6 +88,10 @@ const HadithBooks = () => {
     const [expandedLetters, setExpandedLetters] = useState({});
     const sectionRefs = useRef({});
 
+    // Chapters View Mode State
+    const [chapterResults, setChapterResults] = useState([]);
+    const [isChapterSearching, setIsChapterSearching] = useState(false);
+
     useEffect(() => {
         const loadStats = async () => {
             const result = {};
@@ -113,6 +117,29 @@ const HadithBooks = () => {
             }).catch(() => setNarratorsLoading(false));
         }
     }, [viewMode]);
+
+    // Handle Chapter Search
+    useEffect(() => {
+        if (viewMode !== 'chapters') return;
+
+        if (!searchTerm.trim()) {
+            setChapterResults([]);
+            setIsChapterSearching(false);
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            setIsChapterSearching(true);
+            searchAllChapters(searchTerm)
+                .then(res => {
+                    setChapterResults(res);
+                    setIsChapterSearching(false);
+                })
+                .catch(() => setIsChapterSearching(false));
+        }, 500); // 500ms debounce
+
+        return () => clearTimeout(timer);
+    }, [searchTerm, viewMode]);
 
     const allBooks = Object.values(HADITH_BOOKS);
 
@@ -225,14 +252,21 @@ const HadithBooks = () => {
             <div className="hadith-view-tabs">
                 <button
                     className={`view-tab ${viewMode === 'books' ? 'active' : ''}`}
-                    onClick={() => setViewMode('books')}
+                    onClick={() => { setViewMode('books'); setSearchTerm(''); }}
                 >
                     <BookOpen size={16} />
                     Book-wise
                 </button>
                 <button
+                    className={`view-tab ${viewMode === 'chapters' ? 'active' : ''}`}
+                    onClick={() => { setViewMode('chapters'); setSearchTerm(''); }}
+                >
+                    <BookOpen size={16} />
+                    Chapter-wise Search
+                </button>
+                <button
                     className={`view-tab ${viewMode === 'narrators' ? 'active' : ''}`}
-                    onClick={() => setViewMode('narrators')}
+                    onClick={() => { setViewMode('narrators'); setSearchTerm(''); }}
                 >
                     <User size={16} />
                     Narrator-wise
@@ -244,9 +278,10 @@ const HadithBooks = () => {
                 <Search size={18} className="search-icon" />
                 <input
                     type="text"
-                    placeholder={viewMode === 'books'
-                        ? 'Search books by name, author, or Arabic title...'
-                        : 'Search narrators by name...'
+                    placeholder={
+                        viewMode === 'books' ? 'Search books by name, author, or Arabic title...' :
+                            viewMode === 'chapters' ? 'Search all chapters across books in any language...' :
+                                'Search narrators by name...'
                     }
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -254,7 +289,9 @@ const HadithBooks = () => {
                 />
                 {searchTerm && (
                     <span className="search-results-count">
-                        {viewMode === 'books' ? filteredBooks.length : filteredNarrators.length} results
+                        {viewMode === 'books' ? filteredBooks.length :
+                            viewMode === 'chapters' ? chapterResults.length :
+                                filteredNarrators.length} results
                     </span>
                 )}
             </div>
@@ -290,6 +327,55 @@ const HadithBooks = () => {
                     {filteredBooks.length === 0 && searchTerm && (
                         <div className="hadith-empty-state">
                             <p>No books matching "<strong>{searchTerm}</strong>"</p>
+                        </div>
+                    )}
+                </>
+            )}
+
+            {/* ───── Chapters View ───── */}
+            {viewMode === 'chapters' && (
+                <>
+                    {!searchTerm.trim() ? (
+                        <div className="hadith-empty-state" style={{ padding: '4rem 1rem' }}>
+                            <Search size={48} color="var(--color-text-muted)" style={{ opacity: 0.3, marginBottom: '1rem' }} />
+                            <h3 style={{ margin: '0 0 0.5rem', color: 'var(--color-primary-dark)' }}>Global Chapter Search</h3>
+                            <p>Type a keyword in English, Arabic, Bengali, etc. to search across all book chapters globally.</p>
+                        </div>
+                    ) : isChapterSearching ? (
+                        <div className="hadith-loading">Searching chapters globally...</div>
+                    ) : chapterResults.length === 0 ? (
+                        <div className="hadith-empty-state">
+                            <p>No chapters matching "<strong>{searchTerm}</strong>"</p>
+                        </div>
+                    ) : (
+                        <div className="chapters-grid">
+                            {chapterResults.map(chapter => (
+                                <Link
+                                    to={`/hadith/${chapter.bookId}/${chapter.id}`}
+                                    key={`${chapter.bookId}-${chapter.id}`}
+                                    className="chapter-card-grid"
+                                >
+                                    <div className="chapter-card-header-row">
+                                        <span className="chapter-num-badge" style={{
+                                            backgroundColor: chapter.bookColor + '18',
+                                            color: chapter.bookColor,
+                                            borderColor: chapter.bookColor + '40',
+                                        }}>
+                                            Ch. {chapter.id}
+                                        </span>
+                                        <span className="chapter-hadith-badge" style={{ background: 'var(--color-bg-main)', color: 'var(--color-text-muted)' }}>
+                                            {chapter.bookName}
+                                        </span>
+                                    </div>
+                                    <h4 className="chapter-card-title">{chapter.name || `Chapter ${chapter.id}`}</h4>
+                                    <div className="chapter-card-range">
+                                        {chapter.hadithCount > 0 && <span>{chapter.hadithCount} Hadiths</span>}
+                                        {chapter.firstHadith && chapter.lastHadith && (
+                                            <span style={{ marginLeft: 'auto' }}>#{chapter.firstHadith}–{chapter.lastHadith}</span>
+                                        )}
+                                    </div>
+                                </Link>
+                            ))}
                         </div>
                     )}
                 </>

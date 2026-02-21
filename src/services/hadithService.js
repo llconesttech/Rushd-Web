@@ -75,6 +75,8 @@ export async function getBookChapters(bookId, langCode = 'eng') {
                 hadithCount,
                 firstHadith: details?.hadithnumber_first,
                 lastHadith: details?.hadithnumber_last,
+                firstArabic: details?.arabicnumber_first,
+                lastArabic: details?.arabicnumber_last,
             };
         })
         .sort((a, b) => a.id - b.id);
@@ -181,4 +183,69 @@ export async function getNarratorsByBook(bookId) {
             count: n.hadiths.filter(h => h.book === bookId).length,
         }))
         .sort((a, b) => b.count - a.count);
+}
+
+/** Detect the language of a given text search query */
+export function detectLanguage(text) {
+    if (!text) return 'eng';
+
+    // Arabic script (includes Persian/Urdu but they share characters)
+    if (/[\u0600-\u06FF]/.test(text)) {
+        // Can try to refine if needed, but Arabic data is usually "ara"
+        // Urdu has specific letters like Pe, Che, Zhe, Gaf, Farsi Yeh, Keheh
+        if (/[\u067E\u0686\u0698\u06AF\u06CC\u06A9]/.test(text)) return 'urd';
+        return 'ara';
+    }
+
+    // Bengali script
+    if (/[\u0980-\u09FF]/.test(text)) return 'ben';
+
+    // Cyrillic (Russian)
+    if (/[\u0400-\u04FF]/.test(text)) return 'rus';
+
+    // Tamil script
+    if (/[\u0B80-\u0BFF]/.test(text)) return 'tam';
+
+    // Keep Latin-based languages (eng, fra, ind, tur) under "eng" as default,
+    // or we might need further heuristics if we strictly separated them.
+    return 'eng';
+}
+
+import { HADITH_BOOKS } from '../data/hadithData';
+
+/** Search all chapters across all books dynamically */
+export async function searchAllChapters(query) {
+    if (!query || !query.trim()) return [];
+    const term = query.toLowerCase();
+    const lang = detectLanguage(query);
+
+    const results = [];
+    const bookIds = Object.keys(HADITH_BOOKS);
+
+    // Fetch chapters for all books in parallel
+    const chapterPromises = bookIds.map(async (bookId) => {
+        try {
+            const chapters = await getBookChapters(bookId, lang);
+            return { bookId, chapters };
+        } catch {
+            return { bookId, chapters: [] };
+        }
+    });
+
+    const booksChapters = await Promise.all(chapterPromises);
+
+    for (const { bookId, chapters } of booksChapters) {
+        for (const ch of chapters) {
+            if (ch.name?.toLowerCase().includes(term) || ch.id.toString().includes(term)) {
+                results.push({
+                    ...ch,
+                    bookId,
+                    bookName: HADITH_BOOKS[bookId].name,
+                    bookColor: HADITH_BOOKS[bookId].color
+                });
+            }
+        }
+    }
+
+    return results;
 }

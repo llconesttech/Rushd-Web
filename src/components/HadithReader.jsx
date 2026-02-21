@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { HADITH_BOOKS, HADITH_LANGUAGES } from '../data/hadithData';
-import { getSectionHadiths, getEdition, getAvailableLanguages } from '../services/hadithService';
+import { getSectionHadiths, getEdition, getAvailableLanguages, detectLanguage } from '../services/hadithService';
 import PageHeader from './PageHeader';
 import './Hadith.css';
 
@@ -22,6 +22,10 @@ const HadithReader = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
     const [gradeFilter, setGradeFilter] = useState('all');
+
+    // Global search state
+    const [searchResults, setSearchResults] = useState(null); // null means no active global search
+    const [isSearching, setIsSearching] = useState(false);
 
     const book = HADITH_BOOKS[bookId];
 
@@ -62,8 +66,8 @@ const HadithReader = () => {
         return Array.from(grades).sort();
     }, [hadiths]);
 
-    // Filtered hadiths
-    const filteredHadiths = useMemo(() => {
+    // Filtered hadiths for current chapter
+    const localFilteredHadiths = useMemo(() => {
         let result = hadiths;
 
         if (gradeFilter !== 'all') {
@@ -72,24 +76,91 @@ const HadithReader = () => {
                 return g && g.toLowerCase() === gradeFilter.toLowerCase();
             });
         }
+        return result;
+    }, [hadiths, gradeFilter]);
 
-        if (searchTerm.trim()) {
-            const term = searchTerm.toLowerCase();
-            result = result.filter(h => {
-                const arabicText = getArabicTextFromCache(h.hadithnumber);
-                return h.text?.toLowerCase().includes(term) ||
-                    arabicText?.includes(term) ||
-                    h.hadithnumber?.toString().includes(term);
-            });
+    // Effect to handle global search across the book
+    useEffect(() => {
+        if (!searchTerm.trim()) {
+            setSearchResults(null);
+            setIsSearching(false);
+            return;
         }
 
-        return result;
-    }, [hadiths, searchTerm, gradeFilter, arabicHadiths]);
+        const timer = setTimeout(async () => {
+            setIsSearching(true);
+            try {
+                const term = searchTerm.trim().toLowerCase();
+                const searchLang = detectLanguage(term);
+                const isNum = /^\d+(\.\d+)?$/.test(term);
+
+                // If it's just a number, we can search the selected language edition
+                const langToSearch = isNum ? selectedLang : (searchLang === 'eng' ? selectedLang : searchLang);
+
+                // Load editions
+                const displayEdition = await getEdition(bookId, selectedLang);
+                const araEdition = await getEdition(bookId, 'ara');
+
+                let targetEdition = null;
+                // Only load target if different and not english fallback
+                if (langToSearch !== selectedLang && langToSearch !== 'ara' && langToSearch !== 'eng') {
+                    try { targetEdition = await getEdition(bookId, langToSearch); } catch (e) { }
+                } else if (langToSearch === 'eng' && selectedLang !== 'eng') {
+                    try { targetEdition = await getEdition(bookId, 'eng'); } catch (e) { }
+                }
+
+                let results = [];
+                for (const h of displayEdition.hadiths) {
+                    if (gradeFilter !== 'all') {
+                        const g = getGradeLabel(h.grades);
+                        if (!g || g.toLowerCase() !== gradeFilter.toLowerCase()) continue;
+                    }
+
+                    const matchAra = araEdition.hadiths.find(a => a.hadithnumber === h.hadithnumber);
+                    const araText = matchAra?.text || '';
+
+                    let targetText = '';
+                    if (targetEdition) {
+                        const matchTarget = targetEdition.hadiths.find(t => t.hadithnumber === h.hadithnumber);
+                        targetText = matchTarget?.text || '';
+                    }
+
+                    if (!h.text?.toLowerCase().includes(term) &&
+                        !araText.includes(term) &&
+                        !targetText.toLowerCase().includes(term) &&
+                        h.hadithnumber?.toString() !== term &&
+                        matchAra?.arabicnumber?.toString() !== term) {
+                        continue;
+                    }
+
+                    // Attach arabic text to avoid repeated lookups later
+                    results.push({ ...h, __araText: araText, __isCurrentChapter: h.reference?.book === parseInt(sectionId) });
+                }
+
+                // Sort: Current chapter first, then hadith number
+                results.sort((a, b) => {
+                    if (a.__isCurrentChapter && !b.__isCurrentChapter) return -1;
+                    if (!a.__isCurrentChapter && b.__isCurrentChapter) return 1;
+                    return a.hadithnumber - b.hadithnumber;
+                });
+
+                setSearchResults(results);
+            } catch (err) {
+                console.error("Search error", err);
+            }
+            setIsSearching(false);
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, [searchTerm, gradeFilter, bookId, selectedLang, sectionId]);
+
+    const displayHadiths = searchResults !== null ? searchResults : localFilteredHadiths;
 
     if (!book) return <div className="container">Book not found</div>;
 
-    function getArabicTextFromCache(hadithNumber) {
-        const match = arabicHadiths.find(h => h.hadithnumber === hadithNumber);
+    function getArabicText(hadith) {
+        if (hadith.__araText !== undefined) return hadith.__araText;
+        const match = arabicHadiths.find(h => h.hadithnumber === hadith.hadithnumber);
         return match?.text || '';
     }
 
@@ -147,16 +218,16 @@ const HadithReader = () => {
                 </label>
 
                 <span className="hadith-count-label">
-                    {filteredHadiths.length}{filteredHadiths.length !== hadiths.length ? ` / ${hadiths.length}` : ''} Hadiths
+                    {displayHadiths.length}{searchResults === null && displayHadiths.length !== hadiths.length ? ` / ${hadiths.length}` : ''} Hadiths
                 </span>
             </div>
 
             {/* Search */}
-            <div className="hadith-search-bar">
+            <div className="hadith-search-bar" style={{ position: 'relative' }}>
                 <Search size={18} className="search-icon" />
                 <input
                     type="text"
-                    placeholder="Search by text, hadith number, or keyword..."
+                    placeholder="Search whole book by exact text or hadith number..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="hadith-search-input"
@@ -172,25 +243,37 @@ const HadithReader = () => {
             </div>
 
             {loading && <div className="hadith-loading">Loading hadiths...</div>}
+            {isSearching && <div className="hadith-loading">Searching globally across the book...</div>}
             {error && <div className="hadith-error">Error: {error}</div>}
 
-            {!loading && !error && (
+            {!loading && !error && !isSearching && (
                 <div className="hadiths-list">
-                    {filteredHadiths.map((hadith, index) => {
+                    {displayHadiths.map((hadith, index) => {
                         const gradeLabel = getGradeLabel(hadith.grades);
-                        const arabicText = getArabicTextFromCache(hadith.hadithnumber);
+                        const arabicText = getArabicText(hadith);
                         const langMeta = HADITH_LANGUAGES[selectedLang];
                         const isRtl = langMeta?.dir === 'rtl';
+                        const isOtherChapter = searchResults !== null && !hadith.__isCurrentChapter;
 
                         return (
                             <div
                                 key={hadith.hadithnumber}
                                 className={`hadith-card ${index % 2 === 0 ? 'even' : 'odd'}`}
                             >
+                                {isOtherChapter && (
+                                    <div className="ayah-badge" style={{ marginBottom: '1rem', background: 'var(--color-primary-light)', color: 'var(--color-primary-dark)' }}>
+                                        From Chapter {hadith.reference?.book}
+                                    </div>
+                                )}
                                 <div className="hadith-card-header">
                                     <span className="hadith-number" style={{ borderColor: book.color }}>
                                         {hadith.hadithnumber}
                                     </span>
+                                    {hadith.arabicnumber && hadith.arabicnumber !== 0 && (
+                                        <span className="chapter-card-arabic-range">
+                                            {book.name} (Arabic): {hadith.arabicnumber}
+                                        </span>
+                                    )}
                                     {gradeLabel && (
                                         <span className={`grade-badge ${getGradeClass(gradeLabel)}`}>
                                             {gradeLabel}
@@ -220,9 +303,9 @@ const HadithReader = () => {
                 </div>
             )}
 
-            {!loading && !error && filteredHadiths.length === 0 && (searchTerm || gradeFilter !== 'all') && (
+            {!loading && !error && !isSearching && displayHadiths.length === 0 && (searchTerm || gradeFilter !== 'all') && (
                 <div className="hadith-empty-state">
-                    <p>No hadiths matching your filters</p>
+                    <p>No hadiths matching your search criteria in the entire book.</p>
                 </div>
             )}
         </div>
