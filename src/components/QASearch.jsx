@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { Search, Hash, Loader2, BookOpen, AlertCircle, Bookmark } from 'lucide-react';
 import PageHeader from './PageHeader';
 import { HADITH_BOOKS } from '../data/hadithData';
@@ -191,7 +191,7 @@ const QASearch = () => {
                 )}
               </div>
             ) : (
-              <div className="hadith-empty-state">No questions found matching "{searchTerm}"</div>
+              <div className="hadith-empty-state">No questions found matching &quot;{searchTerm}&quot;</div>
             )
           ) : (
             <div className="hadith-loading">Searching vast knowledge base...</div>
@@ -250,6 +250,16 @@ const LazyQACard = ({ indexItem }) => {
   );
 };
 
+LazyQACard.propTypes = {
+  indexItem: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    b: PropTypes.string.isRequired,
+    ch: PropTypes.string.isRequired,
+    q: PropTypes.string.isRequired,
+    t: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 // Renders an already loaded question
 const QACard = ({ q }) => {
   const [expanded, setExpanded] = useState(false);
@@ -279,6 +289,15 @@ const QACard = ({ q }) => {
       )}
     </div>
   );
-}
+};
+
+QACard.propTypes = {
+  q: PropTypes.shape({
+    question: PropTypes.string.isRequired,
+    reference: PropTypes.string.isRequired,
+    "hadith-eng": PropTypes.string.isRequired,
+    grade: PropTypes.string,
+  }).isRequired,
+};
 
 export default QASearch;

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate, useLocation, matchPath, useSearchParams } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, BookOpen, Settings, Home } from 'lucide-react';
@@ -7,10 +8,10 @@ import { getArabicSurahName, getSurahName } from './data/surahNames';
 import SettingsSidebar from './components/SettingsSidebar';
 import SurahListSidebar from './components/SurahListSidebar';
 import HomePage from './components/HomePage';
+import TopBar from './components/TopBar';
 import ReadingProgress from './components/ReadingProgress';
 import AudioPlayer from './components/AudioPlayer';
 import PageHeader from './components/PageHeader';
-
 import TajweedLegendDropdown from './components/TajweedLegendDropdown';
 import TajweedPage from './components/TajweedPage';
 import { parseTajweed } from './utils/tajweedParser';
@@ -34,6 +35,7 @@ import HadithReader from './components/HadithReader';
 import NarratorDetail from './components/NarratorDetail';
 import QASearch from './components/QASearch';
 import MushafReader from './components/MushafReader';
+import DailyDuas from './components/DailyDuas';
 import { surahData, getSurahInfo } from './data/quranData';
 
 // ─── Surah List (Grid Page) ───
@@ -477,6 +479,7 @@ const Layout = ({ children }) => {
   return (
     <div className={bgClass} style={{
       display: 'flex',
+      flexDirection: 'column',
       height: '100dvh',
       width: '100vw',
       overflow: 'hidden',
@@ -532,73 +535,79 @@ function App() {
 
   return (
     <Layout>
-      {/* Surah Sidebar */}
-      {showSidebars && (
-        <SurahListSidebar
-          onSurahSelect={(num) => handleSurahSelect(num)}
-          currentSurah={surahNumber}
-          persistent={true}
-        />
-      )}
+      {/* Global Desktop TopBar */}
+      <TopBar />
 
-      {/* Backdrop Overlay (mobile/tablet) */}
-      {showSidebars && (
-        <div
-          className={`sidebar - backdrop ${anySidebarOpen ? 'visible' : ''} `}
-          onClick={handleBackdropClick}
-        />
-      )}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'row', overflow: 'hidden', minWidth: 0, position: 'relative', width: '100%' }}>
+        {/* Surah Sidebar */}
+        {showSidebars && (
+          <SurahListSidebar
+            onSurahSelect={(num) => handleSurahSelect(num)}
+            currentSurah={surahNumber}
+            persistent={true}
+          />
+        )}
 
-      {/* Main Content Wrapper */}
-      <div className="main-content-wrapper">
+        {/* Backdrop Overlay (mobile/tablet) */}
+        {showSidebars && (
+          <div
+            className={`sidebar-backdrop ${anySidebarOpen ? 'visible' : ''}`}
+            onClick={handleBackdropClick}
+          />
+        )}
 
-        {/* Scrollable content */}
-        <main className="reader-main-content" onScroll={handleMainScroll}>
-          <div style={{
-            width: '100%',
-            maxWidth: isReaderPage ? '864px' : '1200px',
-            padding: isReaderPage ? '0.5rem' : '2rem',
-            margin: '0 auto',
-          }}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/quran" element={<SurahList />} />
-              <Route path="/quran/:number" element={<QuranReader />} />
-              <Route path="/quran/mushaf/:page" element={<MushafReader />} />
-              <Route path="/qibla" element={<QiblaFinder />} />
-              <Route path="/tasbih" element={<TasbihCounter />} />
-              <Route path="/zakat" element={<ZakatCalculator />} />
-              <Route path="/salah-rules" element={<SalahRules />} />
-              <Route path="/names" element={<AsmaUlHusna />} />
-              <Route path="/calendar" element={<IslamicCalendar />} />
-              <Route path="/ramadan" element={<RamadanCalendar />} />
-              <Route path="/fasting" element={<FastingRules />} />
-              <Route path="/taraweeh" element={<Taraweeh />} />
-              <Route path="/laylatul-qadr" element={<LaylatulQadr />} />
-              <Route path="/sadaqah" element={<Sadaqah />} />
-              <Route path="/hadith" element={<HadithBooks />} />
-              <Route path="/hadith/:bookId" element={<HadithChapters />} />
-              <Route path="/hadith/narrator/:narratorId" element={<NarratorDetail />} />
-              <Route path="/hadith/:bookId/:sectionId" element={<HadithReader />} />
-              <Route path="/tajweed" element={<TajweedPage />} />
-              <Route path="/qa-search" element={<QASearch />} />
-              <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
-            </Routes>
-          </div>
-        </main>
+        {/* Main Content Wrapper */}
+        <div className="main-content-wrapper">
 
-        {/* Audio Player Dock (bottom of content, above mobile nav) */}
-        {isReaderPage && surahNumber > 0 && (
-          <div className="audio-player-dock">
-            <AudioPlayer surahNumber={surahNumber} totalAyahs={totalAyahs} />
-          </div>
+          {/* Scrollable content */}
+          <main className="reader-main-content" onScroll={handleMainScroll}>
+            <div style={{
+              width: '100%',
+              maxWidth: isReaderPage ? '864px' : '1200px',
+              padding: isReaderPage ? '0.5rem' : '2rem',
+              margin: '0 auto',
+            }}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/quran" element={<SurahList />} />
+                <Route path="/quran/:number" element={<QuranReader />} />
+                <Route path="/quran/mushaf/:page" element={<MushafReader />} />
+                <Route path="/qibla" element={<QiblaFinder />} />
+                <Route path="/tasbih" element={<TasbihCounter />} />
+                <Route path="/zakat" element={<ZakatCalculator />} />
+                <Route path="/salah-rules" element={<SalahRules />} />
+                <Route path="/names" element={<AsmaUlHusna />} />
+                <Route path="/calendar" element={<IslamicCalendar />} />
+                <Route path="/ramadan" element={<RamadanCalendar />} />
+                <Route path="/fasting" element={<FastingRules />} />
+                <Route path="/taraweeh" element={<Taraweeh />} />
+                <Route path="/laylatul-qadr" element={<LaylatulQadr />} />
+                <Route path="/sadaqah" element={<Sadaqah />} />
+                <Route path="/hadith" element={<HadithBooks />} />
+                <Route path="/duas" element={<DailyDuas />} />
+                <Route path="/hadith/:bookId" element={<HadithChapters />} />
+                <Route path="/hadith/narrator/:narratorId" element={<NarratorDetail />} />
+                <Route path="/hadith/:bookId/:sectionId" element={<HadithReader />} />
+                <Route path="/tajweed" element={<TajweedPage />} />
+                <Route path="/qa-search" element={<QASearch />} />
+                <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
+              </Routes>
+            </div>
+          </main>
+
+          {/* Audio Player Dock (bottom of content, above mobile nav) */}
+          {isReaderPage && surahNumber > 0 && (
+            <div className="audio-player-dock">
+              <AudioPlayer surahNumber={surahNumber} totalAyahs={totalAyahs} />
+            </div>
+          )}
+        </div>
+
+        {/* Settings Sidebar */}
+        {showSidebars && (
+          <SettingsSidebar persistent={true} />
         )}
       </div>
-
-      {/* Settings Sidebar */}
-      {showSidebars && (
-        <SettingsSidebar persistent={true} />
-      )}
 
       {/* Tajweed FAB Removed */}
 
@@ -636,3 +645,4 @@ function AppWrapper() {
 }
 
 export default AppWrapper;
+

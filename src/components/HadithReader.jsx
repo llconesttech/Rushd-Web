@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { HADITH_BOOKS, HADITH_LANGUAGES } from '../data/hadithData';
@@ -46,7 +46,7 @@ const HadithReader = () => {
                 } catch { setArabicHadiths([]); }
 
                 const edition = await getEdition(bookId, selectedLang);
-                const name = edition.metadata?.sections?.[sectionId] || `Chapter ${sectionId}`;
+                const name = edition.metadata?.sections?.[sectionId] || `Chapter ${sectionId} `;
                 setSectionName(name);
             } catch (e) {
                 setError(e.message);
@@ -104,9 +104,9 @@ const HadithReader = () => {
                 let targetEdition = null;
                 // Only load target if different and not english fallback
                 if (langToSearch !== selectedLang && langToSearch !== 'ara' && langToSearch !== 'eng') {
-                    try { targetEdition = await getEdition(bookId, langToSearch); } catch (e) { }
+                    try { targetEdition = await getEdition(bookId, langToSearch); } catch (e) { /* ignore */ }
                 } else if (langToSearch === 'eng' && selectedLang !== 'eng') {
-                    try { targetEdition = await getEdition(bookId, 'eng'); } catch (e) { }
+                    try { targetEdition = await getEdition(bookId, 'eng'); } catch (e) { /* ignore */ }
                 }
 
                 let results = [];
@@ -168,16 +168,16 @@ const HadithReader = () => {
         <div className="container hadith-container hadith-reader-container">
             <PageHeader
                 title={sectionName}
-                subtitle={`${book.name} — Chapter ${sectionId}`}
+                subtitle={`${book.name} — Chapter ${sectionId} `}
                 breadcrumbs={[
                     { label: 'Home', path: '/' },
                     { label: 'Hadith', path: '/hadith' },
-                    { label: book.name, path: `/hadith/${bookId}` },
-                    { label: `Ch. ${sectionId}`, path: `/hadith/${bookId}/${sectionId}` }
+                    { label: book.name, path: `/ hadith / ${bookId} ` },
+                    { label: `Ch.${sectionId} `, path: ` / hadith / ${bookId}/${sectionId}` }
                 ]}
             />
 
-            <div className="hadith-reader-toolbar">
+            < div className="hadith-reader-toolbar" >
                 <select
                     value={selectedLang}
                     onChange={(e) => setSelectedLang(e.target.value)}
@@ -195,18 +195,20 @@ const HadithReader = () => {
                         })}
                 </select>
 
-                {uniqueGrades.length > 0 && (
-                    <select
-                        value={gradeFilter}
-                        onChange={(e) => setGradeFilter(e.target.value)}
-                        className="hadith-lang-select"
-                    >
-                        <option value="all">All Grades</option>
-                        {uniqueGrades.map(g => (
-                            <option key={g} value={g}>{g}</option>
-                        ))}
-                    </select>
-                )}
+                {
+                    uniqueGrades.length > 0 && (
+                        <select
+                            value={gradeFilter}
+                            onChange={(e) => setGradeFilter(e.target.value)}
+                            className="hadith-lang-select"
+                        >
+                            <option value="all">All Grades</option>
+                            {uniqueGrades.map(g => (
+                                <option key={g} value={g}>{g}</option>
+                            ))}
+                        </select>
+                    )
+                }
 
                 <label className="toggle-arabic-label">
                     <input
@@ -220,10 +222,10 @@ const HadithReader = () => {
                 <span className="hadith-count-label">
                     {displayHadiths.length}{searchResults === null && displayHadiths.length !== hadiths.length ? ` / ${hadiths.length}` : ''} Hadiths
                 </span>
-            </div>
+            </div >
 
             {/* Search */}
-            <div className="hadith-search-bar" style={{ position: 'relative' }}>
+            < div className="hadith-search-bar" style={{ position: 'relative' }}>
                 <Search size={18} className="search-icon" />
                 <input
                     type="text"
@@ -232,83 +234,89 @@ const HadithReader = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="hadith-search-input"
                 />
-                {(searchTerm || gradeFilter !== 'all') && (
-                    <button
-                        className="search-clear-btn"
-                        onClick={() => { setSearchTerm(''); setGradeFilter('all'); }}
-                    >
-                        Clear Filters
-                    </button>
-                )}
-            </div>
+                {
+                    (searchTerm || gradeFilter !== 'all') && (
+                        <button
+                            className="search-clear-btn"
+                            onClick={() => { setSearchTerm(''); setGradeFilter('all'); }}
+                        >
+                            Clear Filters
+                        </button>
+                    )
+                }
+            </div >
 
             {loading && <div className="hadith-loading">Loading hadiths...</div>}
             {isSearching && <div className="hadith-loading">Searching globally across the book...</div>}
             {error && <div className="hadith-error">Error: {error}</div>}
 
-            {!loading && !error && !isSearching && (
-                <div className="hadiths-list">
-                    {displayHadiths.map((hadith, index) => {
-                        const gradeLabel = getGradeLabel(hadith.grades);
-                        const arabicText = getArabicText(hadith);
-                        const langMeta = HADITH_LANGUAGES[selectedLang];
-                        const isRtl = langMeta?.dir === 'rtl';
-                        const isOtherChapter = searchResults !== null && !hadith.__isCurrentChapter;
+            {
+                !loading && !error && !isSearching && (
+                    <div className="hadiths-list">
+                        {displayHadiths.map((hadith, index) => {
+                            const gradeLabel = getGradeLabel(hadith.grades);
+                            const arabicText = getArabicText(hadith);
+                            const langMeta = HADITH_LANGUAGES[selectedLang];
+                            const isRtl = langMeta?.dir === 'rtl';
+                            const isOtherChapter = searchResults !== null && !hadith.__isCurrentChapter;
 
-                        return (
-                            <div
-                                key={hadith.hadithnumber}
-                                className={`hadith-card ${index % 2 === 0 ? 'even' : 'odd'}`}
-                            >
-                                {isOtherChapter && (
-                                    <div className="ayah-badge" style={{ marginBottom: '1rem', background: 'var(--color-primary-light)', color: 'var(--color-primary-dark)' }}>
-                                        From Chapter {hadith.reference?.book}
-                                    </div>
-                                )}
-                                <div className="hadith-card-header">
-                                    <span className="hadith-number" style={{ borderColor: book.color }}>
-                                        {hadith.hadithnumber}
-                                    </span>
-                                    {hadith.arabicnumber && hadith.arabicnumber !== 0 && (
-                                        <span className="chapter-card-arabic-range">
-                                            {book.name} (Arabic): {hadith.arabicnumber}
-                                        </span>
-                                    )}
-                                    {gradeLabel && (
-                                        <span className={`grade-badge ${getGradeClass(gradeLabel)}`}>
-                                            {gradeLabel}
-                                        </span>
-                                    )}
-                                    {hadith.reference && (
-                                        <span className="hadith-ref">
-                                            Book {hadith.reference.book}, Hadith {hadith.reference.hadith}
-                                        </span>
-                                    )}
-                                </div>
-
-                                {showArabic && arabicText && (
-                                    <p className="hadith-arabic-text">{arabicText}</p>
-                                )}
-
-                                <p
-                                    className="hadith-translation-text"
-                                    dir={isRtl ? 'rtl' : 'ltr'}
-                                    style={{ textAlign: isRtl ? 'right' : 'left' }}
+                            return (
+                                <div
+                                    key={hadith.hadithnumber}
+                                    className={`hadith-card ${index % 2 === 0 ? 'even' : 'odd'}`}
                                 >
-                                    {hadith.text}
-                                </p>
-                            </div>
-                        );
-                    })}
-                </div>
-            )}
+                                    {isOtherChapter && (
+                                        <div className="ayah-badge" style={{ marginBottom: '1rem', background: 'var(--color-primary-light)', color: 'var(--color-primary-dark)' }}>
+                                            From Chapter {hadith.reference?.book}
+                                        </div>
+                                    )}
+                                    <div className="hadith-card-header">
+                                        <span className="hadith-number" style={{ borderColor: book.color }}>
+                                            {hadith.hadithnumber}
+                                        </span>
+                                        {hadith.arabicnumber && hadith.arabicnumber !== 0 && (
+                                            <span className="chapter-card-arabic-range">
+                                                {book.name} (Arabic): {hadith.arabicnumber}
+                                            </span>
+                                        )}
+                                        {gradeLabel && (
+                                            <span className={`grade-badge ${getGradeClass(gradeLabel)}`}>
+                                                {gradeLabel}
+                                            </span>
+                                        )}
+                                        {hadith.reference && (
+                                            <span className="hadith-ref">
+                                                Book {hadith.reference.book}, Hadith {hadith.reference.hadith}
+                                            </span>
+                                        )}
+                                    </div>
 
-            {!loading && !error && !isSearching && displayHadiths.length === 0 && (searchTerm || gradeFilter !== 'all') && (
-                <div className="hadith-empty-state">
-                    <p>No hadiths matching your search criteria in the entire book.</p>
-                </div>
-            )}
-        </div>
+                                    {showArabic && arabicText && (
+                                        <p className="hadith-arabic-text">{arabicText}</p>
+                                    )}
+
+                                    <p
+                                        className="hadith-translation-text"
+                                        dir={isRtl ? 'rtl' : 'ltr'}
+                                        style={{ textAlign: isRtl ? 'right' : 'left' }}
+                                    >
+                                        {hadith.text}
+                                    </p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )
+            }
+
+            {
+                !loading && !error && !isSearching && displayHadiths.length === 0 && (searchTerm || gradeFilter !== 'all') && (
+                    <div className="hadith-empty-state">
+                        <p>No hadiths matching your search criteria in the entire book.</p>
+                    </div>
+                )
+            }
+        </div >
     );
 };
 

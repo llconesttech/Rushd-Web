@@ -32,9 +32,16 @@
     }
 
     .page-header.scrolled {
-        padding: 0 2rem;
-        /* Compact padding */
-        height: 72px;
+        /* Floating bar matching container width with light rounding */
+        padding: 0 1.5rem;
+        margin: 1rem 0;
+        height: 60px;
+        border-radius: 16px;
+        border: 1px solid var(--color-border);
+        width: 100%;
+        max-width: 100%;
+        top: 10px;
+        /* offset slightly off the exact ceiling */
     }
 }
 

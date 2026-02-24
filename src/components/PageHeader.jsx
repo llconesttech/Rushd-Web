@@ -1,17 +1,18 @@
-import React from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import './PageHeader.css';
 
-const PageHeader = ({ breadcrumbs = [], title, subtitle, badge, actions, isScrolled: externalIsScrolled }) => {
+const PageHeader = ({ breadcrumbs = [], title, subtitle = '', badge = '', actions = null, isScrolled: externalIsScrolled = undefined }) => {
     const backLink = breadcrumbs.length > 1
         ? breadcrumbs[breadcrumbs.length - 2].path
         : '/';
 
-    const [internalIsScrolled, setInternalIsScrolled] = React.useState(false);
+    const [internalIsScrolled, setInternalIsScrolled] = useState(false);
     const isScrolled = externalIsScrolled !== undefined ? externalIsScrolled : internalIsScrolled;
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (externalIsScrolled !== undefined) return; // Skip internal logic if controlled externally
 
         const scroller = document.querySelector('.reader-main-content') || window;
@@ -44,7 +45,7 @@ const PageHeader = ({ breadcrumbs = [], title, subtitle, badge, actions, isScrol
                     {breadcrumbs.map((crumb, index) => {
                         const isLast = index === breadcrumbs.length - 1;
                         return (
-                            <React.Fragment key={index}>
+                            <Fragment key={index}>
                                 {index > 0 && <ChevronRight size={14} className="ph-crumb-separator" />}
                                 {isLast ? (
                                     <span className="ph-crumb-current">{crumb.label}</span>
@@ -53,7 +54,7 @@ const PageHeader = ({ breadcrumbs = [], title, subtitle, badge, actions, isScrol
                                         {crumb.label}
                                     </Link>
                                 )}
-                            </React.Fragment>
+                            </Fragment>
                         );
                     })}
                 </nav>
@@ -76,6 +77,18 @@ const PageHeader = ({ breadcrumbs = [], title, subtitle, badge, actions, isScrol
             </div>
         </div>
     );
+};
+
+PageHeader.propTypes = {
+    breadcrumbs: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        path: PropTypes.string.isRequired
+    })),
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    badge: PropTypes.node,
+    actions: PropTypes.node,
+    isScrolled: PropTypes.bool
 };
 
 export default PageHeader;

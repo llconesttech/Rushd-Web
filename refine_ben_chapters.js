@@ -1,3 +1,5 @@
+/* eslint-env node */
+/* eslint-disable no-undef, no-unused-vars */
 import fs from 'fs';
 import path from 'path';
 
@@ -162,3 +164,4 @@ if (benCache) {
 
 fs.writeFileSync(cachePath, JSON.stringify(cache, null, 2));
 console.log('Successfully refined Bengali translations based on Islamic glossary.');
+

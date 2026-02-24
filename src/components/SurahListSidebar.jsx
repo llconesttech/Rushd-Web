@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { pageMapping } from '../data/pageMapping';
 import { X } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
@@ -55,7 +56,7 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) =
     // Juz list is small enough to just show all 30.
     const juzList = Array.from({ length: 30 }, (_, i) => i + 1);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (currentSurah && (persistent || isSurahListOpen) && activeTab === 'surah') {
             const activeElement = document.querySelector(`.surah-item[data-surah="${currentSurah}"]`);
             if (activeElement) {
@@ -438,7 +439,7 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) =
 
                         {!isSearching && hasSearched && searchResults.length === 0 && !searchError && (
                             <div style={{ padding: '2rem 1rem', textAlign: 'center', color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
-                                No results found for "{verseQuery}".
+                                No results found for &quot;{verseQuery}&quot;.
                                 {searchScope === 'arabic' ?
                                     <><br />Ensure you are typing in Arabic.</> :
                                     searchScope === 'transliteration' ?
@@ -500,6 +501,12 @@ const SurahListSidebar = ({ onSurahSelect, currentSurah, persistent = false }) =
             )}
         </aside>
     );
+};
+
+SurahListSidebar.propTypes = {
+    onSurahSelect: PropTypes.func.isRequired,
+    currentSurah: PropTypes.number,
+    persistent: PropTypes.bool
 };
 
 export default SurahListSidebar;

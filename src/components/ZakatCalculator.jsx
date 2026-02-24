@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import PageHeader from './PageHeader';
-import { Calculator, RefreshCw, ChevronDown, ChevronUp, Info, Settings, Globe, Scale, Coins } from 'lucide-react';
+import { Calculator, RefreshCw, ChevronDown, Info, Settings, Globe, Scale, Coins } from 'lucide-react';
 import './ZakatCalculator.css';
 import ZakatCategoryCard from './ZakatCategoryCard';
 import { ZAKAT_CATEGORIES, LIABILITIES_CATEGORY } from '../data/zakatData';
@@ -34,6 +35,10 @@ const InfoTooltip = ({ text }) => {
             {isVisible && <div className="tooltip-content">{text}</div>}
         </div>
     );
+};
+
+InfoTooltip.propTypes = {
+    text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 };
 
 const ZakatCalculator = () => {

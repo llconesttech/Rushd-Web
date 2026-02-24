@@ -1,15 +1,13 @@
-
-import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { BookOpen, ArrowLeft, Loader, Settings } from 'lucide-react';
-import { surahData, translations, shanENuzoolList } from '../data/quranData';
+import { surahData, shanENuzoolList } from '../data/quranData';
 import { useSurahDetail } from '../hooks/useQuran';
 import { useSettings } from '../context/SettingsContext';
 import './ShanENuzool.css';
 
 const ShanENuzool = () => {
     const { surahId } = useParams();
-    const navigate = useNavigate();
     const [shanData, setShanData] = useState({});
     const [loadingShan, setLoadingShan] = useState(true);
 
@@ -25,15 +23,12 @@ const ShanENuzool = () => {
         selectedShanENuzool
     } = useSettings();
 
-    // Determine Language for Shan-e-Nuzool
-    const langCode = translations[selectedTranslation]?.language_code || 'en';
-
     // Force IndoPak Script for this page
     const FORCED_SCRIPT = 'quran-indopak';
     const FORCED_FONT = 'var(--font-arabic-indopak)';
 
     // Fetch Standard Quran Data (Arabic + Translation Only, No Tafsir)
-    const { data: quranContent, loading: loadingQuran, error: errorQuran } = useSurahDetail(
+    const { data: quranContent, loading: loadingQuran } = useSurahDetail(
         selectedSurahNum.toString(),
         'none',
         FORCED_SCRIPT, // Force IndoPak

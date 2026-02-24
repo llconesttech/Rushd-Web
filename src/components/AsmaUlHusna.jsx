@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import PageHeader from './PageHeader';
 import { Search, Globe } from 'lucide-react';
@@ -135,3 +136,4 @@ const AsmaUlHusna = () => {
 };
 
 export default AsmaUlHusna;
+

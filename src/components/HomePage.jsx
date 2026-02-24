@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Sun, Moon as MoonIcon } from 'lucide-react';
+import { Sun, Moon as MoonIcon, Monitor, BookOpen, Quote } from 'lucide-react';
 import { getPrayerTimes, getAvailableMethods, getAvailableMadhabs, getAutoCalculationMethod } from '../services/prayerTimesService';
 import { getTodayAllCalendars } from '../services/dateService';
+import { getDailyContent } from '../data/dailyContentData';
 import { useAppLocation } from '../context/LocationContext';
 import { useSettings } from '../context/SettingsContext';
 import RamadanWidget from './RamadanWidget';
@@ -27,7 +28,6 @@ const featureSections = [
             { id: 'read', title: 'Read Quran', icon: '📖', link: '/quran' },
             { id: 'hadith', title: 'Hadith', icon: '📜', link: '/hadith' },
             { id: 'tajweed', title: 'Tajweed', icon: '🎯', link: '/tajweed' },
-            { id: 'memorize', title: 'Memorization', icon: '🧠', link: '/memorize' },
             { id: 'audio', title: 'Audio Recitation', icon: '🎧', link: '/audio' },
             { id: 'qa', title: 'Hadith Q&A', icon: '💡', link: '/qa-search' },
         ]
@@ -91,7 +91,7 @@ const HomePage = () => {
     });
 
     // Check for current prayer and forbidden status
-    const updateCurrentStatus = () => {
+    const updateCurrentStatus = useCallback(() => {
         if (!salahTimes) return;
 
         const now = new Date();
@@ -190,10 +190,10 @@ const HomePage = () => {
             }
             setCurrentSunnah(foundSunnah);
         }
-    };
+    }, [salahTimes]);
 
     // Calculate prayer times
-    const calculatePrayerTimes = (lat, lng, selectedMethod) => {
+    const calculatePrayerTimes = useCallback((lat, lng, selectedMethod) => {
         try {
             const today = new Date();
             const times = getPrayerTimes(today, lat, lng, {
@@ -217,7 +217,7 @@ const HomePage = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [madhab]);
 
     // Effect to calculate times when location or method changes
     useEffect(() => {
@@ -233,7 +233,7 @@ const HomePage = () => {
 
             calculatePrayerTimes(coords.lat, coords.lng, activeMethod);
         }
-    }, [coords, locationLoading, method, madhab]);
+    }, [coords, locationLoading, method, madhab, calculatePrayerTimes]);
 
 
     // Timer to update status every 30 seconds
@@ -247,7 +247,7 @@ const HomePage = () => {
         }, 30000); // 30 seconds
 
         return () => clearInterval(interval);
-    }, [salahTimes]);
+    }, [salahTimes, updateCurrentStatus]);
 
     // Initialize today's dates
     useEffect(() => {
@@ -261,7 +261,7 @@ const HomePage = () => {
             if (method) localStorage.setItem('prayerMethod', method);
             localStorage.setItem('prayerMadhab', madhab);
         }
-    }, [method, madhab, coords]);
+    }, [method, madhab, coords, calculatePrayerTimes]);
 
     // Handle method change
     const handleMethodChange = (e) => {
@@ -272,8 +272,8 @@ const HomePage = () => {
         setMadhab(e.target.value);
     };
 
-
-
+    // Daily Content Memoization
+    const dailyData = useMemo(() => getDailyContent(), []);
 
     return (
         <div className="homepage">
@@ -416,6 +416,37 @@ const HomePage = () => {
                         )}
                     </>
                 )}
+            </section>
+
+            {/* Daily Insights Wrapper (Side-by-side on desktop, stacked on mobile) */}
+            <section className="daily-insights-wrapper">
+                {/* Verse of the Day */}
+                <div className="insight-card-unified">
+                    <div className="insight-header">
+                        <Quote size={18} />
+                        <h4>Verse of the Day</h4>
+                    </div>
+                    <p className="insight-arabic">{dailyData.verse.arabic}</p>
+                    <p className="insight-text">"{dailyData.verse.translation}"</p>
+                    <div className="insight-footer">
+                        <span className="insight-ref">{dailyData.verse.reference}</span>
+                    </div>
+                </div>
+
+                {/* Hadith of the Day */}
+                <div className="insight-card-unified">
+                    <div className="insight-header">
+                        <BookOpen size={18} />
+                        <h4>Hadith of the Day</h4>
+                    </div>
+                    <p className="insight-arabic">{dailyData.hadith.arabic}</p>
+                    <p className="insight-text">"{dailyData.hadith.translation}"</p>
+                    <div className="insight-footer">
+                        <span>{dailyData.hadith.narrator}</span>
+                        <span style={{ margin: '0 0.5rem' }}>•</span>
+                        <span className="insight-ref">{dailyData.hadith.reference}</span>
+                    </div>
+                </div>
             </section>
 
             {/* Quick Actions */}

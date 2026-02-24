@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getQiblaDirection } from '../services/prayerTimesService';
 import PageHeader from './PageHeader';
-import { Compass, RefreshCw, Navigation } from 'lucide-react';
+import { Compass, Navigation } from 'lucide-react';
 import './QiblaFinder.css';
 
 const QiblaFinder = () => {

@@ -1,4 +1,14 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
+
+// Default Fallback (Dhaka)
+const DEFAULT_LOCATION = {
+    latitude: 23.8103,
+    longitude: 90.4125,
+    city: 'Dhaka',
+    country: 'Bangladesh'
+};
 
 const LocationContext = createContext();
 
@@ -16,15 +26,9 @@ export const LocationProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [coords, setCoords] = useState(null);
 
-    // Default Fallback (Dhaka)
-    const DEFAULT_LOCATION = {
-        latitude: 23.8103,
-        longitude: 90.4125,
-        city: 'Dhaka',
-        country: 'Bangladesh'
-    };
+    // DEFAULT_LOCATION defined above
 
-    const getLocationName = async (lat, lng) => {
+    const getLocationName = async () => {
         try {
             // Fast approximation using Timezone
             const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -36,7 +40,7 @@ export const LocationProvider = ({ children }) => {
         }
     };
 
-    const fetchLocation = () => {
+    const fetchLocation = useCallback(() => {
         setLoading(true);
         setError(null);
 
@@ -53,7 +57,7 @@ export const LocationProvider = ({ children }) => {
                 const { latitude, longitude } = position.coords;
 
                 // Get name (can be async if we use an API later, keeping it simple for now)
-                const nameInfo = await getLocationName(latitude, longitude);
+                const nameInfo = await getLocationName();
 
                 const newLocation = {
                     latitude,
@@ -78,12 +82,12 @@ export const LocationProvider = ({ children }) => {
                 maximumAge: 3600000 // Cache for 1 hour
             }
         );
-    };
+    }, []); // Empty since DEFAULT_LOCATION is constant inside
 
     // Initial Fetch
     useEffect(() => {
         fetchLocation();
-    }, []);
+    }, [fetchLocation]);
 
     // Refresh function exposed to components
     const refreshLocation = () => {
@@ -103,4 +107,8 @@ export const LocationProvider = ({ children }) => {
             {children}
         </LocationContext.Provider>
     );
+};
+
+LocationProvider.propTypes = {
+    children: PropTypes.node.isRequired,
 };

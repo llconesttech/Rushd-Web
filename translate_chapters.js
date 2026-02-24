@@ -57,7 +57,7 @@ async function run() {
               }
             }
           }
-        } catch (e) { }
+        } catch (e) { /* ignore */ }
       }
     }
   }
@@ -74,7 +74,7 @@ async function run() {
     try {
       translationCache = JSON.parse(fs.readFileSync(translationsBackupPath, 'utf8'));
       console.log("Loaded existing translation cache.");
-    } catch (e) { }
+    } catch (e) { /* ignore */ }
   }
 
   // Target prefixes (excluding eng and undefined)

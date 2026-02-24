@@ -1,3 +1,4 @@
+/* eslint-disable */
 const https = require('https');
 const fs = require('fs');
 
@@ -23,3 +24,4 @@ https.get(targetUrl, (res) => {
 }).on('error', (err) => {
     console.log("Error: " + err.message);
 });
+

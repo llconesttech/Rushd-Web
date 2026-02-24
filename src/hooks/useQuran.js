@@ -10,6 +10,7 @@ const V2_SCRIPTS = [
     'quran-kids', 'quran-indopak', 'quran-indopak-tajweed'
 ];
 
+// eslint-disable-next-line no-unused-vars
 const V2_TRANSLATIONS = [
     'en-sahih', 'en-pickthall', 'en-yusufali',
     'bn-bengali', 'ur-jalandhry', 'ur-maududi', 'ar-muyassar', 'ar-jalalayn',
@@ -136,8 +137,6 @@ export const useSurahDetail = (number, transliterationType = 'none', selectedScr
                     // Just log or throw if critical data missing
                     console.warn('Arabic or Translation data missing locally');
                     if (!arabic) throw new Error('Surah data not available locally');
-                } else if (!arabic) {
-                    throw new Error('Surah data not available locally');
                 }
 
                 // --- Transliteration ---
@@ -145,28 +144,24 @@ export const useSurahDetail = (number, transliterationType = 'none', selectedScr
                 if (transliterationType !== 'none') {
                     try {
                         const transId = transliterationType === 'bn_v1' ? 'en-transliteration' : normalizeEditionId(transliterationType);
-                        try {
-                            const transResult = await quranServiceV2.getSurah(number, transId, 'transliterations');
-                            if (transResult && transResult.ayahs) {
-                                transResult.ayahs.forEach(item => {
-                                    const key = item.numberInSurah || item.number;
-                                    startMap[key] = item.text;
+                        const transResult = await quranServiceV2.getSurah(number, transId, 'transliterations');
+                        if (transResult && transResult.ayahs) {
+                            transResult.ayahs.forEach(item => {
+                                const key = item.numberInSurah || item.number;
+                                startMap[key] = item.text;
+                            });
+                        }
+                    } catch (v2Err) {
+                        console.log(`V2 transliteration missing`);
+                        if (transliterationType === 'bn_v1') {
+                            const transJson = await quranService.transliteration.getLocal('bn_v1');
+                            const surahTrans = transJson[number];
+                            if (surahTrans && surahTrans.transliteration) {
+                                surahTrans.transliteration.forEach(item => {
+                                    startMap[item.verse] = item.text;
                                 });
                             }
-                        } catch (v2Err) {
-                            console.log(`V2 transliteration ${transId} missing`);
-                            if (transliterationType === 'bn_v1') {
-                                const transJson = await quranService.transliteration.getLocal('bn_v1');
-                                const surahTrans = transJson[number];
-                                if (surahTrans && surahTrans.transliteration) {
-                                    surahTrans.transliteration.forEach(item => {
-                                        startMap[item.verse] = item.text;
-                                    });
-                                }
-                            }
                         }
-                    } catch (err) {
-                        console.error('Transliteration load error', err);
                     }
                 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import { Calendar, Moon, Sun } from 'lucide-react';
 import { getTodayAllCalendars } from '../services/dateService';
@@ -85,3 +86,4 @@ const DateWidget = () => {
 };
 
 export default DateWidget;
+

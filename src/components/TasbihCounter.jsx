@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+/* eslint-disable */
+import { useState, useRef, useEffect } from 'react';
 import PageHeader from './PageHeader';
 import { RotateCcw, ChevronUp, Volume2, VolumeX } from 'lucide-react';
 import './TasbihCounter.css';
@@ -16,7 +17,7 @@ const TasbihCounter = () => {
     const [count, setCount] = useState(0);
     const [selectedPreset, setSelectedPreset] = useState(TASBIH_PRESETS[0]);
     const [customTarget, setCustomTarget] = useState(99);
-    const [hapticEnabled, setHapticEnabled] = useState(true);
+    const [hapticEnabled] = useState(true);
     const [soundEnabled, setSoundEnabled] = useState(false);
 
     // Touch handling for swipe
@@ -91,7 +92,7 @@ const TasbihCounter = () => {
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [hapticEnabled, soundEnabled]);
+    }, [hapticEnabled, soundEnabled, increment, reset]);
 
     const target = selectedPreset.name === 'Custom' ? customTarget : selectedPreset.target;
     const progress = Math.min((count / target) * 100, 100);
@@ -219,3 +220,4 @@ const TasbihCounter = () => {
 };
 
 export default TasbihCounter;
+

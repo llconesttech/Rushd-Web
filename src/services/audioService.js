@@ -17,8 +17,8 @@ const audioService = {
      */
     getLocalUrl: (reciterId, surah, ayah) => {
         const reciter = reciters[reciterId];
-        if (!reciter || !reciter.subfolder) return null;
-        return `/audio/${reciter.subfolder}/${pad(surah)}${pad(ayah)}.mp3`;
+        if (!reciter) return null;
+        return `/audio/${reciterId}/${pad(surah)}${pad(ayah)}.mp3`;
     },
 
     /**

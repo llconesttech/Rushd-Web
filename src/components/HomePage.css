@@ -6,7 +6,6 @@
 
 .homepage {
     min-height: 100vh;
-    padding: 2rem;
     background: linear-gradient(180deg, #162a35 0%, #0f2027 40%, #1a3a2a 100%);
     position: relative;
 }
@@ -33,14 +32,14 @@
 /* ── Hero Section ──────────────────────────────────── */
 .hero-section {
     text-align: center;
-    padding: 3rem 1rem;
-    margin-bottom: 2.5rem;
+    padding: 1.5rem 1rem 0rem;
+    margin-bottom: 1.5rem;
 }
 
 .hero-logo {
-    width: 180px;
+    width: 140px;
     height: auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     filter: drop-shadow(0 4px 16px rgba(212, 168, 67, 0.25));
 }
 
@@ -80,6 +79,12 @@
 .theme-toggle-btn:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+    .theme-toggle-btn {
+        display: none !important;
+    }
 }
 
 /* ── Salah Times Card ──────────────────────────────── */
@@ -212,6 +217,131 @@
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 0.4rem;
     font-weight: 500;
+}
+
+/* Container */
+.homepage {
+    padding-bottom: 1rem;
+    min-height: 100vh;
+}
+
+/* View Switcher Header */
+.mobile-view-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 1.5rem 0rem;
+}
+
+.mobile-view-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: background 0.2s;
+}
+
+.mobile-view-toggle:hover {
+    background-color: var(--color-bg-hover);
+}
+
+/* Daily Insights */
+.mobile-insight-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.verse-card {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    /* Slight transparency for hero overlay */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+}
+
+.insight-icon {
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+}
+
+.insight-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.insight-header h4 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.insight-arabic {
+    font-family: var(--font-arabic-primary, 'Uthmanic Hafs', serif);
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+}
+
+.insight-text {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.insight-ref {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    opacity: 0.9;
+}
+
+/* Daily Insights Group */
+.daily-insights-wrapper {
+    margin: 1.5rem auto 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.insight-card-unified {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Side-by-side on desktop */
+@media (min-width: 768px) {
+    .daily-insights-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .salah-time {

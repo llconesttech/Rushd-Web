@@ -1,3 +1,5 @@
+/* eslint-env node */
+/* eslint-disable no-undef, no-unused-vars */
 const fs = require('fs');
 const path = require('path');
 
@@ -32,3 +34,4 @@ function readDirRecursively(dir) {
 readDirRecursively(dataDir);
 console.log(`Successfully checked ${fileCount} JSON files.`);
 console.log(`Found ${uniqueChapters.size} unique English chapter names.`);
+

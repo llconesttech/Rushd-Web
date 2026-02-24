@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import PageHeader from './PageHeader';
-import { ChevronDown, ChevronUp, Moon, Clock, BookOpen, CheckCircle, AlertTriangle, Users, Book } from 'lucide-react';
+import { ChevronDown, ChevronUp, Clock, CheckCircle, BookOpen, Moon, Users, Book } from 'lucide-react';
 import './Taraweeh.css';
 
 // Taraweeh basics
@@ -54,7 +55,7 @@ const RAKAT_OPTIONS = [
     },
     {
         count: '36 Rakats',
-        evidence: 'Some reports mention this was prayed in Madinah during certain periods.',
+        evidence: '&quot;Some reports mention this was prayed in Madinah during certain periods.&quot;',
         source: 'Some Maliki sources',
         followed: 'Historical practice in some regions',
     },
@@ -66,14 +67,14 @@ const PRAYER_STEPS = [
     { step: 2, title: 'Make intention', description: 'Intend to pray Taraweeh for the sake of Allah' },
     { step: 3, title: 'Pray 2 rakats', description: 'Pray 2 rakats with longer Quran recitation' },
     { step: 4, title: 'Give Salam', description: 'Complete with salam after every 2 rakats' },
-    { step: 5, title: 'Take brief rest', description: 'Short pause between sets (this is the "Tarawih" - rest)' },
+    { step: 5, title: 'Take brief rest', description: 'Short pause between sets (this is the &quot;Tarawih&quot; - rest)' },
     { step: 6, title: 'Repeat', description: 'Continue until 8 or 20 rakats are completed' },
     { step: 7, title: 'Pray Witr', description: 'End with Witr prayer (1, 3, 5, 7, or 9 rakats)' },
 ];
 
 // Virtues of Taraweeh
 const VIRTUES = [
-    { text: 'The Prophet ﷺ said: "Whoever stands (in prayer) during Ramadan with faith and seeking reward, his previous sins will be forgiven."', source: 'Bukhari & Muslim' },
+    { text: '&quot;Whoever stands (in prayer) during Ramadan with faith and seeking reward, his previous sins will be forgiven.&quot;', source: 'Bukhari & Muslim' },
     { text: 'Praying in congregation is 27 times more rewarding than praying alone.', source: 'Bukhari & Muslim' },
     { text: 'The one who prays with the Imam until he finishes, it is recorded as if he prayed the whole night.', source: 'Tirmidhi' },
 ];
@@ -113,7 +114,7 @@ const AccordionSection = ({ title, icon: Icon, children, defaultOpen = false }) 
     const [isOpen, setIsOpen] = useState(defaultOpen);
 
     return (
-        <div className={`accordion-section ${isOpen ? 'open' : ''}`}>
+        <div className={`accordion - section ${isOpen ? 'open' : ''} `}>
             <button className="accordion-header" onClick={() => setIsOpen(!isOpen)}>
                 <div className="accordion-title">
                     <Icon size={20} />
@@ -186,7 +187,7 @@ const Taraweeh = () => {
                         {RAKAT_OPTIONS.map((option, index) => (
                             <div key={index} className="rakat-card">
                                 <div className="rakat-count">{option.count}</div>
-                                <div className="rakat-evidence">"{option.evidence}"</div>
+                                <div className="rakat-evidence">{option.evidence}</div>
                                 <div className="rakat-source">📚 {option.source}</div>
                                 <div className="rakat-followed">👥 Followed by: {option.followed}</div>
                             </div>
@@ -227,7 +228,7 @@ const Taraweeh = () => {
                     <div className="virtues-list">
                         {VIRTUES.map((item, index) => (
                             <div key={index} className="virtue-item">
-                                <p className="virtue-text">"{item.text}"</p>
+                                <p className="virtue-text">&quot;{item.text}&quot;</p>
                                 <span className="virtue-source">— {item.source}</span>
                             </div>
                         ))}
@@ -248,14 +249,16 @@ const Taraweeh = () => {
                     </div>
                 </AccordionSection>
 
-                {/* Disclaimer */}
-                <div className="disclaimer-box">
-                    <AlertTriangle size={18} />
-                    <p>Both 8 and 20 rakats are valid according to different scholarly opinions. Follow your local mosque or madhab guidance.</p>
-                </div>
             </div>
         </div>
     );
+};
+
+AccordionSection.propTypes = {
+    title: PropTypes.string.isRequired,
+    icon: PropTypes.elementType.isRequired,
+    children: PropTypes.node.isRequired,
+    defaultOpen: PropTypes.bool
 };
 
 export default Taraweeh;

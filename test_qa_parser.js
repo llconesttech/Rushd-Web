@@ -1,5 +1,5 @@
 import fs from 'fs';
-import path from 'path';
+
 
 const files = ['bukhari_qa_pair.json', 'muslim_qa_pair.json', 'tirmidhi_qa_pair.json', 'ahmad_qa_pair.json'];
 

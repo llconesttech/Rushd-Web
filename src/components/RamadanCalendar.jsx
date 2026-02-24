@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import PageHeader from './PageHeader';
 import { Moon, Sun, Clock, Minus, Plus, MapPin, RefreshCw } from 'lucide-react';
 import { getRamadanInfo, getRamadanTimetable, getTodaySehriIftar } from '../services/ramadanService';

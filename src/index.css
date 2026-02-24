@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: 'Amiri Quran';
   src: url('/fonts/AmiriQuran.ttf') format('truetype');

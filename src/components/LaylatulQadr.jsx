@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import PageHeader from './PageHeader';
 import { ChevronDown, ChevronUp, Star, Moon, BookOpen, Heart, Clock, AlertTriangle } from 'lucide-react';
 import { getRamadanInfo } from '../services/ramadanService';
@@ -23,7 +24,7 @@ const RECOMMENDED_ACTS = [
     { title: 'Dhikr', description: 'Remember Allah through various forms of dhikr', icon: '📿' },
     { title: 'Istighfar', description: 'Seek forgiveness intensely', icon: '💚' },
     { title: 'Charity', description: 'Give sadaqah - reward multiplied on this night', icon: '💝' },
-    { title: 'I\'tikaf', description: 'Seclusion in the mosque for worship', icon: '🕋' },
+    { title: 'I&apos;tikaf', description: 'Seclusion in the mosque for worship', icon: '🕋' },
     { title: 'Learning', description: 'Study Islamic knowledge, attend lectures', icon: '📚' },
 ];
 
@@ -93,6 +94,13 @@ const AccordionSection = ({ title, icon: Icon, children, defaultOpen = false }) 
     );
 };
 
+AccordionSection.propTypes = {
+    title: PropTypes.string.isRequired,
+    icon: PropTypes.elementType.isRequired,
+    children: PropTypes.node.isRequired,
+    defaultOpen: PropTypes.bool
+};
+
 const LaylatulQadr = () => {
     const ramadanInfo = useMemo(() => getRamadanInfo(), []);
 
@@ -141,7 +149,7 @@ const LaylatulQadr = () => {
                 {/* Odd Nights Calendar */}
                 <div className="odd-nights-card">
                     <h3><Moon size={18} /> Seek it on Odd Nights</h3>
-                    <p className="odd-nights-intro">The Prophet ﷺ said: "Search for Laylatul Qadr in the odd nights of the last ten days."</p>
+                    <p className="odd-nights-intro">The Prophet ﷺ said: &quot;Search for Laylatul Qadr in the odd nights of the last ten days.&quot;</p>
                     <div className="odd-nights-grid">
                         {oddNightDates.map((night) => (
                             <div
@@ -196,7 +204,7 @@ const LaylatulQadr = () => {
                     <div className="virtues-list">
                         {VIRTUES.map((item, index) => (
                             <div key={index} className="virtue-item">
-                                <p className="virtue-text">"{item.text}"</p>
+                                <p className="virtue-text">&quot;{item.text}&quot;</p>
                                 <span className="virtue-source">— {item.source}</span>
                             </div>
                         ))}

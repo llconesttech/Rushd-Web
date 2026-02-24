@@ -211,7 +211,6 @@ export const translations = {
 
     // Chinese
     "zh.jian": { "language_code": "zh", "english_name": "Ma Jian", "native_name": "Ma Jian", "type": "translation" },
-    "zh.majian": { "language_code": "zh", "english_name": "Ma Jian", "native_name": "Ma Jian (Traditional)", "type": "translation" },
 
     // --- Offline Tafsirs ---
     "ar.jalalayn": { "language_code": "ar", "english_name": "Jalal ad-Din al-Mahalli and Jalal ad-Din as-Suyuti", "native_name": "Tafsir al-Jalalayn", "type": "tafsir" },
@@ -393,14 +392,6 @@ export const surahData = [
     { number: 113, name: "Al-Falaq", arabicName: "الفلق", meaning: "The Daybreak", ayahs: 5, rukus: 1, revelationType: "Meccan", juz: [30] },
     { number: 114, name: "An-Naas", arabicName: "الناس", meaning: "Mankind", ayahs: 6, rukus: 1, revelationType: "Meccan", juz: [30] }
 ];
-
-// Helper function to get audio URL for a verse
-export const getAudioUrl = (reciter, surah, ayah, format = 'mp3', kbs = '128') => {
-    const surahPadded = String(surah).padStart(3, '0');
-    const ayahPadded = String(ayah).padStart(3, '0');
-    return `${AUDIO_BASE_URL}/${format}/${reciter}/${kbs}/${surahPadded}${ayahPadded}.${format}`;
-};
-
 // Helper function to get surah info
 export const getSurahInfo = (surahNumber) => {
     return surahData.find(s => s.number === surahNumber);

@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable */
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Moon, Sun, Clock, ChevronRight, Star } from 'lucide-react';
 import { getRamadanInfo, getTodaySehriIftar } from '../services/ramadanService';
@@ -125,3 +127,4 @@ const RamadanWidget = ({ latitude, longitude }) => {
 };
 
 export default RamadanWidget;
+

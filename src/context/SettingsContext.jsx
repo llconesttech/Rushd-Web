@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const SettingsContext = createContext();
 
@@ -83,4 +85,8 @@ export const SettingsProvider = ({ children }) => {
             {children}
         </SettingsContext.Provider>
     );
+};
+
+SettingsProvider.propTypes = {
+    children: PropTypes.node.isRequired,
 };

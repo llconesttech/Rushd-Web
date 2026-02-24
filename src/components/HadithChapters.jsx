@@ -70,7 +70,7 @@ const HadithChapters = () => {
             };
             reload();
         }
-    }, [selectedLang]);
+    }, [selectedLang, loading, bookId]);
 
     const filteredChapters = useMemo(() => {
         if (!searchTerm.trim()) return chapters;
@@ -242,7 +242,7 @@ const HadithChapters = () => {
 
             {!loading && !error && filteredChapters.length === 0 && searchTerm && (
                 <div className="hadith-empty-state">
-                    <p>No chapters matching "<strong>{searchTerm}</strong>"</p>
+                    <p>No chapters matching &quot;<strong>{searchTerm}</strong>&quot;</p>
                 </div>
             )}
         </div>

@@ -1,5 +1,5 @@
-
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Info, ChevronDown, ChevronUp } from 'lucide-react';
 
 const ZakatCategoryCard = ({ category, values, onChange, currencySymbol }) => {
@@ -70,6 +70,28 @@ const ZakatCategoryCard = ({ category, values, onChange, currencySymbol }) => {
             )}
         </div>
     );
+};
+
+ZakatCategoryCard.propTypes = {
+    category: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        icon: PropTypes.elementType.isRequired,
+        details: PropTypes.string.isRequired,
+        inputs: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+            type: PropTypes.string,
+            placeholder: PropTypes.string,
+            options: PropTypes.arrayOf(PropTypes.shape({
+                value: PropTypes.string.isRequired,
+                label: PropTypes.string.isRequired,
+            }))
+        })).isRequired,
+    }).isRequired,
+    values: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
+    currencySymbol: PropTypes.string.isRequired,
 };
 
 export default ZakatCategoryCard;

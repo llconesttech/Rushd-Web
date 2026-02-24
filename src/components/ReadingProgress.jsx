@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * ReadingProgress Component
@@ -8,7 +9,7 @@ import React, { useState, useEffect, useRef } from 'react';
  */
 const ReadingProgress = ({ surah, pageFilter, onClearFilter }) => {
   // Initialize with first ayah
-  const getInitialPos = () => {
+  const getInitialPos = useCallback(() => {
     if (!surah?.ayahs?.[0]) return null;
     const first = surah.ayahs[0];
     return {
@@ -17,7 +18,7 @@ const ReadingProgress = ({ surah, pageFilter, onClearFilter }) => {
       juz: first.juz,
       hizb: first.hizbQuarter
     };
-  };
+  }, [surah]);
 
   const [currentPos, setCurrentPos] = useState(getInitialPos);
   const observerRef = useRef(null);
@@ -25,7 +26,7 @@ const ReadingProgress = ({ surah, pageFilter, onClearFilter }) => {
   // Update if surah changes
   useEffect(() => {
     setCurrentPos(getInitialPos());
-  }, [surah]);
+  }, [getInitialPos]);
 
   useEffect(() => {
     if (!surah?.ayahs || surah.ayahs.length === 0) return;
@@ -114,6 +115,19 @@ const ReadingProgress = ({ surah, pageFilter, onClearFilter }) => {
       </div>
     </div>
   );
+};
+
+ReadingProgress.propTypes = {
+  surah: PropTypes.shape({
+    ayahs: PropTypes.arrayOf(PropTypes.shape({
+      numberInSurah: PropTypes.number,
+      page: PropTypes.number,
+      juz: PropTypes.number,
+      hizbQuarter: PropTypes.number
+    }))
+  }),
+  pageFilter: PropTypes.number,
+  onClearFilter: PropTypes.func.isRequired
 };
 
 export default ReadingProgress;

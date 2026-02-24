@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import PageHeader from './PageHeader';
 import { ChevronDown, ChevronUp, Heart, Gift, Users, BookOpen, AlertTriangle, Coins, HandHeart, Sparkles } from 'lucide-react';
 import './Sadaqah.css';
@@ -30,7 +31,7 @@ const SADAQAH_TYPES = [
         name: 'Zakat al-Fitr',
         arabic: 'زكاة الفطر',
         description: 'Charity given at end of Ramadan',
-        details: 'Obligatory before Eid prayer. Approximately one sa\' of staple food per family member.',
+        details: 'Obligatory before Eid prayer. Approximately one sa&apos; of staple food per family member.',
         reward: 'Purifies the fast and provides for the needy on Eid',
     },
     {
@@ -52,7 +53,7 @@ const SADAQAH_TYPES = [
 // Virtues of Sadaqah
 const VIRTUES = [
     { text: 'Charity does not decrease wealth.', source: 'Muslim' },
-    { text: 'The believer\'s shade on the Day of Resurrection will be his charity.', source: 'Ahmad' },
+    { text: 'The believer&apos;s shade on the Day of Resurrection will be his charity.', source: 'Ahmad' },
     { text: 'Protect yourself from Hell-fire even with half a date.', source: 'Bukhari' },
     { text: 'Sadaqah extinguishes sin as water extinguishes fire.', source: 'Tirmidhi' },
     { text: 'The upper hand (giver) is better than the lower hand (receiver).', source: 'Bukhari & Muslim' },
@@ -98,15 +99,15 @@ const JARIYAH_IDEAS = [
     { title: 'Teach Quran', description: 'The teacher and student both benefit' },
     { title: 'Build a school', description: 'Education for generations' },
     { title: 'Medical equipment', description: 'Saves lives continuously' },
-    { title: 'Share beneficial content', description: 'Online da\'wah and Islamic resources' },
+    { title: 'Share beneficial content', description: 'Online da&apos;wah and Islamic resources' },
 ];
 
 // Etiquettes of giving
 const ETIQUETTES = [
-    { title: 'Give sincerely', description: 'Only for Allah\'s sake, not for show' },
+    { title: 'Give sincerely', description: 'Only for Allah&apos;s sake, not for show' },
     { title: 'Give secretly', description: 'Hiding charity is more virtuous (unless to encourage others)' },
-    { title: 'Give from the best', description: 'Don\'t give what you wouldn\'t accept yourself' },
-    { title: 'Don\'t remind', description: 'Never remind the recipient or cause them embarrassment' },
+    { title: 'Give from the best', description: 'Don&apos;t give what you wouldn&apos;t accept yourself' },
+    { title: 'Don&apos;t remind', description: 'Never remind the recipient or cause them embarrassment' },
     { title: 'Give regularly', description: 'Small consistent charity is beloved to Allah' },
     { title: 'Give with kindness', description: 'Kind words with charity, not rudeness' },
 ];
@@ -128,6 +129,13 @@ const AccordionSection = ({ title, icon: Icon, children, defaultOpen = false }) 
     );
 };
 
+AccordionSection.propTypes = {
+    title: PropTypes.string.isRequired,
+    icon: PropTypes.elementType.isRequired,
+    children: PropTypes.node.isRequired,
+    defaultOpen: PropTypes.bool
+};
+
 const Sadaqah = () => {
     return (
         <div className="container">
@@ -145,7 +153,7 @@ const Sadaqah = () => {
                 <div className="sadaqah-hero">
                     <Heart size={28} />
                     <blockquote>
-                        "Charity does not decrease wealth, no one forgives another except that Allah increases his honor, and no one humbles himself for the sake of Allah except that Allah raises his status."
+                        &quot;Charity does not decrease wealth, no one forgives another except that Allah increases his honor, and no one humbles himself for the sake of Allah except that Allah raises his status.&quot;
                     </blockquote>
                     <cite>— Prophet Muhammad ﷺ (Muslim)</cite>
                 </div>
@@ -169,7 +177,7 @@ const Sadaqah = () => {
 
                 {/* Ways to Give */}
                 <AccordionSection title="Many Ways to Give Sadaqah" icon={Gift}>
-                    <p className="section-intro">Prophet ﷺ said: "Every act of goodness is charity." (Muslim)</p>
+                    <p className="section-intro">Prophet ﷺ said: &quot;Every act of goodness is charity.&quot; (Muslim)</p>
                     <div className="ways-grid">
                         {WAYS_TO_GIVE.map((way, index) => (
                             <div key={index} className="way-card">
@@ -186,8 +194,8 @@ const Sadaqah = () => {
                 {/* Sadaqah Jariyah */}
                 <AccordionSection title="Sadaqah Jariyah (Continuous Charity)" icon={Sparkles}>
                     <p className="section-intro">
-                        "When a person dies, their deeds come to an end except for three: ongoing charity,
-                        beneficial knowledge, or a righteous child who prays for them." — Prophet ﷺ (Muslim)
+                        &quot;When a person dies, their deeds come to an end except for three: ongoing charity,
+                        beneficial knowledge, or a righteous child who prays for them.&quot; — Prophet ﷺ (Muslim)
                     </p>
                     <div className="jariyah-grid">
                         {JARIYAH_IDEAS.map((idea, index) => (
@@ -231,7 +239,7 @@ const Sadaqah = () => {
                     <div className="virtues-list">
                         {VIRTUES.map((item, index) => (
                             <div key={index} className="virtue-item">
-                                <p className="virtue-text">"{item.text}"</p>
+                                <p className="virtue-text">&quot;{item.text}&quot;</p>
                                 <span className="virtue-source">— {item.source}</span>
                             </div>
                         ))}

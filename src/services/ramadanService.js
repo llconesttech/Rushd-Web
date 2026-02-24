@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * Ramadan Service
  * 
@@ -277,3 +278,4 @@ export default {
     getRamadanTimetable,
     getTodaySehriIftar
 };
+

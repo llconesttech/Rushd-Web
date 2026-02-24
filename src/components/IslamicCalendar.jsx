@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import PageHeader from './PageHeader';
 import { ChevronLeft, ChevronRight, Calendar, Star, Moon } from 'lucide-react';
 import './IslamicCalendar.css';

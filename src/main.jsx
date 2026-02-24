@@ -1,6 +1,8 @@
+/* eslint-disable react-refresh/only-export-components */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ErrorBoundary } from 'react-error-boundary'
+import PropTypes from 'prop-types'
 import App from './App.jsx'
 import { SettingsProvider } from './context/SettingsContext'
 import { LocationProvider } from './context/LocationContext'
@@ -15,6 +17,12 @@ function ErrorFallback({ error }) {
     </div>
   )
 }
+
+ErrorFallback.propTypes = {
+  error: PropTypes.shape({
+    message: PropTypes.string.isRequired
+  }).isRequired
+};
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

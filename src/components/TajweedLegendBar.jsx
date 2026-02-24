@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronDown, ChevronUp, Palette } from 'lucide-react';
 import { TAJWEED_RULES } from '../data/tajweedData';
 import './TajweedLegendBar.css';

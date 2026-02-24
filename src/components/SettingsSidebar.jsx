@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { X, Settings, MessageCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { X, MessageCircle } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
 import { quranScripts, translations, languageList, reciters, shanENuzoolList } from '../data/quranData';
 import './SettingsSidebar.css';
@@ -37,9 +38,8 @@ const SettingsSidebar = ({ persistent = false }) => {
     const [activeSection, setActiveSection] = useState(isShanENuzool ? 'translations' : 'quran');
 
     // Update active section if path changes (e.g. navigating to/from Shan-e-Nuzool)
-    React.useEffect(() => {
+    useEffect(() => {
         if (isShanENuzool) setActiveSection('translations');
-        else if (activeSection === 'translations' && !isShanENuzool) setActiveSection('quran'); // Optional reset
     }, [isShanENuzool]);
 
     const isIndoPak = selectedScript === 'quran-indopak' || selectedScript === 'quran-indopak-tajweed';
@@ -61,7 +61,7 @@ const SettingsSidebar = ({ persistent = false }) => {
 
     const tabs = isShanENuzool
         ? ['translations', 'shan-e-nuzool']
-        : ['quran', 'translations', 'tafsir','reciters'];
+        : ['quran', 'translations', 'tafsir', 'reciters'];
 
     return (
         <aside className={className}>
@@ -180,7 +180,7 @@ const SettingsSidebar = ({ persistent = false }) => {
 
                         <div className="translations-grouped">
                             {(() => {
-                                const filteredItems = Object.entries(translations).filter(([key, value]) => {
+                                const filteredItems = Object.entries(translations).filter(([, value]) => {
                                     const matchesSearch =
                                         value.english_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                                         value.native_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -286,6 +286,10 @@ const SettingsSidebar = ({ persistent = false }) => {
             </div>
         </aside>
     );
+};
+
+SettingsSidebar.propTypes = {
+    persistent: PropTypes.bool
 };
 
 export default SettingsSidebar;

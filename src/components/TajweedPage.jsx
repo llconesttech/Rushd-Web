@@ -1,5 +1,5 @@
-import React from 'react';
-import { TAJWEED_RULES, getTajweedRulesArray } from '../data/tajweedData';
+import { useEffect } from 'react';
+import { getTajweedRulesArray } from '../data/tajweedData';
 import { parseTajweed } from '../utils/tajweedParser';
 import PageHeader from './PageHeader';
 import './TajweedPage.css';
@@ -7,7 +7,7 @@ import './TajweedPage.css';
 const TajweedPage = () => {
     const rules = getTajweedRulesArray();
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (window.location.hash) {
             const id = window.location.hash.substring(1);
             const element = document.getElementById(id);

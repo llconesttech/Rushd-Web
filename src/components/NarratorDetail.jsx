@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { User, BookOpen, Search, ArrowLeft, MapPin, Calendar, Heart, GraduationCap } from 'lucide-react';
 import { HADITH_BOOKS } from '../data/hadithData';

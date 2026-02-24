@@ -21,7 +21,7 @@ const quranService = {
      * Get detailed data for a specific Surah
      * @deprecated Use quranServiceV2.getSurah() instead
      */
-    getSurahDetails: async (number, editions) => {
+    getSurahDetails: async () => {
         throw new Error("Direct API access removed. Use quranServiceV2 for local data.");
     },
 

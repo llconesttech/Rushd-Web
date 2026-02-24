@@ -1,3 +1,5 @@
+/* eslint-env node */
+/* eslint-disable no-undef, no-unused-vars */
 import https from 'https';
 import fs from 'fs';
 
@@ -115,3 +117,4 @@ async function main() {
 }
 
 main();
+

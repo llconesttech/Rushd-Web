@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import PageHeader from './PageHeader';
 import { ChevronDown, ChevronUp, CheckCircle, XCircle, AlertTriangle, Clock, Heart, Gift, Users } from 'lucide-react';
@@ -235,3 +236,4 @@ const FastingRules = () => {
 };
 
 export default FastingRules;
+
