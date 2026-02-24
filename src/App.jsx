@@ -563,7 +563,7 @@ function App() {
           <main className="reader-main-content" onScroll={handleMainScroll}>
             <div style={{
               width: '100%',
-              maxWidth: isReaderPage ? '864px' : '1200px',
+              maxWidth: isReaderPage ? '1000px' : '1200px',
               padding: isReaderPage ? '0.5rem' : '2rem',
               margin: '0 auto',
             }}>
