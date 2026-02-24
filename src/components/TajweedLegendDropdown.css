@@ -1,5 +1,18 @@
-/* Tajweed Legend Sheet (Bottom Up) */
-/* .tajweed-legend-container removed (unused) */
+/* Absolute container in App.jsx */
+.tajweed-legend-abs-container {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  z-index: 60;
+  transition: all 0.3s ease;
+}
+
+/* Detect scrolled state via sibling header */
+.page-header.scrolled~.tajweed-legend-abs-container {
+  top: 19px;
+  /* Center vertically in 60px header (approx) */
+  right: 30px;
+}
 
 /* Trigger Button */
 .tajweed-legend-btn {
@@ -22,6 +35,24 @@
   background: var(--color-bg-main);
   border-color: var(--color-primary-light);
   color: var(--color-primary);
+}
+
+/* SHRUNK STATE */
+.page-header.scrolled~.tajweed-legend-abs-container .tajweed-legend-btn {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  gap: 0.25rem;
+}
+
+.page-header.scrolled~.tajweed-legend-abs-container .tajweed-btn-text {
+  /* On very small sticky, maybe just show icon? 
+     Let's keep text but make it tiny first. */
+  font-size: 0.7rem;
+}
+
+.page-header.scrolled~.tajweed-legend-abs-container .tajweed-icon-colors {
+  width: 14px;
+  height: 14px;
 }
 
 .tajweed-legend-btn .tajweed-icon-colors {

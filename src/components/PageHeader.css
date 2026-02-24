@@ -19,7 +19,7 @@
     padding: 0.5rem 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     /* Fixed height to prevent layout thrashing loops */
-    height: 60px;
+    height: 80px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -29,6 +29,7 @@
     .page-header {
         padding: 1rem 2rem;
         margin-bottom: 1.5rem;
+        border-radius: 8px;
     }
 
     .page-header.scrolled {
@@ -36,7 +37,7 @@
         padding: 0 1.5rem;
         margin: 1rem 0;
         height: 60px;
-        border-radius: 16px;
+        border-radius: 8px;
         border: 1px solid var(--color-border);
         width: 100%;
         max-width: 100%;
@@ -152,7 +153,13 @@
 
 .page-header.scrolled .page-header-content {
     align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
     /* Center vertically when compact */
+}
+
+.page-header.scrolled .ph-titles {
+    max-width: 41%;
 }
 
 @media (min-width: 768px) {
@@ -160,6 +167,10 @@
         align-items: center;
         gap: 1rem;
     }
+}
+
+.ph-titles {
+    max-width: 50%;
 }
 
 .ph-title {
