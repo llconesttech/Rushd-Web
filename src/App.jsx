@@ -36,6 +36,7 @@ import NarratorDetail from './components/NarratorDetail';
 import QASearch from './components/QASearch';
 import MushafReader from './components/MushafReader';
 import DailyDuas from './components/DailyDuas';
+import ComingSoon from './components/ComingSoon';
 import { surahData, getSurahInfo } from './data/quranData';
 
 // ─── Surah List (Grid Page) ───
@@ -591,6 +592,11 @@ function App() {
                 <Route path="/tajweed" element={<TajweedPage />} />
                 <Route path="/qa-search" element={<QASearch />} />
                 <Route path="/settings" element={<div className="container"><h1>Settings</h1></div>} />
+                <Route path="/hajj" element={<ComingSoon />} />
+                <Route path="/umrah" element={<ComingSoon />} />
+                <Route path="/hajj-duas" element={<ComingSoon />} />
+                <Route path="/packing" element={<ComingSoon />} />
+                <Route path="/audio" element={<ComingSoon />} />
               </Routes>
             </div>
           </main>
