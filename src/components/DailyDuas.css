@@ -1,5 +1,5 @@
 .daily-duas-container {
-    max-width: 1000px;
+    max-width: var(--page-max-width);
     margin: 0 auto;
     padding: 1rem;
     animation: fadeIn 0.4s ease;

@@ -25,8 +25,8 @@
   font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.2s;
-  background: white;
-  border-color: var(--color-border);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
   color: var(--color-text-main);
   user-select: none;
 }
@@ -180,14 +180,14 @@
   gap: 0.5rem;
   padding: 0.75rem 0.5rem;
   border-radius: 0.75rem;
-  background: var(--color-bg-light, #f9fafb);
-  border: 1px solid transparent;
+  background: var(--color-bg-main);
+  border: 1px solid var(--color-border);
   text-decoration: none;
   transition: all 0.2s;
 }
 
 .tajweed-sheet-item:hover {
-  background: white;
+  background: var(--color-bg-card);
   border-color: var(--color-primary-light);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
   transform: translateY(-1px);
@@ -212,7 +212,7 @@
 .tajweed-sheet-footer {
   padding: 1rem 1.25rem;
   border-top: 1px solid var(--color-border);
-  background: var(--color-bg-base, #fff);
+  background: var(--color-bg-card);
   border-bottom-left-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
   flex-shrink: 0;

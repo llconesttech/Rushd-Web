@@ -14,6 +14,13 @@
     transition: background-color 0.3s, border-color 0.3s;
 }
 
+[data-theme="dark"] .topbar {
+    background-color: rgba(12, 30, 36, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+
 /* Only show on tablet/desktop */
 @media (min-width: 768px) {
     .topbar {
@@ -22,7 +29,7 @@
 }
 
 .topbar-inner {
-    max-width: 1200px;
+    max-width: var(--page-max-width);
     height: 100%;
     margin: 0 auto;
     display: flex;

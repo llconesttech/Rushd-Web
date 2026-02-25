@@ -340,3 +340,79 @@
         font-size: 0.7rem;
     }
 }
+
+/* ============================================
+   Dark Mode Overrides
+   ============================================ */
+[data-theme="dark"] .floating-player {
+    background: rgba(12, 30, 36, 0.85);
+    /* Based on deeper header background */
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .floating-player:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .fp-progress-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .fp-ayah-badge {
+    background: rgba(13, 92, 99, 0.3);
+    border-color: rgba(13, 92, 99, 0.6);
+    color: var(--color-primary-dark);
+}
+
+[data-theme="dark"] .fp-ayah-badge:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+[data-theme="dark"] .fp-reciter-chip {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .fp-reciter-chip:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+}
+
+[data-theme="dark"] .fp-btn {
+    color: var(--color-text-main);
+}
+
+[data-theme="dark"] .fp-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .fp-time,
+[data-theme="dark"] .fp-btn.fp-auto {
+    color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .fp-btn.fp-auto.active {
+    color: var(--color-primary-dark);
+    background: rgba(13, 92, 99, 0.3);
+}
+
+[data-theme="dark"] .fp-expanded-section {
+    border-top: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .fp-reciter-list {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .fp-reciter-option:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .fp-reciter-option.active {
+    background: var(--color-primary);
+    color: white;
+}

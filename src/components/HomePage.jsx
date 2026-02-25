@@ -42,6 +42,7 @@ const featureSections = [
             { id: 'zakat', title: 'Zakat Calculator', icon: '💰', link: '/zakat' },
             { id: 'calendar', title: 'Islamic Calendar', icon: '📅', link: '/calendar' },
             { id: 'names', title: '99 Names of Allah', icon: '✨', link: '/names' },
+            { id: 'lunar-phase', title: 'Lunar Phase', icon: '🌙', link: '/tools/lunar-phase' }
         ]
     },
     {
@@ -277,208 +278,210 @@ const HomePage = () => {
 
     return (
         <div className="homepage">
-            {/* Hero Section */}
-            <section className="hero-section">
-                <button
-                    className="theme-toggle-btn"
-                    onClick={toggleTheme}
-                    title={theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}
-                    aria-label="Toggle theme"
-                >
-                    {theme === 'dark' ? <Sun size={20} /> : <MoonIcon size={20} />}
-                </button>
-                <img
-                    src={theme === 'dark' ? '/light_gold.png' : '/logo.png'}
-                    alt="Rushd Logo"
-                    className="hero-logo"
-                />
-                <h1 className="hero-title">Rushd - Quran Tafsir Guidance</h1>
-                <p className="hero-subtitle">Clear Guidance for Everyday Life</p>
-            </section>
-
-            {/* Ramadan Widget - Shows Sehri/Iftar countdown */}
-            {coords && (
-                <section className="container">
-                    <RamadanWidget latitude={coords.lat} longitude={coords.lng} />
+            <div className="homepage-content">
+                {/* Hero Section */}
+                <section className="hero-section">
+                    <button
+                        className="theme-toggle-btn"
+                        onClick={toggleTheme}
+                        title={theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}
+                        aria-label="Toggle theme"
+                    >
+                        {theme === 'dark' ? <Sun size={20} /> : <MoonIcon size={20} />}
+                    </button>
+                    <img
+                        src={theme === 'dark' ? '/light_gold.png' : '/logo.png'}
+                        alt="Rushd Logo"
+                        className="hero-logo"
+                    />
+                    <h1 className="hero-title">Rushd - Quran Tafsir Guidance</h1>
+                    <p className="hero-subtitle">Clear Guidance for Everyday Life</p>
                 </section>
-            )}
 
-            {/* Salah Times Card */}
-            <section className="salah-card">
-                <div className="salah-header">
-                    <div className="salah-header-left">
-                        <h2>🕌 Daily Salah Times</h2>
-                        {todayDates && (
-                            <div className="salah-date-row">
-                                <span className="date-item gregorian">{todayDates.gregorian.day} {todayDates.gregorian.monthName} {todayDates.gregorian.year}</span>
-                                <span className="date-separator">•</span>
-                                <span className="date-item hijri">{todayDates.hijri.day} {todayDates.hijri.monthName} {todayDates.hijri.year} AH</span>
-                                <span className="date-separator">•</span>
-                                <span className="date-item bengali">{todayDates.bengali.day} {todayDates.bengali.monthName} {todayDates.bengali.year} BS</span>
-                            </div>
-                        )}
-                    </div>
-                    <div className="salah-header-right">
-                        <select
-                            className="method-selector"
-                            value={madhab}
-                            onChange={handleMadhabChange}
-                            style={{ marginRight: '0.5rem' }}
-                        >
-                            {getAvailableMadhabs().map((m) => (
-                                <option key={m} value={m}>{m}</option>
-                            ))}
-                        </select>
-                        <select
-                            className="method-selector"
-                            value={method || ''}
-                            onChange={handleMethodChange}
-                        >
-                            {/* Wait for method to be set, or show loading/default */}
-                            {getAvailableMethods().map((m) => (
-                                <option key={m} value={m}>{m.replace(/([A-Z])/g, ' $1').trim()}</option>
-                            ))}
-                        </select>
-
-
-
-                        <span className="salah-location">
-                            📍 {location ? location.city : 'Loading...'}{location?.country ? `, ${location.country}` : ''}
-                        </span>
-                    </div>
-                </div>
-
-                {loading ? (
-                    <div style={{ textAlign: 'center', padding: '2rem' }}>Loading prayer times...</div>
-                ) : salahTimes && (
-                    <>
-                        <div className="salah-times-grid">
-                            {['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'].map((prayer) => (
-                                <div
-                                    key={prayer}
-                                    className={`salah-time-item ${currentPrayer === prayer ? 'current' : ''}`}
-                                >
-                                    {currentPrayer === prayer && <div className="current-badge">NOW</div>}
-                                    <div className="salah-name">{prayer}</div>
-                                    <div className="salah-time">{salahTimes[prayer]}</div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="forbidden-times-container">
-                            <h3 className="forbidden-title">⚠️ Forbidden Times to Pray</h3>
-                            <div className="forbidden-times-list">
-                                <div className={`forbidden-item ${currentForbidden === 'sunrise' ? 'active' : ''}`}>
-                                    {currentForbidden === 'sunrise' && <div className="forbidden-badge">NOW</div>}
-                                    <span className="forbidden-label">Sunrise (Ishraq)</span>
-                                    <span className="forbidden-range">{salahTimes.forbidden?.sunrise?.start} - {salahTimes.forbidden?.sunrise?.end}</span>
-                                </div>
-                                <div className={`forbidden-item ${currentForbidden === 'zawal' ? 'active' : ''}`}>
-                                    {currentForbidden === 'zawal' && <div className="forbidden-badge">NOW</div>}
-                                    <span className="forbidden-label">Zawal (Midday)</span>
-                                    <span className="forbidden-range">{salahTimes.forbidden?.zawal?.start} - {salahTimes.forbidden?.zawal?.end}</span>
-                                </div>
-                                <div className={`forbidden-item ${currentForbidden === 'sunset' ? 'active' : ''}`}>
-                                    {currentForbidden === 'sunset' && <div className="forbidden-badge">NOW</div>}
-                                    <span className="forbidden-label">Sunset (Ghurub)</span>
-                                    <span className="forbidden-range">{salahTimes.forbidden?.sunset?.start} - {salahTimes.forbidden?.sunset?.end}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Sunnah Times */}
-                        {salahTimes.sunnah && (
-                            <div className="sunnah-times-container">
-                                <h3 className="sunnah-title">🌙 Sunnah Prayer Times</h3>
-                                <div className="sunnah-times-grid">
-                                    <div className={`sunnah-item ${currentSunnah === 'ishraq' ? 'active' : ''}`}>
-                                        {currentSunnah === 'ishraq' && <div className="sunnah-badge">NOW</div>}
-                                        <span className="sunnah-label">Ishraq</span>
-                                        <span className="sunnah-time">{salahTimes.sunnah.ishraq?.start} - {salahTimes.sunnah.ishraq?.end}</span>
-                                    </div>
-                                    <div className={`sunnah-item ${currentSunnah === 'duha' ? 'active' : ''}`}>
-                                        {currentSunnah === 'duha' && <div className="sunnah-badge">NOW</div>}
-                                        <span className="sunnah-label">Duha (Chasht)</span>
-                                        <span className="sunnah-time">{salahTimes.sunnah.duha?.start} - {salahTimes.sunnah.duha?.end}</span>
-                                    </div>
-                                    <div className={`sunnah-item ${currentSunnah === 'awwabin' ? 'active' : ''}`}>
-                                        {currentSunnah === 'awwabin' && <div className="sunnah-badge">NOW</div>}
-                                        <span className="sunnah-label">Awwabin</span>
-                                        <span className="sunnah-time">{salahTimes.sunnah.awwabin?.start} - {salahTimes.sunnah.awwabin?.end}</span>
-                                    </div>
-                                    <div className={`sunnah-item ${currentSunnah === 'tahajjud' ? 'active' : ''}`}>
-                                        {currentSunnah === 'tahajjud' && <div className="sunnah-badge">NOW</div>}
-                                        <span className="sunnah-label">Tahajjud</span>
-                                        <span className="sunnah-time">{salahTimes.sunnah.tahajjud?.start} - {salahTimes.sunnah.tahajjud?.end}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </>
+                {/* Ramadan Widget - Shows Sehri/Iftar countdown */}
+                {coords && (
+                    <section className="container">
+                        <RamadanWidget latitude={coords.lat} longitude={coords.lng} />
+                    </section>
                 )}
-            </section>
 
-            {/* Daily Insights Wrapper (Side-by-side on desktop, stacked on mobile) */}
-            <section className="daily-insights-wrapper">
-                {/* Verse of the Day */}
-                <div className="insight-card-unified">
-                    <div className="insight-header">
-                        <Quote size={18} />
-                        <h4>Verse of the Day</h4>
-                    </div>
-                    <p className="insight-arabic">{dailyData.verse.arabic}</p>
-                    <p className="insight-text">"{dailyData.verse.translation}"</p>
-                    <div className="insight-footer">
-                        <span className="insight-ref">{dailyData.verse.reference}</span>
-                    </div>
-                </div>
+                {/* Salah Times Card */}
+                <section className="salah-card">
+                    <div className="salah-header">
+                        <div className="salah-header-left">
+                            <h2>🕌 Daily Salah Times</h2>
+                            {todayDates && (
+                                <div className="salah-date-row">
+                                    <span className="date-item gregorian">{todayDates.gregorian.day} {todayDates.gregorian.monthName} {todayDates.gregorian.year}</span>
+                                    <span className="date-separator">•</span>
+                                    <span className="date-item hijri">{todayDates.hijri.day} {todayDates.hijri.monthName} {todayDates.hijri.year} AH</span>
+                                    <span className="date-separator">•</span>
+                                    <span className="date-item bengali">{todayDates.bengali.day} {todayDates.bengali.monthName} {todayDates.bengali.year} BS</span>
+                                </div>
+                            )}
+                        </div>
+                        <div className="salah-header-right">
+                            <select
+                                className="method-selector"
+                                value={madhab}
+                                onChange={handleMadhabChange}
+                                style={{ marginRight: '0.5rem' }}
+                            >
+                                {getAvailableMadhabs().map((m) => (
+                                    <option key={m} value={m}>{m}</option>
+                                ))}
+                            </select>
+                            <select
+                                className="method-selector"
+                                value={method || ''}
+                                onChange={handleMethodChange}
+                            >
+                                {/* Wait for method to be set, or show loading/default */}
+                                {getAvailableMethods().map((m) => (
+                                    <option key={m} value={m}>{m.replace(/([A-Z])/g, ' $1').trim()}</option>
+                                ))}
+                            </select>
 
-                {/* Hadith of the Day */}
-                <div className="insight-card-unified">
-                    <div className="insight-header">
-                        <BookOpen size={18} />
-                        <h4>Hadith of the Day</h4>
-                    </div>
-                    <p className="insight-arabic">{dailyData.hadith.arabic}</p>
-                    <p className="insight-text">"{dailyData.hadith.translation}"</p>
-                    <div className="insight-footer">
-                        <span>{dailyData.hadith.narrator}</span>
-                        <span style={{ margin: '0 0.5rem' }}>•</span>
-                        <span className="insight-ref">{dailyData.hadith.reference}</span>
-                    </div>
-                </div>
-            </section>
 
-            {/* Quick Actions */}
-            <section className="quick-actions">
-                <h2 className="section-title">⚡ Quick Actions</h2>
-                <div className="quick-actions-grid">
-                    {quickActions.map((action) => (
-                        <Link to={action.link} key={action.id} className="quick-action-card">
-                            <div className="quick-action-icon">{action.icon}</div>
-                            <h3 className="quick-action-title">{action.title}</h3>
-                        </Link>
-                    ))}
-                </div>
-            </section>
 
-            {/* Feature Sections */}
-            {featureSections.map((section) => (
-                <section key={section.id} className="feature-section">
-                    <div className="feature-section-header">
-                        <div className="feature-section-icon">{section.icon}</div>
-                        <h2 className="feature-section-title">{section.title}</h2>
+                            <span className="salah-location">
+                                📍 {location ? location.city : 'Loading...'}{location?.country ? `, ${location.country}` : ''}
+                            </span>
+                        </div>
                     </div>
-                    <div className="feature-cards-grid">
-                        {section.features.map((feature) => (
-                            <Link to={feature.link} key={feature.id} className="feature-card">
-                                <div className="feature-card-icon">{feature.icon}</div>
-                                <h3 className="feature-card-title">{feature.title}</h3>
+
+                    {loading ? (
+                        <div style={{ textAlign: 'center', padding: '2rem' }}>Loading prayer times...</div>
+                    ) : salahTimes && (
+                        <>
+                            <div className="salah-times-grid">
+                                {['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'].map((prayer) => (
+                                    <div
+                                        key={prayer}
+                                        className={`salah-time-item ${currentPrayer === prayer ? 'current' : ''}`}
+                                    >
+                                        {currentPrayer === prayer && <div className="current-badge">NOW</div>}
+                                        <div className="salah-name">{prayer}</div>
+                                        <div className="salah-time">{salahTimes[prayer]}</div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="forbidden-times-container">
+                                <h3 className="forbidden-title">⚠️ Forbidden Times to Pray</h3>
+                                <div className="forbidden-times-list">
+                                    <div className={`forbidden-item ${currentForbidden === 'sunrise' ? 'active' : ''}`}>
+                                        {currentForbidden === 'sunrise' && <div className="forbidden-badge">NOW</div>}
+                                        <span className="forbidden-label">Sunrise (Ishraq)</span>
+                                        <span className="forbidden-range">{salahTimes.forbidden?.sunrise?.start} - {salahTimes.forbidden?.sunrise?.end}</span>
+                                    </div>
+                                    <div className={`forbidden-item ${currentForbidden === 'zawal' ? 'active' : ''}`}>
+                                        {currentForbidden === 'zawal' && <div className="forbidden-badge">NOW</div>}
+                                        <span className="forbidden-label">Zawal (Midday)</span>
+                                        <span className="forbidden-range">{salahTimes.forbidden?.zawal?.start} - {salahTimes.forbidden?.zawal?.end}</span>
+                                    </div>
+                                    <div className={`forbidden-item ${currentForbidden === 'sunset' ? 'active' : ''}`}>
+                                        {currentForbidden === 'sunset' && <div className="forbidden-badge">NOW</div>}
+                                        <span className="forbidden-label">Sunset (Ghurub)</span>
+                                        <span className="forbidden-range">{salahTimes.forbidden?.sunset?.start} - {salahTimes.forbidden?.sunset?.end}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Sunnah Times */}
+                            {salahTimes.sunnah && (
+                                <div className="sunnah-times-container">
+                                    <h3 className="sunnah-title">🌙 Sunnah Prayer Times</h3>
+                                    <div className="sunnah-times-grid">
+                                        <div className={`sunnah-item ${currentSunnah === 'ishraq' ? 'active' : ''}`}>
+                                            {currentSunnah === 'ishraq' && <div className="sunnah-badge">NOW</div>}
+                                            <span className="sunnah-label">Ishraq</span>
+                                            <span className="sunnah-time">{salahTimes.sunnah.ishraq?.start} - {salahTimes.sunnah.ishraq?.end}</span>
+                                        </div>
+                                        <div className={`sunnah-item ${currentSunnah === 'duha' ? 'active' : ''}`}>
+                                            {currentSunnah === 'duha' && <div className="sunnah-badge">NOW</div>}
+                                            <span className="sunnah-label">Duha (Chasht)</span>
+                                            <span className="sunnah-time">{salahTimes.sunnah.duha?.start} - {salahTimes.sunnah.duha?.end}</span>
+                                        </div>
+                                        <div className={`sunnah-item ${currentSunnah === 'awwabin' ? 'active' : ''}`}>
+                                            {currentSunnah === 'awwabin' && <div className="sunnah-badge">NOW</div>}
+                                            <span className="sunnah-label">Awwabin</span>
+                                            <span className="sunnah-time">{salahTimes.sunnah.awwabin?.start} - {salahTimes.sunnah.awwabin?.end}</span>
+                                        </div>
+                                        <div className={`sunnah-item ${currentSunnah === 'tahajjud' ? 'active' : ''}`}>
+                                            {currentSunnah === 'tahajjud' && <div className="sunnah-badge">NOW</div>}
+                                            <span className="sunnah-label">Tahajjud</span>
+                                            <span className="sunnah-time">{salahTimes.sunnah.tahajjud?.start} - {salahTimes.sunnah.tahajjud?.end}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </>
+                    )}
+                </section>
+
+                {/* Daily Insights Wrapper (Side-by-side on desktop, stacked on mobile) */}
+                <section className="daily-insights-wrapper">
+                    {/* Verse of the Day */}
+                    <div className="insight-card-unified">
+                        <div className="insight-header">
+                            <Quote size={18} />
+                            <h4>Verse of the Day</h4>
+                        </div>
+                        <p className="insight-arabic">{dailyData.verse.arabic}</p>
+                        <p className="insight-text">"{dailyData.verse.translation}"</p>
+                        <div className="insight-footer">
+                            <span className="insight-ref">{dailyData.verse.reference}</span>
+                        </div>
+                    </div>
+
+                    {/* Hadith of the Day */}
+                    <div className="insight-card-unified">
+                        <div className="insight-header">
+                            <BookOpen size={18} />
+                            <h4>Hadith of the Day</h4>
+                        </div>
+                        <p className="insight-arabic">{dailyData.hadith.arabic}</p>
+                        <p className="insight-text">"{dailyData.hadith.translation}"</p>
+                        <div className="insight-footer">
+                            <span>{dailyData.hadith.narrator}</span>
+                            <span style={{ margin: '0 0.5rem' }}>•</span>
+                            <span className="insight-ref">{dailyData.hadith.reference}</span>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Quick Actions */}
+                <section className="quick-actions">
+                    <h2 className="section-title">⚡ Quick Actions</h2>
+                    <div className="quick-actions-grid">
+                        {quickActions.map((action) => (
+                            <Link to={action.link} key={action.id} className="quick-action-card">
+                                <div className="quick-action-icon">{action.icon}</div>
+                                <h3 className="quick-action-title">{action.title}</h3>
                             </Link>
                         ))}
                     </div>
                 </section>
-            ))}
+
+                {/* Feature Sections */}
+                {featureSections.map((section) => (
+                    <section key={section.id} className="feature-section">
+                        <div className="feature-section-header">
+                            <div className="feature-section-icon">{section.icon}</div>
+                            <h2 className="feature-section-title">{section.title}</h2>
+                        </div>
+                        <div className="feature-cards-grid">
+                            {section.features.map((feature) => (
+                                <Link to={feature.link} key={feature.id} className="feature-card">
+                                    <div className="feature-card-icon">{feature.icon}</div>
+                                    <h3 className="feature-card-title">{feature.title}</h3>
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
+                ))}
+            </div>
         </div>
     );
 };

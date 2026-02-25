@@ -22,7 +22,7 @@ const TopBar = () => {
                 {/* Brand Logo */}
                 <div className="topbar-brand" onClick={() => navigate('/')}>
                     <img src={theme === 'dark' ? '/light_gold.png' : '/logo.png'} alt="Rushd Logo" className="topbar-logo" />
-                    <span className="topbar-title">Rushd Web</span>
+                    <span className="topbar-title">Rushd</span>
                 </div>
 
                 {/* Primary Navigation */}

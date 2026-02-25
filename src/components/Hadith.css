@@ -3,7 +3,7 @@
    ========================================== */
 
 .hadith-container {
-    max-width: 1100px;
+    max-width: var(--page-max-width);
     margin: 0 auto;
     padding: 1.5rem;
     animation: fadeInHadith 0.4s ease;
@@ -83,6 +83,7 @@
     font-size: 0.88rem;
     color: var(--text-primary, #1f2937);
     min-width: 0;
+    margin-left: 3%;
 }
 
 .hadith-search-input::placeholder {

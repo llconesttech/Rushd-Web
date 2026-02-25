@@ -81,6 +81,16 @@
   --color-border: #e2e8e9;
   /* Light border */
 
+  /* Pill Colors */
+  --color-pill-meccan-bg: #fef3c7;
+  --color-pill-meccan-text: #92400e;
+  --color-pill-medinan-bg: #dbeafe;
+  --color-pill-medinan-text: #1e40af;
+  --color-pill-juz-bg: #f0fdf4;
+  --color-pill-juz-text: #047857;
+
+  /* SVG Filters for Surah Names (Teal #0d5c63) */
+  --filter-surah-name: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(674%) hue-rotate(138deg) brightness(91%) contrast(92%);
 
   /* Typography */
   --font-sans: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
@@ -95,6 +105,9 @@
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
 
+  /* Layout */
+  --page-max-width: 1200px;
+
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
@@ -106,13 +119,29 @@
   --color-bg-main: #0a1a1f;
   --color-bg-card: #13282f;
   --color-text-main: #f0f0f0;
-  --color-text-muted: rgba(255, 255, 255, 0.6);
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-primary-light: rgba(13, 92, 99, 0.2);
+  --color-text-muted: rgba(255, 255, 255, 0.75);
+  /* Increased contrast */
+  --color-border: rgba(255, 255, 255, 0.15);
+  /* Stronger border for separation */
+  --color-primary-light: rgba(13, 92, 99, 0.4);
+  /* Stronger pill bg */
+  --color-primary-dark: #81c0c6;
+  /* Lighter teal for headings in dark mode */
+
+  /* Pill Colors Dark Mode - Softer backgrounds, lighter text for contrast */
+  --color-pill-meccan-bg: rgba(245, 158, 11, 0.2);
+  --color-pill-meccan-text: #fbbf24;
+  --color-pill-medinan-bg: rgba(59, 130, 246, 0.2);
+  --color-pill-medinan-text: #93c5fd;
+  --color-pill-juz-bg: rgba(16, 185, 129, 0.2);
+  --color-pill-juz-text: #6ee7b7;
+
+  /* SVG Filters for Surah Names - Off-white/Cream for dark mode visibility */
+  --filter-surah-name: brightness(0) saturate(100%) invert(95%) sepia(3%) saturate(190%) hue-rotate(10deg) brightness(103%) contrast(96%);
 
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 8px -1px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 20px -3px rgb(0 0 0 / 0.6);
 }
 
 body {
@@ -839,8 +868,8 @@ h6 {
   font-size: 0.75rem;
   border-radius: 0.4rem;
   border: 1px solid var(--color-border);
-  background: white;
-  color: var(--color-text-muted);
+  background: var(--color-bg-card);
+  color: var(--color-text-main);
   cursor: pointer;
   outline: none;
 }
@@ -848,6 +877,7 @@ h6 {
 .reading-select:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
+  background: var(--color-bg-main);
 }
 
 @media (max-width: 640px) {
@@ -993,8 +1023,7 @@ h6 {
   height: 2.2rem;
   width: auto;
   display: block;
-  /* Filter to turn white #FFFFFF into Teal #0d5c63 */
-  filter: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(674%) hue-rotate(138deg) brightness(91%) contrast(92%);
+  filter: var(--filter-surah-name);
   transition: transform 0.2s ease;
 }
 
@@ -1013,7 +1042,7 @@ h6 {
   width: auto;
   margin: 0 auto;
   display: block;
-  filter: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(674%) hue-rotate(138deg) brightness(91%) contrast(92%);
+  filter: var(--filter-surah-name);
 }
 
 @media (min-width: 768px) {

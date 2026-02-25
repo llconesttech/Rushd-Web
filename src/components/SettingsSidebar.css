@@ -11,7 +11,7 @@
     max-width: 320px;
     height: 100vh;
     height: 100dvh;
-    background: linear-gradient(180deg, #f8faf9 0%, #eef5f1 100%);
+    background: var(--color-bg-main);
     border-left: 1px solid var(--color-border);
     box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
     z-index: 1100;
@@ -104,7 +104,7 @@
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--color-text-muted);
-    transition: color 0.2s, border-bottom-color 0.2s;
+    transition: color 0.2s, border-bottom-color 0.2s, background 0.2s;
     border-bottom: 2px solid transparent;
     white-space: nowrap;
     min-width: 0;
@@ -117,7 +117,7 @@
 .section-tabs .tab.active {
     color: var(--color-primary);
     border-bottom-color: var(--color-primary);
-    background: white;
+    background: var(--color-bg-card);
 }
 
 /* ---- Settings Content ---- */
@@ -144,6 +144,8 @@
 .search-input {
     width: 100%;
     padding: 0.5rem 0.75rem;
+    background: var(--color-bg-card);
+    color: var(--color-text-main);
     border: 1px solid var(--color-border);
     border-radius: 8px;
     font-size: 0.875rem;
@@ -156,6 +158,10 @@
 .search-input:focus {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(13, 92, 99, 0.12);
+}
+
+.search-input::placeholder {
+    color: var(--color-text-muted);
 }
 
 /* ---- Settings List ---- */
@@ -179,7 +185,7 @@
 }
 
 .settings-item:hover {
-    background: rgba(13, 92, 99, 0.06);
+    background: var(--color-primary-light);
 }
 
 .settings-item.active {
@@ -219,7 +225,7 @@
     border: 1px solid var(--color-border);
     border-radius: 10px;
     overflow: hidden;
-    background: white;
+    background: var(--color-bg-card);
 }
 
 .language-header {
@@ -229,6 +235,11 @@
     font-size: 0.8rem;
     color: var(--color-primary);
     border-bottom: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .language-header {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-text-main);
 }
 
 .language-header .native-lang {
@@ -265,7 +276,7 @@
     cursor: pointer;
     font-size: 1rem;
     transition: all 0.2s;
-    background: white;
+    background: var(--color-bg-card);
     color: var(--color-text-main);
     text-align: center;
     display: flex;
@@ -293,6 +304,7 @@
 
 .font-selector-btn:hover {
     border-color: var(--color-primary);
+    background: var(--color-bg-main);
 }
 
 .font-selector-btn.active {
@@ -313,7 +325,7 @@
     border-radius: 8px;
     border: 1px solid var(--color-border);
     cursor: pointer;
-    background: white;
+    background: var(--color-bg-card);
     color: var(--color-text-main);
     transition: all 0.2s;
     font-size: 0.9rem;
@@ -332,7 +344,7 @@
     align-items: center;
     margin-top: 1rem;
     padding: 0.625rem;
-    background: white;
+    background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: 8px;
 }
@@ -343,6 +355,7 @@
     gap: 0.5rem;
     font-size: 0.875rem;
     font-weight: 500;
+    color: var(--color-text-main);
 }
 
 /* Toggle switch */
@@ -366,7 +379,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: var(--color-border);
     transition: background-color 0.3s;
     border-radius: 24px;
 }

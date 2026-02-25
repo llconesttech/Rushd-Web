@@ -25,6 +25,7 @@ import SalahRules from './components/SalahRules';
 import AsmaUlHusna from './components/AsmaUlHusna';
 import IslamicCalendar from './components/IslamicCalendar';
 import RamadanCalendar from './components/RamadanCalendar';
+import LunarPhasePage from './components/LunarPhasePage';
 import FastingRules from './components/FastingRules';
 import Taraweeh from './components/Taraweeh';
 import LaylatulQadr from './components/LaylatulQadr';
@@ -84,7 +85,7 @@ const SurahList = () => {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                 <span style={{
                   backgroundColor: 'var(--color-primary-light)',
-                  color: 'var(--color-primary-dark)',
+                  color: 'var(--color-text-main)', /* Better contrast than primary-dark in dark mode */
                   width: '36px',
                   height: '36px',
                   borderRadius: '50%',
@@ -98,16 +99,16 @@ const SurahList = () => {
                   <span style={{
                     fontSize: '0.7rem',
                     padding: '0.2rem 0.5rem',
-                    backgroundColor: surah.revelationType === 'Meccan' ? '#fef3c7' : '#dbeafe',
-                    color: surah.revelationType === 'Meccan' ? '#92400e' : '#1e40af',
+                    backgroundColor: surah.revelationType === 'Meccan' ? 'var(--color-pill-meccan-bg)' : 'var(--color-pill-medinan-bg)',
+                    color: surah.revelationType === 'Meccan' ? 'var(--color-pill-meccan-text)' : 'var(--color-pill-medinan-text)',
                     borderRadius: '0.5rem'
                   }}>{surah.revelationType}</span>
                   {surah.juz && (
                     <span style={{
                       fontSize: '0.7rem',
                       padding: '0.2rem 0.5rem',
-                      backgroundColor: '#f0fdf4',
-                      color: '#047857',
+                      backgroundColor: 'var(--color-pill-juz-bg)',
+                      color: 'var(--color-pill-juz-text)',
                       borderRadius: '0.5rem'
                     }}>Juz {surah.juz[0]}</span>
                   )}
@@ -597,6 +598,7 @@ function App() {
                 <Route path="/hajj-duas" element={<ComingSoon />} />
                 <Route path="/packing" element={<ComingSoon />} />
                 <Route path="/audio" element={<ComingSoon />} />
+                <Route path="/tools/lunar-phase" element={<LunarPhasePage />} />
               </Routes>
             </div>
           </main>
