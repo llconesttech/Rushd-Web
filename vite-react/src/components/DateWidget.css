@@ -1,0 +1,177 @@
+.date-widget {
+    background: var(--color-bg-card);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.date-widget-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.date-widget-header svg {
+    color: var(--color-primary);
+}
+
+.date-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.date-card {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.date-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Gregorian styling */
+.date-card.gregorian {
+    border-left: 3px solid #3b82f6;
+}
+
+.date-card.gregorian .date-card-icon {
+    color: #3b82f6;
+}
+
+/* Hijri styling */
+.date-card.hijri {
+    border-left: 3px solid #10b981;
+}
+
+.date-card.hijri .date-card-icon {
+    color: #10b981;
+}
+
+/* Bengali styling */
+.date-card.bengali {
+    border-left: 3px solid #f59e0b;
+}
+
+.date-card.bengali .date-card-icon {
+    color: #f59e0b;
+}
+
+.date-card-icon {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0.25rem;
+}
+
+.bengali-icon {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.date-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.date-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.date-day,
+.date-day-arabic,
+.date-day-bengali {
+    font-size: 0.8rem;
+    color: var(--color-text-main);
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+}
+
+.date-day-arabic {
+    font-family: var(--font-arabic);
+    direction: rtl;
+}
+
+.date-main {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.date-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    line-height: 1;
+}
+
+.date-month {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.date-year {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.date-arabic {
+    font-family: var(--font-arabic);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    direction: rtl;
+    text-align: left;
+    margin-top: 0.25rem;
+}
+
+.date-native {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .date-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .date-card {
+        padding: 0.875rem;
+    }
+
+    .date-num {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .date-widget {
+        padding: 1rem;
+    }
+
+    .date-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.15rem;
+    }
+
+    .date-num {
+        font-size: 1.5rem;
+    }
+}

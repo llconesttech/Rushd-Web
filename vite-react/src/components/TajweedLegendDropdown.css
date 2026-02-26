@@ -1,0 +1,279 @@
+/* Absolute container in App.jsx */
+.tajweed-legend-abs-container {
+  position: absolute;
+  top: 16px;
+  right: 30px;
+  z-index: 60;
+  transition: all 0.3s ease;
+}
+
+/* Detect scrolled state via sibling header */
+.page-header.scrolled~.tajweed-legend-abs-container {
+  top: 19px;
+  /* Center vertically in 60px header (approx) */
+  right: 30px;
+}
+
+/* Trigger Button */
+.tajweed-legend-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+  user-select: none;
+}
+
+.tajweed-legend-btn:hover {
+  background: var(--color-bg-main);
+  border-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+/* SHRUNK STATE */
+.page-header.scrolled~.tajweed-legend-abs-container .tajweed-legend-btn {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  gap: 0.25rem;
+}
+
+.page-header.scrolled~.tajweed-legend-abs-container .tajweed-btn-text {
+  /* On very small sticky, maybe just show icon? 
+     Let's keep text but make it tiny first. */
+  font-size: 0.7rem;
+}
+
+.page-header.scrolled~.tajweed-legend-abs-container .tajweed-icon-colors {
+  width: 14px;
+  height: 14px;
+}
+
+.tajweed-legend-btn .tajweed-icon-colors {
+  color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+  .tajweed-legend-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ---- Backdrop ---- */
+.tajweed-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2000;
+  /* Higher than everything */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* ---- Bottom Sheet ---- */
+.tajweed-sheet {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  background: var(--color-bg-card);
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 2001;
+  /* Higher than backdrop */
+  /* Safe area padding removed from here */
+  height: 85vh;
+  /* Force height to ensure footer sticks if content is short? No, max-height works */
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
+
+  /* On desktop, floating bottom sheet centered */
+  .tajweed-sheet {
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    /* Center without transform to avoid animation conflict */
+    width: 480px;
+    /* Bit wider for 3 columns comfortable */
+    border-radius: 1.5rem;
+    border: 1px solid var(--color-border);
+    height: auto;
+    max-height: 80vh;
+    /* Safe-area padding is irrelevant here as it's floating */
+    padding-bottom: 0;
+  }
+}
+
+/* ---- Header ---- */
+.tajweed-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.tajweed-sheet-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.tajweed-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.tajweed-close-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--color-text-main);
+}
+
+/* ---- Content Grid ---- */
+.tajweed-sheet-grid {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  display: grid;
+  /* Ensure at least 3 columns on mobile (min 100px approx) */
+  grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+  gap: 0.75rem;
+  /* Add padding bottom to grid so last item isn't cut off */
+  padding-bottom: 1rem;
+}
+
+/* ---- Item ---- */
+.tajweed-sheet-item {
+  display: flex;
+  flex-direction: column;
+  /* Stack for 3-col layout */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 0.75rem;
+  background: var(--color-bg-main);
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.tajweed-sheet-item:hover {
+  background: var(--color-bg-card);
+  border-color: var(--color-primary-light);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  transform: translateY(-1px);
+}
+
+.tajweed-sheet-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.tajweed-sheet-label {
+  font-size: 0.8rem;
+  color: var(--color-text-main);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* ---- Footer ---- */
+.tajweed-sheet-footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  flex-shrink: 0;
+
+  /* Handle Safe Area here */
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 768px) {
+  .tajweed-sheet-footer {
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    /* Reset padding on desktop */
+    padding-bottom: 1rem;
+  }
+}
+
+.tajweed-view-full-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /* width: 100%; Removed to prevent overflow issues if padding/borders conflict */
+  width: auto;
+  margin: 0;
+  /* Verify no external margins */
+  padding: 0.75rem;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  box-shadow: 0 2px 4px rgba(13, 92, 99, 0.2);
+  box-sizing: border-box;
+  /* Crucial for width: 100% but good practice generally */
+}
+
+.tajweed-view-full-btn:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: 0 4px 8px rgba(13, 92, 99, 0.3);
+}
+
+/* ---- Animations ---- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
