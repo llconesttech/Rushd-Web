@@ -172,8 +172,8 @@ const HadithReader = () => {
                 breadcrumbs={[
                     { label: 'Home', path: '/' },
                     { label: 'Hadith', path: '/hadith' },
-                    { label: book.name, path: `/ hadith / ${bookId} ` },
-                    { label: `Ch.${sectionId} `, path: ` / hadith / ${bookId}/${sectionId}` }
+                    { label: book.name, path: `/hadith/${bookId}` },
+                    { label: `Ch.${sectionId} `, path: `/hadith/${bookId}/${sectionId}` }
                 ]}
             />
 

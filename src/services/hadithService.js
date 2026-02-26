@@ -15,9 +15,9 @@ async function fetchLocalJSON(path) {
     return data;
 }
 
-/** Load the master editions list */
 export async function getEditions() {
-    return fetchLocalJSON('/data/hadith/editions.json');
+    // Force fresh fetch for editions list to reflect new book availability
+    return fetchLocalJSON(`/data/hadith/editions.json?t=${Date.now()}`);
 }
 
 /** Load info.json (grades, section details per book) */
@@ -211,7 +211,7 @@ export function detectLanguage(text) {
     return 'eng';
 }
 
-import { HADITH_BOOKS } from '../data/hadithData';
+import { HADITH_BOOKS } from '../data/hadithData.js';
 
 /** Search all chapters across all books dynamically */
 export async function searchAllChapters(query) {

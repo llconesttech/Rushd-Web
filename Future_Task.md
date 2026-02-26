@@ -18,13 +18,10 @@
 
 
 Hadith Books to Collect
-[ ] Muwatta Imam Malik
 [ ] Musnad Ahmad ibn Hanbal
 [ ] Sunan ad-Darimi
 [ ] Al-Adab al-Mufrad
 [ ] Bulugh al-Maram
 [ ] Riyad as-Salihin
 [ ] Mishkat al-Masabih
-[ ] Jami` al-Saghir
-[ ] Kanz al-Ummal
-[ ] Al-Kafi
+[ ] Shamail al-Muhammadiyah
