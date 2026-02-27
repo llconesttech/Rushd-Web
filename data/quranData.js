@@ -416,6 +416,6 @@ export const getTranslationsByLanguage = () => {
 };
 
 // Available Shan-e-Nuzool sources
-export const shanENuzoolList = {
-    "en-al-wahidi": { "english_name": "Asbab Al-Nuzul by Al-Wahidi", "language_code": "en", "type": "shan-e-nuzool", "native_name": "Al-Wahidi" }
-};
+// export const shanENuzoolList = {
+//     "en-al-wahidi": { "english_name": "Asbab Al-Nuzul by Al-Wahidi", "language_code": "en", "type": "shan-e-nuzool", "native_name": "Al-Wahidi" }
+// };

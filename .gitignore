@@ -43,6 +43,6 @@ next-env.d.ts
 # Large data files (deployed separately)
 /server/data/quran/
 /server/data/hadith/
-/server/data/hadith-qa/
+#/server/data/hadith-qa/
 /server/data/audio/
 /server/data/assets/
