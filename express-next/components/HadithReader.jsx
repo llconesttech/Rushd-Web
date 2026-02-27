@@ -9,7 +9,7 @@ import './Hadith.css';
 
 const HadithReader = () => {
     const { bookId, sectionId } = useParams();
-    const [searchParams] = useSearchParams();
+    const searchParams = useSearchParams() || new URLSearchParams();
     const langFromUrl = searchParams.get('lang') || 'eng';
 
     const [hadiths, setHadiths] = useState([]);

@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
                     }}
                 />
             </head>
-            <body>
+            <body suppressHydrationWarning>
                 <SettingsProvider>
                     <LocationProvider>
                         {children}

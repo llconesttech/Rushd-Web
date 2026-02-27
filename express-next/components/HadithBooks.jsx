@@ -208,7 +208,7 @@ const HadithBooks = () => {
     const renderBookCard = (book) => {
         const bookStats = stats[book.id] || {};
         return (
-            <Link href={`/hadith/${book.id}`} key={book.id} className="hadith-book-card-link">
+            <Link href={book.id ? `/hadith/${book.id}` : '#'} key={book.id} className="hadith-book-card-link">
                 <div className={`hadith-book-card ${book.isSahihSittah ? 'sahih-sittah' : ''}`}>
                     <div className="book-card-accent" style={{ background: book.color }} />
                     <div className="book-card-content">
@@ -352,7 +352,7 @@ const HadithBooks = () => {
                     ) : (
                         <div className="chapters-grid">
                             {chapterResults.map(chapter => (
-                                <Link href={`/hadith/${chapter.bookId}/${chapter.id}`}
+                                <Link href={chapter.bookId && chapter.id ? `/hadith/${chapter.bookId}/${chapter.id}` : '#'}
                                     key={`${chapter.bookId}-${chapter.id}`}
                                     className="chapter-card-grid"
                                 >
@@ -434,7 +434,7 @@ const HadithBooks = () => {
                                             {visible.map(narrator => (
                                                 <Link
                                                     key={narrator.id}
-                                                    to={`/hadith/narrator/${narrator.id}`}
+                                                    href={narrator.id ? `/hadith/narrator/${narrator.id}` : '#'}
                                                     className="narrator-card"
                                                     style={{ textDecoration: 'none' }}
                                                 >
