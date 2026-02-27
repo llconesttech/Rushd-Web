@@ -37,3 +37,20 @@ Order matters for composite indexes:
 ├── Most selective first
 └── Match query pattern
 ```
+
+---
+
+## 🚀 Project-Specific Indexing Strategy
+
+Apply these indexes to ensure high-performance lookups:
+
+| Table | Index Type | Columns | Purpose |
+|-------|------------|---------|---------|
+| **Hadith** | Unique | `collectionId`, `hadithNumber` | Compound lookup |
+| **Hadith** | Hash/BTREE | `slug` | Deep-link lookups |
+| **Hadith** | B-tree | `collectionId` | Collection fetch |
+| **HadithChapter** | Unique | `collectionId`, `chapterNumber` | Compound lookup |
+| **HadithQA** | B-tree | `category` | Category filtering |
+| **HadithQA** | GIN | `tags` | Tag-based search |
+| **Bookmark** | B-tree | `userId` | User bookmarks |
+| **History** | B-tree | `userId`, `lastRead` | Recent history |

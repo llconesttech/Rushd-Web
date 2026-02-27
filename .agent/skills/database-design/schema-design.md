@@ -54,3 +54,21 @@ Use TIMESTAMPTZ (with timezone) not TIMESTAMP
 ├── RESTRICT → Prevent delete if children exist
 └── SET DEFAULT → Children get default value
 ```
+
+---
+
+## 🏗️ Project Reference: Hadith & Hadith-QA
+
+> [!IMPORTANT]
+> The `prisma/schema.prisma` file is the master definition for this project.
+
+### Core Models
+
+| Model | Purpose | Key Fields |
+|-------|---------|------------|
+| **HadithCollection** | Major collections (Bukhari, etc.) | `id` (e.g., "bukhari"), `name`, `nameAr` |
+| **HadithChapter** | Chapters within collections | `collectionId`, `chapterNumber`, `hadithStart/End` |
+| **Hadith** | Core content (Multi-language) | `hadithNumber`, `slug`, `textEn`, `textAr`, `textUr`, `textBn` |
+| **HadithQA** | Q&A pairs from hadiths | `question`, `answer`, `tags`, `searchTerms` |
+| **User** | Authentication & Preferences | `email`, `role`, `preferences` (Json) |
+| **Bookmark/History**| User activity tracking | `userId`, `hadithId`, `lastRead` |

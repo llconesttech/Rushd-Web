@@ -133,6 +133,26 @@ useEffect(() => {
 
 **Don't use passive when:** implementing custom swipe gestures, custom zoom controls, or any listener that needs `preventDefault()`.
 
+**- Use clear loading states
+- Handle errors gracefully
+- Consider using a library like SWR or React Query
+
+---
+
+## 🕋 Project-Specific Data Fetching: Hadith & Hadith-QA
+
+For this project, follow these optimized fetching patterns:
+
+### 1. Hadith Retrieval (Static)
+Hadiths are largely static and should be fetched from Redis or directly from Prisma with a high cache TTL.
+- **Server-side**: Use `prisma.hadith.findUnique` with `include` for collections.
+- **Client-side**: Fetch via API route that implements the Redis caching strategy mentioned in `@[skills/api-patterns/response]`.
+
+### 2. Hadith-QA Search (Dynamic)
+QA search should prioritize responsiveness and relevance.
+- **Implementation**: Use the pre-computed `searchTerms` field in `HadithQA` for faster partial matches.
+- **Optimization**: Debounce search inputs on the client to reduce API pressure and cache common search result hashes in Redis.
+
 ---
 
 ## Rule 4.3: Use SWR for Automatic Deduplication

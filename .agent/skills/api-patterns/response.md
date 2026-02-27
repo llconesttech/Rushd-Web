@@ -1,6 +1,29 @@
-# Response Format Principles
+# Response Format
+- Don't return inconsistent response formats
+- Don't expose internal errors to clients
+- Don't skip rate limiting
 
-> Consistency is key - choose a format and stick to it.
+---
+
+## ⚡ Project-Specific Caching Strategy (Redis)
+
+Use Redis for high-performance reading of static Hadith data.
+
+### Cache Key Patterns
+
+| Resource | Pattern | Description |
+|----------|---------|-------------|
+| **Hadith** | `hadith:{slug}` | Single hadith content |
+| **Collection** | `hadith:collection:{id}` | Full collection metadata |
+| **Chapter** | `hadith:chapter:{coll}:{chap}` | Chapter-level hadiths |
+| **Hadith-QA** | `hadith-qa:{id}` | Single QA pair |
+| **Search** | `hadith-qa:search:{hash}` | Search results (hash of query) |
+
+### TTL Policy
+
+- **Hadith Content**: 24 hours
+- **Collection List**: 7 days
+- **Search Results**: 5 minutes
 
 ## Common Patterns
 
