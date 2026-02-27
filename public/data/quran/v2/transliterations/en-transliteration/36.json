@@ -1,0 +1,340 @@
+{
+  "number": 36,
+  "name": "سُورَةُ يسٓ",
+  "englishName": "Yaseen",
+  "edition": "en.transliteration",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "Yaa-Seeen"
+    },
+    {
+      "number": 2,
+      "text": "Wal-Qur-aanil-Hakeem"
+    },
+    {
+      "number": 3,
+      "text": "Innaka laminal mursaleen"
+    },
+    {
+      "number": 4,
+      "text": "'Alaa Siraatim Mustaqeem"
+    },
+    {
+      "number": 5,
+      "text": "Tanzeelal 'Azeezir Raheem"
+    },
+    {
+      "number": 6,
+      "text": "Litunzira qawmam maaa unzira aabaaa'uhum fahum ghaafiloon"
+    },
+    {
+      "number": 7,
+      "text": "Laqad haqqal qawlu 'alaaa aksarihim fahum laa yu'minoon"
+    },
+    {
+      "number": 8,
+      "text": "Innaa ja'alnaa feee a'naaqihim aghlaalan fahiya ilal azqaani fahum muqmahoon"
+    },
+    {
+      "number": 9,
+      "text": "Wa ja'alnaa mim baini aydeehim saddanw-wa min khalfihim saddan fa aghshai naahum fahum laa yubsiroon"
+    },
+    {
+      "number": 10,
+      "text": "Wa sawaaa'un 'alaihim 'a-anzartahum am lam tunzirhum laa yu'minoon"
+    },
+    {
+      "number": 11,
+      "text": "Innamaa tunziru manit taba 'az-Zikra wa khashiyar Rahmaana bilghaib, fabashshirhu bimaghfiratinw-wa ajrin kareem"
+    },
+    {
+      "number": 12,
+      "text": "Innaa Nahnu nuhyil mawtaa wa naktubu maa qaddamoo wa aasaarahum; wa kulla shai'in ahsainaahu feee Imaamim Mubeen"
+    },
+    {
+      "number": 13,
+      "text": "Wadrib lahum masalan Ashaabal Qaryatih; iz jaaa'ahal mursaloon"
+    },
+    {
+      "number": 14,
+      "text": "Iz arsalnaaa ilaihimusnaini fakazzaboohumaa fa'azzaznaa bisaalisin faqaalooo innaaa ilaikum mursaloon"
+    },
+    {
+      "number": 15,
+      "text": "Qaaloo maaa antum illaa basharum mislunaa wa maaa anzalar Rahmaanu min shai'in in antum illaa takziboon"
+    },
+    {
+      "number": 16,
+      "text": "Qaaloo Rabbunaa ya'lamu innaaa ilaikum lamursaloon"
+    },
+    {
+      "number": 17,
+      "text": "Wa maa 'alainaaa illal balaaghul mubeen"
+    },
+    {
+      "number": 18,
+      "text": "Qaaloo innaa tataiyarnaa bikum la'il-lam tantahoo lanar jumannakum wa la-yamassan nakum minnaa 'azaabun aleem"
+    },
+    {
+      "number": 19,
+      "text": "Qaaloo taaa'irukum ma'akum; a'in zukkirtum; bal antum qawmum musrifoon"
+    },
+    {
+      "number": 20,
+      "text": "Wa jaaa'a min aqsal madeenati rajuluny yas'aa qaala yaa qawmit tabi'ul mursaleen"
+    },
+    {
+      "number": 21,
+      "text": "Ittabi'oo mal-laa yas'alukum ajranw-wa hum muhtadoon"
+    },
+    {
+      "number": 22,
+      "text": "Wa maa liya laaa a'budul lazee fataranee wa ilaihi turja'oon"
+    },
+    {
+      "number": 23,
+      "text": "'A-attakhizu min dooniheee aalihatan iny-yuridnir Rahmaanu bidurril-laa tughni 'annee shafaa 'atuhum shai 'anw-wa laa yunqizoon"
+    },
+    {
+      "number": 24,
+      "text": "Inneee izal-lafee dalaa-lim-mubeen"
+    },
+    {
+      "number": 25,
+      "text": "Inneee aamantu bi Rabbikum fasma'oon"
+    },
+    {
+      "number": 26,
+      "text": "Qeelad khulil Jannnah; qaala yaa laita qawmee ya'lamoon"
+    },
+    {
+      "number": 27,
+      "text": "Bimaa ghafara lee Rabbee wa ja'alanee minal mukrameen"
+    },
+    {
+      "number": 28,
+      "text": "Wa maaa anzalnaa 'alaa qawmihee mim ba'dihee min jundim minas-samaaa'i wa maa kunnaa munzileen"
+    },
+    {
+      "number": 29,
+      "text": "In kaanat illaa saihatanw waahidatan fa-izaa hum khaamidoon"
+    },
+    {
+      "number": 30,
+      "text": "Yaa hasratan 'alal 'ibaad; maa yaateehim mir Rasoolin illaa kaanoo bihee yastahzi 'oon"
+    },
+    {
+      "number": 31,
+      "text": "Alam yaraw kam ahlak naa qablahum minal qurooni annahum ilaihim laa yarji'oon"
+    },
+    {
+      "number": 32,
+      "text": "Wa in kullul lammaa jamee'ul-ladainaa muhdaroon"
+    },
+    {
+      "number": 33,
+      "text": "Wa Aayatul lahumul ardul maitatu ahyainaahaa wa akhrajnaa minhaa habban faminhu yaakuloon"
+    },
+    {
+      "number": 34,
+      "text": "Wa ja'alnaa feehaa jannaatim min nakheelinw wa a'naabinw wa fajjarnaa feeha minal 'uyoon"
+    },
+    {
+      "number": 35,
+      "text": "Liyaakuloo min samarihee wa maa 'amilat-hu aideehim; afalaa yashkuroon"
+    },
+    {
+      "number": 36,
+      "text": "Subhaanal lazee khalaqal azwaaja kullahaa mimmaa tumbitul ardu wa min anfusihim wa mimmaa laa ya'lamoon"
+    },
+    {
+      "number": 37,
+      "text": "Wa Aayatul lahumul lailu naslakhu minhun nahaara fa-izaa hum muzlimoon"
+    },
+    {
+      "number": 38,
+      "text": "Wash-shamsu tajree limustaqarril lahaa; zaalika taqdeerul 'Azeezil Aleem"
+    },
+    {
+      "number": 39,
+      "text": "Walqamara qaddarnaahu manaazila hattaa 'aada kal'ur joonil qadeem"
+    },
+    {
+      "number": 40,
+      "text": "Lash shamsu yambaghee lahaaa an tudrikal qamara wa lal lailu saabiqun nahaar; wa kullun fee falaki yasbahoon"
+    },
+    {
+      "number": 41,
+      "text": "Wa Aayatul lahum annaa hamalnaa zurriyatahum fil fulkil mashhoon"
+    },
+    {
+      "number": 42,
+      "text": "Wa khalaqnaa lahum mim-mislihee maa yarkaboon"
+    },
+    {
+      "number": 43,
+      "text": "Wa in nashaa nughriqhum falaa sareekha lahum wa laa hum yunqazoon"
+    },
+    {
+      "number": 44,
+      "text": "Illaa rahmatam minnaa wa mataa'an ilaa heen"
+    },
+    {
+      "number": 45,
+      "text": "Wa izaa qeela lahumuttaqoo maa baina aideekum wa maa khalfakum la'allakum turhamoon"
+    },
+    {
+      "number": 46,
+      "text": "Wa maa taateehim min aayatim min ayataati Rabbihim illaa kaanoo 'anhaa mu'rideen"
+    },
+    {
+      "number": 47,
+      "text": "Wa izaa qeela lahum anfiqoo mimmaa razaqakumul laahu qaalal lazeena kafaroo lillazeena aamanooo anut'imu mal-law yashaaa'ul laahu at'amahooo in antum illaa fee dalaalim mubeen"
+    },
+    {
+      "number": 48,
+      "text": "Wa yaqooloona mataa haazal wa'du in kuntum saadiqeen"
+    },
+    {
+      "number": 49,
+      "text": "Maa yanzuroona illaa saihatanw waahidatan taa khuzuhum wa hum yakhissimoon"
+    },
+    {
+      "number": 50,
+      "text": "Falaa yastatee'oona taw siyatanw-wa laaa ilaaa ahlihim yarji'oon"
+    },
+    {
+      "number": 51,
+      "text": "Wa nufikha fis-soori faizaa hum minal ajdaasi ilaa Rabbihim yansiloon"
+    },
+    {
+      "number": 52,
+      "text": "Qaaloo yaa wailanaa mam ba'asanaa mim marqadinaa; haaza maa wa'adar Rahmanu wa sadaqal mursaloon"
+    },
+    {
+      "number": 53,
+      "text": "In kaanat illaa saihatanw waahidatan fa-izaa hum jamee'ul ladainaa muhdaroon"
+    },
+    {
+      "number": 54,
+      "text": "Fal-Yawma laa tuzlamu nafsun shai'anw-wa laa tujzawna illaa maa kuntum ta'maloon"
+    },
+    {
+      "number": 55,
+      "text": "Inna Ashaabal jannatil Yawma fee shughulin faakihoon"
+    },
+    {
+      "number": 56,
+      "text": "Hum wa azwaajuhum fee zilaalin 'alal araaa'iki muttaki'oon"
+    },
+    {
+      "number": 57,
+      "text": "Lahum feehaa faakiha tunw-wa lahum maa yadda'oon"
+    },
+    {
+      "number": 58,
+      "text": "Salaamun qawlam mir Rabbir Raheem"
+    },
+    {
+      "number": 59,
+      "text": "Wamtaazul Yawma ayyuhal mujrimoon"
+    },
+    {
+      "number": 60,
+      "text": "Alam a'had ilaikum yaa Baneee Aadama al-laa ta'budush Shaitaana innahoo lakum 'aduwwum mubeen"
+    },
+    {
+      "number": 61,
+      "text": "Wa ani'budoonee; haazaa Siraatum Mustaqeem"
+    },
+    {
+      "number": 62,
+      "text": "Wa laqad adalla minkum jibillan kaseeraa; afalam takoonoo ta'qiloon"
+    },
+    {
+      "number": 63,
+      "text": "Haazihee Jahannamul latee kuntum too'adoon"
+    },
+    {
+      "number": 64,
+      "text": "Islawhal Yawma bimaa kuntum takfuroon"
+    },
+    {
+      "number": 65,
+      "text": "Al-Yawma nakhtimu 'alaaa afwaahihim wa tukallimunaaa aideehim wa tashhadu arjuluhum bimaa kaanoo yaksiboon"
+    },
+    {
+      "number": 66,
+      "text": "Wa law nashaaa'u lata masna 'alaaa aiyunihim fasta baqus-siraata fa-annaa yubsiroon"
+    },
+    {
+      "number": 67,
+      "text": "Wa law nashaaa'u lamasakhnaahum 'alaa makaanatihim famas-tataa'oo mudiyyanw-wa laa yarji'oon"
+    },
+    {
+      "number": 68,
+      "text": "Wa man nu 'ammirhu nunakkishu fil-khalq; afalaa ya'qiloon"
+    },
+    {
+      "number": 69,
+      "text": "Wa maa 'allamnaahush shi'ra wa maa yambaghee lah; in huwa illaa zikrunw-wa Qur-aanum mubeen"
+    },
+    {
+      "number": 70,
+      "text": "Liyunzira man kaana haiyanw-wa yahiqqal qawlu 'alal-kaafireen"
+    },
+    {
+      "number": 71,
+      "text": "Awalam yaraw annaa khalaqnaa lahum mimmaa 'amilat aideenaaa an'aaman fahum lahaa maalikoon"
+    },
+    {
+      "number": 72,
+      "text": "Wa zallalnaahaa lahum faminhaa rakoobuhum wa minhaa yaakuloon"
+    },
+    {
+      "number": 73,
+      "text": "Wa lahum feehaa manaa fi'u wa mashaarib; afalaa yashkuroon"
+    },
+    {
+      "number": 74,
+      "text": "Wattakhazoo min doonil laahi aalihatal la'allahum yunsaroon"
+    },
+    {
+      "number": 75,
+      "text": "Laa yastatee'oona nasrahum wa hum lahum jundum muhdaroon"
+    },
+    {
+      "number": 76,
+      "text": "Falaa yahzunka qawluhum; innaa na'lamu maa yusirroona wa maa yu'linoon"
+    },
+    {
+      "number": 77,
+      "text": "Awalam yaral insaanu annaa khalaqnaahu min nutfatin fa-izaa huwa khaseemum mubeen"
+    },
+    {
+      "number": 78,
+      "text": "Wa daraba lanaa maslanw-wa nasiya khalqahoo qaala mai-yuhyil'izaama wa hiya rameem"
+    },
+    {
+      "number": 79,
+      "text": "Qul yuh yeehal lazeee ansha ahaaa awwala marrah; wa Huwa bikulli khalqin 'Aleem"
+    },
+    {
+      "number": 80,
+      "text": "Allazee ja'ala lakum minash shajaril akhdari naaran fa-izaaa antum minhu tooqidoon"
+    },
+    {
+      "number": 81,
+      "text": "Awa laisal lazee khalaqas samaawaati wal arda biqaadirin 'alaaa ai-yakhluqa mislahum; balaa wa Huwal Khallaaqul 'Aleem"
+    },
+    {
+      "number": 82,
+      "text": "Innamaa amruhooo izaaa araada shai'an ai-yaqoola lahoo kun fa-yakoon"
+    },
+    {
+      "number": 83,
+      "text": "Fa Subhaanal lazee biyadihee malakootu kulli shai-inw-wa ilaihi turja'oon"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "number": 104,
+  "name": "سُورَةُ الهُمَزَةِ",
+  "englishName": "Al-Humaza",
+  "englishNameTranslation": "The Traducer",
+  "revelationType": "Meccan",
+  "numberOfAyahs": 9,
+  "ayahs": [
+    {
+      "number": 6180,
+      "text": "veylül likülli hümezetil lümezeh.",
+      "numberInSurah": 1,
+      "juz": 30,
+      "manzil": 7,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6181,
+      "text": "elleẕî ceme`a mâlev ve`addedeh.",
+      "numberInSurah": 2,
+      "juz": 30,
+      "manzil": 7,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6182,
+      "text": "yaḥsebü enne mâlehû aḫledeh.",
+      "numberInSurah": 3,
+      "juz": 30,
+      "manzil": 7,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6183,
+      "text": "kellâ leyümbeẕenne fi-lḥuṭameh.",
+      "numberInSurah": 4,
+      "juz": 30,
+      "manzil": 7,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6184,
+      "text": "vemâ edrâke me-lḥuṭameh.",
+      "numberInSurah": 5,
+      "juz": 30,
+      "manzil": 7,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6185,
+      "text": "nâru-llâhi-lmûḳadeh.",
+      "numberInSurah": 6,
+      "juz": 30,
+      "manzil": 7,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6186,
+      "text": "elletî teṭṭali`u `ale-l'ef'ideh.",
+      "numberInSurah": 7,
+      "juz": 30,
+      "manzil": 7,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6187,
+      "text": "innehâ `aleyhim mü'ṣadeh.",
+      "numberInSurah": 8,
+      "juz": 30,
+      "manzil": 7,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6188,
+      "text": "fî `amedim mümeddedeh.",
+      "numberInSurah": 9,
+      "juz": 30,
+      "manzil": 7,
+      "page": 601,
+      "ruku": 546,
+      "hizbQuarter": 240,
+      "sajda": false
+    }
+  ],
+  "edition": {
+    "identifier": "tr.transliteration",
+    "language": "tr",
+    "name": "Çeviriyazı",
+    "englishName": "Muhammet Abay",
+    "format": "text",
+    "type": "transliteration",
+    "direction": "ltr"
+  }
+}

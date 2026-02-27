@@ -1,0 +1,228 @@
+{
+  "number": 82,
+  "name": "سُورَةُ الانفِطَارِ",
+  "englishName": "Al-Infitaar",
+  "englishNameTranslation": "The Cleaving",
+  "revelationType": "Meccan",
+  "numberOfAyahs": 19,
+  "ayahs": [
+    {
+      "number": 5830,
+      "text": "iẕe-ssemâü-nfeṭarat.",
+      "numberInSurah": 1,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5831,
+      "text": "veiẕe-lkevâkibü-nteŝerat.",
+      "numberInSurah": 2,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5832,
+      "text": "veiẕe-lbiḥâru füccirat.",
+      "numberInSurah": 3,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5833,
+      "text": "veiẕe-lḳubûru bü`ŝirat.",
+      "numberInSurah": 4,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5834,
+      "text": "`alimet nefsüm mâ ḳaddemet veeḫḫarat.",
+      "numberInSurah": 5,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5835,
+      "text": "yâ eyyühe-l'insânü mâ garrake birabbike-lkerîm.",
+      "numberInSurah": 6,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5836,
+      "text": "elleẕî ḫaleḳake fesevvâke fe`adelek.",
+      "numberInSurah": 7,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5837,
+      "text": "fî eyyi ṣûratim mâ şâe rakkebek.",
+      "numberInSurah": 8,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5838,
+      "text": "kellâ bel tükeẕẕibûne biddîn.",
+      "numberInSurah": 9,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5839,
+      "text": "veinne `aleyküm leḥâfiżîn.",
+      "numberInSurah": 10,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5840,
+      "text": "kirâmen kâtibîn.",
+      "numberInSurah": 11,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5841,
+      "text": "ya`lemûne mâ tef`alûn.",
+      "numberInSurah": 12,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5842,
+      "text": "inne-l'ebrâra lefî ne`îm.",
+      "numberInSurah": 13,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5843,
+      "text": "veinne-lfüccâra lefî ceḥîm.",
+      "numberInSurah": 14,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5844,
+      "text": "yaṣlevnehâ yevme-ddîn.",
+      "numberInSurah": 15,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5845,
+      "text": "vemâ hüm `anhâ bigâibîn.",
+      "numberInSurah": 16,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5846,
+      "text": "vemâ edrâke mâ yevmü-ddîn.",
+      "numberInSurah": 17,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5847,
+      "text": "ŝümme mâ edrâke mâ yevmü-ddîn.",
+      "numberInSurah": 18,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    },
+    {
+      "number": 5848,
+      "text": "yevme lâ temlikü nefsül linefsin şey'â. vel'emru yevmeiẕil lillâh.",
+      "numberInSurah": 19,
+      "juz": 30,
+      "manzil": 7,
+      "page": 587,
+      "ruku": 524,
+      "hizbQuarter": 235,
+      "sajda": false
+    }
+  ],
+  "edition": {
+    "identifier": "tr.transliteration",
+    "language": "tr",
+    "name": "Çeviriyazı",
+    "englishName": "Muhammet Abay",
+    "format": "text",
+    "type": "transliteration",
+    "direction": "ltr"
+  }
+}

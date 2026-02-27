@@ -1,0 +1,218 @@
+{
+  "bn-tafisr-fathul-majid": {
+    "language_code": "bn",
+    "english_name": "Tafsir Fathul Majid",
+    "native_name": "AbdulRahman Bin Hasan Al-Alshaikh",
+    "type": "tafsir",
+    "slug": "bn-tafisr-fathul-majid",
+    "source": "https://quran.com/"
+  },
+  "en-tafisr-ibn-kathir": {
+    "language_code": "en",
+    "english_name": "Tafsir Ibn Kathir (abridged)",
+    "native_name": "Hafiz Ibn Kathir",
+    "type": "tafsir",
+    "slug": "en-tafisr-ibn-kathir",
+    "source": "https://quran.com/"
+  },
+  "ar-tafsir-ibn-kathir": {
+    "language_code": "ar",
+    "english_name": "Tafsir Ibn Kathir",
+    "native_name": "Hafiz Ibn Kathir",
+    "type": "tafsir",
+    "slug": "ar-tafsir-ibn-kathir",
+    "source": "https://quran.com/"
+  },
+  "bn-tafseer-ibn-e-kaseer": {
+    "language_code": "bn",
+    "english_name": "Tafseer ibn Kathir",
+    "native_name": "Tawheed Publication",
+    "type": "tafsir",
+    "slug": "bn-tafseer-ibn-e-kaseer",
+    "source": "https://quran.com/"
+  },
+  "bn-tafsir-ahsanul-bayaan": {
+    "language_code": "bn",
+    "english_name": "Tafsir Ahsanul Bayaan",
+    "native_name": "Bayaan Foundation",
+    "type": "tafsir",
+    "slug": "bn-tafsir-ahsanul-bayaan",
+    "source": "https://quran.com/"
+  },
+  "bn-tafsir-abu-bakr-zakaria": {
+    "language_code": "bn",
+    "english_name": "Tafsir Abu Bakr Zakaria",
+    "native_name": "King Fahd Quran Printing Complex",
+    "type": "tafsir",
+    "slug": "bn-tafsir-abu-bakr-zakaria",
+    "source": "https://quran.com/"
+  },
+  "en-tafsir-maarif-ul-quran": {
+    "language_code": "en",
+    "english_name": "Maarif-ul-Quran",
+    "native_name": "Mufti Muhammad Shafi",
+    "type": "tafsir",
+    "slug": "en-tafsir-maarif-ul-quran",
+    "source": "https://quran.com/"
+  },
+  "ru-tafseer-al-saddi": {
+    "language_code": "ru",
+    "english_name": "Tafseer Al Saddi",
+    "native_name": "Saddi",
+    "type": "tafsir",
+    "slug": "ru-tafseer-al-saddi",
+    "source": "https://quran.com/"
+  },
+  "ar-tafseer-al-saddi": {
+    "language_code": "ar",
+    "english_name": "Tafseer Al Saddi",
+    "native_name": "Saddi",
+    "type": "tafsir",
+    "slug": "ar-tafseer-al-saddi",
+    "source": "https://quran.com/"
+  },
+  "ar-tafsir-al-baghawi": {
+    "language_code": "ar",
+    "english_name": "Tafseer Al-Baghawi",
+    "native_name": "Baghawy",
+    "type": "tafsir",
+    "slug": "ar-tafsir-al-baghawi",
+    "source": "https://quran.com/"
+  },
+  "ar-tafseer-tanwir-al-miqbas": {
+    "language_code": "ar",
+    "english_name": "Tafseer Tanwir al-Miqbas",
+    "native_name": "Tanweer",
+    "type": "tafsir",
+    "slug": "ar-tafseer-tanwir-al-miqbas",
+    "source": "https://quran.com/"
+  },
+  "ar-tafsir-al-wasit": {
+    "language_code": "ar",
+    "english_name": "Tafsir Al Wasit",
+    "native_name": "Waseet",
+    "type": "tafsir",
+    "slug": "ar-tafsir-al-wasit",
+    "source": "https://quran.com/"
+  },
+  "ar-tafsir-al-tabari": {
+    "language_code": "ar",
+    "english_name": "Tafsir al-Tabari",
+    "native_name": "Tabari",
+    "type": "tafsir",
+    "slug": "ar-tafsir-al-tabari",
+    "source": "https://quran.com/"
+  },
+  "ar-tafsir-muyassar": {
+    "language_code": "ar",
+    "english_name": "Tafsir Muyassar",
+    "native_name": "المیسر",
+    "type": "tafsir",
+    "slug": "ar-tafsir-muyassar",
+    "source": "https://quran.com/"
+  },
+  "ar-tafseer-al-qurtubi": {
+    "language_code": "ar",
+    "english_name": "Tafseer Al Qurtubi",
+    "native_name": "Qurtubi",
+    "type": "tafsir",
+    "slug": "ar-tafseer-al-qurtubi",
+    "source": "https://quran.com/"
+  },
+  "kurd-tafsir-rebar": {
+    "language_code": "ku",
+    "english_name": "Rebar Kurdish Tafsir",
+    "native_name": "Rebar Kurdish Tafsir",
+    "type": "tafsir",
+    "slug": "kurd-tafsir-rebar",
+    "source": "https://quran.com/"
+  },
+  "ur-tafseer-ibn-e-kaseer": {
+    "language_code": "ur",
+    "english_name": "Tafsir Ibn Kathir",
+    "native_name": "Hafiz Ibn Kathir",
+    "type": "tafsir",
+    "slug": "ur-tafseer-ibn-e-kaseer",
+    "source": "https://quran.com/"
+  },
+  "ur-tafsir-bayan-ul-quran": {
+    "language_code": "ur",
+    "english_name": "Tafsir Bayan ul Quran",
+    "native_name": "Dr. Israr Ahmad",
+    "type": "tafsir",
+    "slug": "ur-tafsir-bayan-ul-quran",
+    "source": "https://quran.com/"
+  },
+  "ur-tazkirul-quran": {
+    "language_code": "ur",
+    "english_name": "Tazkirul Quran(Maulana Wahiduddin Khan)",
+    "native_name": "Maulana Wahid Uddin Khan",
+    "type": "tafsir",
+    "slug": "ur-tazkirul-quran",
+    "source": "https://quran.com/"
+  },
+  "en-tazkirul-quran": {
+    "language_code": "en",
+    "english_name": "Tazkirul Quran(Maulana Wahiduddin Khan)",
+    "native_name": "Maulana Wahid Uddin Khan",
+    "type": "tafsir",
+    "slug": "en-tazkirul-quran",
+    "source": "https://quran.com/"
+  },
+  "en-kashf-al-asrar-tafsir": {
+    "language_code": "en",
+    "english_name": "Kashf Al-Asrar Tafsir",
+    "native_name": "Kashf Al-Asrar Tafsir",
+    "type": "tafsir",
+    "slug": "en-kashf-al-asrar-tafsir",
+    "source": "https://www.altafsir.com/"
+  },
+  "en-al-qushairi-tafsir": {
+    "language_code": "en",
+    "english_name": "Al Qushairi Tafsir",
+    "native_name": "Al Qushairi Tafsir",
+    "type": "tafsir",
+    "slug": "en-al-qushairi-tafsir",
+    "source": "https://www.altafsir.com/"
+  },
+  "en-kashani-tafsir": {
+    "language_code": "en",
+    "english_name": "Kashani Tafsir",
+    "native_name": "Kashani Tafsir",
+    "type": "tafsir",
+    "slug": "en-kashani-tafsir",
+    "source": "https://www.altafsir.com/"
+  },
+  "en-tafsir-al-tustari": {
+    "language_code": "en",
+    "english_name": "Tafsir al-Tustari",
+    "native_name": "Tafsir al-Tustari",
+    "type": "tafsir",
+    "slug": "en-tafsir-al-tustari",
+    "source": "https://www.altafsir.com/"
+  },
+  "en-asbab-al-nuzul-by-al-wahidi": {
+    "language_code": "en",
+    "english_name": "Asbab Al-Nuzul by Al-Wahidi",
+    "native_name": "Asbab Al-Nuzul by Al-Wahidi",
+    "type": "tafsir",
+    "slug": "en-asbab-al-nuzul-by-al-wahidi",
+    "source": "https://www.altafsir.com/"
+  },
+  "en-tafsir-ibn-abbas": {
+    "language_code": "en",
+    "english_name": "Tanwîr al-Miqbâs min Tafsîr Ibn ‘Abbâs",
+    "native_name": "Tanwîr al-Miqbâs min Tafsîr Ibn ‘Abbâs",
+    "type": "tafsir",
+    "slug": "en-tafsir-ibn-abbas",
+    "source": "https://www.altafsir.com/"
+  },
+  "en-al-jalalayn": {
+    "language_code": "en",
+    "english_name": "Al-Jalalayn",
+    "native_name": "Al-Jalalayn",
+    "type": "tafsir",
+    "slug": "en-al-jalalayn",
+    "source": "https://www.altafsir.com/"
+  }
+}

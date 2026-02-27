@@ -1,0 +1,206 @@
+{
+  "number": 86,
+  "name": "سُورَةُ الطَّارِقِ",
+  "englishName": "At-Taariq",
+  "englishNameTranslation": "The Morning Star",
+  "revelationType": "Meccan",
+  "numberOfAyahs": 17,
+  "ayahs": [
+    {
+      "number": 5932,
+      "text": "vessemâi veṭṭâriḳ.",
+      "numberInSurah": 1,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5933,
+      "text": "vemâ edrâke me-ṭṭâriḳ.",
+      "numberInSurah": 2,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5934,
+      "text": "ennecmü-ŝŝâḳib.",
+      "numberInSurah": 3,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5935,
+      "text": "in küllü nefsil lemmâ `aleyhâ ḥâfiż.",
+      "numberInSurah": 4,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5936,
+      "text": "felyenżuri-l'insânü mimme ḫuliḳ.",
+      "numberInSurah": 5,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5937,
+      "text": "ḫuliḳa mim mâin dâfiḳ.",
+      "numberInSurah": 6,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5938,
+      "text": "yaḫrucü mim beyni-ṣṣulbi vetterâib.",
+      "numberInSurah": 7,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5939,
+      "text": "innehû `alâ rac`ihî leḳâdir.",
+      "numberInSurah": 8,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5940,
+      "text": "yevme tüble-sserâir.",
+      "numberInSurah": 9,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5941,
+      "text": "femâ lehû min ḳuvvetiv velâ nâṣir.",
+      "numberInSurah": 10,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5942,
+      "text": "vessemâi ẕâti-rrac`.",
+      "numberInSurah": 11,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5943,
+      "text": "vel'arḍi ẕâti-ṣṣad`.",
+      "numberInSurah": 12,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5944,
+      "text": "innehû leḳavlün faṣl.",
+      "numberInSurah": 13,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5945,
+      "text": "vemâ hüve bilhezl.",
+      "numberInSurah": 14,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5946,
+      "text": "innehüm yekîdûne keydâ.",
+      "numberInSurah": 15,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5947,
+      "text": "veekîdü keydâ.",
+      "numberInSurah": 16,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    },
+    {
+      "number": 5948,
+      "text": "femehhili-lkâfirîne emhilhüm ruveydâ.",
+      "numberInSurah": 17,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 528,
+      "hizbQuarter": 236,
+      "sajda": false
+    }
+  ],
+  "edition": {
+    "identifier": "tr.transliteration",
+    "language": "tr",
+    "name": "Çeviriyazı",
+    "englishName": "Muhammet Abay",
+    "format": "text",
+    "type": "transliteration",
+    "direction": "ltr"
+  }
+}

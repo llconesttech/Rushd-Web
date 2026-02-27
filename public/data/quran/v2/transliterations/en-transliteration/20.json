@@ -1,0 +1,548 @@
+{
+  "number": 20,
+  "name": "سُورَةُ طه",
+  "englishName": "Taa-Haa",
+  "edition": "en.transliteration",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "Taa-Haa"
+    },
+    {
+      "number": 2,
+      "text": "Maaa anzalnaa 'alaikal Qur-aana litashqaaa"
+    },
+    {
+      "number": 3,
+      "text": "Illaa tazkiratal limany yakshaa"
+    },
+    {
+      "number": 4,
+      "text": "Tanzeelam mimman khalaqal arda was samaawaatil 'ulaa"
+    },
+    {
+      "number": 5,
+      "text": "Ar-Rahmaanu 'alal 'Arshis tawaa"
+    },
+    {
+      "number": 6,
+      "text": "Lahoo maa fis samaawaati wa maa fil ardi wa maa bainahumaa wa maa tahtassaraa"
+    },
+    {
+      "number": 7,
+      "text": "Wa in tajhar bilqawli fainnahoo ya'lamus sirra wa akhfaa"
+    },
+    {
+      "number": 8,
+      "text": "Allaahu laaa ilasha illaa Huwa lahul Asmaaa'ul Husnaa"
+    },
+    {
+      "number": 9,
+      "text": "Wa hal ataaka hadeesu Moosa"
+    },
+    {
+      "number": 10,
+      "text": "Iz ra aa naaran faqaala li alhlihim kusooo inneee aanastu naaral la'alleee aateekum minhaa biqabasin aw ajidu 'alan naari hudaa"
+    },
+    {
+      "number": 11,
+      "text": "Falammaaa ataahaa noodiya yaa Moosaa"
+    },
+    {
+      "number": 12,
+      "text": "Inneee Ana Rabbuka fakhla' na'laika innaka bilwaadil muqaddasi Tuwaa"
+    },
+    {
+      "number": 13,
+      "text": "Wa anakhtartuka fastami' limaa yoohaa"
+    },
+    {
+      "number": 14,
+      "text": "Innaneee Anal laahu laaa ilaaha illaa Ana fa'budnee wa aqimis-salaata lizikree"
+    },
+    {
+      "number": 15,
+      "text": "Innas Saa'ata aatiyatun akaadu ukhfeehaa litujzaa kullu nafsim bimaa tas'aa"
+    },
+    {
+      "number": 16,
+      "text": "Falaa yasuddannnaka 'anhaa mal laa yu'minu bihaa wattaba'a hawaahu fatardaa"
+    },
+    {
+      "number": 17,
+      "text": "Wa maa tilka bi yamee nika yaa Moosaa"
+    },
+    {
+      "number": 18,
+      "text": "Qaala hiya 'asaaya atawakka'u alaihaa wa ahushshu bihaa 'alaa ghanamee wa liya feehaa ma aaribu ukhraa"
+    },
+    {
+      "number": 19,
+      "text": "Qaala alqihaa yaa Moosaa"
+    },
+    {
+      "number": 20,
+      "text": "Fa-alqaahaa fa -izaa hiya haiyatun tas'aa"
+    },
+    {
+      "number": 21,
+      "text": "Qaala khuzhaa wa laa ta khaf sanu'eeduhaa seeratahal oolaa"
+    },
+    {
+      "number": 22,
+      "text": "Wadmum yadaka ilaa janaahika takhruj baidaaa'a min ghairi sooo'in Aayatan ukhraa"
+    },
+    {
+      "number": 23,
+      "text": "Linuriyaka min Aayaatinal Kubra"
+    },
+    {
+      "number": 24,
+      "text": "Izhab ilaa Fir'awna innahoo taghaa"
+    },
+    {
+      "number": 25,
+      "text": "Qaala Rabbish rah lee sadree"
+    },
+    {
+      "number": 26,
+      "text": "Wa yassir leee amree"
+    },
+    {
+      "number": 27,
+      "text": "Wahlul 'uqdatam milli saanee"
+    },
+    {
+      "number": 28,
+      "text": "Yafqahoo qawlee"
+    },
+    {
+      "number": 29,
+      "text": "Waj'al lee wazeeram min ahlee"
+    },
+    {
+      "number": 30,
+      "text": "Haaroona akhee"
+    },
+    {
+      "number": 31,
+      "text": "Ushdud biheee azree"
+    },
+    {
+      "number": 32,
+      "text": "Wa ashrik hu feee amree"
+    },
+    {
+      "number": 33,
+      "text": "Kai nusabbihaka kaseeraa"
+    },
+    {
+      "number": 34,
+      "text": "Wa nazkuraka kaseeraa"
+    },
+    {
+      "number": 35,
+      "text": "Innaka kunta binaa baseeraa"
+    },
+    {
+      "number": 36,
+      "text": "Qaala qad ooteeta su'laka yaa Moosaa"
+    },
+    {
+      "number": 37,
+      "text": "Wa laqad manannaa 'alaika marratan ukhraaa"
+    },
+    {
+      "number": 38,
+      "text": "Iz awhainaaa ilaaa ummika maa yoohaaa"
+    },
+    {
+      "number": 39,
+      "text": "Aniqzifeehi fit Taabooti faqzifeehi fil yammi fal yul qihil yammu bis saahili yaakhuzhu 'aduwwul lee wa 'aduwwul lah; wa alqaitu 'alaika mahabbatam minnee wa litusna'a 'alaa 'ainee"
+    },
+    {
+      "number": 40,
+      "text": "Iz tamsheee ukhtuka fataqoolu hal adullukum 'alaa mai yakfuluhoo faraja 'naaka ilaaa ummika kai taqarra 'ainuhaa wa laa tahzan; wa qatalta nafsan fanajjainaaka minal ghammi wa fatannaaka futoonaa; falabista sineena feee ahli Madyana summa ji'ta 'alaa qadariny yaa Moosa"
+    },
+    {
+      "number": 41,
+      "text": "Wastana' tuka linafsee"
+    },
+    {
+      "number": 42,
+      "text": "Izhab anta wa akhooka bi Aayaatee wa laa taniyaa fee zikree"
+    },
+    {
+      "number": 43,
+      "text": "Izhabaaa ilaa Fir'awna innahoo taghaa"
+    },
+    {
+      "number": 44,
+      "text": "Faqoolaa lahoo qawlal laiyinal la allahoo yatazakkkaru 'aw yakhshaa"
+    },
+    {
+      "number": 45,
+      "text": "Qaalaa Rabbanaaa innanaa nakhaafu ai yafruta 'alainaaa aw ai yatghaa"
+    },
+    {
+      "number": 46,
+      "text": "Qaala laa takhaafaaa innanee ma'akumaa asma'u wa araa"
+    },
+    {
+      "number": 47,
+      "text": "Faatiyaahu faqoolaaa innaa Rasoolaa Rabbika fa arsil ma'anaa Banee Israaa'eela wa laa tu'azzibhum qad ji'naaka bi Aayatim mir Rabbika wassa laamu 'alaa manit taba'al hudaa"
+    },
+    {
+      "number": 48,
+      "text": "Innaa qad oohiya ilainaaa annnal 'azaaba 'alaa man kaz zaba wa tawalla"
+    },
+    {
+      "number": 49,
+      "text": "Qaala famar Rabbu kumaa yaa Moosa"
+    },
+    {
+      "number": 50,
+      "text": "Qaala Rabbunal lazeee a'taa kulla shai'in khalqahoo summa hadaa"
+    },
+    {
+      "number": 51,
+      "text": "Qaala famaa baalul quroonil oolaa"
+    },
+    {
+      "number": 52,
+      "text": "Qaala 'ilmuhaa 'inda Rabee fee kitaab, laa yadillu Rabbee wa laa yansaa"
+    },
+    {
+      "number": 53,
+      "text": "Allazee ja'ala lakumul arda mahdanw wa salaka lakum feehaa subulanw wa anzala minas samaaa'i maaa'an fa akhrajnaa biheee azwaajam min nabaatin shatta"
+    },
+    {
+      "number": 54,
+      "text": "Kuloo war'aw an'aamakum; inna fee zaalika la Aayaatil li ulin nuhaa"
+    },
+    {
+      "number": 55,
+      "text": "Minhaa khalaqnaakum wa feehaa nu'eedukum wa minhaa nukhrijukum taaratan ukhraa"
+    },
+    {
+      "number": 56,
+      "text": "Wa laqad arainaahu Aayaatinaa kullahaa fakaz zaba wa abaa"
+    },
+    {
+      "number": 57,
+      "text": "Qaala aji'tanaa litukhri janaa min ardinaa bisihrika yaa Moosa"
+    },
+    {
+      "number": 58,
+      "text": "Falanaatiyannaka bisihrim mislihee faj'al bainanaa wa bainaka maw'idal laa nukhlifuhoo nahnu wa laaa anta makaanan suwaa"
+    },
+    {
+      "number": 59,
+      "text": "Qaala maw'idukum yawmuz zeenati wa ai yuhsharan naasu duhaa"
+    },
+    {
+      "number": 60,
+      "text": "Fatawallaa Fir'awnu fajjama'a kaidahoo summa ataa"
+    },
+    {
+      "number": 61,
+      "text": "Qaala lahum Moosaa wailakum laa taftaroo 'alal laahi kaziban fa yus hitakum bi 'azaab, wa qad khaaba manif taraa"
+    },
+    {
+      "number": 62,
+      "text": "Fatanaaza'ooo amrahum bainahum wa asarrun najwaa"
+    },
+    {
+      "number": 63,
+      "text": "Qaalooo in haaazaani lasaahiraani yureedaani ai yukhrijaakum min ardikum bisihrihimaa wa yazhabaa bitareeqatikumul muslaa"
+    },
+    {
+      "number": 64,
+      "text": "Fa ajmi'oo kaidakum summma'too saffaa; wa qad aflahal yawma manis ta'laa"
+    },
+    {
+      "number": 65,
+      "text": "Qaaloo yaa Moosaaa immaaa an tulqiya wa immaaa an nakoona awala man alqaa"
+    },
+    {
+      "number": 66,
+      "text": "Qaala bal alqoo fa izaa hibaaluhum wa 'isiyyuhum yuhaiyalu ilaihi min sihrihim annahaa tas'aa"
+    },
+    {
+      "number": 67,
+      "text": "Fa awjasa fee nafsihee kheefatam Moosa"
+    },
+    {
+      "number": 68,
+      "text": "Qulnaa laa takhaf innaka antal a'laa"
+    },
+    {
+      "number": 69,
+      "text": "Wa alqi maa fee yamee nika talqaf maa sana'oo; innamaa sana'oo kaidu saahir; wa laa yuflihus saahiru haisu ataa"
+    },
+    {
+      "number": 70,
+      "text": "Fa ulqiyas saharatu sujjadan qaalooo aamannaa bi Rabbi Haaroona wa Moosa"
+    },
+    {
+      "number": 71,
+      "text": "Qaala aamantum lahoo qabla an aazana lakum; innahoo lakabeerukumul lazee 'allama kumus sihra fala uqatti'anna aidiyakum wa arjulakum min khilaafinw wa la usallibannakum fee juzoo'in nakhli wa lata'lamunna aiyunaaa ashaddu 'azaabanw wa abqaa"
+    },
+    {
+      "number": 72,
+      "text": "Qaaloo lan nu'siraka 'alaa maa jaaa'anaa minal baiyinaati wallazee fataranaa faqdi maaa anta qaad; innamaa taqdee haazihil hayaatad dunyaa"
+    },
+    {
+      "number": 73,
+      "text": "Innaaa aamannaa bi Rabbinaa liyaghfira lanaa khataayaanaa wa maaa akrahtanaa 'alaihi minas sihr; wallaahu khairunw waabqaa"
+    },
+    {
+      "number": 74,
+      "text": "Innahoo mai yaati Rabbahoo mujriman fa inna lahoo Jahannama laa yamotu feehaa wa laa yahyaa"
+    },
+    {
+      "number": 75,
+      "text": "Wa mai yaatihee mu'minan qad 'amilas saalihaati fa ulaaa'ika lahumud dara jaatul 'ulaa"
+    },
+    {
+      "number": 76,
+      "text": "Jannaatu 'Adnin tajree min tahtihal anhaaru khaalideena feehaa; wa zaalika jazaaa'ua man tazakka"
+    },
+    {
+      "number": 77,
+      "text": "Wa laqad awhainaaa ilaa Moosaaa an asri bi'ibaadee fadrib lahum tareeqan fil bahri yabasal laa takhaafu darakanw wa laa takhshaa"
+    },
+    {
+      "number": 78,
+      "text": "Fa atba'ahum Fir'awnu bijunoodihee faghashiyahum minal yammmi maa ghashi yahum"
+    },
+    {
+      "number": 79,
+      "text": "wa adalla fir'awnu qawmahoo wa maa hadaa"
+    },
+    {
+      "number": 80,
+      "text": "Yaa Baneee Israaa'eela qad anjainaakum min 'aduw wikum wa wa'adnaakum jaanibat Tooril aimana wa nazzalnaa 'alaikumul Manna was Salwaa"
+    },
+    {
+      "number": 81,
+      "text": "Kuloo min taiyibaati maa razaqnaakum wa laa tatghaw feehi fa yahilla 'alaikum ghadabee wa mai yahlil 'alaihi ghadabee faqad hawaa"
+    },
+    {
+      "number": 82,
+      "text": "Wa innee la Ghaffaarul liman taaba wa aamana wa 'amila saalihan summah tadaa"
+    },
+    {
+      "number": 83,
+      "text": "Wa maaa a'jalaka 'an qawmika yaa Moosa"
+    },
+    {
+      "number": 84,
+      "text": "Qaala hum ulaaa'i 'alaaa asaree wa 'ajiltu ilaika Rabbi litardaa"
+    },
+    {
+      "number": 85,
+      "text": "Qaala fa innaa qad fatannaa qawmaka mim ba'dika wa adallahumus Saamiriyy"
+    },
+    {
+      "number": 86,
+      "text": "Faraja's Moosaaa ilaa qawmihee ghadbaana asifaa; qaala yaa qawmi alam ya'idkum Rabbukum wa'dan hasanaa; afataala 'alaikumul 'ahdu am arattum ai yahilla 'alaikum ghadabum mir Rabbikum fa akhlaftum maw'idee"
+    },
+    {
+      "number": 87,
+      "text": "Qaaloo maaa akhlafnaa maw'idaka bimalkinna wa laakinna hummilnaaa awzaaram min zeenatil qawmi faqazafnaahaa fakazaalika alqas Saamiriyy"
+    },
+    {
+      "number": 88,
+      "text": "Fa akhraja lahum 'ijlan jasadal lahoo khuwaarun faqaaloo haazaaa ilaahukum wa ilaahu Moosaa fanasee"
+    },
+    {
+      "number": 89,
+      "text": "Afalaa yarawna allaa yarji'u ilaihim qawlanw wa laa yamliku lahum darranw wa laa naf'aa"
+    },
+    {
+      "number": 90,
+      "text": "Wa laqad qaala lahum Haaroonu min qablu yaa qawmi innamaa futintum bihee wa inna Rabbakumur Rahmaanu fattabi'oonee wa atee'ooo amree"
+    },
+    {
+      "number": 91,
+      "text": "Qaaloo lan nabraha 'alaihi 'aakifeena hattaa yarji'a ilainaa Moosaa"
+    },
+    {
+      "number": 92,
+      "text": "Qaala Yaa Haaroonu maa mana 'aka iz ra aitahum dallooo"
+    },
+    {
+      "number": 93,
+      "text": "Allaa tattabi'ani afa'asaita amree"
+    },
+    {
+      "number": 94,
+      "text": "Qaala yabna'umma laa taakhuz bilihyatee wa laa biraasee innee khashetu an taqoola farraqta baina Baneee Israaa'eela wa lam tarqub qawlee"
+    },
+    {
+      "number": 95,
+      "text": "Qaala famaa khatbuka yaa Saamiriyy"
+    },
+    {
+      "number": 96,
+      "text": "Qaala basurtu bimaa lam yabsuroo bihee faqabadtu qabdatam min asarir Rasooli fanabaztuhaa wa kazaalika sawwalat lee nafsee"
+    },
+    {
+      "number": 97,
+      "text": "Qaala fazhab fa inna laka fil hayaati an taqoola laa misaasa wa inna laka maw'idal lan tukhlafahoo wanzur ilaaa ilaahikal lazee zalta 'alaihi 'aakifaa; lanuharriqannnahoo summa lanansifanahoo fil yammi nasfaa"
+    },
+    {
+      "number": 98,
+      "text": "Innamaaa ilaahukkumul laahul lazee laa ilaaha illaa Hoo; wasi'a kulla shai'in ilmaa"
+    },
+    {
+      "number": 99,
+      "text": "Kazaalika naqussu 'alaika min ambaaa'i maa qad sabaq; wa qad aatainaaka mil ladunnaa Zikraa"
+    },
+    {
+      "number": 100,
+      "text": "Man a'rada 'anhu, fa innahoo yahmilu Yawmal Qiyaamati wizraa"
+    },
+    {
+      "number": 101,
+      "text": "Khaalideena feehi wa saaa'a lahum Yawmal Qiyaamati himlaa"
+    },
+    {
+      "number": 102,
+      "text": "Yawma yunfakhu fissoori wa nahshurul mujrimeena Yawma 'izin zurqaa"
+    },
+    {
+      "number": 103,
+      "text": "Yatakhaafatoona bainahum il labistum illaa 'ashraa"
+    },
+    {
+      "number": 104,
+      "text": "nahnu a'lamu bimaa yaqooloona iz yaqoolu amsaluhum tareeqatan illabistum illaa yawmaa"
+    },
+    {
+      "number": 105,
+      "text": "Wa yas'aloonaka 'anil jibaali faqul yansifuhaa Rabbee nasfaa"
+    },
+    {
+      "number": 106,
+      "text": "Fa yazaruhaa qaa'an safsafaa"
+    },
+    {
+      "number": 107,
+      "text": "Laa taraa feehaa 'iwajanw wa laaa amtaa"
+    },
+    {
+      "number": 108,
+      "text": "Yawma iziny yattabi'oonad daa'iya laa 'iwaja lahoo wa khasha'atil aswaatu lir Rahmaani falaa tasma'u illaa hamsaa"
+    },
+    {
+      "number": 109,
+      "text": "Yawma 'izil laa tanfa'ush shafaa'atu illaa man azina lahur Rahmaanu wa radiya lahoo qawlaa"
+    },
+    {
+      "number": 110,
+      "text": "Ya'lamu maa bainaa aideehim wa maa khalfahum wa laa yauheetoona bihee 'ilmaa"
+    },
+    {
+      "number": 111,
+      "text": "Wa 'anatil wujoohu lil Haiiyil Qaiyoomi wa qad khaaba man hamala zulmaa"
+    },
+    {
+      "number": 112,
+      "text": "Wa mai ya'mal minas saalihaati wa huwa mu'minun falaa yakhaafu zulmanw wa laa hadmaa"
+    },
+    {
+      "number": 113,
+      "text": "Wa kazaalika anzalnaahu Qur-aanan 'Arabiyyanw wa sarrafnaa fee hi minal wa'eedi la'allahum yattaqoona aw yuhdisu lahum zikraa"
+    },
+    {
+      "number": 114,
+      "text": "Fata'aalal laahul Malikul Haqq; wa laa ta'jal bil Quraani min qabli ai yuqdaaa ilaika wahyuhoo wa qur Rabbi zidnee 'ilmaa"
+    },
+    {
+      "number": 115,
+      "text": "Wa laqad 'ahidnaaa ilaaa Aadama min qablu fanasiya wa lam najid lahoo 'azmaa"
+    },
+    {
+      "number": 116,
+      "text": "Wa iz qulnaa lilma laaa'ikatis judoo li Aadama fasajadooo illaaa Iblees; abaa"
+    },
+    {
+      "number": 117,
+      "text": "Faqulnaa yaaa Aadamu inna haazaa 'aduwwul laka wa lizawjika falaa yukhrijan nakumaa minal Jannati fatashqaa"
+    },
+    {
+      "number": 118,
+      "text": "Innaa laka allaa tajoo'a feeha wa laa ta'raa"
+    },
+    {
+      "number": 119,
+      "text": "Wa annaka laa tazma'u feehaa wa laa tadhaa"
+    },
+    {
+      "number": 120,
+      "text": "Fa waswasa ilaihish Shaitaanu qaala yaaa Aadamu hal adulluka 'alaa shajaratil khuldi wa mulkil laa yablaa"
+    },
+    {
+      "number": 121,
+      "text": "Fa akalaa minhaa fabadat lahumaa saw aatuhumaa wa tafiqaa yakhsifaani 'alaihimaa minw waraqil jannah; wa 'asaaa Aadamu Rabbahoo faghawaa"
+    },
+    {
+      "number": 122,
+      "text": "Summaj tabbahu Rabbuhoo fataaba 'alaihi wa hadaa"
+    },
+    {
+      "number": 123,
+      "text": "Qaalah bita minhaa jamee'am ba'dukum liba'din 'aduww; fa immaa yaati yannakum minnee hudan famanit taba'a hudaaya falaa yadillu wa laa yashhqaa"
+    },
+    {
+      "number": 124,
+      "text": "Wa man a'rada 'an Zikree fa inna lahoo ma'eeshatan dankanw wa nahshuruhoo Yawmal Qiyaamati a'maa"
+    },
+    {
+      "number": 125,
+      "text": "Qaala Rabbi lima hashar tanee a'maa wa qad kuntu baseeraa"
+    },
+    {
+      "number": 126,
+      "text": "Qaala kazaalika atatka Aayaatunaa fanaseetahaa wa kazaalikal Yawma tunsaa"
+    },
+    {
+      "number": 127,
+      "text": "Wa kazaalika najzee man asrafa wa lam yu'mim bi Aayaati Rabbih; wa la'azaabul Aakhirati ashaddu wa abqaa"
+    },
+    {
+      "number": 128,
+      "text": "Afalam yahdi lahum kam ahlaknaa qablahum minal qurooni yamshoona fee masaakinihim; inna fee zaalika la Aayaatil li ulinnuhaa"
+    },
+    {
+      "number": 129,
+      "text": "Wa law laa Kalimatun sabaqat mir Rabbika lakaana lizaamanw wa ajalum musammaa"
+    },
+    {
+      "number": 130,
+      "text": "Fasbir 'alaa maa yaqooloona wa sabbih bihamdi Rabbika qabla tuloo'ish shamsi wa qabla ghuroobihaa wa min aanaaa'il laili fasbbih wa atraafan nahaari la 'allaka tardaa"
+    },
+    {
+      "number": 131,
+      "text": "Wa laa tamuddanna 'ainaika ilaa ma matta'na biheee azwajam minhum zahratal hayaatid dunya linaftinahum feeh; wa rizqu Rabbika khairunw wa abqaa"
+    },
+    {
+      "number": 132,
+      "text": "Waamur ahlaka bis Salaati wastabir 'alaihaa la nas'aluka rizqaa; nahnu narzuquk; wal 'aaqibatu littaqwaa"
+    },
+    {
+      "number": 133,
+      "text": "Wa qaaloo law laa yaateenaa bi Aayatim mmir Rabbih; awalam taatihim baiyinatu maa fis suhufil oolaa"
+    },
+    {
+      "number": 134,
+      "text": "Wa law annaaa ahlaknaahum bi'azaabim min qablihee laqaaloo Rabbanaa law laaa arsalta ilainaa Rasoolan fanattabi's Aayaatika min qabli an nazilla wa nakhzaa"
+    },
+    {
+      "number": 135,
+      "text": "Qul kullum mutarabbisun fatarabbasoo fasta'lamoona man Ashaabus Siraatis Sawiyyi wa manih tadaa"
+    }
+  ]
+}

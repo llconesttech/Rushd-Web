@@ -1,0 +1,695 @@
+/* --- Page Layout & Background --- */
+/* --- Page Layout & Background --- */
+.zakat-page-background {
+    min-height: 100vh;
+    width: 100%;
+    /* Background handled by App.jsx Layout -> .bg-dots */
+    background: transparent;
+    padding-bottom: 2rem;
+}
+
+/* Fix: Ensure 'container' does not block the background if it has a global style */
+.zakat-page-background .container {
+    background-color: transparent !important;
+}
+
+.zakat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Ensure global container doesn't constrain width if it was already applied by parent */
+/* We might need to override the parent container in some setups, but assuming zakat-page-background is inside it. 
+   If the parent layout restricts width, this pattern will only show within those bounds. 
+   For now, we make sure this wrapper fills available space. */
+
+/* --- Configuration Panel --- */
+.zakat-config-panel {
+    background-color: var(--color-bg-card);
+    /* Standard White */
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.zakat-config-panel:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.config-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.75rem;
+    background-color: #f8fafc;
+    /* Subtle grey for header distinction */
+    border-bottom: 1px solid var(--color-border);
+}
+
+.config-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.config-title h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    letter-spacing: 0.02em;
+}
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+.reset-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.reset-action-btn:hover {
+    background-color: var(--color-danger-bg, #fee2e2);
+    color: var(--color-danger, #ef4444);
+}
+
+.config-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1.75rem;
+    background-color: var(--color-bg-card);
+}
+
+.config-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.config-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+/* Modern Select */
+.select-container {
+    position: relative;
+    width: 100%;
+}
+
+.modern-select {
+    width: 100%;
+    appearance: none;
+    background-color: #ffffff;
+    /* White input on cream card stands out nicely */
+    border: 1px solid var(--color-border);
+    border-radius: 0.6rem;
+    padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.modern-select:hover {
+    border-color: #cbd5e1;
+}
+
+.modern-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light-translucent, rgba(16, 185, 129, 0.2));
+}
+
+.select-arrow {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--color-text-muted);
+}
+
+/* Segmented Control */
+.segment-control {
+    display: flex;
+    background-color: #f1f5f9;
+    /* Standard light grey */
+    padding: 0.3rem;
+    border-radius: 0.7rem;
+    border: 1px solid var(--color-border);
+}
+
+.segment-option {
+    flex: 1;
+    padding: 0.6rem;
+    border: none;
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.segment-option:hover:not(.active) {
+    background-color: rgba(0, 0, 0, 0.03);
+    color: var(--color-text-main);
+}
+
+.segment-option.active {
+    background-color: #ffffff;
+    color: var(--color-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+/* Metal Prices Row */
+.metal-prices-row {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.metal-input-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.metal-input-wrapper label {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.price-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 0.9rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.price-input input {
+    width: 100%;
+    padding: 0.65rem 0.75rem 0.65rem 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.6rem;
+    background-color: #ffffff;
+    color: var(--color-text-main);
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.price-input input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light-translucent, rgba(16, 185, 129, 0.2));
+}
+
+/* --- Layout Grid --- */
+.zakat-main-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    /* Sidebar fixed width */
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .zakat-main-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.zakat-cards-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Tooltips */
+.info-tooltip-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+    color: var(--color-text-muted);
+    transition: color 0.15s;
+    position: relative;
+    margin-top: 2px;
+}
+
+.info-tooltip-container:hover {
+    color: var(--color-primary);
+}
+
+.tooltip-content {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    width: max-content;
+    max-width: 260px;
+    padding: 0.75rem;
+    background-color: #1e293b;
+    color: #fff;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    pointer-events: none;
+    opacity: 1;
+}
+
+.tooltip-content::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #1e293b transparent transparent transparent;
+}
+
+/* --- Summary Sidebar --- */
+.summary-sticky-wrapper {
+    position: sticky;
+    top: 6rem;
+}
+
+.zakat-summary-card {
+    background-color: var(--color-bg-card);
+    /* Standard White */
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    position: relative;
+}
+
+.zakat-summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+}
+
+.summary-header {
+    background-color: #f8fafc;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.summary-header h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.15rem;
+    color: var(--color-primary);
+}
+
+.summary-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--color-bg-card);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+}
+
+.summary-item.expense .value {
+    color: var(--color-danger, #ef4444);
+}
+
+.summary-item.net-worth {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-text-main);
+}
+
+.divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin: 0.25rem 0;
+}
+
+.nisab-indicator {
+    background-color: #f8fafc;
+    padding: 0.85rem;
+    border-radius: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.nisab-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.nisab-info .label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nisab-info .amount {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status-badge.success {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.status-badge.warning {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.total-due-card {
+    background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+    background-color: #f0fdf4;
+    border: 1px solid var(--color-primary-light);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.due-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.due-amount {
+    margin: 0;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+/* --- Asset Card Styles (Standard) --- */
+
+.zakat-card {
+    background-color: var(--color-bg-card);
+    /* Standard White */
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.zakat-card:hover {
+    border-color: var(--color-primary-light);
+    /* Lift effect on hover */
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.zakat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    background-color: #fcfcfc;
+    /* Very subtle grey */
+    border-bottom: 1px solid var(--color-border);
+}
+
+.zakat-card-title-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    flex: 1;
+    user-select: none;
+}
+
+.zakat-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-text-main);
+    flex: 1;
+}
+
+/* Icons */
+.zakat-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f5f9;
+    color: var(--color-primary);
+    transition: all 0.2s;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.zakat-card:hover .zakat-icon-wrapper {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Specific Category Colors */
+.zakat-icon-wrapper.money {
+    background-color: #ebf8ff;
+    color: #3182ce;
+}
+
+.zakat-icon-wrapper.gold {
+    background-color: #fffaeb;
+    color: #b7791f;
+}
+
+.zakat-icon-wrapper.silver {
+    background-color: #f7fafc;
+    color: #718096;
+}
+
+.zakat-icon-wrapper.investments {
+    background-color: #f0fff4;
+    color: #38a169;
+}
+
+.zakat-icon-wrapper.property {
+    background-color: #fffaf0;
+    color: #dd6b20;
+}
+
+.zakat-icon-wrapper.business {
+    background-color: #ebf4ff;
+    color: #5a67d8;
+}
+
+.zakat-icon-wrapper.agriculture {
+    background-color: #f0fff4;
+    color: #38a169;
+}
+
+.zakat-icon-wrapper.cattle {
+    background-color: #fff5f5;
+    color: #e53e3e;
+}
+
+.zakat-icon-wrapper.precious {
+    background-color: #e6fffa;
+    color: #319795;
+}
+
+.zakat-icon-wrapper.others {
+    background-color: #f7fafc;
+    color: #4a5568;
+}
+
+.zakat-icon-wrapper.liabilities {
+    background-color: #fff5f5;
+    color: #e53e3e;
+}
+
+
+/* Info Toggle Button */
+.info-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.info-toggle-btn:hover {
+    background-color: #f1f5f9;
+    color: var(--color-primary);
+}
+
+.info-toggle-btn.active {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--color-primary);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+/* Details Panel */
+.zakat-details-panel {
+    padding: 1.25rem 1.75rem;
+    background-color: #f8fafc;
+    /* Page background match */
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+}
+
+/* Inputs Container */
+.zakat-inputs-container {
+    padding: 1.75rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    background-color: var(--color-bg-card);
+}
+
+.zakat-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.zakat-input-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+/* Reuse Modern Inputs */
+.input-wrapper,
+.select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-wrapper input,
+.select-wrapper select {
+    width: 100%;
+
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.6rem;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+    /* White inputs pop against cream */
+    color: var(--color-text-main);
+    transition: all 0.2s;
+}
+
+.select-wrapper select {
+    padding-left: 1rem;
+}
+
+.input-wrapper input:focus,
+.select-wrapper select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    background-color: #ffffff;
+}
+
+.currency-prefix {
+    position: absolute;
+    left: 0.9rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    pointer-events: none;
+    font-weight: 500;
+}
+
+.unit-suffix {
+    position: absolute;
+    right: 1rem;
+    color: #8A8476;
+    font-size: 0.85rem;
+    pointer-events: none;
+}
