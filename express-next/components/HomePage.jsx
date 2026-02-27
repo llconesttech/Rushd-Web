@@ -74,7 +74,7 @@ const featureSections = [
 const HomePage = () => {
     // Alias global state to local names to match existing JSX usage
     const { location, coords, loading: locationLoading } = useAppLocation();
-    const { theme, toggleTheme } = useSettings();
+    const { theme, toggleTheme, mounted } = useSettings();
 
     const [salahTimes, setSalahTimes] = useState(null);
     const [currentPrayer, setCurrentPrayer] = useState(null);
@@ -85,10 +85,12 @@ const HomePage = () => {
 
     // Load method from localStorage or default
     const [method, setMethod] = useState(() => {
+        if (typeof window === 'undefined') return null;
         return localStorage.getItem('prayerMethod') || null;
     });
 
     const [madhab, setMadhab] = useState(() => {
+        if (typeof window === 'undefined') return 'Hanafi';
         return localStorage.getItem('prayerMadhab') || 'Hanafi';
     });
 
@@ -285,13 +287,13 @@ const HomePage = () => {
                     <button
                         className="theme-toggle-btn"
                         onClick={toggleTheme}
-                        title={theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}
+                        title={mounted && theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}
                         aria-label="Toggle theme"
                     >
-                        {theme === 'dark' ? <Sun size={20} /> : <MoonIcon size={20} />}
+                        {mounted && theme === 'dark' ? <Sun size={20} /> : <MoonIcon size={20} />}
                     </button>
                     <img
-                        src={theme === 'dark' ? '/light_gold.png' : '/logo.png'}
+                        src={mounted && theme === 'dark' ? '/light_gold.png' : '/logo.png'}
                         alt="Rushd Logo"
                         className="hero-logo"
                     />

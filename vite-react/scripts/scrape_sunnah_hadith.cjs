@@ -164,12 +164,15 @@ async function scrapeBook(bookId) {
                 hadithNumStr = String(++totalHadithsCount);
             } else {
                 hadithNumStr = hadithNumStr.replace(/[^\d.]/g, '');
-                7// Handle case where it might be empty after cleaning
                 // Handle case where it might be empty after cleaning
                 if (!hadithNumStr) hadithNumStr = String(++totalHadithsCount);
             }
 
             const hadithNum = parseFloat(hadithNumStr);
+
+            // Find in-book hadith number
+            const inBookMatch = block.match(/In-book reference[\s\S]*?Hadith\s+(\d+\.?\d*)/i);
+            const inBookHadithNum = inBookMatch ? parseFloat(inBookMatch[1]) : hadithNum;
 
             // Robust text extraction: split by Arabic block since it follows English
             const araStartMatch = block.match(/<div[^>]*class=["']?arabic_hadith_full/);
@@ -198,7 +201,7 @@ async function scrapeBook(bookId) {
                 hadithnumber: hadithNum,
                 arabicnumber: hadithNum,
                 grades: grades,
-                reference: { book: parseInt(chap) || sectionId, hadith: hadithNum }
+                reference: { book: parseInt(chap) || sectionId, hadith: inBookHadithNum }
             };
 
             const engText = cleanHTML(engMatch ? engMatch[1] : (engPart.includes('english_hadith_full') ? engPart : ''));

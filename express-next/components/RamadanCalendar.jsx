@@ -11,6 +11,7 @@ const RamadanCalendar = () => {
 
     // Local state — persist moon sighting offset to localStorage
     const [dateOffset, setDateOffset] = useState(() => {
+        if (typeof window === 'undefined') return 0;
         const stored = localStorage.getItem('rushdMoonOffset');
         return stored ? parseInt(stored, 10) : 0;
     });

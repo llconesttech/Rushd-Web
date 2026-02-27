@@ -8,7 +8,7 @@ import './TopBar.css';
 
 const TopBar = () => {
     const router = useRouter();
-    const { theme, toggleTheme } = useSettings();
+    const { theme, toggleTheme, mounted } = useSettings();
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleSearch = (e) => {
@@ -23,7 +23,7 @@ const TopBar = () => {
             <div className="topbar-inner">
                 {/* Brand Logo */}
                 <div className="topbar-brand" onClick={() => router.push('/')}>
-                    <img src={theme === 'dark' ? '/light_gold.png' : '/logo.png'} alt="Rushd Logo" className="topbar-logo" />
+                    <img src={mounted && theme === 'dark' ? '/light_gold.png' : '/logo.png'} alt="Rushd Logo" className="topbar-logo" />
                     <span className="topbar-title">Rushd</span>
                 </div>
 
@@ -46,8 +46,8 @@ const TopBar = () => {
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </form>
-                    <button className="topbar-icon-btn" onClick={toggleTheme} title={theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}>
-                        {theme === 'dark' ? <Sun size={20} /> : <MoonIcon size={20} />}
+                    <button className="topbar-icon-btn" onClick={toggleTheme} title={mounted && theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}>
+                        {mounted && theme === 'dark' ? <Sun size={20} /> : <MoonIcon size={20} />}
                     </button>
                 </div>
             </div>

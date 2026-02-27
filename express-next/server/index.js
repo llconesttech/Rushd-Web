@@ -4,7 +4,7 @@ import next from 'next';
 import helmet from 'helmet';
 import cors from 'cors';
 import { authMiddleware } from './middleware/auth.js';
-import { rateLimiter } from './middleware/rateLimiter.js';
+import { rateLimiter, devRateLimiter } from './middleware/rateLimiter.js';
 import { securityHeaders } from './middleware/security.js';
 import quranRoutes from './routes/quran.js';
 import hadithRoutes from './routes/hadith.js';
@@ -17,6 +17,9 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const PORT = process.env.PORT || 3000;
+
+// Use different rate limiter for dev vs production
+const apiRateLimiter = dev ? devRateLimiter : rateLimiter;
 
 app.prepare().then(() => {
     const server = express();
@@ -31,11 +34,17 @@ app.prepare().then(() => {
     server.use(express.json());
 
     // API routes — protected (shared by web + mobile)
-    server.use('/api/v1/quran', rateLimiter, authMiddleware, securityHeaders, quranRoutes);
-    server.use('/api/v1/hadith', rateLimiter, authMiddleware, securityHeaders, hadithRoutes);
-    server.use('/api/v1/qa', rateLimiter, authMiddleware, securityHeaders, qaRoutes);
-    server.use('/api/v1/audio', rateLimiter, authMiddleware, audioRoutes);
-    server.use('/api/v1/assets', rateLimiter, authMiddleware, assetsRoutes);
+    server.use('/api/v1/quran', apiRateLimiter, authMiddleware, securityHeaders, quranRoutes);
+    server.use('/api/v1/hadith', apiRateLimiter, authMiddleware, securityHeaders, hadithRoutes);
+    server.use('/api/v1/qa', apiRateLimiter, authMiddleware, securityHeaders, qaRoutes);
+    // Audio and assets are public (no auth required)
+    server.use('/api/v1/audio', apiRateLimiter, audioRoutes);
+    server.use('/api/v1/assets', apiRateLimiter, assetsRoutes);
+
+    // Test endpoint (remove in production)
+    server.get('/api/test', (req, res) => {
+        res.json({ message: 'Test works!' });
+    });
 
     // Global error handler
     server.use((err, req, res, _next) => {

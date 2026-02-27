@@ -1,0 +1,963 @@
+# Rushd App — Express + Next.js Migration Plan
+
+> **Goal:** Move from a static Vite SPA to a Next.js app with an Express API server, so all data is served through authenticated server endpoints. No data files exposed to the web. Structured for gradual DB migration. **The API is designed as a shared service consumed by both the Next.js web app and a future Flutter mobile app.**
+
+---
+
+## Architecture Overview
+
+```
+┌──────────────────┐       ┌──────────────────┐
+│  Next.js Web App │       │  Flutter Mobile   │
+│  (SSR + Client)  │       │  (iOS + Android)  │
+└────────┬─────────┘       └────────┬──────────┘
+         │  HMAC auth                │  API Key auth
+         └───────────┐   ┌──────────┘
+                     ▼   ▼
+          ┌─────────────────────────┐
+          │    Express API Server   │
+          │    /api/v1/quran/*      │
+          │    /api/v1/hadith/*     │
+          │    /api/v1/qa/*         │
+          │    /api/v1/audio/*      │
+          │    /api/v1/assets/*     │
+          └───────────┬─────────────┘
+                      │
+            ┌─────────┴─────────┐
+            │   Data Layer      │
+            │   File → DB later │
+            └───────────────────┘
+                      │
+            server/data/ (PRIVATE)
+            NOT in public/
+```
+
+> [!IMPORTANT]
+> **Shared API Design:** The Express API is the single source of truth for all clients. Both the Next.js web app and the Flutter mobile app consume the **same endpoints** with the **same response format**. This ensures clean, reusable code and a single place to update business logic.
+
+---
+
+## Key Decisions
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| **Frontend (Web)** | Next.js (App Router) | SSR for SEO, React 18 features already used |
+| **Frontend (Mobile)** | Flutter (future) | Shared API, cross-platform |
+| **Backend** | Express (custom server) | Full control over middleware, rate-limiting, auth; gradual DB migration |
+| **Data storage** | File-based → DB (later) | Keep current JSON files, serve via Express; swap to DB per-section later |
+| **API Auth (Web)** | HMAC token | Time-based, blocks curl scrapers |
+| **API Auth (Mobile)** | API Key header | App-embedded key, rotatable; can add OAuth later |
+| **Media serving** | Express streaming | Audio/images served through authenticated endpoints, not public URLs |
+| **Rate limiting** | express-rate-limit | Blocks brute-force/crawlers at IP level |
+
+---
+
+## Project Structure (After Migration)
+
+> [!IMPORTANT]
+> `server/data/` is the key: your JSON files live here, **outside** the `public/` folder, inaccessible via URL.
+
+```
+rushd-app/
+├── .env                          # API_SECRET, RATE_LIMIT_*
+├── .env.local                    # NEXT_PUBLIC_API_URL
+├── next.config.js                # Next.js config + rewrites to Express
+├── server/
+│   ├── index.js                  # Express entry (custom Next.js server)
+│   ├── middleware/
+│   │   ├── auth.js               # HMAC (web) + API Key (mobile) validation
+│   │   ├── rateLimiter.js        # IP-based rate limiting
+│   │   ├── security.js           # Helmet, CORS, anti-bot headers
+│   │   └── cache.js              # Response caching headers
+│   ├── routes/
+│   │   ├── quran.js              # /api/v1/quran/* endpoints
+│   │   ├── hadith.js             # /api/v1/hadith/* endpoints
+│   │   ├── qa.js                 # /api/v1/qa/* endpoints
+│   │   ├── audio.js              # /api/v1/audio/* (stream mp3 files)
+│   │   └── assets.js             # /api/v1/assets/* (images, fonts)
+│   ├── services/
+│   │   ├── quranDataService.js   # Reads from server/data/quran/
+│   │   ├── hadithDataService.js  # Reads from server/data/hadith/
+│   │   └── qaDataService.js      # Reads from server/data/hadith-qa/
+│   └── data/                     # ⛔ PRIVATE — never served static
+│       ├── quran/v2/             # All 22K+ Quran JSON files (moved from public/)
+│       ├── hadith/               # All hadith book JSONs (moved from public/)
+│       ├── hadith-qa/            # All QA JSONs (moved from public/)
+│       └── audio/                # Quran audio mp3s (moved from public/audio/)
+├── src/ (or app/)
+│   ├── app/                      # Next.js App Router pages
+│   │   ├── layout.jsx            # Root layout (replaces main.jsx)
+│   │   ├── page.jsx              # HomePage
+│   │   ├── quran/
+│   │   │   ├── page.jsx          # SurahList
+│   │   │   ├── [number]/page.jsx # QuranReader
+│   │   │   └── mushaf/[page]/page.jsx # MushafReader
+│   │   ├── hadith/
+│   │   │   ├── page.jsx          # HadithBooks
+│   │   │   ├── [bookId]/page.jsx # HadithChapters
+│   │   │   ├── [bookId]/[sectionId]/page.jsx # HadithReader
+│   │   │   └── narrator/[narratorId]/page.jsx
+│   │   ├── qa-search/page.jsx
+│   │   └── ... (other 15+ pages)
+│   ├── components/               # All existing React components (as-is)
+│   ├── context/                  # SettingsContext (as-is)
+│   ├── data/                     # Static JS metadata (hadithData.js, quranData.js — stays)
+│   ├── hooks/                    # useQuran, etc.
+│   ├── lib/
+│   │   └── apiClient.js          # [NEW] Secure fetch wrapper for all API calls
+│   ├── services/                 # [MODIFIED] Rewritten to call Express API
+│   │   ├── quranServiceV2.js     # fetch('/api/v1/quran/...') instead of fetch('/data/...')
+│   │   ├── hadithService.js      # fetch('/api/v1/hadith/...') instead of fetch('/data/...')
+│   │   └── ... (others unchanged or deleted)
+│   └── styles/                   # All CSS files
+├── public/                       # ⚠️ ONLY favicon, og-image — NO DATA, NO AUDIO
+│   ├── favicon.ico
+│   └── og-image.png
+└── package.json
+```
+
+---
+
+## Phase 1: Express API Server
+
+### 1.1 Server Entry — `server/index.js`
+
+```js
+// server/index.js
+import express from 'express';
+import next from 'next';
+import helmet from 'helmet';
+import cors from 'cors';
+import { authMiddleware } from './middleware/auth.js';
+import { rateLimiter } from './middleware/rateLimiter.js';
+import { securityHeaders } from './middleware/security.js';
+import quranRoutes from './routes/quran.js';
+import hadithRoutes from './routes/hadith.js';
+import qaRoutes from './routes/qa.js';
+
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dev });
+const handle = app.getRequestHandler();
+
+const PORT = process.env.PORT || 3000;
+
+app.prepare().then(() => {
+    const server = express();
+
+    // Global middleware
+    server.use(helmet());
+    server.use(cors({ origin: process.env.ALLOWED_ORIGINS?.split(',') || '*' }));
+    server.use(express.json());
+
+    // API routes — protected (shared by web + mobile)
+    server.use('/api/v1/quran', rateLimiter, authMiddleware, quranRoutes);
+    server.use('/api/v1/hadith', rateLimiter, authMiddleware, hadithRoutes);
+    server.use('/api/v1/qa', rateLimiter, authMiddleware, qaRoutes);
+    server.use('/api/v1/audio', rateLimiter, authMiddleware, audioRoutes);
+    server.use('/api/v1/assets', rateLimiter, authMiddleware, assetsRoutes);
+
+    // All other routes → Next.js
+    server.all('*', (req, res) => handle(req, res));
+
+    server.listen(PORT, () => {
+        console.log(`> Rushd App ready on http://localhost:${PORT}`);
+    });
+});
+```
+
+### 1.2 Auth Middleware — `server/middleware/auth.js`
+
+Supports **two auth modes** — same middleware, both clients:
+- **Web (Next.js):** HMAC token + timestamp
+- **Mobile (Flutter):** API key in `X-Api-Key` header
+
+```js
+// server/middleware/auth.js
+import crypto from 'crypto';
+
+const API_SECRET = process.env.API_SECRET || 'rushd-app-secret-2026';
+const MOBILE_API_KEYS = (process.env.MOBILE_API_KEYS || '').split(',').filter(Boolean);
+const TOKEN_WINDOW = 60; // seconds
+
+export function authMiddleware(req, res, next) {
+    // Mode 1: Mobile API Key (Flutter)
+    const apiKey = req.headers['x-api-key'];
+    if (apiKey && MOBILE_API_KEYS.includes(apiKey)) {
+        req.clientType = 'mobile';
+        return next();
+    }
+
+    // Mode 2: Web HMAC Token (Next.js)
+    const token = req.headers['x-app-token'];
+    const timestamp = req.headers['x-app-ts'];
+
+    if (!token || !timestamp) {
+        return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    const now = Math.floor(Date.now() / 1000);
+    const ts = parseInt(timestamp, 10);
+    if (Math.abs(now - ts) > TOKEN_WINDOW) {
+        return res.status(403).json({ error: 'Token expired' });
+    }
+
+    const expected = crypto
+        .createHmac('sha256', API_SECRET)
+        .update(`${ts}`)
+        .digest('hex');
+
+    if (token !== expected) {
+        return res.status(403).json({ error: 'Invalid token' });
+    }
+
+    req.clientType = 'web';
+    next();
+}
+```
+
+### 1.3 Rate Limiter — `server/middleware/rateLimiter.js`
+
+```js
+// server/middleware/rateLimiter.js
+import rateLimit from 'express-rate-limit';
+
+export const rateLimiter = rateLimit({
+    windowMs: 60 * 1000,       // 1 minute window
+    max: 120,                   // 120 requests per minute per IP
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Too many requests, slow down.' },
+});
+```
+
+### 1.4 Security Middleware — `server/middleware/security.js`
+
+```js
+// server/middleware/security.js
+export function securityHeaders(req, res, next) {
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Cache-Control', 'private, no-store');
+    next();
+}
+```
+
+### 1.5 Cache Middleware — `server/middleware/cache.js`
+
+```js
+// server/middleware/cache.js
+
+// In-memory cache for frequently accessed data
+const memCache = new Map();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+export function cacheMiddleware(ttlMs = CACHE_TTL) {
+    return (req, res, next) => {
+        const key = req.originalUrl;
+        const cached = memCache.get(key);
+
+        if (cached && Date.now() - cached.timestamp < ttlMs) {
+            return res.json(cached.data);
+        }
+
+        // Monkey-patch res.json to cache the response
+        const originalJson = res.json.bind(res);
+        res.json = (data) => {
+            memCache.set(key, { data, timestamp: Date.now() });
+            return originalJson(data);
+        };
+
+        next();
+    };
+}
+```
+
+---
+
+## Phase 2: API Routes (Express)
+
+### 2.1 Quran Routes — `server/routes/quran.js`
+
+Maps to current [quranServiceV2.js](file:///e:/Projects/global-quran/src/services/quranServiceV2.js) fetch patterns:
+
+```js
+// server/routes/quran.js
+import { Router } from 'express';
+import { cacheMiddleware } from '../middleware/cache.js';
+import * as quranData from '../services/quranDataService.js';
+
+const router = Router();
+
+// GET /api/v1/quran/meta
+router.get('/meta', cacheMiddleware(), async (req, res) => {
+    const data = await quranData.getMeta();
+    res.json(data);
+});
+
+// GET /api/v1/quran/surah/:number?edition=quran-uthmani&type=arabic
+router.get('/surah/:number', cacheMiddleware(), async (req, res) => {
+    const { number } = req.params;
+    const { edition = 'quran-uthmani', type = 'arabic' } = req.query;
+    const data = await quranData.getSurah(number, edition, type);
+    res.json(data);
+});
+
+// GET /api/v1/quran/page/:script/:page
+router.get('/page/:script/:page', cacheMiddleware(), async (req, res) => {
+    const data = await quranData.getPage(req.params.script, req.params.page);
+    res.json(data);
+});
+
+// GET /api/v1/quran/search?q=...&edition=en-sahih&limit=50
+router.get('/search', async (req, res) => {
+    const { q, edition = 'en-sahih', limit = 50 } = req.query;
+    const results = await quranData.search(q, edition, parseInt(limit));
+    res.json(results);
+});
+
+export default router;
+```
+
+### 2.2 Hadith Routes — `server/routes/hadith.js`
+
+```js
+// server/routes/hadith.js
+import { Router } from 'express';
+import { cacheMiddleware } from '../middleware/cache.js';
+import * as hadithData from '../services/hadithDataService.js';
+
+const router = Router();
+
+// GET /api/v1/hadith/editions
+router.get('/editions', cacheMiddleware(), async (req, res) => {
+    res.json(await hadithData.getEditions());
+});
+
+// GET /api/v1/hadith/info
+router.get('/info', cacheMiddleware(), async (req, res) => {
+    res.json(await hadithData.getInfo());
+});
+
+// GET /api/v1/hadith/narrators
+router.get('/narrators', cacheMiddleware(), async (req, res) => {
+    res.json(await hadithData.getNarratorMaster());
+});
+
+// GET /api/v1/hadith/:bookId/:lang (e.g., /bukhari/eng)
+router.get('/:bookId/:lang', cacheMiddleware(), async (req, res) => {
+    const { bookId, lang } = req.params;
+    const data = await hadithData.getEdition(bookId, lang);
+    res.json(data);
+});
+
+export default router;
+```
+
+### 2.3 QA Routes — `server/routes/qa.js`
+
+```js
+// server/routes/qa.js
+import { Router } from 'express';
+import { cacheMiddleware } from '../middleware/cache.js';
+import * as qaData from '../services/qaDataService.js';
+
+const router = Router();
+
+// GET /api/v1/qa/macro-index
+router.get('/macro-index', cacheMiddleware(), async (req, res) => {
+    res.json(await qaData.getMacroIndex());
+});
+
+// GET /api/v1/qa/search-index
+router.get('/search-index', cacheMiddleware(), async (req, res) => {
+    res.json(await qaData.getSearchIndex());
+});
+
+// GET /api/v1/qa/:book/:chapter
+router.get('/:book/:chapter', cacheMiddleware(), async (req, res) => {
+    const data = await qaData.getChapter(req.params.book, req.params.chapter);
+    res.json(data);
+});
+
+export default router;
+```
+
+---
+
+## Phase 3: Data Services (Server-side — File Reading)
+
+These read JSON from `server/data/` using [fs](file:///e:/Projects/global-quran/src/services/quranServiceV2.js#83-89). When you migrate to DB later, **only these files change** — routes and frontend stay the same.
+
+### 3.1 `server/services/quranDataService.js`
+
+```js
+import { readFile } from 'fs/promises';
+import path from 'path';
+
+const DATA_DIR = path.join(process.cwd(), 'server', 'data', 'quran', 'v2');
+const cache = new Map();
+
+async function readJSON(filePath) {
+    if (cache.has(filePath)) return cache.get(filePath);
+    const raw = await readFile(filePath, 'utf-8');
+    const data = JSON.parse(raw);
+    cache.set(filePath, data);
+    return data;
+}
+
+export async function getMeta() {
+    return readJSON(path.join(DATA_DIR, 'meta.json'));
+}
+
+export async function getSurah(number, edition, type) {
+    return readJSON(path.join(DATA_DIR, type, edition, `${number}.json`));
+}
+
+export async function getPage(script, pageNum) {
+    return readJSON(path.join(DATA_DIR, 'pages', script, `${pageNum}.json`));
+}
+
+export async function search(query, edition, limit = 50) {
+    const results = [];
+    const q = query.trim().toLowerCase();
+    for (let s = 1; s <= 114; s++) {
+        try {
+            const data = await getSurah(s, edition, 'translations');
+            for (const ayah of data.ayahs) {
+                if (ayah.text.toLowerCase().includes(q)) {
+                    results.push({ surah: s, surahName: data.englishName, ayah: ayah.number, text: ayah.text });
+                    if (results.length >= limit) return results;
+                }
+            }
+        } catch { /* skip unavailable */ }
+    }
+    return results;
+}
+```
+
+### 3.2 `server/services/hadithDataService.js`
+
+```js
+import { readFile } from 'fs/promises';
+import path from 'path';
+
+const DATA_DIR = path.join(process.cwd(), 'server', 'data', 'hadith');
+const cache = new Map();
+
+async function readJSON(filePath) {
+    if (cache.has(filePath)) return cache.get(filePath);
+    const raw = await readFile(filePath, 'utf-8');
+    const data = JSON.parse(raw);
+    cache.set(filePath, data);
+    return data;
+}
+
+export async function getEditions() {
+    return readJSON(path.join(DATA_DIR, 'editions.json'));
+}
+
+export async function getInfo() {
+    return readJSON(path.join(DATA_DIR, 'info.json'));
+}
+
+export async function getNarratorMaster() {
+    return readJSON(path.join(DATA_DIR, 'narrator_master.json'));
+}
+
+export async function getEdition(bookId, lang) {
+    return readJSON(path.join(DATA_DIR, bookId, `${lang}-${bookId}.json`));
+}
+```
+
+### 3.3 `server/services/qaDataService.js`
+
+```js
+import { readFile } from 'fs/promises';
+import path from 'path';
+
+const DATA_DIR = path.join(process.cwd(), 'server', 'data', 'hadith-qa');
+const cache = new Map();
+
+async function readJSON(filePath) {
+    if (cache.has(filePath)) return cache.get(filePath);
+    const raw = await readFile(filePath, 'utf-8');
+    const data = JSON.parse(raw);
+    cache.set(filePath, data);
+    return data;
+}
+
+export async function getMacroIndex() {
+    return readJSON(path.join(DATA_DIR, 'qa_macro_index.json'));
+}
+
+export async function getSearchIndex() {
+    return readJSON(path.join(DATA_DIR, 'qa_search_index.json'));
+}
+
+export async function getChapter(book, chapter) {
+    return readJSON(path.join(DATA_DIR, book, `${chapter}.json`));
+}
+```
+
+---
+
+## Phase 4: Frontend API Client
+
+### 4.1 `src/lib/apiClient.js` (Secure Fetch Wrapper)
+
+Every API call goes through this. Generates HMAC token that server validates.
+
+```js
+// src/lib/apiClient.js
+
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
+
+function generateAuth() {
+    const ts = Math.floor(Date.now() / 1000).toString();
+    // Client-side HMAC using Web Crypto (or a lightweight lib)
+    // For simplicity, use a shared secret approach
+    const secret = process.env.NEXT_PUBLIC_API_KEY || 'rushd-app-secret-2026';
+
+    // Encode HMAC-SHA256
+    const encoder = new TextEncoder();
+    return crypto.subtle.importKey(
+        'raw', encoder.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
+    ).then(key =>
+        crypto.subtle.sign('HMAC', key, encoder.encode(ts))
+    ).then(sig => ({
+        token: Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join(''),
+        ts,
+    }));
+}
+
+const memCache = new Map();
+
+export async function apiFetch(endpoint, options = {}) {
+    const { cache: useCache = true, ttl = 300000 } = options; // 5min default
+
+    const url = `${API_BASE}/api/v1${endpoint}`;
+
+    // Check client-side cache
+    if (useCache && memCache.has(url)) {
+        const cached = memCache.get(url);
+        if (Date.now() - cached.ts < ttl) return cached.data;
+    }
+
+    const { token, ts } = await generateAuth();
+
+    const res = await fetch(url, {
+        headers: {
+            'X-App-Token': token,
+            'X-App-Ts': ts,
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!res.ok) throw new Error(`API Error: ${res.status} ${endpoint}`);
+
+    const data = await res.json();
+
+    if (useCache) memCache.set(url, { data, ts: Date.now() });
+
+    return data;
+}
+```
+
+### 4.2 Rewrite [src/services/hadithService.js](file:///e:/Projects/global-quran/src/services/hadithService.js)
+
+Replace every [fetch('/data/hadith/...')](file:///e:/Projects/global-quran/src/services/quranServiceV2.js#22-33) → `apiFetch('/hadith/...')`:
+
+```js
+// src/services/hadithService.js (AFTER migration)
+import { apiFetch } from '../lib/apiClient.js';
+
+export async function getEditions() {
+    return apiFetch('/hadith/editions');
+}
+
+export async function getInfo() {
+    return apiFetch('/hadith/info');
+}
+
+export async function getEdition(bookId, langCode = 'eng') {
+    return apiFetch(`/hadith/${bookId}/${langCode}`);
+}
+
+export async function getNarratorMaster() {
+    return apiFetch('/hadith/narrators');
+}
+
+// ... all other functions stay the same, just call getEdition() internally
+```
+
+### 4.3 Rewrite [src/services/quranServiceV2.js](file:///e:/Projects/global-quran/src/services/quranServiceV2.js)
+
+```js
+// src/services/quranServiceV2.js (AFTER migration)
+import { apiFetch } from '../lib/apiClient.js';
+
+export const getMeta = () => apiFetch('/quran/meta');
+
+export const getSurah = (number, edition, type = 'arabic') =>
+    apiFetch(`/quran/surah/${number}?edition=${edition}&type=${type}`);
+
+export const getPage = (script, page) =>
+    apiFetch(`/quran/page/${script}/${page}`);
+
+// search, getArabicSurah, etc. — same logic, just call the above
+```
+
+### 4.4 Update [QASearch.jsx](file:///e:/Projects/global-quran/src/components/QASearch.jsx) Fetches
+
+Replace:
+```diff
+-fetch('/data/hadith-qa/qa_macro_index.json')
++apiFetch('/qa/macro-index')
+
+-fetch('/data/hadith-qa/qa_search_index.json')
++apiFetch('/qa/search-index')
+
+-fetch(`/data/hadith-qa/${book}/${ch}.json`)
++apiFetch(`/qa/${book}/${ch}`)
+```
+
+---
+
+## Phase 5: Next.js Page Migration
+
+### Route Mapping (Vite → Next.js App Router)
+
+| Current Vite Route | Next.js File | Component |
+|---------------------|-------------|-----------|
+| `/` | `app/page.jsx` | HomePage |
+| `/quran` | `app/quran/page.jsx` | SurahList |
+| `/quran/:number` | `app/quran/[number]/page.jsx` | QuranReader |
+| `/quran/mushaf/:page` | `app/quran/mushaf/[page]/page.jsx` | MushafReader |
+| `/hadith` | `app/hadith/page.jsx` | HadithBooks |
+| `/hadith/:bookId` | `app/hadith/[bookId]/page.jsx` | HadithChapters |
+| `/hadith/:bookId/:sectionId` | `app/hadith/[bookId]/[sectionId]/page.jsx` | HadithReader |
+| `/hadith/narrator/:narratorId` | `app/hadith/narrator/[narratorId]/page.jsx` | NarratorDetail |
+| `/qa-search` | `app/qa-search/page.jsx` | QASearch |
+| `/qibla` | `app/qibla/page.jsx` | QiblaFinder |
+| `/tasbih` | `app/tasbih/page.jsx` | TasbihCounter |
+| `/zakat` | `app/zakat/page.jsx` | ZakatCalculator |
+| `/salah-rules` | `app/salah-rules/page.jsx` | SalahRules |
+| `/names` | `app/names/page.jsx` | AsmaUlHusna |
+| `/calendar` | `app/calendar/page.jsx` | IslamicCalendar |
+| `/ramadan` | `app/ramadan/page.jsx` | RamadanCalendar |
+| `/fasting` | `app/fasting/page.jsx` | FastingRules |
+| `/taraweeh` | `app/taraweeh/page.jsx` | Taraweeh |
+| `/laylatul-qadr` | `app/laylatul-qadr/page.jsx` | LaylatulQadr |
+| `/sadaqah` | `app/sadaqah/page.jsx` | Sadaqah |
+| `/duas` | `app/duas/page.jsx` | DailyDuas |
+| `/tajweed` | `app/tajweed/page.jsx` | TajweedPage |
+| `/tools/lunar-phase` | `app/tools/lunar-phase/page.jsx` | LunarPhasePage |
+| `/hajj,/umrah,...` | `app/hajj/page.jsx`, etc. | ComingSoon |
+| `/settings` | `app/settings/page.jsx` | Settings |
+
+### Page Template (Each Page File)
+
+Most pages are simple wrappers — **zero logic rewrite**, just re-export the component:
+
+```jsx
+// app/hadith/[bookId]/page.jsx
+'use client';
+import HadithChapters from '@/components/HadithChapters';
+export default function HadithChaptersPage() {
+    return <HadithChapters />;
+}
+```
+
+### Root Layout — `app/layout.jsx`
+
+Replaces [main.jsx](file:///e:/Projects/global-quran/src/main.jsx) + [App.jsx](file:///e:/Projects/global-quran/src/App.jsx) layout:
+
+```jsx
+// app/layout.jsx
+import { SettingsProvider } from '@/context/SettingsContext';
+import '@/styles/index.css';
+import '@/styles/App.css';
+
+export const metadata = { title: 'Rushd App', description: 'comprehensive islamic companion' };
+
+export default function RootLayout({ children }) {
+    return (
+        <html lang="en">
+            <body>
+                <SettingsProvider>
+                    {/* TopBar, SurahListSidebar, SettingsSidebar — imported here */}
+                    <main>{children}</main>
+                </SettingsProvider>
+            </body>
+        </html>
+    );
+}
+```
+
+---
+
+## Phase 6: Gradual Database Migration Path
+
+> [!NOTE]
+> **You said:** "I will gradually design a database where necessary like hadith-qa section jsons will be converted to database in future not now."
+
+This architecture supports that perfectly. Here's the swap path:
+
+### How It Works
+
+Only the **server data services** change. Routes + frontend + mobile app stay identical.
+
+```
+BEFORE (File-based):
+  server/services/qaDataService.js → reads from server/data/hadith-qa/*.json
+
+AFTER (Database):
+  server/services/qaDataService.js → queries PostgreSQL/MongoDB
+```
+
+### Migration Order (Suggested)
+
+| Priority | Section | Why First |
+|----------|---------|-----------|
+| 1 | `hadith-qa` | User mentioned this; smallest dataset (~171 files) |
+| 2 | `hadith` metadata | editions, narrators — small, changes frequently |
+| 3 | Hadith book editions | Medium size, enables full-text search |
+| 4 | Quran translations/tafsir | Large but benefits from DB indexing for search |
+| 5 | Quran arabic/pages | Largest (~22K files), lowest priority (read-only, rarely changes) |
+
+### Example: `qaDataService.js` After DB Migration
+
+```js
+// server/services/qaDataService.js — DB version
+import { db } from '../db/connection.js';
+
+export async function getMacroIndex() {
+    return db.query('SELECT * FROM qa_macro_index ORDER BY topic');
+}
+
+export async function getSearchIndex() {
+    return db.query('SELECT * FROM qa_search_index');
+}
+
+export async function getChapter(book, chapter) {
+    return db.query('SELECT * FROM qa_chapters WHERE book = ? AND chapter = ?', [book, chapter]);
+}
+```
+
+**Everything above this service layer (routes, web frontend, Flutter app) stays UNTOUCHED.**
+
+---
+
+## Phase 7: Mobile App Readiness (Flutter — Future)
+
+> [!NOTE]
+> **The Flutter app will consume the exact same `/api/v1/*` endpoints.** No separate backend needed. This section documents the mobile-specific API additions and auth strategy.
+
+### 7.1 Audio Streaming — `server/routes/audio.js`
+
+Streams mp3 files from `server/data/audio/` (moved from `public/audio/`).
+Supports **Range requests** for efficient mobile playback (seek, progressive load).
+
+```js
+// server/routes/audio.js
+import { Router } from 'express';
+import { createReadStream, statSync } from 'fs';
+import path from 'path';
+
+const router = Router();
+const AUDIO_DIR = path.join(process.cwd(), 'server', 'data', 'audio');
+
+// GET /api/v1/audio/:reciter/:filename
+// Example: /api/v1/audio/mishary_rashid/001001.mp3
+router.get('/:reciter/:filename', (req, res) => {
+    const filePath = path.join(AUDIO_DIR, req.params.reciter, req.params.filename);
+
+    try {
+        const stat = statSync(filePath);
+        const range = req.headers.range;
+
+        if (range) {
+            // Range request (mobile audio seek)
+            const parts = range.replace(/bytes=/, '').split('-');
+            const start = parseInt(parts[0], 10);
+            const end = parts[1] ? parseInt(parts[1], 10) : stat.size - 1;
+            res.writeHead(206, {
+                'Content-Range': `bytes ${start}-${end}/${stat.size}`,
+                'Accept-Ranges': 'bytes',
+                'Content-Length': end - start + 1,
+                'Content-Type': 'audio/mpeg',
+            });
+            createReadStream(filePath, { start, end }).pipe(res);
+        } else {
+            res.writeHead(200, {
+                'Content-Length': stat.size,
+                'Content-Type': 'audio/mpeg',
+            });
+            createReadStream(filePath).pipe(res);
+        }
+    } catch {
+        res.status(404).json({ error: 'Audio not found' });
+    }
+});
+
+export default router;
+```
+
+### 7.2 Assets Route — `server/routes/assets.js`
+
+Serves images and fonts through the API (needed by Flutter, since it can't access Next.js `public/`).
+
+```js
+// server/routes/assets.js
+import { Router } from 'express';
+import path from 'path';
+import express from 'express';
+
+const router = Router();
+const ASSETS_DIR = path.join(process.cwd(), 'server', 'data', 'assets');
+
+// Serve images/fonts statically through auth-protected route
+router.use('/', express.static(ASSETS_DIR, {
+    maxAge: '7d',
+    setHeaders: (res) => {
+        res.setHeader('X-Robots-Tag', 'noindex');
+    },
+}));
+
+export default router;
+```
+
+### 7.3 Flutter API Client (Dart)
+
+The Flutter app uses the **same API**, authenticated via `X-Api-Key` header:
+
+```dart
+// lib/services/api_client.dart (Flutter)
+class RushdApiClient {
+  static const _baseUrl = 'https://your-rushd-domain.com/api/v1';
+  static const _apiKey = String.fromEnvironment('RUSHD_API_KEY');
+
+  static Future<Map<String, dynamic>> get(String endpoint) async {
+    final response = await http.get(
+      Uri.parse('$_baseUrl$endpoint'),
+      headers: {'X-Api-Key': _apiKey},
+    );
+    if (response.statusCode != 200) throw ApiException(response.statusCode);
+    return jsonDecode(response.body);
+  }
+
+  // Audio streaming URL for audio player
+  static String audioUrl(String reciter, String filename) =>
+      '$_baseUrl/audio/$reciter/$filename';
+}
+```
+
+### 7.4 Mobile-specific Design Notes
+
+| Concern | Solution |
+|---------|----------|
+| **Auth** | API key embedded in app, rotatable server-side; can add OAuth/JWT later for user accounts |
+| **Audio playback** | Range requests supported for seek/progressive loading |
+| **Offline caching** | Flutter handles local caching; API sets proper `Cache-Control` headers |
+| **Images** | Served via `/api/v1/assets/*`; Flutter caches with `cached_network_image` |
+| **Fonts** | Arabic fonts served via `/api/v1/assets/fonts/*` |
+| **Rate limiting** | Same 120 req/min; can increase for mobile with separate tier |
+| **Response format** | Identical JSON for both web and mobile — **no separate serializers** |
+
+---
+
+## Migration Execution Checklist
+
+### Step-by-Step Implementation Order
+
+- [ ] **1. Initialize Next.js project** alongside current Vite files
+  ```bash
+  npx -y create-next-app@latest ./rushd-next --js --app --eslint --no-tailwind --no-src-dir --import-alias "@/*"
+  ```
+- [ ] **2. Install Express dependencies**
+  ```bash
+  npm install express helmet cors express-rate-limit
+  ```
+- [ ] **3. Create `server/` directory structure** (all middleware, routes, services)
+- [ ] **4. Move `public/data/` → `server/data/`** (the critical protection step)
+- [ ] **5. Write `server/index.js`** (custom Next.js server with Express)
+- [ ] **6. Write middleware** (auth, rate-limiter, security, cache)
+- [ ] **7. Write route files** (quran.js, hadith.js, qa.js)
+- [ ] **8. Write data service files** (file-based readers)
+- [ ] **9. Create `src/lib/apiClient.js`** (secure fetch wrapper)
+- [ ] **10. Rewrite service files** (hadithService.js, quranServiceV2.js)
+- [ ] **11. Update QASearch.jsx and MushafReader.jsx** fetch calls
+- [ ] **12. Create Next.js page files** (app/ directory, one per route)
+- [ ] **13. Migrate `App.jsx` layout logic** → `app/layout.jsx`
+- [ ] **14. Move CSS files** to appropriate locations
+- [ ] **15. Create `.env`** with API_SECRET, ALLOWED_ORIGINS
+- [ ] **16. Test all endpoints** with dev server
+- [ ] **17. Verify** no data files accessible via direct URL
+- [ ] **18. Remove old Vite config** (vite.config.js, cleanup)
+
+---
+
+## Environment Variables
+
+```env
+# .env (server-only)
+API_SECRET=rushd-app-secret-change-this-in-production
+MOBILE_API_KEYS=flutter-key-1,flutter-key-2
+ALLOWED_ORIGINS=https://yourdomain.com,http://localhost:3000
+PORT=3000
+
+# .env.local (client-visible, Next.js only)
+NEXT_PUBLIC_API_URL=
+NEXT_PUBLIC_API_KEY=rushd-app-secret-change-this-in-production
+
+# Flutter (compile-time, not in .env)
+# Passed via: flutter run --dart-define=RUSHD_API_KEY=flutter-key-1
+```
+
+> [!CAUTION]
+> `NEXT_PUBLIC_API_KEY` is visible in client JS bundle. This is intentional — it's one layer of defense (stops curl scrapers), not the only one. The real protection is the combination of HMAC + rate-limiting + server-side data serving.
+
+---
+
+## Security Summary
+
+| Attack Vector | Protection |
+|---------------|------------|
+| **Direct URL access** (`/data/hadith/editions.json`) | ❌ **Blocked** — files not in `public/` |
+| **curl/wget scraping** | ❌ **Blocked** — HMAC token required |
+| **Bot crawling** | ❌ **Blocked** — rate limiting + `X-Robots-Tag` |
+| **Hotlinking from other sites** | ❌ **Blocked** — CORS origin check |
+| **Brute-force token guessing** | ❌ **Blocked** — HMAC-SHA256 + time window |
+| **Browser DevTools** | ⚠️ **Visible** — inherent to any client-side app |
+| **Automated browser scraping** | ⚠️ **Slowed** — rate limiting makes it impractical |
+
+---
+
+## What Stays Unchanged
+
+These files require **zero modifications**:
+
+- `src/data/*.js` (hadithData, quranData, etc.) — static metadata, bundled in web
+- `src/context/SettingsContext.jsx` — no data fetching
+- `src/components/*.css` — all styles
+- Most component files — only fetch-calling ones change
+- API response format — same JSON consumed by both Next.js and Flutter
+
+---
+
+## Current Audio Data (10 Reciters)
+
+These will move from `public/audio/` → `server/data/audio/`:
+
+| Reciter Directory | Served Via |
+|------|------|
+| `abdulbaset/` | `/api/v1/audio/abdulbaset/:file` |
+| `abdulbaset_mujawwad/` | `/api/v1/audio/abdulbaset_mujawwad/:file` |
+| `ghamadi/` | `/api/v1/audio/ghamadi/:file` |
+| `hudhaify/` | `/api/v1/audio/hudhaify/:file` |
+| `husary/` | `/api/v1/audio/husary/:file` |
+| `maher/` | `/api/v1/audio/maher/:file` |
+| `minshawi_mujawwad/` | `/api/v1/audio/minshawi_mujawwad/:file` |
+| `mishary_rashid/` | `/api/v1/audio/mishary_rashid/:file` |
+| `shuraim/` | `/api/v1/audio/shuraim/:file` |
+| `sudais/` | `/api/v1/audio/sudais/:file` |

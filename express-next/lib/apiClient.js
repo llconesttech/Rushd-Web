@@ -2,7 +2,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
 
 async function generateAuth() {
     const ts = Math.floor(Date.now() / 1000).toString();
-    const secret = process.env.NEXT_PUBLIC_API_KEY || 'rushd-app-secret-2026';
+    const secret = process.env.NEXT_PUBLIC_API_KEY || 'rushd-app-secret-change-this-in-production';
 
     const encoder = new TextEncoder();
     const key = await crypto.subtle.importKey(

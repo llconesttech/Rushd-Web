@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-const API_SECRET = process.env.API_SECRET || 'rushd-app-secret-2026';
+const API_SECRET = process.env.API_SECRET || 'rushd-app-secret-change-this-in-production';
 const MOBILE_API_KEYS = (process.env.MOBILE_API_KEYS || '').split(',').filter(Boolean);
 const TOKEN_WINDOW = 60;
 

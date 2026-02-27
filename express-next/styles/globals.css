@@ -9,7 +9,7 @@
   src: url('/fonts/AmiriQuran.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -17,15 +17,15 @@
   src: url('/fonts/Scheherazade.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
   font-family: 'Al Qalam';
-  src: url('/fonts/Al Qalam.ttf') format('truetype');
+  src: url('/fonts/AlQalam.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -33,7 +33,7 @@
   src: url('/fonts/me_quran.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 
@@ -45,7 +45,7 @@
   src: url('/fonts/indopak-nastaleeq.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -53,7 +53,7 @@
   src: url('/fonts/PDMS_Saleem_QuranFont-signed.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 
@@ -93,7 +93,7 @@
   --filter-surah-name: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(674%) hue-rotate(138deg) brightness(91%) contrast(92%);
 
   /* Typography */
-  --font-sans: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-inter), 'Hind Siliguri', system-ui, -apple-system, sans-serif;
   --font-arabic: 'Kitab', 'Amiri Quran', 'Scheherazade', 'Me Quran', serif;
   --font-arabic-indopak: 'IndoPak Nastaleeq', 'Noto Nastaliq Urdu', serif;
   /* Need to import these */
@@ -154,6 +154,7 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
 }
 
 /* Deep Linking Highlight */

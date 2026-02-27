@@ -8,6 +8,11 @@ import './TajweedLegendDropdown.css';
 
 const RULES_LIST = Object.values(TAJWEED_RULES).filter(r => r && r.label);
 
+// Add unique index to handle duplicates
+RULES_LIST.forEach((rule, idx) => {
+  rule.uniqueKey = `${rule.css}-${idx}`;
+});
+
 const TajweedLegendDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -54,8 +59,8 @@ const TajweedLegendDropdown = () => {
         <div className="tajweed-sheet-grid">
           {RULES_LIST.map((rule) => (
             <Link
-              key={rule.css}
-              to={`/tajweed#rule-${rule.css}`}
+              key={rule.uniqueKey || rule.css}
+              href={`/tajweed#rule-${rule.css}`}
               className="tajweed-sheet-item"
               onClick={() => setIsOpen(false)}
             >

@@ -11,16 +11,24 @@ export const SettingsProvider = ({ children }) => {
     const [isSettingsOpen, setIsSettingsOpen] = useState(true); // Right Sidebar (Default open as per screenshot)
 
     // Theme (dark/light) - persisted to localStorage
-    const [theme, setTheme] = useState(() => {
-        if (typeof window === 'undefined') return 'dark';
-        return localStorage.getItem('rushdTheme') || 'dark';
-    });
+    const [theme, setTheme] = useState('dark');
+    const [mounted, setMounted] = useState(false);
+
+    // Initialize theme after mount (client-side only)
+    useEffect(() => {
+        setMounted(true);
+        const savedTheme = localStorage.getItem('rushdTheme') || 'dark';
+        setTheme(savedTheme);
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    }, []);
 
     // Apply theme to document root
     useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('rushdTheme', theme);
-    }, [theme]);
+        if (mounted) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('rushdTheme', theme);
+        }
+    }, [theme, mounted]);
 
     const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
@@ -57,6 +65,7 @@ export const SettingsProvider = ({ children }) => {
     const value = {
         theme,
         toggleTheme,
+        mounted,
         isSurahListOpen,
         toggleSurahList,
         isSettingsOpen,
