@@ -685,6 +685,27 @@ h6 {
   padding: 0;
 }
 
+/* ---- Bismillah ---- */
+.bismillah-container {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
+  margin-bottom: 0.5rem;
+}
+
+.bismillah-img {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+  filter: var(--filter-surah-name);
+}
+
+.bismillah-img:hover {
+  opacity: 1;
+}
+
 /* ---- Ruku Divider ---- */
 .ruku-divider {
   display: flex;

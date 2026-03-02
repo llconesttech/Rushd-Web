@@ -11,6 +11,7 @@ const HadithReader = () => {
     const { bookId, sectionId } = useParams();
     const searchParams = useSearchParams() || new URLSearchParams();
     const langFromUrl = searchParams.get('lang') || 'eng';
+    const hadithFromUrl = searchParams.get('hadith');
 
     const [hadiths, setHadiths] = useState([]);
     const [arabicHadiths, setArabicHadiths] = useState([]);
@@ -29,6 +30,19 @@ const HadithReader = () => {
     const [isSearching, setIsSearching] = useState(false);
 
     const book = HADITH_BOOKS[bookId];
+
+    // Scroll to specific hadith when loaded
+    useEffect(() => {
+        if (hadithFromUrl && !loading && hadiths.length > 0) {
+            const targetNum = parseInt(hadithFromUrl, 10);
+            const targetRef = document.getElementById(`hadith-${targetNum}`);
+            if (targetRef) {
+                targetRef.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                targetRef.classList.add('hadith-highlight');
+                setTimeout(() => targetRef.classList.remove('hadith-highlight'), 3000);
+            }
+        }
+    }, [hadithFromUrl, loading, hadiths]);
 
     useEffect(() => {
         const load = async () => {
@@ -264,6 +278,7 @@ const HadithReader = () => {
                             return (
                                 <div
                                     key={hadith.hadithnumber}
+                                    id={`hadith-${hadith.hadithnumber}`}
                                     className={`hadith-card ${index % 2 === 0 ? 'even' : 'odd'}`}
                                 >
                                     {isOtherChapter && (

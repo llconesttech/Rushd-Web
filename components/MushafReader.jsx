@@ -56,7 +56,9 @@ const MushafReader = () => {
         }
 
         const data = await apiFetch(`/quran/page/${targetScript}/${currentPage}`, { cache: false });
-        const enhancedAyahs = data.ayahs.map(ayah => {
+        
+        // Add localized surah name to each ayah
+        const enhancedAyahs = data.ayahs.map((ayah) => {
           const sData = surahData.find(s => s.number === ayah.surahNumber);
           return {
             ...ayah,
@@ -64,6 +66,7 @@ const MushafReader = () => {
             translatedName: sData ? sData.meaning : ayah.surahEnglishName,
           };
         });
+        
         setPageData({ ...data, ayahs: enhancedAyahs });
 
       } catch (err) {
@@ -115,14 +118,14 @@ const MushafReader = () => {
       return (
         <span key={ayah.ayahNumber} className="mushaf-ayah-span inline-ayah tajweed-text">
           <span dangerouslySetInnerHTML={{ __html: html }} />
-          <span className="mushaf-ayah-end">۝<span className="mushaf-ayah-number">{ayah.ayahNumberInSurah}</span></span>
+          <span className="mushaf-ayah-end">۝<span className="mushaf-ayah-number">{ayah.ayahNumber}</span></span>
         </span>
       );
     }
 
     return (
       <span key={ayah.ayahNumber} className="mushaf-ayah-span inline-ayah">
-        {textContent} <span className="mushaf-ayah-end">۝<span className="mushaf-ayah-number">{ayah.ayahNumberInSurah}</span></span>
+        {textContent} <span className="mushaf-ayah-end">۝<span className="mushaf-ayah-number">{ayah.ayahNumber}</span></span>
       </span>
     );
   }
@@ -238,27 +241,31 @@ const MushafReader = () => {
               <div className="mushaf-text-flow" dir="rtl">
                 {pageData.ayahs.map((ayah, i) => (
                   <React.Fragment key={`${ayah.surahNumber}-${ayah.ayahNumber}`}>
-                    {/* Render Surah Header if this ayah is the first of a Surah */}
-                    {ayah.ayahNumberInSurah === 1 && (
+                    {/* Render Surah Header + Bismillah if this is first ayah of a surah (skip 1 and 9) */}
+                    {ayah.ayahNumber === 1 && ayah.surahNumber !== 1 && ayah.surahNumber !== 9 && (
                       <div className="mushaf-surah-break">
-                        <div className="mushaf-surah-ornament">
-                          <img
-                            src={`/api/v1/assets/fonts/Tuluth/Vector-${ayah.surahNumber - 1}.svg`}
-                            alt={ayah.localizedSurahName}
-                            className="mushaf-inline-surah-img"
-                            onError={(e) => {
-                              e.target.style.display = 'none';
-                              if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
-                            }}
-                          />
-                          <h2 className="mushaf-surah-name" style={{ display: 'none' }}>{ayah.localizedSurahName}</h2>
-                        </div>
-                        {/* Standard Bismillah unless it's At-Tawbah (Surah 9) */}
-                        {ayah.surahNumber !== 9 && ayah.surahNumber !== 1 && (
-                          <div className="mushaf-bismillah" title="In the name of Allah, the Entirely Merciful, the Especially Merciful">
-                            بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+                        {/* Show ornament only if there's an ayah before (not first element on page) */}
+                        {i > 0 && (
+                          <div className="mushaf-surah-ornament">
+                            <img
+                              src={`/api/v1/assets/fonts/Tuluth/Vector-${ayah.surahNumber - 1}.svg`}
+                              alt={ayah.localizedSurahName}
+                              className="mushaf-inline-surah-img"
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                                if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                              }}
+                            />
+                            <h2 className="mushaf-surah-name" style={{ display: 'none' }}>{ayah.localizedSurahName}</h2>
                           </div>
                         )}
+                        <div className="mushaf-bismillah">
+                          <img 
+                            src="/api/v1/assets/fonts/Tuluth/bismillah.svg" 
+                            alt="Bismillah" 
+                            className="mushaf-bismillah-img"
+                          />
+                        </div>
                       </div>
                     )}
 

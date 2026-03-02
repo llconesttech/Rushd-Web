@@ -1,0 +1,694 @@
+{
+  "ahmad": {
+    "total": 6814,
+    "chapters": [
+      {
+        "chapter": "1",
+        "count": 400
+      },
+      {
+        "chapter": "2",
+        "count": 1483
+      },
+      {
+        "chapter": "3",
+        "count": 40
+      },
+      {
+        "chapter": "4",
+        "count": 757
+      },
+      {
+        "chapter": "5",
+        "count": 3865
+      },
+      {
+        "chapter": "6",
+        "count": 113
+      },
+      {
+        "chapter": "7",
+        "count": 156
+      }
+    ]
+  },
+  "muslim": {
+    "total": 20325,
+    "chapters": [
+      {
+        "chapter": "1",
+        "count": 1584
+      },
+      {
+        "chapter": "2",
+        "count": 432
+      },
+      {
+        "chapter": "3",
+        "count": 471
+      },
+      {
+        "chapter": "4",
+        "count": 963
+      },
+      {
+        "chapter": "5",
+        "count": 7255
+      },
+      {
+        "chapter": "6",
+        "count": 6263
+      },
+      {
+        "chapter": "7",
+        "count": 279
+      },
+      {
+        "chapter": "8",
+        "count": 72
+      },
+      {
+        "chapter": "9",
+        "count": 54
+      },
+      {
+        "chapter": "10",
+        "count": 93
+      },
+      {
+        "chapter": "11",
+        "count": 414
+      },
+      {
+        "chapter": "12",
+        "count": 690
+      },
+      {
+        "chapter": "13",
+        "count": 846
+      },
+      {
+        "chapter": "14",
+        "count": 33
+      },
+      {
+        "chapter": "15",
+        "count": 876
+      }
+    ]
+  },
+  "tirmidhi": {
+    "total": 19522,
+    "chapters": [
+      {
+        "chapter": "1",
+        "count": 691
+      },
+      {
+        "chapter": "2",
+        "count": 1401
+      },
+      {
+        "chapter": "3",
+        "count": 173
+      },
+      {
+        "chapter": "4",
+        "count": 193
+      },
+      {
+        "chapter": "5",
+        "count": 61
+      },
+      {
+        "chapter": "6",
+        "count": 340
+      },
+      {
+        "chapter": "7",
+        "count": 324
+      },
+      {
+        "chapter": "8",
+        "count": 608
+      },
+      {
+        "chapter": "9",
+        "count": 733
+      },
+      {
+        "chapter": "10",
+        "count": 544
+      },
+      {
+        "chapter": "11",
+        "count": 327
+      },
+      {
+        "chapter": "12",
+        "count": 144
+      },
+      {
+        "chapter": "13",
+        "count": 152
+      },
+      {
+        "chapter": "14",
+        "count": 605
+      },
+      {
+        "chapter": "15",
+        "count": 309
+      },
+      {
+        "chapter": "16",
+        "count": 172
+      },
+      {
+        "chapter": "17",
+        "count": 208
+      },
+      {
+        "chapter": "18",
+        "count": 141
+      },
+      {
+        "chapter": "19",
+        "count": 153
+      },
+      {
+        "chapter": "20",
+        "count": 122
+      },
+      {
+        "chapter": "21",
+        "count": 358
+      },
+      {
+        "chapter": "22",
+        "count": 257
+      },
+      {
+        "chapter": "23",
+        "count": 244
+      },
+      {
+        "chapter": "24",
+        "count": 327
+      },
+      {
+        "chapter": "25",
+        "count": 358
+      },
+      {
+        "chapter": "26",
+        "count": 177
+      },
+      {
+        "chapter": "27",
+        "count": 706
+      },
+      {
+        "chapter": "28",
+        "count": 256
+      },
+      {
+        "chapter": "29",
+        "count": 130
+      },
+      {
+        "chapter": "30",
+        "count": 47
+      },
+      {
+        "chapter": "31",
+        "count": 41
+      },
+      {
+        "chapter": "32",
+        "count": 126
+      },
+      {
+        "chapter": "33",
+        "count": 579
+      },
+      {
+        "chapter": "34",
+        "count": 127
+      },
+      {
+        "chapter": "35",
+        "count": 45
+      },
+      {
+        "chapter": "36",
+        "count": 560
+      },
+      {
+        "chapter": "37",
+        "count": 557
+      },
+      {
+        "chapter": "38",
+        "count": 259
+      },
+      {
+        "chapter": "39",
+        "count": 164
+      },
+      {
+        "chapter": "40",
+        "count": 202
+      },
+      {
+        "chapter": "41",
+        "count": 216
+      },
+      {
+        "chapter": "42",
+        "count": 228
+      },
+      {
+        "chapter": "43",
+        "count": 603
+      },
+      {
+        "chapter": "44",
+        "count": 83
+      },
+      {
+        "chapter": "45",
+        "count": 265
+      },
+      {
+        "chapter": "46",
+        "count": 104
+      },
+      {
+        "chapter": "47",
+        "count": 2156
+      },
+      {
+        "chapter": "48",
+        "count": 1218
+      },
+      {
+        "chapter": "49",
+        "count": 1728
+      }
+    ]
+  },
+  "bukhari": {
+    "total": 22266,
+    "chapters": [
+      {
+        "chapter": "1",
+        "count": 21
+      },
+      {
+        "chapter": "2",
+        "count": 153
+      },
+      {
+        "chapter": "3",
+        "count": 228
+      },
+      {
+        "chapter": "4",
+        "count": 339
+      },
+      {
+        "chapter": "5",
+        "count": 137
+      },
+      {
+        "chapter": "6",
+        "count": 118
+      },
+      {
+        "chapter": "7",
+        "count": 45
+      },
+      {
+        "chapter": "8",
+        "count": 507
+      },
+      {
+        "chapter": "9",
+        "count": 239
+      },
+      {
+        "chapter": "10",
+        "count": 800
+      },
+      {
+        "chapter": "11",
+        "count": 195
+      },
+      {
+        "chapter": "12",
+        "count": 18
+      },
+      {
+        "chapter": "13",
+        "count": 123
+      },
+      {
+        "chapter": "14",
+        "count": 45
+      },
+      {
+        "chapter": "15",
+        "count": 103
+      },
+      {
+        "chapter": "16",
+        "count": 78
+      },
+      {
+        "chapter": "17",
+        "count": 39
+      },
+      {
+        "chapter": "18",
+        "count": 120
+      },
+      {
+        "chapter": "19",
+        "count": 190
+      },
+      {
+        "chapter": "20",
+        "count": 28
+      },
+      {
+        "chapter": "21",
+        "count": 78
+      },
+      {
+        "chapter": "22",
+        "count": 39
+      },
+      {
+        "chapter": "23",
+        "count": 453
+      },
+      {
+        "chapter": "24",
+        "count": 346
+      },
+      {
+        "chapter": "25",
+        "count": 766
+      },
+      {
+        "chapter": "26",
+        "count": 97
+      },
+      {
+        "chapter": "27",
+        "count": 45
+      },
+      {
+        "chapter": "28",
+        "count": 138
+      },
+      {
+        "chapter": "29",
+        "count": 72
+      },
+      {
+        "chapter": "30",
+        "count": 349
+      },
+      {
+        "chapter": "31",
+        "count": 18
+      },
+      {
+        "chapter": "32",
+        "count": 33
+      },
+      {
+        "chapter": "33",
+        "count": 65
+      },
+      {
+        "chapter": "34",
+        "count": 560
+      },
+      {
+        "chapter": "35",
+        "count": 47
+      },
+      {
+        "chapter": "36",
+        "count": 9
+      },
+      {
+        "chapter": "37",
+        "count": 80
+      },
+      {
+        "chapter": "38",
+        "count": 9
+      },
+      {
+        "chapter": "39",
+        "count": 27
+      },
+      {
+        "chapter": "40",
+        "count": 61
+      },
+      {
+        "chapter": "41",
+        "count": 90
+      },
+      {
+        "chapter": "42",
+        "count": 96
+      },
+      {
+        "chapter": "43",
+        "count": 75
+      },
+      {
+        "chapter": "44",
+        "count": 46
+      },
+      {
+        "chapter": "45",
+        "count": 42
+      },
+      {
+        "chapter": "46",
+        "count": 129
+      },
+      {
+        "chapter": "47",
+        "count": 71
+      },
+      {
+        "chapter": "48",
+        "count": 26
+      },
+      {
+        "chapter": "49",
+        "count": 126
+      },
+      {
+        "chapter": "50",
+        "count": 18
+      },
+      {
+        "chapter": "51",
+        "count": 206
+      },
+      {
+        "chapter": "52",
+        "count": 152
+      },
+      {
+        "chapter": "53",
+        "count": 60
+      },
+      {
+        "chapter": "54",
+        "count": 79
+      },
+      {
+        "chapter": "55",
+        "count": 132
+      },
+      {
+        "chapter": "56",
+        "count": 906
+      },
+      {
+        "chapter": "57",
+        "count": 194
+      },
+      {
+        "chapter": "58",
+        "count": 97
+      },
+      {
+        "chapter": "59",
+        "count": 403
+      },
+      {
+        "chapter": "60",
+        "count": 470
+      },
+      {
+        "chapter": "61",
+        "count": 470
+      },
+      {
+        "chapter": "62",
+        "count": 372
+      },
+      {
+        "chapter": "63",
+        "count": 516
+      },
+      {
+        "chapter": "64",
+        "count": 1531
+      },
+      {
+        "chapter": "65",
+        "count": 1495
+      },
+      {
+        "chapter": "66",
+        "count": 254
+      },
+      {
+        "chapter": "67",
+        "count": 559
+      },
+      {
+        "chapter": "68",
+        "count": 293
+      },
+      {
+        "chapter": "69",
+        "count": 66
+      },
+      {
+        "chapter": "70",
+        "count": 282
+      },
+      {
+        "chapter": "71",
+        "count": 24
+      },
+      {
+        "chapter": "72",
+        "count": 207
+      },
+      {
+        "chapter": "73",
+        "count": 90
+      },
+      {
+        "chapter": "74",
+        "count": 195
+      },
+      {
+        "chapter": "75",
+        "count": 114
+      },
+      {
+        "chapter": "76",
+        "count": 295
+      },
+      {
+        "chapter": "77",
+        "count": 558
+      },
+      {
+        "chapter": "78",
+        "count": 759
+      },
+      {
+        "chapter": "79",
+        "count": 231
+      },
+      {
+        "chapter": "80",
+        "count": 322
+      },
+      {
+        "chapter": "81",
+        "count": 546
+      },
+      {
+        "chapter": "82",
+        "count": 81
+      },
+      {
+        "chapter": "83",
+        "count": 258
+      },
+      {
+        "chapter": "84",
+        "count": 45
+      },
+      {
+        "chapter": "85",
+        "count": 146
+      },
+      {
+        "chapter": "86",
+        "count": 260
+      },
+      {
+        "chapter": "87",
+        "count": 167
+      },
+      {
+        "chapter": "88",
+        "count": 66
+      },
+      {
+        "chapter": "89",
+        "count": 39
+      },
+      {
+        "chapter": "90",
+        "count": 85
+      },
+      {
+        "chapter": "91",
+        "count": 187
+      },
+      {
+        "chapter": "92",
+        "count": 254
+      },
+      {
+        "chapter": "93",
+        "count": 259
+      },
+      {
+        "chapter": "94",
+        "count": 60
+      },
+      {
+        "chapter": "95",
+        "count": 66
+      },
+      {
+        "chapter": "96",
+        "count": 304
+      },
+      {
+        "chapter": "97",
+        "count": 574
+      }
+    ]
+  }
+}

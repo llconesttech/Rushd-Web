@@ -446,6 +446,16 @@
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
+.hadith-card.hadith-highlight {
+    box-shadow: 0 0 0 3px var(--color-primary, #2563eb), 0 4px 20px rgba(37, 99, 235, 0.3);
+    animation: hadith-pulse 0.5s ease-out;
+}
+
+@keyframes hadith-pulse {
+    0% { box-shadow: 0 0 0 6px var(--color-primary, #2563eb); }
+    100% { box-shadow: 0 0 0 3px var(--color-primary, #2563eb), 0 4px 20px rgba(37, 99, 235, 0.3); }
+}
+
 .hadith-card-header {
     display: flex;
     align-items: center;
@@ -1471,4 +1481,370 @@
     background: var(--badge-bg, #f3f4f6);
     padding: 2px 6px;
     border-radius: 999px;
+}
+
+/* ========== NEW QA COMPONENT STYLES ========== */
+
+.qa-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+}
+
+.qa-back-btn:hover {
+    background: var(--color-primary-light);
+    border-color: var(--color-primary-light);
+}
+
+.qa-view-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.qa-view-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.qa-item-count {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    background: var(--badge-bg, #f3f4f6);
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+}
+
+/* Categories Grid */
+.qa-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.qa-category-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.qa-category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-primary-light);
+}
+
+.qa-category-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--color-primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.qa-category-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.qa-category-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+    line-height: 1.3;
+}
+
+.qa-category-count {
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    display: block;
+}
+
+.qa-category-subs {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.qa-category-arrow {
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+}
+
+/* Subcategories List */
+.qa-subcategories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.qa-subcategory-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.qa-subcategory-item:hover {
+    background: var(--color-primary-light);
+    border-color: var(--color-primary-light);
+}
+
+.qa-subcategory-name {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.qa-subcategory-count {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    background: var(--badge-bg, #f3f4f6);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+}
+
+/* QA Items List */
+.qa-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.qa-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.qa-card:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.qa-card.expanded {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.qa-card-header {
+    padding: 1rem 1.25rem;
+}
+
+.qa-question-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+    line-height: 1.4;
+}
+
+.qa-meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.qa-meta-topic {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 500;
+}
+
+.qa-meta-book {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--badge-bg, #f3f4f6);
+}
+
+.qa-card-answer {
+    padding: 0 1.25rem 1rem;
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.qa-rule-line {
+    height: 2px;
+    background: linear-gradient(to right, var(--color-primary), transparent);
+    margin-bottom: 1rem;
+    border-radius: 1px;
+}
+
+.qa-hadith-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0 0 1rem;
+}
+
+.qa-card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.qa-reference {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.qa-grade {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #059669;
+    background: #d1fae5;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.qa-sub-category-tag {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    background: var(--badge-bg, #f3f4f6);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.qa-jump-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.qa-jump-btn:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+.qa-card-tap-hint {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    border-top: 1px dashed var(--border-color, #e5e7eb);
+}
+
+.qa-card-loading {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.qa-load-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.875rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-primary);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.qa-load-more-btn:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+/* Search View */
+.qa-search-query {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .qa-categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .qa-category-card {
+        padding: 1rem;
+    }
+    
+    .qa-category-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+    
+    .qa-view-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

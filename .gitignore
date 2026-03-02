@@ -45,4 +45,4 @@ next-env.d.ts
 /server/data/hadith/
 #/server/data/hadith-qa/
 /server/data/audio/
-/server/data/assets/
+# /server/data/assets/

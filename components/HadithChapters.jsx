@@ -87,20 +87,54 @@ const HadithChapters = () => {
                 return true;
             }
 
-            // Range match for hadith number
+            // Chapter number match (exact)
+            if (isNum && ch.id === searchNum) {
+                return true;
+            }
+
+            // Range match for hadith number (exact match within range)
             if (isNum) {
                 if (ch.firstHadith && ch.lastHadith) {
                     const first = typeof ch.firstHadith === 'number' ? ch.firstHadith : parseFloat(ch.firstHadith);
                     const last = typeof ch.lastHadith === 'number' ? ch.lastHadith : parseFloat(ch.lastHadith);
-                    if (!isNaN(first) && !isNaN(last) && searchNum >= Math.floor(first) && searchNum <= Math.ceil(last)) {
-                        return true;
+                    if (!isNaN(first) && !isNaN(last)) {
+                        // Check exact hadith number match
+                        if (searchNum >= Math.floor(first) && searchNum <= Math.ceil(last)) {
+                            return true;
+                        }
+                        // Check if searchNum matches ending pattern (e.g., 69 matches 1069, 2069, etc.)
+                        const searchStr = searchNum.toString();
+                        const rangeSize = Math.ceil(last) - Math.floor(first) + 1;
+                        if (rangeSize >= 100) {
+                            // For large chapters, check suffix match
+                            for (let n = Math.floor(first); n <= Math.ceil(last); n++) {
+                                if (n.toString().endsWith(searchStr)) {
+                                    return true;
+                                }
+                            }
+                        }
                     }
                 }
+                
+                // Arabic hadith number match - exact or suffix match
                 if (ch.firstArabic && ch.lastArabic && ch.firstArabic !== 0) {
                     const firstAra = typeof ch.firstArabic === 'number' ? ch.firstArabic : parseFloat(ch.firstArabic);
                     const lastAra = typeof ch.lastArabic === 'number' ? ch.lastArabic : parseFloat(ch.lastArabic);
-                    if (!isNaN(firstAra) && !isNaN(lastAra) && searchNum >= Math.floor(firstAra) && searchNum <= Math.ceil(lastAra)) {
-                        return true;
+                    if (!isNaN(firstAra) && !isNaN(lastAra)) {
+                        // Check exact Arabic hadith number
+                        if (searchNum >= Math.floor(firstAra) && searchNum <= Math.ceil(lastAra)) {
+                            return true;
+                        }
+                        // Check suffix match for Arabic numbers (e.g., 69 matches 1069, 2069, etc.)
+                        const searchStr = searchNum.toString();
+                        const rangeSize = Math.ceil(lastAra) - Math.floor(firstAra) + 1;
+                        if (rangeSize >= 100) {
+                            for (let n = Math.floor(firstAra); n <= Math.ceil(lastAra); n++) {
+                                if (n.toString().endsWith(searchStr)) {
+                                    return true;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -208,36 +242,51 @@ const HadithChapters = () => {
 
             {!loading && !error && (
                 <div className="chapters-grid">
-                    {filteredChapters.map(chapter => (
-                        <Link href={`/hadith/${bookId}/${chapter.id}?lang=${selectedLang}`}
-                            key={chapter.id}
-                            className="chapter-card-grid"
-                        >
-                            <div className="chapter-card-header-row">
-                                <span className="chapter-num-badge" style={{
-                                    backgroundColor: book.color + '18',
-                                    color: book.color,
-                                    borderColor: book.color + '40',
-                                }}>
-                                    {chapter.id}
-                                </span>
-                                <span className="chapter-hadith-badge">
-                                    {chapter.hadithCount} Hadiths
-                                </span>
-                            </div>
-                            <h4 className="chapter-card-title">{chapter.name || `Chapter ${chapter.id}`}</h4>
-                            <div className="chapter-card-range">
-                                {chapter.firstHadith && chapter.lastHadith && (
-                                    <span>#{chapter.firstHadith} – #{chapter.lastHadith}</span>
-                                )}
-                                {chapter.firstArabic && chapter.lastArabic && chapter.firstArabic !== 0 && (
-                                    <span className="chapter-card-arabic-range">
-                                        Arabic: {chapter.firstArabic} – {chapter.lastArabic}
+                    {filteredChapters.map(chapter => {
+                        // Check if search term matches a specific hadith number
+                        const isExactHadithMatch = isNum && chapter.firstHadith && chapter.lastHadith && 
+                            searchNum >= Math.floor(chapter.firstHadith) && 
+                            searchNum <= Math.ceil(chapter.lastHadith);
+                        
+                        // Check if search term matches a specific Arabic hadith number
+                        const isExactArabicMatch = isNum && chapter.firstArabic && chapter.lastArabic && chapter.firstArabic !== 0 &&
+                            searchNum >= Math.floor(chapter.firstArabic) && 
+                            searchNum <= Math.ceil(chapter.lastArabic);
+                        
+                        const targetHadith = isExactHadithMatch || isExactArabicMatch ? searchNum : null;
+                        
+                        return (
+                            <Link 
+                                href={`/hadith/${bookId}/${chapter.id}?lang=${selectedLang}${targetHadith ? `&hadith=${targetHadith}` : ''}`}
+                                key={chapter.id}
+                                className="chapter-card-grid"
+                            >
+                                <div className="chapter-card-header-row">
+                                    <span className="chapter-num-badge" style={{
+                                        backgroundColor: book.color + '18',
+                                        color: book.color,
+                                        borderColor: book.color + '40',
+                                    }}>
+                                        {chapter.id}
                                     </span>
-                                )}
-                            </div>
-                        </Link>
-                    ))}
+                                    <span className="chapter-hadith-badge">
+                                        {chapter.hadithCount} Hadiths
+                                    </span>
+                                </div>
+                                <h4 className="chapter-card-title">{chapter.name || `Chapter ${chapter.id}`}</h4>
+                                <div className="chapter-card-range">
+                                    {chapter.firstHadith && chapter.lastHadith && (
+                                        <span>#{chapter.firstHadith} – #{chapter.lastHadith}</span>
+                                    )}
+                                    {chapter.firstArabic && chapter.lastArabic && chapter.firstArabic !== 0 && (
+                                        <span className="chapter-card-arabic-range">
+                                            Arabic: {chapter.firstArabic} – {chapter.lastArabic}
+                                        </span>
+                                    )}
+                                </div>
+                            </Link>
+                        );
+                    })}
                 </div>
             )}
 

@@ -50,12 +50,17 @@ app.prepare().then(() => {
     server.use((err, req, res, _next) => {
         const status = err.code === 'ENOENT' ? 404 : 500;
         const message = status === 404 ? 'Resource not found' : 'Internal server error';
-        console.error(`[API Error] ${req.method} ${req.originalUrl}:`, err.message);
-        res.status(status).json({ error: message });
+        console.error(`[Error] ${req.method} ${req.originalUrl}:`, err);
+        res.status(status).json({ error: message, details: err.message });
     });
 
     // All other routes → Next.js
-    server.all('/{*path}', (req, res) => handle(req, res));
+    server.all('/{*path}', (req, res) => {
+        handle(req, res).catch(err => {
+            console.error(`[Next.js Error] ${req.method} ${req.originalUrl}:`, err);
+            res.status(500).json({ error: 'Internal server error', details: err.message });
+        });
+    });
 
     server.listen(PORT, () => {
         console.log(`> Rushd App ready on http://localhost:${PORT}`);

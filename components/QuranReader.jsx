@@ -247,6 +247,16 @@ export default function QuranReader() {
             </div>
 
             <div className={`ayah-content-wrap ${isStyle2 ? 'transparent' : ''}`}>
+                {/* Bismillah - show before first ayah for all surahs except 1 (Al-Fatihah) and 9 (At-Tawbah) */}
+                {surah.number !== 1 && surah.number !== 9 && (
+                    <div className="bismillah-container">
+                        <img 
+                            src="/api/v1/assets/fonts/Tuluth/bismillah.svg" 
+                            alt="Bismillah" 
+                            className="bismillah-img"
+                        />
+                    </div>
+                )}
                 {(pageFilter ? surah.ayahs.filter(a => a.page === parseInt(pageFilter)) : surah.ayahs).map((ayah, index) => {
                     const prevRuku = index > 0 ? surah.ayahs[index - 1].ruku : ayah.ruku;
                     const showRukuDivider = index > 0 && ayah.ruku !== prevRuku;
