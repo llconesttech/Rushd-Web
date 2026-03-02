@@ -1,0 +1,1117 @@
+{
+  "abudawud": {
+    "name": "Sunan Abu Dawud",
+    "collection": [
+      {
+        "name": "ara-abudawud",
+        "book": "abudawud",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/abudawud/ara-abudawud.json",
+        "linkmin": "/data/hadith/abudawud/ara-abudawud.json"
+      },
+      {
+        "name": "ara-abudawud1",
+        "book": "abudawud",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "Diacritics removed for easier searching",
+        "link": "/data/hadith/abudawud/ara-abudawud1.json",
+        "linkmin": "/data/hadith/abudawud/ara-abudawud1.json"
+      },
+      {
+        "name": "ben-abudawud",
+        "book": "abudawud",
+        "author": "Unknown",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/abudawud/ben-abudawud.json",
+        "linkmin": "/data/hadith/abudawud/ben-abudawud.json"
+      },
+      {
+        "name": "eng-abudawud",
+        "book": "abudawud",
+        "author": "Unknown",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/abudawud/eng-abudawud.json",
+        "linkmin": "/data/hadith/abudawud/eng-abudawud.json"
+      },
+      {
+        "name": "fra-abudawud",
+        "book": "abudawud",
+        "author": "Unknown",
+        "language": "French",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/abudawud/fra-abudawud.json",
+        "linkmin": "/data/hadith/abudawud/fra-abudawud.json"
+      },
+      {
+        "name": "ind-abudawud",
+        "book": "abudawud",
+        "author": "Unknown",
+        "language": "Indonesian",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/abudawud/ind-abudawud.json",
+        "linkmin": "/data/hadith/abudawud/ind-abudawud.json"
+      },
+      {
+        "name": "rus-abudawud",
+        "book": "abudawud",
+        "author": "Unknown",
+        "language": "Russian",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://isnad.link/",
+        "comments": "",
+        "link": "/data/hadith/abudawud/rus-abudawud.json",
+        "linkmin": "/data/hadith/abudawud/rus-abudawud.json"
+      },
+      {
+        "name": "tur-abudawud",
+        "book": "abudawud",
+        "author": "Unknown",
+        "language": "Turkish",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/abudawud/tur-abudawud.json",
+        "linkmin": "/data/hadith/abudawud/tur-abudawud.json"
+      },
+      {
+        "name": "urd-abudawud",
+        "book": "abudawud",
+        "author": "Unknown",
+        "language": "Urdu",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/abudawud/urd-abudawud.json",
+        "linkmin": "/data/hadith/abudawud/urd-abudawud.json"
+      }
+    ]
+  },
+  "bukhari": {
+    "name": "Sahih al Bukhari",
+    "collection": [
+      {
+        "name": "ara-bukhari",
+        "book": "bukhari",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/bukhari/ara-bukhari.json",
+        "linkmin": "/data/hadith/bukhari/ara-bukhari.json"
+      },
+      {
+        "name": "ara-bukhari1",
+        "book": "bukhari",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "Diacritics removed for easier searching",
+        "link": "/data/hadith/bukhari/ara-bukhari1.json",
+        "linkmin": "/data/hadith/bukhari/ara-bukhari1.json"
+      },
+      {
+        "name": "ben-bukhari",
+        "book": "bukhari",
+        "author": "Unknown",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/bukhari/ben-bukhari.json",
+        "linkmin": "/data/hadith/bukhari/ben-bukhari.json"
+      },
+      {
+        "name": "eng-bukhari",
+        "book": "bukhari",
+        "author": "Muhsin Khan",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/bukhari/eng-bukhari.json",
+        "linkmin": "/data/hadith/bukhari/eng-bukhari.json"
+      },
+      {
+        "name": "fra-bukhari",
+        "book": "bukhari",
+        "author": "Unknown",
+        "language": "French",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/bukhari/fra-bukhari.json",
+        "linkmin": "/data/hadith/bukhari/fra-bukhari.json"
+      },
+      {
+        "name": "ind-bukhari",
+        "book": "bukhari",
+        "author": "Unknown",
+        "language": "Indonesian",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/bukhari/ind-bukhari.json",
+        "linkmin": "/data/hadith/bukhari/ind-bukhari.json"
+      },
+      {
+        "name": "rus-bukhari",
+        "book": "bukhari",
+        "author": "Abdullah Nirsha And Editors Of Daura.com",
+        "language": "Russian",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://isnad.link/book/sahih-al-buhari",
+        "comments": "",
+        "link": "/data/hadith/bukhari/rus-bukhari.json",
+        "linkmin": "/data/hadith/bukhari/rus-bukhari.json"
+      },
+      {
+        "name": "tam-bukhari",
+        "book": "bukhari",
+        "author": "Unknown",
+        "language": "Tamil",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/bukhari/tam-bukhari.json",
+        "linkmin": "/data/hadith/bukhari/tam-bukhari.json"
+      },
+      {
+        "name": "tur-bukhari",
+        "book": "bukhari",
+        "author": "Unknown",
+        "language": "Turkish",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/bukhari/tur-bukhari.json",
+        "linkmin": "/data/hadith/bukhari/tur-bukhari.json"
+      },
+      {
+        "name": "urd-bukhari",
+        "book": "bukhari",
+        "author": "Unknown",
+        "language": "Urdu",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/bukhari/urd-bukhari.json",
+        "linkmin": "/data/hadith/bukhari/urd-bukhari.json"
+      }
+    ]
+  },
+  "dehlawi": {
+    "name": "Forty Hadith of Shah Waliullah Dehlawi",
+    "collection": [
+      {
+        "name": "ara-dehlawi",
+        "book": "dehlawi",
+        "author": "Shah Waliullah Dehlawi",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/dehlawi/ara-dehlawi.json",
+        "linkmin": "/data/hadith/dehlawi/ara-dehlawi.json"
+      },
+      {
+        "name": "ara-dehlawi1",
+        "book": "dehlawi",
+        "author": "Shah Waliullah Dehlawi",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "Diacritics removed for easier searching",
+        "link": "/data/hadith/dehlawi/ara-dehlawi1.json",
+        "linkmin": "/data/hadith/dehlawi/ara-dehlawi1.json"
+      },
+      {
+        "name": "eng-dehlawi",
+        "book": "dehlawi",
+        "author": "Shah Waliullah Dehlawi",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/dehlawi/eng-dehlawi.json",
+        "linkmin": "/data/hadith/dehlawi/eng-dehlawi.json"
+      },
+      {
+        "name": "fra-dehlawi",
+        "book": "dehlawi",
+        "author": "Unknown",
+        "language": "French",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/dehlawi/fra-dehlawi.json",
+        "linkmin": "/data/hadith/dehlawi/fra-dehlawi.json"
+      }
+    ]
+  },
+  "ibnmajah": {
+    "name": "Sunan Ibn Majah",
+    "collection": [
+      {
+        "name": "ara-ibnmajah",
+        "book": "ibnmajah",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/ibnmajah/ara-ibnmajah.json",
+        "linkmin": "/data/hadith/ibnmajah/ara-ibnmajah.json"
+      },
+      {
+        "name": "ara-ibnmajah1",
+        "book": "ibnmajah",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "Diacritics removed for easier searching",
+        "link": "/data/hadith/ibnmajah/ara-ibnmajah1.json",
+        "linkmin": "/data/hadith/ibnmajah/ara-ibnmajah1.json"
+      },
+      {
+        "name": "ben-ibnmajah",
+        "book": "ibnmajah",
+        "author": "Unknown",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/ibnmajah/ben-ibnmajah.json",
+        "linkmin": "/data/hadith/ibnmajah/ben-ibnmajah.json"
+      },
+      {
+        "name": "eng-ibnmajah",
+        "book": "ibnmajah",
+        "author": "Unknown",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/ibnmajah/eng-ibnmajah.json",
+        "linkmin": "/data/hadith/ibnmajah/eng-ibnmajah.json"
+      },
+      {
+        "name": "fra-ibnmajah",
+        "book": "ibnmajah",
+        "author": "Unknown",
+        "language": "French",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/ibnmajah/fra-ibnmajah.json",
+        "linkmin": "/data/hadith/ibnmajah/fra-ibnmajah.json"
+      },
+      {
+        "name": "ind-ibnmajah",
+        "book": "ibnmajah",
+        "author": "Unknown",
+        "language": "Indonesian",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/ibnmajah/ind-ibnmajah.json",
+        "linkmin": "/data/hadith/ibnmajah/ind-ibnmajah.json"
+      },
+      {
+        "name": "tur-ibnmajah",
+        "book": "ibnmajah",
+        "author": "Unknown",
+        "language": "Turkish",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/ibnmajah/tur-ibnmajah.json",
+        "linkmin": "/data/hadith/ibnmajah/tur-ibnmajah.json"
+      },
+      {
+        "name": "urd-ibnmajah",
+        "book": "ibnmajah",
+        "author": "Unknown",
+        "language": "Urdu",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/ibnmajah/urd-ibnmajah.json",
+        "linkmin": "/data/hadith/ibnmajah/urd-ibnmajah.json"
+      }
+    ]
+  },
+  "malik": {
+    "name": "Muwatta Malik",
+    "collection": [
+      {
+        "name": "ara-malik",
+        "book": "malik",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/malik/ara-malik.json",
+        "linkmin": "/data/hadith/malik/ara-malik.json"
+      },
+      {
+        "name": "ara-malik1",
+        "book": "malik",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "Diacritics removed for easier searching",
+        "link": "/data/hadith/malik/ara-malik1.json",
+        "linkmin": "/data/hadith/malik/ara-malik1.json"
+      },
+      {
+        "name": "ben-malik",
+        "book": "malik",
+        "author": "Unknown",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/malik/ben-malik.json",
+        "linkmin": "/data/hadith/malik/ben-malik.json"
+      },
+      {
+        "name": "eng-malik",
+        "book": "malik",
+        "author": "Unknown",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/malik/eng-malik.json",
+        "linkmin": "/data/hadith/malik/eng-malik.json"
+      },
+      {
+        "name": "fra-malik",
+        "book": "malik",
+        "author": "Unknown",
+        "language": "French",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/malik/fra-malik.json",
+        "linkmin": "/data/hadith/malik/fra-malik.json"
+      },
+      {
+        "name": "ind-malik",
+        "book": "malik",
+        "author": "Unknown",
+        "language": "Indonesian",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/malik/ind-malik.json",
+        "linkmin": "/data/hadith/malik/ind-malik.json"
+      },
+      {
+        "name": "tur-malik",
+        "book": "malik",
+        "author": "Unknown",
+        "language": "Turkish",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/malik/tur-malik.json",
+        "linkmin": "/data/hadith/malik/tur-malik.json"
+      },
+      {
+        "name": "urd-malik",
+        "book": "malik",
+        "author": "Unknown",
+        "language": "Urdu",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/malik/urd-malik.json",
+        "linkmin": "/data/hadith/malik/urd-malik.json"
+      }
+    ]
+  },
+  "muslim": {
+    "name": "Sahih Muslim",
+    "collection": [
+      {
+        "name": "ara-muslim",
+        "book": "muslim",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/muslim/ara-muslim.json",
+        "linkmin": "/data/hadith/muslim/ara-muslim.json"
+      },
+      {
+        "name": "ara-muslim1",
+        "book": "muslim",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "Diacritics removed for easier searching",
+        "link": "/data/hadith/muslim/ara-muslim1.json",
+        "linkmin": "/data/hadith/muslim/ara-muslim1.json"
+      },
+      {
+        "name": "ben-muslim",
+        "book": "muslim",
+        "author": "Unknown",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/muslim/ben-muslim.json",
+        "linkmin": "/data/hadith/muslim/ben-muslim.json"
+      },
+      {
+        "name": "eng-muslim",
+        "book": "muslim",
+        "author": "Abdul Hamid Siddiqui",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/muslim/eng-muslim.json",
+        "linkmin": "/data/hadith/muslim/eng-muslim.json"
+      },
+      {
+        "name": "fra-muslim",
+        "book": "muslim",
+        "author": "Unknown",
+        "language": "French",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/muslim/fra-muslim.json",
+        "linkmin": "/data/hadith/muslim/fra-muslim.json"
+      },
+      {
+        "name": "ind-muslim",
+        "book": "muslim",
+        "author": "Unknown",
+        "language": "Indonesian",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/muslim/ind-muslim.json",
+        "linkmin": "/data/hadith/muslim/ind-muslim.json"
+      },
+      {
+        "name": "rus-muslim",
+        "book": "muslim",
+        "author": "Unknown",
+        "language": "Russian",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://isnad.link/",
+        "comments": "",
+        "link": "/data/hadith/muslim/rus-muslim.json",
+        "linkmin": "/data/hadith/muslim/rus-muslim.json"
+      },
+      {
+        "name": "tam-muslim",
+        "book": "muslim",
+        "author": "Unknown",
+        "language": "Tamil",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/muslim/tam-muslim.json",
+        "linkmin": "/data/hadith/muslim/tam-muslim.json"
+      },
+      {
+        "name": "tur-muslim",
+        "book": "muslim",
+        "author": "Unknown",
+        "language": "Turkish",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/muslim/tur-muslim.json",
+        "linkmin": "/data/hadith/muslim/tur-muslim.json"
+      },
+      {
+        "name": "urd-muslim",
+        "book": "muslim",
+        "author": "Unknown",
+        "language": "Urdu",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/muslim/urd-muslim.json",
+        "linkmin": "/data/hadith/muslim/urd-muslim.json"
+      }
+    ]
+  },
+  "nasai": {
+    "name": "Sunan an Nasai",
+    "collection": [
+      {
+        "name": "ara-nasai",
+        "book": "nasai",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/nasai/ara-nasai.json",
+        "linkmin": "/data/hadith/nasai/ara-nasai.json"
+      },
+      {
+        "name": "ara-nasai1",
+        "book": "nasai",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "Diacritics removed for easier searching",
+        "link": "/data/hadith/nasai/ara-nasai1.json",
+        "linkmin": "/data/hadith/nasai/ara-nasai1.json"
+      },
+      {
+        "name": "ben-nasai",
+        "book": "nasai",
+        "author": "Unknown",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/nasai/ben-nasai.json",
+        "linkmin": "/data/hadith/nasai/ben-nasai.json"
+      },
+      {
+        "name": "eng-nasai",
+        "book": "nasai",
+        "author": "Unknown",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/nasai/eng-nasai.json",
+        "linkmin": "/data/hadith/nasai/eng-nasai.json"
+      },
+      {
+        "name": "fra-nasai",
+        "book": "nasai",
+        "author": "Unknown",
+        "language": "French",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/nasai/fra-nasai.json",
+        "linkmin": "/data/hadith/nasai/fra-nasai.json"
+      },
+      {
+        "name": "ind-nasai",
+        "book": "nasai",
+        "author": "Unknown",
+        "language": "Indonesian",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/nasai/ind-nasai.json",
+        "linkmin": "/data/hadith/nasai/ind-nasai.json"
+      },
+      {
+        "name": "tur-nasai",
+        "book": "nasai",
+        "author": "Unknown",
+        "language": "Turkish",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/nasai/tur-nasai.json",
+        "linkmin": "/data/hadith/nasai/tur-nasai.json"
+      },
+      {
+        "name": "urd-nasai",
+        "book": "nasai",
+        "author": "Unknown",
+        "language": "Urdu",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/nasai/urd-nasai.json",
+        "linkmin": "/data/hadith/nasai/urd-nasai.json"
+      }
+    ]
+  },
+  "nawawi": {
+    "name": "Forty Hadith of an-Nawawi",
+    "collection": [
+      {
+        "name": "ara-nawawi",
+        "book": "nawawi",
+        "author": "Imam Nawawi",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/nawawi/ara-nawawi.json",
+        "linkmin": "/data/hadith/nawawi/ara-nawawi.json"
+      },
+      {
+        "name": "ara-nawawi1",
+        "book": "nawawi",
+        "author": "Imam Nawawi",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "Diacritics removed for easier searching",
+        "link": "/data/hadith/nawawi/ara-nawawi1.json",
+        "linkmin": "/data/hadith/nawawi/ara-nawawi1.json"
+      },
+      {
+        "name": "ben-nawawi",
+        "book": "nawawi",
+        "author": "Imam Nawawi",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/nawawi/ben-nawawi.json",
+        "linkmin": "/data/hadith/nawawi/ben-nawawi.json"
+      },
+      {
+        "name": "eng-nawawi",
+        "book": "nawawi",
+        "author": "Imam Nawawi",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/nawawi/eng-nawawi.json",
+        "linkmin": "/data/hadith/nawawi/eng-nawawi.json"
+      },
+      {
+        "name": "fra-nawawi",
+        "book": "nawawi",
+        "author": "Unknown",
+        "language": "French",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/nawawi/fra-nawawi.json",
+        "linkmin": "/data/hadith/nawawi/fra-nawawi.json"
+      }
+    ]
+  },
+  "qudsi": {
+    "name": "Forty Hadith Qudsi",
+    "collection": [
+      {
+        "name": "ara-qudsi",
+        "book": "qudsi",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/qudsi/ara-qudsi.json",
+        "linkmin": "/data/hadith/qudsi/ara-qudsi.json"
+      },
+      {
+        "name": "ara-qudsi1",
+        "book": "qudsi",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "Diacritics removed for easier searching",
+        "link": "/data/hadith/qudsi/ara-qudsi1.json",
+        "linkmin": "/data/hadith/qudsi/ara-qudsi1.json"
+      },
+      {
+        "name": "eng-qudsi",
+        "book": "qudsi",
+        "author": "Unknown",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/qudsi/eng-qudsi.json",
+        "linkmin": "/data/hadith/qudsi/eng-qudsi.json"
+      },
+      {
+        "name": "fra-qudsi",
+        "book": "qudsi",
+        "author": "Unknown",
+        "language": "French",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/qudsi/fra-qudsi.json",
+        "linkmin": "/data/hadith/qudsi/fra-qudsi.json"
+      }
+    ]
+  },
+  "tirmidhi": {
+    "name": "Jami At Tirmidhi",
+    "collection": [
+      {
+        "name": "ara-tirmidhi",
+        "book": "tirmidhi",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/tirmidhi/ara-tirmidhi.json",
+        "linkmin": "/data/hadith/tirmidhi/ara-tirmidhi.json"
+      },
+      {
+        "name": "ara-tirmidhi1",
+        "book": "tirmidhi",
+        "author": "Unknown",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "Diacritics removed for easier searching",
+        "link": "/data/hadith/tirmidhi/ara-tirmidhi1.json",
+        "linkmin": "/data/hadith/tirmidhi/ara-tirmidhi1.json"
+      },
+      {
+        "name": "ben-tirmidhi",
+        "book": "tirmidhi",
+        "author": "Unknown",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/tirmidhi/ben-tirmidhi.json",
+        "linkmin": "/data/hadith/tirmidhi/ben-tirmidhi.json"
+      },
+      {
+        "name": "eng-tirmidhi",
+        "book": "tirmidhi",
+        "author": "Unknown",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/tirmidhi/eng-tirmidhi.json",
+        "linkmin": "/data/hadith/tirmidhi/eng-tirmidhi.json"
+      },
+      {
+        "name": "ind-tirmidhi",
+        "book": "tirmidhi",
+        "author": "Unknown",
+        "language": "Indonesian",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/tirmidhi/ind-tirmidhi.json",
+        "linkmin": "/data/hadith/tirmidhi/ind-tirmidhi.json"
+      },
+      {
+        "name": "tur-tirmidhi",
+        "book": "tirmidhi",
+        "author": "Unknown",
+        "language": "Turkish",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/tirmidhi/tur-tirmidhi.json",
+        "linkmin": "/data/hadith/tirmidhi/tur-tirmidhi.json"
+      },
+      {
+        "name": "urd-tirmidhi",
+        "book": "tirmidhi",
+        "author": "Unknown",
+        "language": "Urdu",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/tirmidhi/urd-tirmidhi.json",
+        "linkmin": "/data/hadith/tirmidhi/urd-tirmidhi.json"
+      }
+    ]
+  },
+  "ahmad": {
+    "name": "Musnad Ahmad",
+    "collection": [
+      {
+        "name": "ara-ahmad",
+        "book": "ahmad",
+        "author": "Sunnah.com",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "https://sunnah.com/ahmad",
+        "link": "/data/hadith/ahmad/ara-ahmad.json",
+        "linkmin": "/data/hadith/ahmad/ara-ahmad.json"
+      },
+      {
+        "name": "eng-ahmad",
+        "book": "ahmad",
+        "author": "Sunnah.com",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/ahmad",
+        "link": "/data/hadith/ahmad/eng-ahmad.json",
+        "linkmin": "/data/hadith/ahmad/eng-ahmad.json"
+      }
+    ]
+  },
+  "darimi": {
+    "name": "Sunan ad-Darimi",
+    "collection": [
+      {
+        "name": "ara-darimi",
+        "book": "darimi",
+        "author": "Sunnah.com",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "https://sunnah.com/darimi",
+        "link": "/data/hadith/darimi/ara-darimi.json",
+        "linkmin": "/data/hadith/darimi/ara-darimi.json"
+      },
+      {
+        "name": "eng-darimi",
+        "book": "darimi",
+        "author": "Sunnah.com",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/darimi",
+        "link": "/data/hadith/darimi/eng-darimi.json",
+        "linkmin": "/data/hadith/darimi/eng-darimi.json"
+      }
+    ]
+  },
+  "adab": {
+    "name": "Al-Adab al-Mufrad",
+    "collection": [
+      {
+        "name": "ara-adab",
+        "book": "adab",
+        "author": "Sunnah.com",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "https://sunnah.com/adab",
+        "link": "/data/hadith/adab/ara-adab.json",
+        "linkmin": "/data/hadith/adab/ara-adab.json"
+      },
+      {
+        "name": "eng-adab",
+        "book": "adab",
+        "author": "Sunnah.com",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/adab",
+        "link": "/data/hadith/adab/eng-adab.json",
+        "linkmin": "/data/hadith/adab/eng-adab.json"
+      }
+    ]
+  },
+  "bulugh": {
+    "name": "Bulugh al-Maram",
+    "collection": [
+      {
+        "name": "ara-bulugh",
+        "book": "bulugh",
+        "author": "Sunnah.com",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "https://sunnah.com/bulugh",
+        "link": "/data/hadith/bulugh/ara-bulugh.json",
+        "linkmin": "/data/hadith/bulugh/ara-bulugh.json"
+      },
+      {
+        "name": "eng-bulugh",
+        "book": "bulugh",
+        "author": "Sunnah.com",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/bulugh",
+        "link": "/data/hadith/bulugh/eng-bulugh.json",
+        "linkmin": "/data/hadith/bulugh/eng-bulugh.json"
+      }
+    ]
+  },
+  "riyadussalihin": {
+    "name": "Riyad as-Salihin",
+    "collection": [
+      {
+        "name": "ara-riyadussalihin",
+        "book": "riyadussalihin",
+        "author": "Sunnah.com",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "https://sunnah.com/riyadussalihin",
+        "link": "/data/hadith/riyadussalihin/ara-riyadussalihin.json",
+        "linkmin": "/data/hadith/riyadussalihin/ara-riyadussalihin.json"
+      },
+      {
+        "name": "eng-riyadussalihin",
+        "book": "riyadussalihin",
+        "author": "Sunnah.com",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/riyadussalihin",
+        "link": "/data/hadith/riyadussalihin/eng-riyadussalihin.json",
+        "linkmin": "/data/hadith/riyadussalihin/eng-riyadussalihin.json"
+      }
+    ]
+  },
+  "mishkat": {
+    "name": "Mishkat al-Masabih",
+    "collection": [
+      {
+        "name": "ara-mishkat",
+        "book": "mishkat",
+        "author": "Sunnah.com",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "https://sunnah.com/mishkat",
+        "link": "/data/hadith/mishkat/ara-mishkat.json",
+        "linkmin": "/data/hadith/mishkat/ara-mishkat.json"
+      },
+      {
+        "name": "eng-mishkat",
+        "book": "mishkat",
+        "author": "Sunnah.com",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/mishkat",
+        "link": "/data/hadith/mishkat/eng-mishkat.json",
+        "linkmin": "/data/hadith/mishkat/eng-mishkat.json"
+      }
+    ]
+  },
+  "shamail": {
+    "name": "Shamail al-Muhammadiyah",
+    "collection": [
+      {
+        "name": "ara-shamail",
+        "book": "shamail",
+        "author": "Sunnah.com",
+        "language": "Arabic",
+        "has_sections": true,
+        "direction": "rtl",
+        "source": "https://sunnah.com/shamail",
+        "link": "/data/hadith/shamail/ara-shamail.json",
+        "linkmin": "/data/hadith/shamail/ara-shamail.json"
+      },
+      {
+        "name": "eng-shamail",
+        "book": "shamail",
+        "author": "Sunnah.com",
+        "language": "English",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/shamail",
+        "link": "/data/hadith/shamail/eng-shamail.json",
+        "linkmin": "/data/hadith/shamail/eng-shamail.json"
+      }
+    ]
+  }
+}
