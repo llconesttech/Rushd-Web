@@ -142,6 +142,10 @@ const HadithChapters = () => {
         });
     }, [chapters, searchTerm]);
 
+    // Extract search number for use in render
+    const isNum = /^\d+$/.test(searchTerm);
+    const searchNum = isNum ? parseInt(searchTerm, 10) : null;
+
     const chapterWiseTotal = chapters.reduce((sum, ch) => sum + ch.hadithCount, 0);
     const hasDiscrepancy = bookStats?.hasDiscrepancy;
     const countMin = hasDiscrepancy ? Math.min(bookStats.chapterWiseCount, bookStats.canonicalCount, bookStats.totalRecords) : chapterWiseTotal;

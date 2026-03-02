@@ -42,16 +42,19 @@ export async function getBookChapters(bookId, langCode = 'eng') {
     return Object.entries(metadata.sections)
         .filter(([key]) => key !== '0')
         .map(([sectionId, sectionName]) => {
+            const sectionIdNum = parseInt(sectionId, 10);
             const details = metadata.section_details?.[sectionId];
-            const hadithCount = details
-                ? details.hadithnumber_last - details.hadithnumber_first + 1
+            const firstH = details?.hadithnumber_first;
+            const lastH = details?.hadithnumber_last;
+            const hadithCount = (firstH && lastH && !isNaN(firstH) && !isNaN(lastH))
+                ? lastH - firstH + 1
                 : 0;
             return {
-                id: parseInt(sectionId),
+                id: isNaN(sectionIdNum) ? sectionId : sectionIdNum,
                 name: sectionName,
-                hadithCount,
-                firstHadith: details?.hadithnumber_first,
-                lastHadith: details?.hadithnumber_last,
+                hadithCount: isNaN(hadithCount) ? 0 : hadithCount,
+                firstHadith: firstH,
+                lastHadith: lastH,
                 firstArabic: details?.arabicnumber_first,
                 lastArabic: details?.arabicnumber_last,
             };
