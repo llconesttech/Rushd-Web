@@ -19,6 +19,8 @@ export default function RootLayout({ children }) {
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="robots" content="noindex, nofollow" />
+                <link rel="icon" href="/favicon.png" />
+                <link rel="apple-touch-icon" href="/favicon.png" />
                 <title>Rushd — Islamic Companion</title>
                 <meta name="description" content="Comprehensive Islamic companion app with Quran, Hadith, prayer times, and more." />
                 <script

@@ -1,0 +1,416 @@
+{
+  "info": {
+    "name": "Rushd Islamic App API",
+    "description": "API Collection for Rushd Islamic Companion App (Flutter)\n\n## Authentication\n\n### For Flutter/Mobile Apps:\nAdd header `x-api-key` with your API key.\n\n### For Web Apps:\nAdd headers:\n- `x-app-ts`: Current Unix timestamp\n- `x-app-token`: HMAC-SHA256(ts, API_SECRET)\n\n## Base URL\n`http://localhost:3000/api/v1`\n\n## Environment Variables\n- `{{baseUrl}}`: http://localhost:3000/api/v1\n- `{{apiKey}}`: Your mobile API key\n- `{{timestamp}}`: {{$timestamp}}\n- `{{webToken}}`: HMAC token (generate in pre-request script)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "apiKey",
+      "value": "your-api-key-here",
+      "type": "string"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Generate Web HMAC Token",
+          "const timestamp = Math.floor(Date.now() / 1000);",
+          "const secret = 'rushd-app-secret-change-this-in-production';",
+          "const crypto = require('crypto');",
+          "const token = crypto.createHmac('sha256', secret).update(timestamp.toString()).digest('hex');",
+          "pm.collectionVariables.set('timestamp', timestamp);",
+          "pm.collectionVariables.set('webToken', token);"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Quran",
+      "item": [
+        {
+          "name": "Get Quran Meta",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/quran/meta",
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Surah List",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/quran/surah?edition=quran-uthmani&type=arabic",
+              "host": ["{{baseUrl}}"],
+              "path": ["quran", "surah"],
+              "query": [
+                { "key": "edition", "value": "quran-uthmani" },
+                { "key": "type", "value": "arabic" }
+              ]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Surah by Number",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/quran/surah/1?edition=en-sahih&type=translation",
+              "host": ["{{baseUrl}}"],
+              "path": ["quran", "surah", "1"],
+              "query": [
+                { "key": "edition", "value": "en-sahih" },
+                { "key": "type", "value": "translation" }
+              ]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Mushaf Page",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/quran/page/quran-uthmani/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["quran", "page", "quran-uthmani", "1"]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Tafsir Meta",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/quran/tafsir-meta",
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Shan-e-Nuzool",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/quran/shan-e-nuzool/en-al-wahidi/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["quran", "shan-e-nuzool", "en-al-wahidi", "1"]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Search Quran",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/quran/search?q=Allah&edition=en-sahih&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["quran", "search"],
+              "query": [
+                { "key": "q", "value": "Allah" },
+                { "key": "edition", "value": "en-sahih" },
+                { "key": "limit", "value": "10" }
+              ]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hadith",
+      "item": [
+        {
+          "name": "Get Hadith Editions",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hadith/editions",
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Hadith Info",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hadith/info",
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Hadith Book (English)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/hadith/bukhari/eng",
+              "host": ["{{baseUrl}}"],
+              "path": ["hadith", "bukhari", "eng"]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Hadith Book (Arabic)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/hadith/bukhari/ara",
+              "host": ["{{baseUrl}}"],
+              "path": ["hadith", "bukhari", "ara"]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Narrators",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hadith/narrators",
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Narrator Clusters",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hadith/narrator-clusters",
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hadith Q&A",
+      "item": [
+        {
+          "name": "Get Categories",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/qa/categories",
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Subcategories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/qa/category/Faith%20&%20Belief",
+              "host": ["{{baseUrl}}"],
+              "path": ["qa", "category", "Faith & Belief"]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Q&A by Subcategory",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/qa/subcategory/Faith%20&%20Belief/Beliefs%20about%20Allah?page=1&limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["qa", "subcategory", "Faith & Belief", "Beliefs about Allah"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "20" }
+              ]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Single Q&A Item",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/qa/item/bukhari-1-1",
+              "host": ["{{baseUrl}}"],
+              "path": ["qa", "item", "bukhari-1-1"]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Search Q&A",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/qa/search?q=prayer&page=1&limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["qa", "search"],
+              "query": [
+                { "key": "q", "value": "prayer" },
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "20" }
+              ]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Topics Index",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/qa/topics",
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Audio",
+      "item": [
+        {
+          "name": "Get Audio (Example)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/audio/mishary_rashid/001.mp3",
+              "host": ["{{baseUrl}}"],
+              "path": ["audio", "mishary_rashid", "001.mp3"]
+            },
+            "header": []
+          },
+          "note": "Audio endpoints are public (no auth required)"
+        }
+      ]
+    },
+    {
+      "name": "Assets",
+      "item": [
+        {
+          "name": "Get Tuluth Font (Example)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/assets/fonts/Tuluth/Vector-0.svg",
+              "host": ["{{baseUrl}}"],
+              "path": ["assets", "fonts", "Tuluth", "Vector-0.svg"]
+            },
+            "header": []
+          },
+          "note": "Assets are public (no auth required)"
+        }
+      ]
+    },
+    {
+      "name": "Asmaul Husna (99 Names)",
+      "item": [
+        {
+          "name": "Get All 99 Names",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/asmaul-husna",
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        },
+        {
+          "name": "Get Name by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/asmaul-husna/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["asmaul-husna", "1"]
+            },
+            "header": [
+              { "key": "x-api-key", "value": "{{apiKey}}", "disabled": false },
+              { "key": "x-app-ts", "value": "{{timestamp}}", "disabled": false },
+              { "key": "x-app-token", "value": "{{webToken}}", "disabled": false }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

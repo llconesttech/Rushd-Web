@@ -11,6 +11,7 @@ import hadithRoutes from './routes/hadith.js';
 import qaRoutes from './routes/qa.js';
 import audioRoutes from './routes/audio.js';
 import assetsRoutes from './routes/assets.js';
+import asmauHusnaRoutes from './routes/asmaulHusna.js';
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -37,6 +38,7 @@ app.prepare().then(() => {
     server.use('/api/v1/quran', apiRateLimiter, authMiddleware, securityHeaders, quranRoutes);
     server.use('/api/v1/hadith', apiRateLimiter, authMiddleware, securityHeaders, hadithRoutes);
     server.use('/api/v1/qa', apiRateLimiter, authMiddleware, securityHeaders, qaRoutes);
+    server.use('/api/v1/asmaul-husna', apiRateLimiter, authMiddleware, securityHeaders, asmauHusnaRoutes);
     // Audio and assets are public (no auth required)
     server.use('/api/v1/audio', apiRateLimiter, audioRoutes);
     server.use('/api/v1/assets', apiRateLimiter, assetsRoutes);

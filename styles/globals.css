@@ -4,6 +4,30 @@
   box-sizing: border-box;
 }
 
+/* ========== QURAN SWITCH BUTTON ========== */
+.quran-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+  user-select: none;
+  text-decoration: none;
+}
+
+.quran-switch-btn:hover {
+  background: #d1fae5;
+  border-color: #10b981;
+  color: #047857;
+}
+
 @font-face {
   font-family: 'Amiri Quran';
   src: url('/fonts/AmiriQuran.ttf') format('truetype');
