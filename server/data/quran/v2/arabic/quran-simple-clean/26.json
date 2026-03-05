@@ -1,0 +1,2277 @@
+{
+  "number": 26,
+  "name": "سُورَةُ الشُّعَرَاءِ",
+  "englishName": "Ash-Shu'araa",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "بسم الله الرحمن الرحيم طسم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 2,
+      "text": "تلك آيات الكتاب المبين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 3,
+      "text": "لعلك باخع نفسك ألا يكونوا مؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 4,
+      "text": "إن نشأ ننزل عليهم من السماء آية فظلت أعناقهم لها خاضعين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 5,
+      "text": "وما يأتيهم من ذكر من الرحمن محدث إلا كانوا عنه معرضين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 6,
+      "text": "فقد كذبوا فسيأتيهم أنباء ما كانوا به يستهزئون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 7,
+      "text": "أولم يروا إلى الأرض كم أنبتنا فيها من كل زوج كريم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 8,
+      "text": "إن في ذلك لآية ۖ وما كان أكثرهم مؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 9,
+      "text": "وإن ربك لهو العزيز الرحيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 316,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 10,
+      "text": "وإذ نادى ربك موسى أن ائت القوم الظالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 11,
+      "text": "قوم فرعون ۚ ألا يتقون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 12,
+      "text": "قال رب إني أخاف أن يكذبون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 13,
+      "text": "ويضيق صدري ولا ينطلق لساني فأرسل إلى هارون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 14,
+      "text": "ولهم علي ذنب فأخاف أن يقتلون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 15,
+      "text": "قال كلا ۖ فاذهبا بآياتنا ۖ إنا معكم مستمعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 16,
+      "text": "فأتيا فرعون فقولا إنا رسول رب العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 17,
+      "text": "أن أرسل معنا بني إسرائيل",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 18,
+      "text": "قال ألم نربك فينا وليدا ولبثت فينا من عمرك سنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 19,
+      "text": "وفعلت فعلتك التي فعلت وأنت من الكافرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 367,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 20,
+      "text": "قال فعلتها إذا وأنا من الضالين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 21,
+      "text": "ففررت منكم لما خفتكم فوهب لي ربي حكما وجعلني من المرسلين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 22,
+      "text": "وتلك نعمة تمنها علي أن عبدت بني إسرائيل",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 23,
+      "text": "قال فرعون وما رب العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 24,
+      "text": "قال رب السماوات والأرض وما بينهما ۖ إن كنتم موقنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 25,
+      "text": "قال لمن حوله ألا تستمعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 26,
+      "text": "قال ربكم ورب آبائكم الأولين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 27,
+      "text": "قال إن رسولكم الذي أرسل إليكم لمجنون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 28,
+      "text": "قال رب المشرق والمغرب وما بينهما ۖ إن كنتم تعقلون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 29,
+      "text": "قال لئن اتخذت إلها غيري لأجعلنك من المسجونين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 30,
+      "text": "قال أولو جئتك بشيء مبين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 31,
+      "text": "قال فأت به إن كنت من الصادقين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 32,
+      "text": "فألقى عصاه فإذا هي ثعبان مبين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 33,
+      "text": "ونزع يده فإذا هي بيضاء للناظرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 317,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 34,
+      "text": "قال للملإ حوله إن هذا لساحر عليم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 35,
+      "text": "يريد أن يخرجكم من أرضكم بسحره فماذا تأمرون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 36,
+      "text": "قالوا أرجه وأخاه وابعث في المدائن حاشرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 37,
+      "text": "يأتوك بكل سحار عليم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 38,
+      "text": "فجمع السحرة لميقات يوم معلوم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 39,
+      "text": "وقيل للناس هل أنتم مجتمعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 368,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 40,
+      "text": "لعلنا نتبع السحرة إن كانوا هم الغالبين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 41,
+      "text": "فلما جاء السحرة قالوا لفرعون أئن لنا لأجرا إن كنا نحن الغالبين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 42,
+      "text": "قال نعم وإنكم إذا لمن المقربين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 43,
+      "text": "قال لهم موسى ألقوا ما أنتم ملقون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 44,
+      "text": "فألقوا حبالهم وعصيهم وقالوا بعزة فرعون إنا لنحن الغالبون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 45,
+      "text": "فألقى موسى عصاه فإذا هي تلقف ما يأفكون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 46,
+      "text": "فألقي السحرة ساجدين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 47,
+      "text": "قالوا آمنا برب العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 48,
+      "text": "رب موسى وهارون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 49,
+      "text": "قال آمنتم له قبل أن آذن لكم ۖ إنه لكبيركم الذي علمكم السحر فلسوف تعلمون ۚ لأقطعن أيديكم وأرجلكم من خلاف ولأصلبنكم أجمعين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 50,
+      "text": "قالوا لا ضير ۖ إنا إلى ربنا منقلبون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 51,
+      "text": "إنا نطمع أن يغفر لنا ربنا خطايانا أن كنا أول المؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 147,
+      "sajda": false
+    },
+    {
+      "number": 52,
+      "text": "۞ وأوحينا إلى موسى أن أسر بعبادي إنكم متبعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 318,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 53,
+      "text": "فأرسل فرعون في المدائن حاشرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 54,
+      "text": "إن هؤلاء لشرذمة قليلون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 55,
+      "text": "وإنهم لنا لغائظون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 56,
+      "text": "وإنا لجميع حاذرون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 57,
+      "text": "فأخرجناهم من جنات وعيون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 58,
+      "text": "وكنوز ومقام كريم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 59,
+      "text": "كذلك وأورثناها بني إسرائيل",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 60,
+      "text": "فأتبعوهم مشرقين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 369,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 61,
+      "text": "فلما تراءى الجمعان قال أصحاب موسى إنا لمدركون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 62,
+      "text": "قال كلا ۖ إن معي ربي سيهدين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 63,
+      "text": "فأوحينا إلى موسى أن اضرب بعصاك البحر ۖ فانفلق فكان كل فرق كالطود العظيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 64,
+      "text": "وأزلفنا ثم الآخرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 65,
+      "text": "وأنجينا موسى ومن معه أجمعين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 66,
+      "text": "ثم أغرقنا الآخرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 67,
+      "text": "إن في ذلك لآية ۖ وما كان أكثرهم مؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 68,
+      "text": "وإن ربك لهو العزيز الرحيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 69,
+      "text": "واتل عليهم نبأ إبراهيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 319,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 70,
+      "text": "إذ قال لأبيه وقومه ما تعبدون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 71,
+      "text": "قالوا نعبد أصناما فنظل لها عاكفين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 72,
+      "text": "قال هل يسمعونكم إذ تدعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 73,
+      "text": "أو ينفعونكم أو يضرون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 74,
+      "text": "قالوا بل وجدنا آباءنا كذلك يفعلون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 75,
+      "text": "قال أفرأيتم ما كنتم تعبدون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 76,
+      "text": "أنتم وآباؤكم الأقدمون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 77,
+      "text": "فإنهم عدو لي إلا رب العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 78,
+      "text": "الذي خلقني فهو يهدين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 79,
+      "text": "والذي هو يطعمني ويسقين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 80,
+      "text": "وإذا مرضت فهو يشفين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 81,
+      "text": "والذي يميتني ثم يحيين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 82,
+      "text": "والذي أطمع أن يغفر لي خطيئتي يوم الدين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 83,
+      "text": "رب هب لي حكما وألحقني بالصالحين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 370,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 84,
+      "text": "واجعل لي لسان صدق في الآخرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 85,
+      "text": "واجعلني من ورثة جنة النعيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 86,
+      "text": "واغفر لأبي إنه كان من الضالين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 87,
+      "text": "ولا تخزني يوم يبعثون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 88,
+      "text": "يوم لا ينفع مال ولا بنون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 89,
+      "text": "إلا من أتى الله بقلب سليم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 90,
+      "text": "وأزلفت الجنة للمتقين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 91,
+      "text": "وبرزت الجحيم للغاوين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 92,
+      "text": "وقيل لهم أين ما كنتم تعبدون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 93,
+      "text": "من دون الله هل ينصرونكم أو ينتصرون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 94,
+      "text": "فكبكبوا فيها هم والغاوون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 95,
+      "text": "وجنود إبليس أجمعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 96,
+      "text": "قالوا وهم فيها يختصمون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 97,
+      "text": "تالله إن كنا لفي ضلال مبين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 98,
+      "text": "إذ نسويكم برب العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 99,
+      "text": "وما أضلنا إلا المجرمون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 100,
+      "text": "فما لنا من شافعين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 101,
+      "text": "ولا صديق حميم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 102,
+      "text": "فلو أن لنا كرة فنكون من المؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 103,
+      "text": "إن في ذلك لآية ۖ وما كان أكثرهم مؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 104,
+      "text": "وإن ربك لهو العزيز الرحيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 320,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 105,
+      "text": "كذبت قوم نوح المرسلين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 106,
+      "text": "إذ قال لهم أخوهم نوح ألا تتقون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 107,
+      "text": "إني لكم رسول أمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 108,
+      "text": "فاتقوا الله وأطيعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 109,
+      "text": "وما أسألكم عليه من أجر ۖ إن أجري إلا على رب العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 110,
+      "text": "فاتقوا الله وأطيعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 148,
+      "sajda": false
+    },
+    {
+      "number": 111,
+      "text": "۞ قالوا أنؤمن لك واتبعك الأرذلون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 371,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 112,
+      "text": "قال وما علمي بما كانوا يعملون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 113,
+      "text": "إن حسابهم إلا على ربي ۖ لو تشعرون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 114,
+      "text": "وما أنا بطارد المؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 115,
+      "text": "إن أنا إلا نذير مبين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 116,
+      "text": "قالوا لئن لم تنته يا نوح لتكونن من المرجومين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 117,
+      "text": "قال رب إن قومي كذبون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 118,
+      "text": "فافتح بيني وبينهم فتحا ونجني ومن معي من المؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 119,
+      "text": "فأنجيناه ومن معه في الفلك المشحون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 120,
+      "text": "ثم أغرقنا بعد الباقين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 121,
+      "text": "إن في ذلك لآية ۖ وما كان أكثرهم مؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 122,
+      "text": "وإن ربك لهو العزيز الرحيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 321,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 123,
+      "text": "كذبت عاد المرسلين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 124,
+      "text": "إذ قال لهم أخوهم هود ألا تتقون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 125,
+      "text": "إني لكم رسول أمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 126,
+      "text": "فاتقوا الله وأطيعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 127,
+      "text": "وما أسألكم عليه من أجر ۖ إن أجري إلا على رب العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 128,
+      "text": "أتبنون بكل ريع آية تعبثون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 129,
+      "text": "وتتخذون مصانع لعلكم تخلدون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 130,
+      "text": "وإذا بطشتم بطشتم جبارين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 131,
+      "text": "فاتقوا الله وأطيعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 132,
+      "text": "واتقوا الذي أمدكم بما تعلمون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 133,
+      "text": "أمدكم بأنعام وبنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 134,
+      "text": "وجنات وعيون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 135,
+      "text": "إني أخاف عليكم عذاب يوم عظيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 136,
+      "text": "قالوا سواء علينا أوعظت أم لم تكن من الواعظين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 372,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 137,
+      "text": "إن هذا إلا خلق الأولين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 138,
+      "text": "وما نحن بمعذبين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 139,
+      "text": "فكذبوه فأهلكناهم ۗ إن في ذلك لآية ۖ وما كان أكثرهم مؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 140,
+      "text": "وإن ربك لهو العزيز الرحيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 322,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 141,
+      "text": "كذبت ثمود المرسلين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 142,
+      "text": "إذ قال لهم أخوهم صالح ألا تتقون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 143,
+      "text": "إني لكم رسول أمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 144,
+      "text": "فاتقوا الله وأطيعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 145,
+      "text": "وما أسألكم عليه من أجر ۖ إن أجري إلا على رب العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 146,
+      "text": "أتتركون في ما هاهنا آمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 147,
+      "text": "في جنات وعيون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 148,
+      "text": "وزروع ونخل طلعها هضيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 149,
+      "text": "وتنحتون من الجبال بيوتا فارهين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 150,
+      "text": "فاتقوا الله وأطيعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 151,
+      "text": "ولا تطيعوا أمر المسرفين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 152,
+      "text": "الذين يفسدون في الأرض ولا يصلحون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 153,
+      "text": "قالوا إنما أنت من المسحرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 154,
+      "text": "ما أنت إلا بشر مثلنا فأت بآية إن كنت من الصادقين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 155,
+      "text": "قال هذه ناقة لها شرب ولكم شرب يوم معلوم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 156,
+      "text": "ولا تمسوها بسوء فيأخذكم عذاب يوم عظيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 157,
+      "text": "فعقروها فأصبحوا نادمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 158,
+      "text": "فأخذهم العذاب ۗ إن في ذلك لآية ۖ وما كان أكثرهم مؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 159,
+      "text": "وإن ربك لهو العزيز الرحيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 373,
+      "ruku": 323,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 160,
+      "text": "كذبت قوم لوط المرسلين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 161,
+      "text": "إذ قال لهم أخوهم لوط ألا تتقون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 162,
+      "text": "إني لكم رسول أمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 163,
+      "text": "فاتقوا الله وأطيعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 164,
+      "text": "وما أسألكم عليه من أجر ۖ إن أجري إلا على رب العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 165,
+      "text": "أتأتون الذكران من العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 166,
+      "text": "وتذرون ما خلق لكم ربكم من أزواجكم ۚ بل أنتم قوم عادون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 167,
+      "text": "قالوا لئن لم تنته يا لوط لتكونن من المخرجين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 168,
+      "text": "قال إني لعملكم من القالين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 169,
+      "text": "رب نجني وأهلي مما يعملون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 170,
+      "text": "فنجيناه وأهله أجمعين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 171,
+      "text": "إلا عجوزا في الغابرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 172,
+      "text": "ثم دمرنا الآخرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 173,
+      "text": "وأمطرنا عليهم مطرا ۖ فساء مطر المنذرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 174,
+      "text": "إن في ذلك لآية ۖ وما كان أكثرهم مؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 175,
+      "text": "وإن ربك لهو العزيز الرحيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 324,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 176,
+      "text": "كذب أصحاب الأيكة المرسلين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 177,
+      "text": "إذ قال لهم شعيب ألا تتقون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 178,
+      "text": "إني لكم رسول أمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 179,
+      "text": "فاتقوا الله وأطيعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 180,
+      "text": "وما أسألكم عليه من أجر ۖ إن أجري إلا على رب العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 149,
+      "sajda": false
+    },
+    {
+      "number": 181,
+      "text": "۞ أوفوا الكيل ولا تكونوا من المخسرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 182,
+      "text": "وزنوا بالقسطاس المستقيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 183,
+      "text": "ولا تبخسوا الناس أشياءهم ولا تعثوا في الأرض مفسدين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 374,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 184,
+      "text": "واتقوا الذي خلقكم والجبلة الأولين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 185,
+      "text": "قالوا إنما أنت من المسحرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 186,
+      "text": "وما أنت إلا بشر مثلنا وإن نظنك لمن الكاذبين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 187,
+      "text": "فأسقط علينا كسفا من السماء إن كنت من الصادقين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 188,
+      "text": "قال ربي أعلم بما تعملون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 189,
+      "text": "فكذبوه فأخذهم عذاب يوم الظلة ۚ إنه كان عذاب يوم عظيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 190,
+      "text": "إن في ذلك لآية ۖ وما كان أكثرهم مؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 191,
+      "text": "وإن ربك لهو العزيز الرحيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 325,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 192,
+      "text": "وإنه لتنزيل رب العالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 193,
+      "text": "نزل به الروح الأمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 194,
+      "text": "على قلبك لتكون من المنذرين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 195,
+      "text": "بلسان عربي مبين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 196,
+      "text": "وإنه لفي زبر الأولين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 197,
+      "text": "أولم يكن لهم آية أن يعلمه علماء بني إسرائيل",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 198,
+      "text": "ولو نزلناه على بعض الأعجمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 199,
+      "text": "فقرأه عليهم ما كانوا به مؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 200,
+      "text": "كذلك سلكناه في قلوب المجرمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 201,
+      "text": "لا يؤمنون به حتى يروا العذاب الأليم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 202,
+      "text": "فيأتيهم بغتة وهم لا يشعرون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 203,
+      "text": "فيقولوا هل نحن منظرون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 204,
+      "text": "أفبعذابنا يستعجلون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 205,
+      "text": "أفرأيت إن متعناهم سنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 206,
+      "text": "ثم جاءهم ما كانوا يوعدون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 375,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 207,
+      "text": "ما أغنى عنهم ما كانوا يمتعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 208,
+      "text": "وما أهلكنا من قرية إلا لها منذرون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 209,
+      "text": "ذكرى وما كنا ظالمين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 210,
+      "text": "وما تنزلت به الشياطين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 211,
+      "text": "وما ينبغي لهم وما يستطيعون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 212,
+      "text": "إنهم عن السمع لمعزولون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 213,
+      "text": "فلا تدع مع الله إلها آخر فتكون من المعذبين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 214,
+      "text": "وأنذر عشيرتك الأقربين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 215,
+      "text": "واخفض جناحك لمن اتبعك من المؤمنين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 216,
+      "text": "فإن عصوك فقل إني بريء مما تعملون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 217,
+      "text": "وتوكل على العزيز الرحيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 218,
+      "text": "الذي يراك حين تقوم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 219,
+      "text": "وتقلبك في الساجدين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 220,
+      "text": "إنه هو السميع العليم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 221,
+      "text": "هل أنبئكم على من تنزل الشياطين",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 222,
+      "text": "تنزل على كل أفاك أثيم",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 223,
+      "text": "يلقون السمع وأكثرهم كاذبون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 224,
+      "text": "والشعراء يتبعهم الغاوون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 225,
+      "text": "ألم تر أنهم في كل واد يهيمون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 226,
+      "text": "وأنهم يقولون ما لا يفعلون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    },
+    {
+      "number": 227,
+      "text": "إلا الذين آمنوا وعملوا الصالحات وذكروا الله كثيرا وانتصروا من بعد ما ظلموا ۗ وسيعلم الذين ظلموا أي منقلب ينقلبون",
+      "juz": 19,
+      "manzil": 5,
+      "page": 376,
+      "ruku": 326,
+      "hizbQuarter": 150,
+      "sajda": false
+    }
+  ]
+}

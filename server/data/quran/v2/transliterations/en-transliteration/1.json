@@ -1,0 +1,36 @@
+{
+  "number": 1,
+  "name": "سُورَةُ ٱلْفَاتِحَةِ",
+  "englishName": "Al-Faatiha",
+  "edition": "en.transliteration",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "Bismillaahir Rahmaanir Raheem"
+    },
+    {
+      "number": 2,
+      "text": "Alhamdu lillaahi Rabbil 'aalameen"
+    },
+    {
+      "number": 3,
+      "text": "Ar-Rahmaanir-Raheem"
+    },
+    {
+      "number": 4,
+      "text": "Maaliki Yawmid-Deen"
+    },
+    {
+      "number": 5,
+      "text": "Iyyaaka na'budu wa lyyaaka nasta'een"
+    },
+    {
+      "number": 6,
+      "text": "Ihdinas-Siraatal-Mustaqeem"
+    },
+    {
+      "number": 7,
+      "text": "Siraatal-lazeena an'amta 'alaihim ghayril-maghdoobi 'alaihim wa lad-daaalleen"
+    }
+  ]
+}

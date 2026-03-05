@@ -1,0 +1,52 @@
+{
+  "number": 113,
+  "name": "سُورَةُ الفَلَقِ",
+  "englishName": "Al-Falaq",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "قُلْ اَعُوْذُ بِرَبِّ [h:14678[ا]لْفَلَ[q[ق]ِ ۟ۙ",
+      "juz": 30,
+      "page": 604,
+      "ruku": 555,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 2,
+      "text": "مِ[f:14679[ن]ْ [f:14679[ش]َرِّ مَا خَلَ[q[ق]َ ۟ۙ",
+      "juz": 30,
+      "page": 604,
+      "ruku": 555,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 3,
+      "text": "وَمِ[f:14680[ن]ْ [f:14680[ش]َرِّ غَاسِقٍ اِذَا وَقَ[q[ب]َ ۟ۙ",
+      "juz": 30,
+      "page": 604,
+      "ruku": 555,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 4,
+      "text": "وَمِ[f:14680[ن]ْ [f:14680[ش]َرِّ [h:14681[ا][l[ل][g[ن]َّفّٰثٰتِ فِی [h:14682[ا]لْعُقَ[q[د]ِ ۟ۙ",
+      "juz": 30,
+      "page": 604,
+      "ruku": 555,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 5,
+      "text": "وَمِ[f:14680[ن]ْ [f:14680[ش]َرِّ حَاسِدٍ اِذَا حَسَ[q[د]َ ۟۠",
+      "juz": 30,
+      "page": 604,
+      "ruku": 555,
+      "hizbQuarter": 240,
+      "sajda": false
+    }
+  ]
+}

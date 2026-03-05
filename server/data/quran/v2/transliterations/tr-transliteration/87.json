@@ -1,0 +1,228 @@
+{
+  "number": 87,
+  "name": "سُورَةُ الأَعۡلَىٰ",
+  "englishName": "Al-A'laa",
+  "englishNameTranslation": "The Most High",
+  "revelationType": "Meccan",
+  "numberOfAyahs": 19,
+  "ayahs": [
+    {
+      "number": 5949,
+      "text": "sebbiḥi-sme rabbike-l'a`lâ.",
+      "numberInSurah": 1,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5950,
+      "text": "elleẕî ḫaleḳa fesevvâ.",
+      "numberInSurah": 2,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5951,
+      "text": "velleẕî ḳaddera fehedâ.",
+      "numberInSurah": 3,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5952,
+      "text": "velleẕî aḫrace-lmer`â.",
+      "numberInSurah": 4,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5953,
+      "text": "fece`alehû guŝâen aḥvâ.",
+      "numberInSurah": 5,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5954,
+      "text": "senuḳriüke felâ tensâ.",
+      "numberInSurah": 6,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5955,
+      "text": "illâ mâ şâe-llâh. innehû ya`lemü-lcehra vemâ yaḫfâ.",
+      "numberInSurah": 7,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5956,
+      "text": "venüyessiruke lilyüsrâ.",
+      "numberInSurah": 8,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5957,
+      "text": "feẕekkir in nefe`ati-ẕẕikrâ.",
+      "numberInSurah": 9,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5958,
+      "text": "seyeẕẕekkeru mey yaḫşâ.",
+      "numberInSurah": 10,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5959,
+      "text": "veyetecennebühe-l'eşḳâ.",
+      "numberInSurah": 11,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5960,
+      "text": "elleẕî yaṣle-nnâra-lkübrâ.",
+      "numberInSurah": 12,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5961,
+      "text": "ŝümme lâ yemûtü fîhâ velâ yaḥyâ.",
+      "numberInSurah": 13,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5962,
+      "text": "ḳad efleḥa men tezekkâ.",
+      "numberInSurah": 14,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5963,
+      "text": "veẕekera-sme rabbihî feṣallâ.",
+      "numberInSurah": 15,
+      "juz": 30,
+      "manzil": 7,
+      "page": 591,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5964,
+      "text": "bel tü'ŝirûne-lḥayâte-ddünyâ.",
+      "numberInSurah": 16,
+      "juz": 30,
+      "manzil": 7,
+      "page": 592,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5965,
+      "text": "vel'âḫiratü ḫayruv veebḳâ.",
+      "numberInSurah": 17,
+      "juz": 30,
+      "manzil": 7,
+      "page": 592,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5966,
+      "text": "inne hâẕâ lefi-ṣṣuḥufi-l'ûlâ.",
+      "numberInSurah": 18,
+      "juz": 30,
+      "manzil": 7,
+      "page": 592,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    },
+    {
+      "number": 5967,
+      "text": "ṣuḥufi ibrâhîme vemûsâ.",
+      "numberInSurah": 19,
+      "juz": 30,
+      "manzil": 7,
+      "page": 592,
+      "ruku": 529,
+      "hizbQuarter": 237,
+      "sajda": false
+    }
+  ],
+  "edition": {
+    "identifier": "tr.transliteration",
+    "language": "tr",
+    "name": "Çeviriyazı",
+    "englishName": "Muhammet Abay",
+    "format": "text",
+    "type": "transliteration",
+    "direction": "ltr"
+  }
+}

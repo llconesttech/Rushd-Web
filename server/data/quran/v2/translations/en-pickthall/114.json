@@ -1,0 +1,67 @@
+{
+  "number": 114,
+  "name": "سُورَةُ النَّاسِ",
+  "englishName": "An-Naas",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "Say: I seek refuge in the Lord of mankind,",
+      "juz": 30,
+      "manzil": 7,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 2,
+      "text": "The King of mankind,",
+      "juz": 30,
+      "manzil": 7,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 3,
+      "text": "The god of mankind,",
+      "juz": 30,
+      "manzil": 7,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 4,
+      "text": "From the evil of the sneaking whisperer,",
+      "juz": 30,
+      "manzil": 7,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 5,
+      "text": "Who whispereth in the hearts of mankind,",
+      "juz": 30,
+      "manzil": 7,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false
+    },
+    {
+      "number": 6,
+      "text": "Of the jinn and of mankind.",
+      "juz": 30,
+      "manzil": 7,
+      "page": 604,
+      "ruku": 556,
+      "hizbQuarter": 240,
+      "sajda": false
+    }
+  ]
+}

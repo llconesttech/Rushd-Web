@@ -1,0 +1,557 @@
+{
+  "number": 54,
+  "name": "سُورَةُ القَمَرِ",
+  "englishName": "Al-Qamar",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "بسم الله الرحمن الرحيم اقتربت الساعة وانشق القمر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 463,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 2,
+      "text": "وإن يروا آية يعرضوا ويقولوا سحر مستمر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 463,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 3,
+      "text": "وكذبوا واتبعوا أهواءهم ۚ وكل أمر مستقر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 463,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 4,
+      "text": "ولقد جاءهم من الأنباء ما فيه مزدجر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 463,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 5,
+      "text": "حكمة بالغة ۖ فما تغن النذر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 463,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 6,
+      "text": "فتول عنهم ۘ يوم يدع الداع إلى شيء نكر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 528,
+      "ruku": 463,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 7,
+      "text": "خشعا أبصارهم يخرجون من الأجداث كأنهم جراد منتشر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 8,
+      "text": "مهطعين إلى الداع ۖ يقول الكافرون هذا يوم عسر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 211,
+      "sajda": false
+    },
+    {
+      "number": 9,
+      "text": "۞ كذبت قبلهم قوم نوح فكذبوا عبدنا وقالوا مجنون وازدجر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 10,
+      "text": "فدعا ربه أني مغلوب فانتصر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 11,
+      "text": "ففتحنا أبواب السماء بماء منهمر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 12,
+      "text": "وفجرنا الأرض عيونا فالتقى الماء على أمر قد قدر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 13,
+      "text": "وحملناه على ذات ألواح ودسر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 14,
+      "text": "تجري بأعيننا جزاء لمن كان كفر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 15,
+      "text": "ولقد تركناها آية فهل من مدكر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 16,
+      "text": "فكيف كان عذابي ونذر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 17,
+      "text": "ولقد يسرنا القرآن للذكر فهل من مدكر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 18,
+      "text": "كذبت عاد فكيف كان عذابي ونذر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 19,
+      "text": "إنا أرسلنا عليهم ريحا صرصرا في يوم نحس مستمر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 20,
+      "text": "تنزع الناس كأنهم أعجاز نخل منقعر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 21,
+      "text": "فكيف كان عذابي ونذر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 22,
+      "text": "ولقد يسرنا القرآن للذكر فهل من مدكر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 463,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 23,
+      "text": "كذبت ثمود بالنذر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 24,
+      "text": "فقالوا أبشرا منا واحدا نتبعه إنا إذا لفي ضلال وسعر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 25,
+      "text": "أألقي الذكر عليه من بيننا بل هو كذاب أشر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 26,
+      "text": "سيعلمون غدا من الكذاب الأشر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 27,
+      "text": "إنا مرسلو الناقة فتنة لهم فارتقبهم واصطبر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 529,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 28,
+      "text": "ونبئهم أن الماء قسمة بينهم ۖ كل شرب محتضر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 29,
+      "text": "فنادوا صاحبهم فتعاطى فعقر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 30,
+      "text": "فكيف كان عذابي ونذر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 31,
+      "text": "إنا أرسلنا عليهم صيحة واحدة فكانوا كهشيم المحتظر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 32,
+      "text": "ولقد يسرنا القرآن للذكر فهل من مدكر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 33,
+      "text": "كذبت قوم لوط بالنذر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 34,
+      "text": "إنا أرسلنا عليهم حاصبا إلا آل لوط ۖ نجيناهم بسحر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 35,
+      "text": "نعمة من عندنا ۚ كذلك نجزي من شكر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 36,
+      "text": "ولقد أنذرهم بطشتنا فتماروا بالنذر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 37,
+      "text": "ولقد راودوه عن ضيفه فطمسنا أعينهم فذوقوا عذابي ونذر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 38,
+      "text": "ولقد صبحهم بكرة عذاب مستقر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 39,
+      "text": "فذوقوا عذابي ونذر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 40,
+      "text": "ولقد يسرنا القرآن للذكر فهل من مدكر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 464,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 41,
+      "text": "ولقد جاء آل فرعون النذر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 42,
+      "text": "كذبوا بآياتنا كلها فأخذناهم أخذ عزيز مقتدر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 43,
+      "text": "أكفاركم خير من أولئكم أم لكم براءة في الزبر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 44,
+      "text": "أم يقولون نحن جميع منتصر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 45,
+      "text": "سيهزم الجمع ويولون الدبر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 46,
+      "text": "بل الساعة موعدهم والساعة أدهى وأمر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 47,
+      "text": "إن المجرمين في ضلال وسعر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 48,
+      "text": "يوم يسحبون في النار على وجوههم ذوقوا مس سقر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 49,
+      "text": "إنا كل شيء خلقناه بقدر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 530,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 50,
+      "text": "وما أمرنا إلا واحدة كلمح بالبصر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 51,
+      "text": "ولقد أهلكنا أشياعكم فهل من مدكر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 52,
+      "text": "وكل شيء فعلوه في الزبر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 53,
+      "text": "وكل صغير وكبير مستطر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 54,
+      "text": "إن المتقين في جنات ونهر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    },
+    {
+      "number": 55,
+      "text": "في مقعد صدق عند مليك مقتدر",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 465,
+      "hizbQuarter": 212,
+      "sajda": false
+    }
+  ]
+}

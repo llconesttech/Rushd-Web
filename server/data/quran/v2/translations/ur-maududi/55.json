@@ -1,0 +1,787 @@
+{
+  "number": 55,
+  "name": "سُورَةُ الرَّحۡمَٰن",
+  "englishName": "Ar-Rahmaan",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "رحمٰن نے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 2,
+      "text": "اِس قرآن کی تعلیم دی ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 3,
+      "text": "اُسی نے انسان کو پیدا کیا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 4,
+      "text": "اور اسے بولنا سکھایا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 5,
+      "text": "سورج اور چاند ایک حساب کے پابند ہیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 6,
+      "text": "اور تارے اور درخت سب سجدہ ریز ہیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 7,
+      "text": "آسمان کو اُس نے بلند کیا اور میزان قائم کر دی",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 8,
+      "text": "اِس کا تقاضا یہ ہے کہ تم میزان میں خلل نہ ڈالو",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 9,
+      "text": "انصاف کے ساتھ ٹھیک ٹھیک تولو اور ترازو میں ڈنڈی نہ مارو",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 10,
+      "text": "زمین کو اس نے سب مخلوقات کے لیے بنایا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 11,
+      "text": "اس میں ہر طرح کے بکثرت لذیذ پھل ہیں کھجور کے درخت ہیں جن کے پھل غلافوں میں لپٹے ہوئے ہیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 12,
+      "text": "طرح طرح کے غلے ہیں جن میں بھوسا بھی ہوتا ہے اور دانہ بھی",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 13,
+      "text": "پس اے جن و انس، تم اپنے رب کی کن کن نعمتوں کو جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 14,
+      "text": "انسان کو اُس نے ٹھیکری جیسے سوکھے سڑے ہوئے گارے سے بنایا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 15,
+      "text": "اور جن کو آگ کی لپٹ سے پیدا کیا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 16,
+      "text": "پس اے جن و انس، تم اپنے رب کے کن کن عجائب قدرت کو جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 531,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 17,
+      "text": "دونوں مشرق اور دونوں مغرب، سب کا مالک و پروردگار وہی ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 18,
+      "text": "پس اے جن و انس، تم اپنے رب کی کن کن قدرتوں کو جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 19,
+      "text": "دو سمندروں کو اس نے چھوڑ دیا کہ باہم مل جائیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 20,
+      "text": "پھر بھی اُن کے درمیان ایک پردہ حائل ہے جس سے وہ تجاوز نہیں کرتے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 21,
+      "text": "پس اے جن و انس، تم اپنے رب کی قدرت کے کن کن کرشموں کو جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 22,
+      "text": "اِن سمندروں سے موتی اور مونگے نکلتے ہیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 23,
+      "text": "پس اے جن و انس، تم اپنے رب کی قدرت کے کن کن کمالات کو جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 24,
+      "text": "اور یہ جہاز اُسی کے ہیں جو سمندر میں پہاڑوں کی طرح اونچے اٹھے ہوئے ہیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 25,
+      "text": "پس اے جن و انس، تم اپنے رب کے کن کن احسانات کو جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 466,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 26,
+      "text": "ہر چیز جو اس زمین پر ہے فنا ہو جانے والی ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 27,
+      "text": "اور صرف تیرے رب کی جلیل و کریم ذات ہی باقی رہنے والی ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 28,
+      "text": "پس اے جن و انس، تم اپنے رب کے کن کن کمالات کو جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 29,
+      "text": "زمین اور آسمانوں میں جو بھی ہیں سب اپنی حاجتیں اُسی سے مانگ رہے ہیں ہر آن وہ نئی شان میں ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 30,
+      "text": "پس اے جن و انس، تم اپنے رب کی کن کن صفات حمیدہ کو جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 31,
+      "text": "اے زمین کے بوجھو، عنقریب ہم تم سے باز پرس کرنے کے لیے فارغ ہوئے جاتے ہیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 32,
+      "text": "(پھر دیکھ لیں گے کہ) تم اپنے رب کے کن کن احسانات کو جھٹلاتے ہو",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 33,
+      "text": "اے گروہ جن و انس، گر تم زمین اور آسمانوں کی سرحدوں سے نکل کر بھاگ سکتے ہو تو بھاگ دیکھو نہیں بھاگ سکتے اِس کے لیے بڑا زور چاہیے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 34,
+      "text": "اپنے رب کی کن کن قدرتوں کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 35,
+      "text": "(بھاگنے کی کوشش کرو گے تو) تم پر آگ کا شعلہ اور دھواں چھوڑ دیا جائے گا جس کا تم مقابلہ نہ کر سکو گے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 36,
+      "text": "اے جن و انس، تم اپنے رب کی کن کن قدرتوں کا انکار کرو گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 37,
+      "text": "پھر (کیا بنے گی اُس وقت) جب آسمان پھٹے گا اور لال چمڑے کی طرح سرخ ہو جائے گا؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 38,
+      "text": "اے جن و انس (اُس وقت) تم اپنے رب کی کن کن قدرتوں کو جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 39,
+      "text": "اُس روز کسی انسان اور کسی جن سے اُس کا گناہ پوچھنے کی ضرورت نہ ہوگی",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 40,
+      "text": "پھر (دیکھ لیا جائے گا کہ) تم دونوں گروہ اپنے رب کے کن کن احسانات کا انکار کرتے ہو",
+      "juz": 27,
+      "manzil": 7,
+      "page": 532,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 41,
+      "text": "مجرم وہاں اپنے چہروں سے پہچان لیے جائیں گے اور انہیں پیشانی کے بال اور پاؤں پکڑ پکڑ کر گھسیٹا جائے گا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 42,
+      "text": "اُس وقت تم اپنے رب کی کن کن قدرتوں کو جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 43,
+      "text": "(اُس وقت کہا جائے گا) یہ وہی جہنم ہے جس کو مجرمین جھوٹ قرار دیا کرتے تھے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 44,
+      "text": "اُسی جہنم اور کھولتے ہوئے پانی کے درمیان وہ گردش کرتے رہیں گے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 45,
+      "text": "پھر اپنے رب کی کن کن قدرتوں کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 467,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 46,
+      "text": "اور ہر اُس شخص کے لیے جو اپنے رب کے حضور پیش ہونے کا خوف رکھتا ہو، دو باغ ہیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 47,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 48,
+      "text": "ہری بھری ڈالیوں سے بھرپور",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 49,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 50,
+      "text": "دونوں باغوں میں دو چشمے رواں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 51,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 52,
+      "text": "دونوں باغوں میں ہر پھل کی دو قسمیں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 53,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 54,
+      "text": "جنتی لوگ ایسے فرشوں پر تکیے لگا کے بیٹھیں گے جن کے استر دبیز ریشم کے ہوں گے، اور باغوں کی ڈالیاں پھلوں سے جھکی پڑ رہی ہوں گی",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 55,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 56,
+      "text": "اِن نعمتوں کے درمیان شرمیلی نگاہوں والیاں ہوں گی جنہیں اِن جنتیوں سے پہلے کسی انسان یا جن نے چھوا نہ ہوگا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 57,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 58,
+      "text": "ایسی خوبصورت جیسے ہیرے اور موتی",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 59,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 60,
+      "text": "نیکی کا بدلہ نیکی کے سوا اور کیا ہو سکتا ہے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 61,
+      "text": "پھر اے جن و انس، اپنے رب کے کن کن اوصاف حمیدہ کا تم انکار کرو گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 62,
+      "text": "اور اُن دو باغوں کے علاوہ دو باغ اور ہوں گے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 63,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 64,
+      "text": "گھنے سرسبز و شاداب باغ",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 65,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 66,
+      "text": "دونوں باغوں میں دو چشمے فواروں کی طرح ابلتے ہوئے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 67,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 533,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 68,
+      "text": "اُن میں بکثرت پھل اور کھجوریں اور انار",
+      "juz": 27,
+      "manzil": 7,
+      "page": 534,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 69,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 534,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 70,
+      "text": "اِن نعمتوں کے درمیان خوب سیرت اور خوبصورت بیویاں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 534,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 71,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 534,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 72,
+      "text": "خیموں میں ٹھیرائی ہوئی حوریں",
+      "juz": 27,
+      "manzil": 7,
+      "page": 534,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 73,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 534,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 74,
+      "text": "اِن جنتیوں سے پہلے کبھی انسان یا جن نے اُن کو نہ چھوا ہوگا",
+      "juz": 27,
+      "manzil": 7,
+      "page": 534,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 75,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 534,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 76,
+      "text": "وہ جنتی سبز قالینوں اور نفیس و نادر فرشوں پر تکیے لگا کے بیٹھیں گے",
+      "juz": 27,
+      "manzil": 7,
+      "page": 534,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 77,
+      "text": "اپنے رب کے کن کن انعامات کو تم جھٹلاؤ گے؟",
+      "juz": 27,
+      "manzil": 7,
+      "page": 534,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    },
+    {
+      "number": 78,
+      "text": "بڑی برکت والا ہے تیرے رب جلیل و کریم کا نام",
+      "juz": 27,
+      "manzil": 7,
+      "page": 534,
+      "ruku": 468,
+      "hizbQuarter": 213,
+      "sajda": false
+    }
+  ]
+}

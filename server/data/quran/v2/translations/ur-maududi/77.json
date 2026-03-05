@@ -1,0 +1,507 @@
+{
+  "number": 77,
+  "name": "سُورَةُ المُرۡسَلَاتِ",
+  "englishName": "Al-Mursalaat",
+  "ayahs": [
+    {
+      "number": 1,
+      "text": "قسم ہے اُن (ہواؤں) کی جو پے در پے بھیجی جاتی ہیں",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 2,
+      "text": "پھر طوفانی رفتار سے چلتی ہیں",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 3,
+      "text": "اور (بادلوں کو) اٹھا کر پھیلاتی ہیں",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 4,
+      "text": "پھر (اُن کو) پھاڑ کر جدا کرتی ہیں",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 5,
+      "text": "پھر (دلوں میں خدا کی) یاد ڈالتی ہیں",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 6,
+      "text": "عذر کے طور پر یا ڈراوے کے طور پر",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 7,
+      "text": "جس چیز کا تم سے وعدہ کیا جا رہا ہے وہ ضرور واقع ہونے والی ہے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 8,
+      "text": "پھر جب ستارے ماند پڑ جائیں گے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 9,
+      "text": "اور آسمان پھاڑ دیا جائے گا",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 10,
+      "text": "اور پہاڑ دھنک ڈالے جائیں گے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 11,
+      "text": "اور رسولوں کی حاضری کا وقت آ پہنچے گا (اس روز وہ چیز واقع ہو جائے گی)",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 12,
+      "text": "کس روز کے لیے یہ کام اٹھا رکھا گیا ہے؟",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 13,
+      "text": "فیصلے کے روز کے لیے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 14,
+      "text": "اور تمہیں کیا خبر کہ وہ فیصلے کا دن کیا ہے؟",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 15,
+      "text": "تباہی ہے اُس دن جھٹلانے والوں کے لیے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 16,
+      "text": "کیا ہم نے اگلوں کو ہلاک نہیں کیا؟",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 17,
+      "text": "پھر اُنہی کے پیچھے ہم بعد والوں کو چلتا کریں گے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 18,
+      "text": "مجرموں کے ساتھ ہم یہی کچھ کیا کرتے ہیں",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 19,
+      "text": "تباہی ہے اُس دن جھٹلانے والوں کے لیے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 580,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 20,
+      "text": "کیا ہم نے ایک حقیر پانی سے تمہیں پیدا نہیں کیا",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 21,
+      "text": "اور ایک مقررہ مدت تک،",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 22,
+      "text": "اُسے ایک محفوظ جگہ ٹھیرائے رکھا؟",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 23,
+      "text": "تو دیکھو، ہم اِس پر قادر تھے، پس ہم بہت اچھی قدرت رکھنے والے ہیں",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 24,
+      "text": "تباہی ہے اُس روز جھٹلانے والوں کے لیے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 25,
+      "text": "کیا ہم نے زمین کو سمیٹ کر رکھنے والی نہیں بنایا",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 26,
+      "text": "زندوں کے لیے بھی اور مُردوں کے لیے بھی",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 27,
+      "text": "اور اس میں بلند و بالا پہاڑ جمائے، اور تمہیں میٹھا پانی پلایا؟",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 28,
+      "text": "تباہی ہے اُس روز جھٹلانے والوں کے لیے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 29,
+      "text": "چلو اب اُسی چیز کی طرف جسے تم جھٹلایا کرتے تھے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 30,
+      "text": "چلو اُس سائے کی طرف جو تین شاخوں والا ہے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 31,
+      "text": "نہ ٹھنڈک پہنچانے والا اور نہ آگ کی لپٹ سے بچانے والا",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 32,
+      "text": "وہ آگ محل جیسی بڑی بڑی چنگاریاں پھینکے گی",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 33,
+      "text": "(جو اچھلتی ہوئی یوں محسوس ہوں گی) گویا کہ وہ زرد اونٹ ہیں",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 34,
+      "text": "تباہی ہے اُس روز جھٹلانے والوں کے لیے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 35,
+      "text": "یہ وہ دن ہے جس میں وہ نہ کچھ بولیں گے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 36,
+      "text": "اور نہ اُنہیں موقع دیا جائے گا کہ کوئی عذر پیش کریں",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 37,
+      "text": "تباہی ہے اُس دن جھٹلانے والوں کے لیے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 38,
+      "text": "یہ فیصلے کا دن ہے ہم نے تمہیں اور تم سے پہلے گزرے ہوئے لوگوں کو جمع کر دیا ہے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 39,
+      "text": "اب اگر کوئی چال تم چل سکتے ہو تو میرے مقابلہ میں چل دیکھو",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 40,
+      "text": "تباہی ہے اُس دن جھٹلانے والوں کے لیے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 516,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 41,
+      "text": "متقی لوگ آج سایوں اور چشموں میں ہیں",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 517,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 42,
+      "text": "اور جو پھل وہ چاہیں (اُن کے لیے حاضر ہیں)",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 517,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 43,
+      "text": "کھاؤ اور پیو مزے سے اپنے اُن اعمال کے صلے میں جو تم کرتے رہے ہو",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 517,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 44,
+      "text": "ہم نیک لوگوں کو ایسی ہی جزا دیتے ہیں",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 517,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 45,
+      "text": "تباہی ہے اُس روز جھٹلانے والوں کے لیے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 517,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 46,
+      "text": "کھا لو اور مزے کر لو تھوڑے دن حقیقت میں تم لوگ مجرم ہو",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 517,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 47,
+      "text": "تباہی ہے اُس روز جھٹلانے والوں کے لیے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 517,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 48,
+      "text": "جب اِن سے کہا جاتا ہے کہ (اللہ کے آگے) جھکو تو نہیں جھکتے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 517,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 49,
+      "text": "تباہی ہے اُس روز جھٹلانے والوں کے لیے",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 517,
+      "hizbQuarter": 232,
+      "sajda": false
+    },
+    {
+      "number": 50,
+      "text": "اب اِس (قرآن) کے بعد اور کونسا کلام ایسا ہو سکتا ہے جس پر یہ ایمان لائیں؟",
+      "juz": 29,
+      "manzil": 7,
+      "page": 581,
+      "ruku": 517,
+      "hizbQuarter": 232,
+      "sajda": false
+    }
+  ]
+}
