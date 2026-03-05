@@ -1,0 +1,164 @@
+/* ---- Site Footer ---- */
+.site-footer {
+    background: linear-gradient(180deg, var(--color-bg-main) 0%, #0a1a1f 8%);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 3rem 1rem 1.5rem;
+    margin-top: 3rem;
+    font-size: 0.88rem;
+}
+
+[data-theme="light"] .site-footer {
+    background: linear-gradient(180deg, var(--color-bg-main) 0%, #0d2a30 8%);
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+/* Brand Column */
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.footer-brand-row img {
+    width: 36px;
+    height: 36px;
+}
+
+.footer-brand-row span {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.footer-brand p {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 280px;
+}
+
+.footer-store-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+}
+
+.footer-store-badges a img {
+    height: 32px;
+    display: block;
+    transition: opacity 0.2s;
+}
+
+.footer-store-badges a:hover img {
+    opacity: 0.8;
+}
+
+/* Link Columns */
+.footer-column h4 {
+    color: #fff;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.75rem;
+    font-weight: 600;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.4rem;
+}
+
+.footer-column ul li a {
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    font-size: 0.84rem;
+    transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
+    color: #c9a227;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-bottom a {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    font-size: 0.78rem;
+}
+
+.footer-bottom a:hover {
+    color: #c9a227;
+}
+
+@media (max-width: 768px) {
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-brand-row {
+        justify-content: center;
+    }
+
+    .footer-brand p {
+        margin: 0 auto;
+    }
+
+    .footer-store-badges {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}

@@ -8,6 +8,7 @@ import { getDailyContent } from '../data/dailyContentData';
 import { useAppLocation } from '../context/LocationContext';
 import { useSettings } from '../context/SettingsContext';
 import RamadanWidget from './RamadanWidget';
+import AppPromo from './AppPromo';
 import './HomePage.css';
 
 // Feature data
@@ -466,6 +467,9 @@ const HomePage = () => {
                         ))}
                     </div>
                 </section>
+
+                {/* App Promotion */}
+                <AppPromo />
 
                 {/* Feature Sections */}
                 {featureSections.map((section) => (

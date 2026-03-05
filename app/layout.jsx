@@ -3,10 +3,11 @@
 import { Inter } from 'next/font/google';
 import { SettingsProvider } from '@/context/SettingsContext';
 import { LocationProvider } from '@/context/LocationContext';
+import Footer from '@/components/Footer';
 import '@/styles/globals.css';
 import '@/styles/app.css';
 
-const inter = Inter({ 
+const inter = Inter({
     subsets: ['latin'],
     variable: '--font-inter',
     display: 'swap',
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
                 <SettingsProvider>
                     <LocationProvider>
                         {children}
+                        <Footer />
                     </LocationProvider>
                 </SettingsProvider>
             </body>

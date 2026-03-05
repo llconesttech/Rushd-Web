@@ -1,0 +1,125 @@
+/* ---- App Promo Banner ---- */
+.app-promo {
+    margin: 2rem 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, #002E2A 0%, #004B44 50%, #0d5c63 100%);
+    position: relative;
+}
+
+.app-promo-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Subtle decorative pattern */
+.app-promo::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 162, 39, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.app-promo-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.app-promo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.app-promo-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.app-promo-content h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin: 0 0 0.25rem;
+    font-weight: 700;
+}
+
+.app-promo-content p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.88rem;
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+}
+
+.app-promo-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.app-promo-stars {
+    display: flex;
+    gap: 2px;
+    color: #c9a227;
+}
+
+.app-promo-rating span {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.app-promo-badges {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.app-promo-badges a {
+    display: inline-block;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.app-promo-badges a:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+.app-promo-badges a img {
+    height: 40px;
+    display: block;
+}
+
+@media (max-width: 640px) {
+    .app-promo-inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 1.25rem;
+        gap: 1.25rem;
+    }
+
+    .app-promo-icon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .app-promo-rating {
+        justify-content: center;
+    }
+
+    .app-promo-badges {
+        justify-content: center;
+    }
+}
