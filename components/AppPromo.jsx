@@ -1,6 +1,7 @@
 'use client';
 import { Star } from 'lucide-react';
 import './AppPromo.css';
+import Image from 'next/image';
 
 const APP_STORE_URL = 'https://apps.apple.com/us/app/rushd-quran-tafsir-guidance/id6758621105';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.onesttech.rushd&hl=en';
@@ -27,7 +28,7 @@ const AppPromo = () => (
                         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
                     </a>
                     <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
-                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
+                        <Image src="/google-play.png" alt="Get it on Google Play" width={130} height={100} />
                     </a>
                 </div>
             </div>

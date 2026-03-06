@@ -1,52 +1,51 @@
-'use client';
-
-import { Inter } from 'next/font/google';
-import { SettingsProvider } from '@/context/SettingsContext';
-import { LocationProvider } from '@/context/LocationContext';
-import Footer from '@/components/Footer';
-import '@/styles/globals.css';
-import '@/styles/app.css';
+import { Inter } from "next/font/google";
+import Script from "next/script";
+import "@/styles/globals.css";
+import "@/styles/app.css";
+import Providers from "./providers";
 
 const inter = Inter({
-    subsets: ['latin'],
-    variable: '--font-inter',
-    display: 'swap',
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
+export const metadata = {
+  title: "Rushd — Islamic Companion",
+  description:
+    "Comprehensive Islamic companion app with Quran, Hadith, prayer times, and more.",
+  robots: { index: false, follow: false },
+  icons: {
+    icon: ["/favicon.ico"],
+    apple: ["/favicon.png"],
+  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }) {
-    return (
-        <html lang="en" suppressHydrationWarning className={inter.variable}>
-            <head>
-                <meta charSet="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta name="robots" content="noindex, nofollow" />
-                <link rel="icon" href="/favicon.png" />
-                <link rel="apple-touch-icon" href="/favicon.png" />
-                <title>Rushd — Islamic Companion</title>
-                <meta name="description" content="Comprehensive Islamic companion app with Quran, Hadith, prayer times, and more." />
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                            (function() {
-                                try {
-                                    var theme = localStorage.getItem('rushdTheme') || 'dark';
-                                } catch (e) {
-                                    var theme = 'dark';
-                                }
-                                document.documentElement.setAttribute('data-theme', theme);
-                            })();
-                        `,
-                    }}
-                />
-            </head>
-            <body suppressHydrationWarning>
-                <SettingsProvider>
-                    <LocationProvider>
-                        {children}
-                        <Footer />
-                    </LocationProvider>
-                </SettingsProvider>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
+      <body suppressHydrationWarning>
+        <Script id="rushd-theme-init" strategy="beforeInteractive">
+          {`
+            (function () {
+              try {
+                var theme = localStorage.getItem('rushdTheme') || 'dark';
+                document.documentElement.setAttribute('data-theme', theme);
+              } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+              }
+            })();
+          `}
+        </Script>
+        <div className="app-root">
+          <Providers>{children}</Providers>
+        </div>
+      </body>
+    </html>
+  );
 }

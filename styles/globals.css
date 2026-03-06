@@ -29,58 +29,53 @@
 }
 
 @font-face {
-  font-family: 'Amiri Quran';
-  src: url('/fonts/AmiriQuran.ttf') format('truetype');
+  font-family: "Amiri Quran";
+  src: url("/fonts/AmiriQuran.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
 @font-face {
-  font-family: 'Scheherazade';
-  src: url('/fonts/Scheherazade.ttf') format('truetype');
+  font-family: "Scheherazade";
+  src: url("/fonts/Scheherazade.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
 @font-face {
-  font-family: 'Al Qalam';
-  src: url('/fonts/AlQalam.ttf') format('truetype');
+  font-family: "Al Qalam";
+  src: url("/fonts/AlQalam.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
 @font-face {
-  font-family: 'Me Quran';
-  src: url('/fonts/me_quran.ttf') format('truetype');
+  font-family: "Me Quran";
+  src: url("/fonts/me_quran.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
-
-
-
 
 /* Indo-Pak Nastaleeq Font */
 @font-face {
-  font-family: 'IndoPak Nastaleeq';
-  src: url('/fonts/indopak-nastaleeq.ttf') format('truetype');
+  font-family: "IndoPak Nastaleeq";
+  src: url("/fonts/indopak-nastaleeq.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
 @font-face {
-  font-family: 'Saleem';
-  src: url('/fonts/PDMS_Saleem_QuranFont-signed.ttf') format('truetype');
+  font-family: "Saleem";
+  src: url("/fonts/PDMS_Saleem_QuranFont-signed.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
-
-
 
 :root {
   /* Rushd Brand Palette (from logo) */
@@ -97,7 +92,7 @@
 
   --color-bg-main: #f8f6f0;
   /* Cream background */
-  --color-bg-card: #FFFFFF;
+  --color-bg-card: #ffffff;
   --color-text-main: #1a1a1a;
   /* Near black */
   --color-text-muted: #5a6a72;
@@ -114,12 +109,14 @@
   --color-pill-juz-text: #047857;
 
   /* SVG Filters for Surah Names (Teal #0d5c63) */
-  --filter-surah-name: brightness(0) saturate(100%) invert(26%) sepia(34%) saturate(674%) hue-rotate(138deg) brightness(91%) contrast(92%);
+  --filter-surah-name: brightness(0) saturate(100%) invert(26%) sepia(34%)
+    saturate(674%) hue-rotate(138deg) brightness(91%) contrast(92%);
 
   /* Typography */
-  --font-sans: var(--font-inter), 'Hind Siliguri', system-ui, -apple-system, sans-serif;
-  --font-arabic: 'Kitab', 'Amiri Quran', 'Scheherazade', 'Me Quran', serif;
-  --font-arabic-indopak: 'IndoPak Nastaleeq', 'Noto Nastaliq Urdu', serif;
+  --font-sans:
+    var(--font-inter), "Hind Siliguri", system-ui, -apple-system, sans-serif;
+  --font-arabic: "Kitab", "Amiri Quran", "Scheherazade", "Me Quran", serif;
+  --font-arabic-indopak: "IndoPak Nastaleeq", "Noto Nastaliq Urdu", serif;
   /* Need to import these */
 
   /* Spacing */
@@ -136,6 +133,12 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+  /* Border Radius */
+  --border-radius-sm: 6px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 10px;
+  --border-radius-xl: 12px;
 }
 
 /* Dark Theme Overrides */
@@ -161,7 +164,8 @@
   --color-pill-juz-text: #6ee7b7;
 
   /* SVG Filters for Surah Names - Off-white/Cream for dark mode visibility */
-  --filter-surah-name: brightness(0) saturate(100%) invert(95%) sepia(3%) saturate(190%) hue-rotate(10deg) brightness(103%) contrast(96%);
+  --filter-surah-name: brightness(0) saturate(100%) invert(95%) sepia(3%)
+    saturate(190%) hue-rotate(10deg) brightness(103%) contrast(96%);
 
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
   --shadow-md: 0 4px 8px -1px rgb(0 0 0 / 0.4);
@@ -179,6 +183,33 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
+  overflow: hidden;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+/* Root layout: fills viewport, no body scroll; only main content scrolls */
+.app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.app-root > *:first-child {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-root .site-footer {
+  flex-shrink: 0;
 }
 
 /* Deep Linking Highlight */
@@ -255,52 +286,52 @@ h6 {
 .tajweed-text .ham_wasl,
 .tajweed-text .slnt,
 .tajweed-text .l {
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
 
 /* Normal Prolongation (2 Vowels) - Light Blue/Purple */
 .tajweed-text .madda_normal {
-  color: #537FFF;
+  color: #537fff;
 }
 
 /* Permissible Prolongation (2, 4, 6) - Blue */
 .tajweed-text .madda_permissible {
-  color: #4050FF;
+  color: #4050ff;
 }
 
 /* Necessary Prolongation (6) - Dark Blue */
 .tajweed-text .madda_necessary {
-  color: #000EBC;
+  color: #000ebc;
 }
 
 /* Qalqalah - Red */
 .tajweed-text .qlq {
-  color: #DD0008;
+  color: #dd0008;
 }
 
 /* Obligatory Prolongation (4-5) - Medium Blue */
 .tajweed-text .madda_pbligatory {
-  color: #2144C1;
+  color: #2144c1;
 }
 
 /* Ikhfa Shafawi (With Meem) - Pink/Magenta */
 .tajweed-text .ikhf_shfw {
-  color: #D500B7;
+  color: #d500b7;
 }
 
 /* Ikhfa - Purple */
 .tajweed-text .ikhf {
-  color: #9400A8;
+  color: #9400a8;
 }
 
 /* Idgham Shafawi (With Meem) - Lime Green */
 .tajweed-text .idghm_shfw {
-  color: #58B800;
+  color: #58b800;
 }
 
 /* Iqlab - Sky Blue */
 .tajweed-text .iqlb {
-  color: #26BFFD;
+  color: #26bffd;
 }
 
 /* Idgham With Ghunnah - Teal Green */
@@ -315,12 +346,12 @@ h6 {
 
 /* Idgham Mutajanisayn / Mutaqaribayn - Grey */
 .tajweed-text .idgh_mus {
-  color: #A1A1A1;
+  color: #a1a1a1;
 }
 
 /* Ghunnah (2 Vowels) - Orange */
 .tajweed-text .ghn {
-  color: #FF7E1E;
+  color: #ff7e1e;
 }
 
 .word-by-word-container {
@@ -359,7 +390,9 @@ h6 {
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .ayah-card-style2:hover {
@@ -399,7 +432,9 @@ h6 {
   /* Ensure tooltip is sans-serif, not arabic */
   direction: ltr;
   /* Ensure text inside tooltip is LTR */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .ayah-badge {
@@ -513,7 +548,9 @@ h6 {
   font-size: 0.625rem;
   font-weight: 500;
   border-radius: 8px;
-  transition: color 0.2s, background 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s;
   min-width: 56px;
 }
 
@@ -745,13 +782,17 @@ h6 {
 
 .ruku-divider::before,
 .ruku-divider::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--color-primary), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-primary),
+    transparent
+  );
   opacity: 0.35;
 }
-
 
 /* ---- Ayah Row (Style 1) ---- */
 .ayah-row {
@@ -870,6 +911,9 @@ h6 {
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 /* ============================================
@@ -943,7 +987,6 @@ h6 {
   }
 }
 
-
 /* Content + Gutter container (desktop flex row) */
 .content-with-gutter {
   flex: 1;
@@ -963,10 +1006,14 @@ h6 {
 .reader-main-content {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
   background-color: transparent;
   -webkit-overflow-scrolling: touch;
+  min-height: 0;
 }
 
 /* ============================================
@@ -1000,7 +1047,9 @@ h6 {
   font-weight: 500;
   border-radius: 6px;
   cursor: pointer;
-  transition: color 0.2s, background 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s;
 }
 
 .desktop-nav-btn:hover {
@@ -1055,7 +1104,7 @@ h6 {
 
 /* ---- Calligraphic Surah Name in List ---- */
 .surah-name-calligraphy {
-  font-family: 'Amiri Quran', serif;
+  font-family: "Amiri Quran", serif;
   font-size: 1.8rem;
   line-height: 1;
   color: var(--color-primary);

@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "eslint": "^9",
-    "eslint-config-next": "16.1.6"
+    "eslint-config-next": "16.1.6",
+    "to-ico": "^1.1.5"
   }
 }

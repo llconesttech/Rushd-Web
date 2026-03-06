@@ -97,7 +97,7 @@
 /* ── Salah Times Card ──────────────────────────────── */
 .salah-card {
     background: linear-gradient(135deg, #0f2027 0%, #1a3a2a 100%);
-    border-radius: 1.25rem;
+    border-radius: var(--border-radius-sm);
     padding: 2rem;
     margin-bottom: 2.5rem;
     color: white;
@@ -334,7 +334,7 @@
 .insight-card-unified {
     background-color: var(--color-bg-card);
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: var(--border-radius-sm);
     padding: 1.5rem;
     box-shadow: var(--shadow-sm);
     text-align: center;
@@ -569,7 +569,7 @@
 
 .quick-action-card {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 1rem;
+    border-radius: var(--border-radius-sm);
     padding: 1.35rem;
     text-align: center;
     cursor: pointer;
@@ -649,7 +649,7 @@
 
 .feature-card {
     background: rgba(255, 255, 255, 0.04);
-    border-radius: 0.75rem;
+    border-radius: var(--border-radius-sm);
     padding: 1.1rem 0.875rem;
     text-align: center;
     cursor: pointer;

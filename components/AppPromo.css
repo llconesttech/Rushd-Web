@@ -1,7 +1,7 @@
 /* ---- App Promo Banner ---- */
 .app-promo {
     margin: 2rem 0;
-    border-radius: 1rem;
+    border-radius: var(--border-radius-sm);
     overflow: hidden;
     background: linear-gradient(135deg, #002E2A 0%, #004B44 50%, #0d5c63 100%);
     position: relative;
