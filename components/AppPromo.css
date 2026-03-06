@@ -30,12 +30,13 @@
 }
 
 .app-promo-icon {
+    background: #fff;
+    padding: 8px;
     flex-shrink: 0;
     width: 80px;
     height: 80px;
-    border-radius: 1.25rem;
+    border-radius: var(--border-radius-lg);
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .app-promo-icon img {
