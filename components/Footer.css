@@ -12,6 +12,7 @@
 }
 [data-theme="dark"] .site-footer {
     background: var(--color-bg-main);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .footer-inner {

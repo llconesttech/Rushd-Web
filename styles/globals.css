@@ -253,7 +253,7 @@ h6 {
 
 .bg-dots {
   background-color: var(--color-bg-main);
-  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-image: radial-gradient(#d1d5db .02px, transparent .9px);
   background-size: 20px 20px;
 }
 
@@ -261,8 +261,9 @@ h6 {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
 }
+
+
 
 .btn-primary {
   background-color: var(--color-primary);
@@ -728,14 +729,14 @@ h6 {
   margin-top: 0.5rem;
   padding: 0 0.5rem 1.5rem;
   background: var(--color-bg-card);
-  border-radius: 1rem;
+  border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-md);
   overflow: hidden;
 }
 
 @media (min-width: 768px) {
   .ayah-content-wrap {
-    padding: 0 2rem 2rem;
+    padding: 0 1rem 2rem;
   }
 }
 
@@ -1120,6 +1121,17 @@ h6 {
   display: block;
   filter: var(--filter-surah-name);
   transition: transform 0.2s ease;
+}
+
+.surah-card {
+    background-color: var(--color-bg-card);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: 0.2s;
+    cursor: pointer;
+    direction: rtl;
 }
 
 .surah-card:hover .surah-vector-name {
