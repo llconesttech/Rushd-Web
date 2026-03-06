@@ -318,6 +318,7 @@ const HomePage = () => {
                                 <Landmark size={22} className="salah-title-icon" aria-hidden />
                                 Daily Salah Times
                             </h2>
+                            
                             {todayDates && (
                                 <div className="salah-date-row">
                                     <span className="date-item gregorian">{todayDates.gregorian.day} {todayDates.gregorian.monthName} {todayDates.gregorian.year}</span>
