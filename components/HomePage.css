@@ -397,7 +397,7 @@
 }
 
 .forbidden-item {
-    background: rgba(220, 38, 38, .2);
+    background: rgba(220, 38, 38, .15);
     padding: 1.1rem 0.75rem 0.75rem;
     border-radius: var(--border-radius-sm);
     text-align: center;
@@ -406,7 +406,18 @@
     transition: all 0.25s ease;
 }
 
+[data-theme="dark"] .forbidden-item {
+    background: rgba(220, 38, 38, .06);
+    border: 1px solid rgba(220, 38, 38, 0.5);
+}
+
 .forbidden-item.active {
+    background: rgba(220, 38, 38, 0.28);
+    border-color: rgba(220, 38, 38, 0.35);
+    animation: forbiddenPulse 2s infinite ease-in-out;
+}
+
+[data-theme="dark"] .forbidden-item.active {
     background: rgba(220, 38, 38, 0.18);
     border-color: rgba(220, 38, 38, 0.35);
     animation: forbiddenPulse 2s infinite ease-in-out;
