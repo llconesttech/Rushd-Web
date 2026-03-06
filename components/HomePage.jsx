@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
-import { Sun, Moon as MoonIcon, Monitor, BookOpen, Quote } from 'lucide-react';
+import { Sun, Moon as MoonIcon, Monitor, BookOpen, Quote, Landmark, AlertTriangle, Moon } from 'lucide-react';
 import { getPrayerTimes, getAvailableMethods, getAvailableMadhabs, getAutoCalculationMethod } from '../services/prayerTimesService';
 import { getTodayAllCalendars } from '../services/dateService';
 import { getDailyContent } from '../data/dailyContentData';
@@ -311,9 +311,13 @@ const HomePage = () => {
 
                 {/* Salah Times Card */}
                 <section className="salah-card">
+                    <div className="salah-card-pattern" aria-hidden="true" />
                     <div className="salah-header">
                         <div className="salah-header-left">
-                            <h2>🕌 Daily Salah Times</h2>
+                            <h2 className="salah-card-title">
+                                <Landmark size={22} className="salah-title-icon" aria-hidden />
+                                Daily Salah Times
+                            </h2>
                             {todayDates && (
                                 <div className="salah-date-row">
                                     <span className="date-item gregorian">{todayDates.gregorian.day} {todayDates.gregorian.monthName} {todayDates.gregorian.year}</span>
@@ -340,14 +344,10 @@ const HomePage = () => {
                                 value={method || ''}
                                 onChange={handleMethodChange}
                             >
-                                {/* Wait for method to be set, or show loading/default */}
                                 {getAvailableMethods().map((m) => (
                                     <option key={m} value={m}>{m.replace(/([A-Z])/g, ' $1').trim()}</option>
                                 ))}
                             </select>
-
-
-
                             <span className="salah-location">
                                 📍 {location ? location.city : 'Loading...'}{location?.country ? `, ${location.country}` : ''}
                             </span>
@@ -372,7 +372,10 @@ const HomePage = () => {
                             </div>
 
                             <div className="forbidden-times-container">
-                                <h3 className="forbidden-title">⚠️ Forbidden Times to Pray</h3>
+                                <h3 className="forbidden-title">
+                                    <AlertTriangle size={18} className="forbidden-title-icon" aria-hidden />
+                                    Forbidden Times to Pray
+                                </h3>
                                 <div className="forbidden-times-list">
                                     <div className={`forbidden-item ${currentForbidden === 'sunrise' ? 'active' : ''}`}>
                                         {currentForbidden === 'sunrise' && <div className="forbidden-badge">NOW</div>}
@@ -395,7 +398,10 @@ const HomePage = () => {
                             {/* Sunnah Times */}
                             {salahTimes.sunnah && (
                                 <div className="sunnah-times-container">
-                                    <h3 className="sunnah-title">🌙 Sunnah Prayer Times</h3>
+                                    <h3 className="sunnah-title">
+                                        <Moon size={18} className="sunnah-title-icon" aria-hidden />
+                                        Sunnah Prayer Times
+                                    </h3>
                                     <div className="sunnah-times-grid">
                                         <div className={`sunnah-item ${currentSunnah === 'ishraq' ? 'active' : ''}`}>
                                             {currentSunnah === 'ishraq' && <div className="sunnah-badge">NOW</div>}

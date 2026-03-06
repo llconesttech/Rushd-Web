@@ -96,15 +96,47 @@
 
 /* ── Salah Times Card ──────────────────────────────── */
 .salah-card {
-    background: linear-gradient(135deg, #0f2027 0%, #1a3a2a 100%);
-    border-radius: var(--border-radius-sm);
+    --salah-teal: #0d5c63;
+    --salah-teal-dark: #084c52;
+    --salah-teal-light: rgba(13, 92, 99, 0.25);
+    --salah-gold: var(--color-accent, #c9a227);
+    --salah-gold-soft: rgba(201, 162, 39, 0.2);
+    position: relative;
+    background: linear-gradient(145deg, var(--salah-teal-dark) 0%, var(--salah-teal) 50%, #0a3d42 100%);
+    border-radius: 1.25rem;
     padding: 2rem;
     margin-bottom: 2.5rem;
     color: white;
-    border-top: 2px solid #d4a843;
+    overflow: hidden;
+    border: 1px solid rgba(201, 162, 39, 0.25);
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(212, 168, 67, 0.1);
+        0 12px 40px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.salah-card-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background-image:
+        linear-gradient(45deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(-45deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 20px 20px, 20px 20px, 16px 16px, 16px 16px;
+    pointer-events: none;
+}
+
+.salah-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--salah-gold) 20%, var(--salah-gold) 80%, transparent 100%);
+    opacity: 0.85;
+    pointer-events: none;
 }
 
 .salah-header {
@@ -114,12 +146,30 @@
     margin-bottom: 1.5rem;
     flex-wrap: wrap;
     gap: 0.75rem;
+    position: relative;
+    z-index: 1;
 }
 
 .salah-header-left {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.4rem;
+}
+
+.salah-card-title {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 0.02em;
+}
+
+.salah-title-icon {
+    color: var(--salah-gold);
+    flex-shrink: 0;
 }
 
 .salah-header h2 {
@@ -134,15 +184,15 @@
     gap: 0.5rem;
     flex-wrap: wrap;
     font-size: 0.8rem;
-    opacity: 0.9;
+    opacity: 0.92;
 }
 
 .date-item {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .date-item.hijri {
-    color: #d4a843;
+    color: var(--salah-gold);
 }
 
 .date-item.bengali {
@@ -150,8 +200,8 @@
 }
 
 .date-separator {
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.5rem;
 }
 
 .salah-location {
@@ -165,11 +215,12 @@
 .salah-header-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
 
 .method-selector {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: white;
     padding: 0.5rem 0.75rem;
@@ -181,12 +232,12 @@
 }
 
 .method-selector:hover {
-    background: rgba(255, 255, 255, 0.14);
-    border-color: rgba(212, 168, 67, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--salah-gold-soft);
 }
 
 .method-selector option {
-    background: #0f2027;
+    background: var(--salah-teal-dark);
     color: white;
 }
 
@@ -195,41 +246,76 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 0.75rem;
+    position: relative;
+    z-index: 1;
 }
 
 .salah-time-item {
     text-align: center;
     padding: 1.25rem 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 0.875rem;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: var(--border-radius-sm);
     transition: all 0.25s ease;
     position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.salah-time-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    border-radius: 1rem 1rem 0 0;
 }
 
 .salah-time-item:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.11);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .salah-time-item.current {
-    background: rgba(212, 168, 67, 0.12);
-    border-color: rgba(212, 168, 67, 0.3);
-    box-shadow: 0 4px 16px rgba(212, 168, 67, 0.1);
+    background: var(--salah-gold-soft);
+    border-color: rgba(201, 162, 39, 0.4);
+    box-shadow: 0 4px 20px rgba(201, 162, 39, 0.15);
+}
+
+.salah-time-item.current::before {
+    background: linear-gradient(90deg, transparent, var(--salah-gold), transparent);
+    opacity: 0.8;
 }
 
 .salah-name {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 0.4rem;
-    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.35rem;
+    font-weight: 600;
 }
 
-/* Container */
-.homepage {
-    padding-bottom: 1rem;
-    min-height: 100vh;
+.salah-time {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.02em;
+}
+
+.current-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 0.55rem;
+    font-weight: 800;
+    background: var(--salah-gold);
+    color: var(--salah-teal-dark);
+    padding: 0.2rem 0.45rem;
+    border-radius: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* View Switcher Header */
@@ -373,18 +459,27 @@
 
 /* Forbidden Times */
 .forbidden-times-container {
-    margin-top: 1.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 .forbidden-title {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
     margin: 0 0 0.875rem 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    letter-spacing: 0.02em;
+}
+
+.forbidden-title-icon {
+    color: #fbbf24;
+    flex-shrink: 0;
 }
 
 .forbidden-times-list {
@@ -394,18 +489,22 @@
 }
 
 .forbidden-item {
-    background: rgba(220, 38, 38, 0.08);
+    background: rgba(220, 38, 38, 0.1);
     padding: 1.1rem 0.75rem 0.75rem;
-    border-radius: 0.75rem;
+    border-radius: 1rem;
     text-align: center;
-    border: 1px solid rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.2);
     position: relative;
     transition: all 0.25s ease;
 }
 
+.forbidden-item:hover {
+    background: rgba(220, 38, 38, 0.14);
+}
+
 .forbidden-item.active {
-    background: rgba(220, 38, 38, 0.18);
-    border-color: rgba(220, 38, 38, 0.35);
+    background: rgba(220, 38, 38, 0.2);
+    border-color: rgba(220, 38, 38, 0.4);
     animation: forbiddenPulse 2s infinite ease-in-out;
 }
 
@@ -462,18 +561,27 @@
 
 /* Sunnah Times */
 .sunnah-times-container {
-    margin-top: 1.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 .sunnah-title {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
     margin: 0 0 0.875rem 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    letter-spacing: 0.02em;
+}
+
+.sunnah-title-icon {
+    color: var(--salah-gold);
+    flex-shrink: 0;
 }
 
 .sunnah-times-grid {
@@ -483,18 +591,22 @@
 }
 
 .sunnah-item {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.07);
     padding: 1.1rem 0.75rem 0.75rem;
-    border-radius: 0.75rem;
+    border-radius: 1rem;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     transition: all 0.25s ease;
 }
 
+.sunnah-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .sunnah-item.active {
-    background: rgba(34, 197, 94, 0.12);
-    border-color: rgba(34, 197, 94, 0.3);
+    background: rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.35);
     animation: sunnahPulse 2s infinite ease-in-out;
 }
 
@@ -715,17 +827,21 @@
 
 /* Salah Card */
 [data-theme="light"] .salah-card {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border-top: none;
-    box-shadow: 0 10px 40px rgba(13, 92, 99, 0.3);
+    background: linear-gradient(145deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-color: rgba(201, 162, 39, 0.35);
+    box-shadow: 0 12px 40px rgba(13, 92, 99, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .salah-card-pattern {
+    opacity: 0.04;
 }
 
 [data-theme="light"] .date-item.hijri {
-    color: #86efac;
+    color: #b8f0c8;
 }
 
 [data-theme="light"] .date-item.bengali {
-    color: #fcd34d;
+    color: #fde68a;
 }
 
 [data-theme="light"] .method-selector {
@@ -734,8 +850,8 @@
 }
 
 [data-theme="light"] .method-selector:hover {
-    background: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.45);
 }
 
 [data-theme="light"] .method-selector option {
@@ -743,18 +859,18 @@
 }
 
 [data-theme="light"] .salah-time-item {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: transparent;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 [data-theme="light"] .salah-time-item:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.18);
 }
 
 [data-theme="light"] .salah-time-item.current {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.28);
     border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 [data-theme="light"] .salah-name {
@@ -768,7 +884,7 @@
 
 [data-theme="light"] .forbidden-times-container,
 [data-theme="light"] .sunnah-times-container {
-    border-top-color: rgba(255, 255, 255, 0.2);
+    border-top-color: rgba(255, 255, 255, 0.15);
 }
 
 [data-theme="light"] .forbidden-label,
@@ -777,8 +893,12 @@
 }
 
 [data-theme="light"] .sunnah-item {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
     border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="light"] .sunnah-item:hover {
+    background: rgba(255, 255, 255, 0.18);
 }
 
 /* Quick Actions */
@@ -841,6 +961,10 @@
 @media (max-width: 768px) {
     .salah-times-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .salah-card-title {
+        font-size: 1.2rem;
     }
 
     .hero-title {
