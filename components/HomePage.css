@@ -5,17 +5,10 @@
    ==================================================================== */
 
 .homepage {
-<<<<<<< HEAD
-  min-height: 100vh;
-  background: linear-gradient(180deg, #162a35 0%, #0f2027 40%, #1a3a2a 100%);
-  position: relative;
-  padding: 25px;
-=======
     min-height: 100vh;
     /* background: linear-gradient(180deg, #162a35 0%, #0f2027 40%, #1a3a2a 100%); */
     position: relative;
     padding: 25px 0;
->>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .homepage-content {
@@ -53,15 +46,9 @@
 
 /* ── Hero Section ──────────────────────────────────── */
 .hero-section {
-<<<<<<< HEAD
-  text-align: center;
-  padding: 1.5rem 1rem 0rem;
-  margin-bottom: 1.5rem;
-=======
     text-align: center;
     padding: 0 1rem 0rem;
     margin-bottom: 1.5rem;
->>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .hero-logo {
@@ -117,64 +104,6 @@
 
 /* ── Salah Times Card ──────────────────────────────── */
 .salah-card {
-<<<<<<< HEAD
-  --salah-teal: #0d5c63;
-  --salah-teal-dark: #084c52;
-  --salah-teal-light: rgba(13, 92, 99, 0.25);
-  --salah-gold: var(--color-accent, #c9a227);
-  --salah-gold-soft: rgba(201, 162, 39, 0.2);
-  position: relative;
-  background: linear-gradient(
-    145deg,
-    var(--salah-teal-dark) 0%,
-    var(--salah-teal) 50%,
-    #0a3d42 100%
-  );
-  border-radius: 1.25rem;
-  padding: 2rem;
-  margin-bottom: 2.5rem;
-  color: white;
-  overflow: hidden;
-  border: 1px solid rgba(201, 162, 39, 0.25);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-.salah-card-pattern {
-  position: absolute;
-  inset: 0;
-  opacity: 0.05;
-  background-image:
-    linear-gradient(45deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(-45deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size:
-    20px 20px,
-    20px 20px,
-    16px 16px,
-    16px 16px;
-  pointer-events: none;
-}
-
-.salah-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--salah-gold) 20%,
-    var(--salah-gold) 80%,
-    transparent 100%
-  );
-  opacity: 0.85;
-  pointer-events: none;
-=======
     /* background: linear-gradient(135deg, #0f2027 0%, #1a3a2a 100%); */
     background-color: var(--color-bg-card);
     border-radius: var(--border-radius-sm);
@@ -185,7 +114,6 @@
     box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(212, 168, 67, 0.1);
->>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .salah-header {
@@ -534,27 +462,6 @@
 }
 
 .forbidden-item {
-<<<<<<< HEAD
-  background: rgba(0, 0, 0, 0.35);
-  padding: 1.1rem 0.75rem 0.75rem;
-  border-radius: var(--border-radius-sm);
-  text-align: center;
-  border: 1px solid rgba(220, 38, 38, 0.5);
-  position: relative;
-  transition: all 0.25s ease;
-  box-shadow: inset 0 0 0 1px rgba(220, 38, 38, 0.15);
-}
-
-/* .forbidden-item:hover {
-  background: rgba(0, 0, 0, 0.45);
-  border-color: rgba(220, 38, 38, 0.6);
-} */
-
-.forbidden-item.active {
-  background: rgba(220, 38, 38, 0.22);
-  border-color: rgba(220, 38, 38, 0.55);
-  animation: forbiddenPulse 2s infinite ease-in-out;
-=======
     background: rgba(220, 38, 38, .15);
     padding: 1.1rem 0.75rem 0.75rem;
     border-radius: var(--border-radius-sm);
@@ -579,7 +486,6 @@
     background: rgba(220, 38, 38, 0.18);
     border-color: rgba(220, 38, 38, 0.35);
     animation: forbiddenPulse 2s infinite ease-in-out;
->>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 @keyframes forbiddenPulse {
@@ -665,19 +571,6 @@
 }
 
 .sunnah-item {
-<<<<<<< HEAD
-  background: rgba(255, 255, 255, 0.07);
-  padding: 1.1rem 0.75rem 0.75rem;
-  border-radius: var(--border-radius-sm);
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  position: relative;
-  transition: all 0.25s ease;
-}
-
-.sunnah-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-=======
     background: rgba(255, 255, 255, 0.06);
     padding: 1.1rem 0.75rem 0.75rem;
     border-radius: var(--border-radius-sm);
@@ -685,7 +578,6 @@
     border: 1px solid rgba(255, 255, 255, 0.06);
     position: relative;
     transition: all 0.25s ease;
->>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .sunnah-item.active {
@@ -764,24 +656,6 @@
 }
 
 .quick-action-card {
-<<<<<<< HEAD
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: var(--border-radius-sm);
-  padding: 1.35rem;
-  text-align: center;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: all 0.25s ease;
-  text-decoration: none;
-  color: white;
-}
-
-.quick-action-card:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(212, 168, 67, 0.25);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-=======
     background: var(--color-bg-card);
     border-radius: var(--border-radius-sm);
     padding: 1.35rem;
@@ -797,7 +671,6 @@
     border-color: rgba(212, 168, 67, 0.55);
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
->>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .quick-action-icon {
@@ -837,17 +710,6 @@
 }
 
 .feature-section-icon {
-<<<<<<< HEAD
-  width: 38px;
-  height: 38px;
-  background: rgba(212, 168, 67, 0.12);
-  border-radius: 0.65rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.15rem;
-  color: white;
-=======
     width: 38px;
     height: 38px;
     background: rgba(212, 168, 67, 0.45);
@@ -857,7 +719,6 @@
     justify-content: center;
     font-size: 1.15rem;
     color: white;
->>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .feature-section-title {
@@ -874,17 +735,6 @@
 }
 
 .feature-card {
-<<<<<<< HEAD
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: var(--border-radius-sm);
-  padding: 1.1rem 0.875rem;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-=======
     background: var(--color-bg-card);
     border-radius: var(--border-radius-sm);
     padding: 1.1rem 0.875rem;
@@ -894,7 +744,6 @@
     text-decoration: none;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.05);
->>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .feature-card:hover {
