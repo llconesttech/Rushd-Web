@@ -5,10 +5,17 @@
    ==================================================================== */
 
 .homepage {
+<<<<<<< HEAD
   min-height: 100vh;
   background: linear-gradient(180deg, #162a35 0%, #0f2027 40%, #1a3a2a 100%);
   position: relative;
   padding: 25px;
+=======
+    min-height: 100vh;
+    /* background: linear-gradient(180deg, #162a35 0%, #0f2027 40%, #1a3a2a 100%); */
+    position: relative;
+    padding: 25px 0;
+>>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .homepage-content {
@@ -46,9 +53,15 @@
 
 /* ── Hero Section ──────────────────────────────────── */
 .hero-section {
+<<<<<<< HEAD
   text-align: center;
   padding: 1.5rem 1rem 0rem;
   margin-bottom: 1.5rem;
+=======
+    text-align: center;
+    padding: 0 1rem 0rem;
+    margin-bottom: 1.5rem;
+>>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .hero-logo {
@@ -104,6 +117,7 @@
 
 /* ── Salah Times Card ──────────────────────────────── */
 .salah-card {
+<<<<<<< HEAD
   --salah-teal: #0d5c63;
   --salah-teal-dark: #084c52;
   --salah-teal-light: rgba(13, 92, 99, 0.25);
@@ -160,6 +174,18 @@
   );
   opacity: 0.85;
   pointer-events: none;
+=======
+    /* background: linear-gradient(135deg, #0f2027 0%, #1a3a2a 100%); */
+    background-color: var(--color-bg-card);
+    border-radius: var(--border-radius-sm);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    color: white;
+    border-top: 2px solid #d4a843;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(212, 168, 67, 0.1);
+>>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .salah-header {
@@ -274,29 +300,13 @@
 }
 
 .salah-time-item {
-  text-align: center;
-  padding: 1.25rem 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.07);
-  border-radius: var(--border-radius-sm);
-  transition: all 0.25s ease;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.salah-time-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  border-radius: 1rem 1rem 0 0;
+    text-align: center;
+    padding: 1.25rem 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: var(--border-radius-sm);
+    transition: all 0.25s ease;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .salah-time-item:hover {
@@ -462,6 +472,8 @@
   justify-content: center;
 }
 
+
+
 /* Side-by-side on desktop */
 @media (min-width: 768px) {
   .daily-insights-wrapper {
@@ -522,6 +534,7 @@
 }
 
 .forbidden-item {
+<<<<<<< HEAD
   background: rgba(0, 0, 0, 0.35);
   padding: 1.1rem 0.75rem 0.75rem;
   border-radius: var(--border-radius-sm);
@@ -541,6 +554,32 @@
   background: rgba(220, 38, 38, 0.22);
   border-color: rgba(220, 38, 38, 0.55);
   animation: forbiddenPulse 2s infinite ease-in-out;
+=======
+    background: rgba(220, 38, 38, .15);
+    padding: 1.1rem 0.75rem 0.75rem;
+    border-radius: var(--border-radius-sm);
+    text-align: center;
+    border: 1px solid rgba(220, 38, 38, 0.5);
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+[data-theme="dark"] .forbidden-item {
+    background: rgba(220, 38, 38, .06);
+    border: 1px solid rgba(220, 38, 38, 0.5);
+}
+
+.forbidden-item.active {
+    background: rgba(220, 38, 38, 0.28);
+    border-color: rgba(220, 38, 38, 0.35);
+    animation: forbiddenPulse 2s infinite ease-in-out;
+}
+
+[data-theme="dark"] .forbidden-item.active {
+    background: rgba(220, 38, 38, 0.18);
+    border-color: rgba(220, 38, 38, 0.35);
+    animation: forbiddenPulse 2s infinite ease-in-out;
+>>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 @keyframes forbiddenPulse {
@@ -626,6 +665,7 @@
 }
 
 .sunnah-item {
+<<<<<<< HEAD
   background: rgba(255, 255, 255, 0.07);
   padding: 1.1rem 0.75rem 0.75rem;
   border-radius: var(--border-radius-sm);
@@ -637,6 +677,15 @@
 
 .sunnah-item:hover {
   background: rgba(255, 255, 255, 0.1);
+=======
+    background: rgba(255, 255, 255, 0.06);
+    padding: 1.1rem 0.75rem 0.75rem;
+    border-radius: var(--border-radius-sm);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    transition: all 0.25s ease;
+>>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .sunnah-item.active {
@@ -715,6 +764,7 @@
 }
 
 .quick-action-card {
+<<<<<<< HEAD
   background: rgba(255, 255, 255, 0.05);
   border-radius: var(--border-radius-sm);
   padding: 1.35rem;
@@ -731,6 +781,23 @@
   border-color: rgba(212, 168, 67, 0.25);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+=======
+    background: var(--color-bg-card);
+    border-radius: var(--border-radius-sm);
+    padding: 1.35rem;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: white;
+}
+
+.quick-action-card:hover {
+    border-color: rgba(212, 168, 67, 0.55);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+>>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .quick-action-icon {
@@ -770,6 +837,7 @@
 }
 
 .feature-section-icon {
+<<<<<<< HEAD
   width: 38px;
   height: 38px;
   background: rgba(212, 168, 67, 0.12);
@@ -779,6 +847,17 @@
   justify-content: center;
   font-size: 1.15rem;
   color: white;
+=======
+    width: 38px;
+    height: 38px;
+    background: rgba(212, 168, 67, 0.45);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: white;
+>>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .feature-section-title {
@@ -795,6 +874,7 @@
 }
 
 .feature-card {
+<<<<<<< HEAD
   background: rgba(255, 255, 255, 0.04);
   border-radius: var(--border-radius-sm);
   padding: 1.1rem 0.875rem;
@@ -804,6 +884,17 @@
   text-decoration: none;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.05);
+=======
+    background: var(--color-bg-card);
+    border-radius: var(--border-radius-sm);
+    padding: 1.1rem 0.875rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+>>>>>>> 816d942f002c1f38c724a6335337f9c833873657
 }
 
 .feature-card:hover {

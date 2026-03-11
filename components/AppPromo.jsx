@@ -10,7 +10,7 @@ const AppPromo = () => (
     <section className="app-promo">
         <div className="app-promo-inner">
             <div className="app-promo-icon">
-                <img src="/favicon.png" alt="Rushd App Icon" />
+                <Image src="/dark_gold.png" alt="Rushd App Icon" width={100} height={100} />
             </div>
             <div className="app-promo-content">
                 <h3>Rushd – Quran, Tafsir &amp; Guidance</h3>

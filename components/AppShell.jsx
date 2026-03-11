@@ -108,7 +108,7 @@ export default function AppShell({ children }) {
               style={{
                 width: "100%",
                 maxWidth: isReaderPage ? "1000px" : "1200px",
-                padding: isReaderPage ? "0.5rem" : "2rem",
+                padding: isReaderPage ? "2rem" : "0",
                 margin: "0 auto",
               }}
             >

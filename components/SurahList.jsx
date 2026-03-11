@@ -36,16 +36,7 @@ export default function SurahList() {
             }}>
                 {enhancedSurahs.map(surah => (
                     <Link href={`/quran/${surah.number}`} key={surah.number} style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <div style={{
-                            backgroundColor: 'var(--color-bg-card)',
-                            padding: '1.5rem',
-                            borderRadius: '0.75rem',
-                            boxShadow: 'var(--shadow-sm)',
-                            border: '1px solid var(--color-border)',
-                            transition: 'all 0.2s',
-                            cursor: 'pointer',
-                            direction: 'rtl',
-                        }} className="surah-card">
+                        <div className="surah-card">
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                                 <span style={{
                                     backgroundColor: 'var(--color-primary-light)',
