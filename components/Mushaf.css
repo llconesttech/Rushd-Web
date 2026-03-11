@@ -129,7 +129,7 @@
 }
 
 .mushaf-text-flow {
-  text-align: justify;
+  text-align: right;
   text-justify: kasida;
   /* Crucial for Arabic continuous line reading */
   font-family: var(--mushaf-font, 'Amiri Quran', serif);
