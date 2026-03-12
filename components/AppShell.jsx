@@ -2,7 +2,18 @@
 
 import { useState, useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { BookOpen, Settings, Home, Menu } from "lucide-react";
+import {
+  BookOpen,
+  Settings,
+  Home,
+  Menu,
+  Search,
+  X,
+  Book,
+  ScrollText,
+  Sparkles,
+  HeartHandshake,
+} from "lucide-react";
 import { useSettings } from "@/context/SettingsContext";
 import { getSurahInfo } from "@/data/quranData";
 import TopBar from "@/components/TopBar";
@@ -20,6 +31,7 @@ export default function AppShell({ children }) {
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileSearchQuery, setMobileSearchQuery] = useState("");
 
   // Route detection
   const readerMatch = pathname.match(/^\/quran\/(\d+)$/);
@@ -59,6 +71,16 @@ export default function AppShell({ children }) {
   }, [isSurahListOpen, isSettingsOpen, toggleSurahList, toggleSettings]);
 
   const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
+
+  const handleMobileSearch = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (!mobileSearchQuery.trim()) return;
+      closeMobileMenu();
+      router.push("/quran?search=" + encodeURIComponent(mobileSearchQuery));
+    },
+    [mobileSearchQuery, closeMobileMenu, router],
+  );
 
   const bgClass =
     isGridView || isZakatPage ? "app-layout bg-dots" : "app-layout";
@@ -158,7 +180,38 @@ export default function AppShell({ children }) {
       {isMobileMenuOpen && (
         <>
           <div className="mobile-menu-backdrop" onClick={closeMobileMenu} />
-          <div id="mobile-nav-menu" className="mobile-menu-sheet" role="menu">
+          <div
+            id="mobile-nav-menu"
+            className="mobile-menu-sheet"
+            role="dialog"
+            aria-label="Navigation menu"
+          >
+            <div className="mobile-menu-handle" />
+            <div className="container mobile-menu-header">
+              <div className="mobile-menu-title">Menu</div>
+              <button
+                className="mobile-menu-close"
+                onClick={closeMobileMenu}
+                aria-label="Close menu"
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div className="container">
+            <form
+              className="topbar-search-form mobile-menu-search"
+              onSubmit={handleMobileSearch}
+            >
+              <Search size={16} />
+              <input
+                type="text"
+                placeholder="Search Quran, Hadith..."
+                value={mobileSearchQuery}
+                onChange={(e) => setMobileSearchQuery(e.target.value)}
+              />
+            </form>
+            </div>
+            <div className="mobile-menu-grid container" role="menu">
             <button
               className="mobile-menu-item"
               role="menuitem"
@@ -167,7 +220,13 @@ export default function AppShell({ children }) {
                 router.push("/quran");
               }}
             >
-              Quran
+              <span className="mmi-icon">
+                <Book size={18} />
+              </span>
+              <span className="mmi-text">
+                <span className="mmi-title">Quran</span>
+                <span className="mmi-subtitle">Read & explore</span>
+              </span>
             </button>
             <button
               className="mobile-menu-item"
@@ -177,7 +236,13 @@ export default function AppShell({ children }) {
                 router.push("/hadith");
               }}
             >
-              Hadith
+              <span className="mmi-icon">
+                <ScrollText size={18} />
+              </span>
+              <span className="mmi-text">
+                <span className="mmi-title">Hadith</span>
+                <span className="mmi-subtitle">Collections</span>
+              </span>
             </button>
             <button
               className="mobile-menu-item"
@@ -187,7 +252,13 @@ export default function AppShell({ children }) {
                 router.push("/qa-search");
               }}
             >
-              Ask AI
+              <span className="mmi-icon">
+                <Sparkles size={18} />
+              </span>
+              <span className="mmi-text">
+                <span className="mmi-title">Ask AI</span>
+                <span className="mmi-subtitle">Get answers</span>
+              </span>
             </button>
             <button
               className="mobile-menu-item"
@@ -197,8 +268,15 @@ export default function AppShell({ children }) {
                 router.push("/duas");
               }}
             >
-              Duas
+              <span className="mmi-icon">
+                <HeartHandshake size={18} />
+              </span>
+              <span className="mmi-text">
+                <span className="mmi-title">Duas</span>
+                <span className="mmi-subtitle">Daily supplications</span>
+              </span>
             </button>
+          </div>
           </div>
         </>
       )}
