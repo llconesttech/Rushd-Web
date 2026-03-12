@@ -21,15 +21,15 @@
 }
 
 
-/* Only show on tablet/desktop */
-@media (min-width: 768px) {
+/* Only show above 768px (hide 480–768px range) */
+@media (min-width: 769px) {
     .topbar {
         display: block;
     }
 }
 
 .topbar-inner {
-    max-width: var(--page-max-width);
+    /* max-width: var(--page-max-width); */
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -58,8 +58,20 @@
 
 .topbar-nav {
     display: flex;
-    gap: 2rem;
+    gap: 32px;
     align-items: center;
+}
+
+@media (min-width: 769px) {
+    .topbar-nav {
+        gap: 16px;
+    }
+}
+
+@media (min-width: 992px) {
+    .topbar-nav {
+        gap: 32px;
+    }
 }
 
 .topbar-nav-link {

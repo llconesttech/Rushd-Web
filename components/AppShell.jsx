@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { BookOpen, Settings, Home } from "lucide-react";
+import { BookOpen, Settings, Home, Menu } from "lucide-react";
 import { useSettings } from "@/context/SettingsContext";
 import { getSurahInfo } from "@/data/quranData";
 import TopBar from "@/components/TopBar";
@@ -19,6 +19,7 @@ export default function AppShell({ children }) {
 
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Route detection
   const readerMatch = pathname.match(/^\/quran\/(\d+)$/);
@@ -56,6 +57,8 @@ export default function AppShell({ children }) {
     if (isSurahListOpen) toggleSurahList();
     if (isSettingsOpen) toggleSettings();
   }, [isSurahListOpen, isSettingsOpen, toggleSurahList, toggleSettings]);
+
+  const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
 
   const bgClass =
     isGridView || isZakatPage ? "app-layout bg-dots" : "app-layout";
@@ -107,9 +110,7 @@ export default function AppShell({ children }) {
             className={`reader-main-content ${isGridView ? "hide-scrollbar" : ""}`}
             onScroll={handleMainScroll}
           >
-            <div className="container">
-              {children}
-            </div>
+            <div className="container">{children}</div>
             <Footer />
           </main>
 
@@ -121,7 +122,6 @@ export default function AppShell({ children }) {
         </div>
 
         {showSidebars && <SettingsSidebar persistent={true} />}
-        
       </div>
 
       <div
@@ -131,25 +131,77 @@ export default function AppShell({ children }) {
           transition: "transform 0.3s ease-in-out",
         }}
       >
-        <button
-          className={`bar-btn ${isSurahListOpen ? "active" : ""}`}
-          onClick={toggleSurahList}
-        >
-          <BookOpen size={22} />
-          <span>Surahs</span>
-        </button>
-        <button className="bar-btn" onClick={() => router.push("/")}>
-          <Home size={22} />
-          <span>Home</span>
-        </button>
-        <button
-          className={`bar-btn ${isSettingsOpen ? "active" : ""}`}
-          onClick={toggleSettings}
-        >
-          <Settings size={22} />
-          <span>Settings</span>
-        </button>
+        <div className="container mobile-bottom-container">
+          <button
+            className={`bar-btn ${isMobileMenuOpen ? "active" : ""}`}
+            onClick={() => setIsMobileMenuOpen((v) => !v)}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-nav-menu"
+          >
+            <Menu size={22} />
+            <span>Menu</span>
+          </button>
+          <button className="bar-btn" onClick={() => router.push("/")}>
+            <Home size={22} />
+            <span>Home</span>
+          </button>
+          <button
+            className={`bar-btn ${isSurahListOpen ? "active" : ""}`}
+            onClick={toggleSurahList}
+          >
+            <BookOpen size={22} />
+            <span>Surahs</span>
+          </button>
+        </div>
       </div>
+
+      {isMobileMenuOpen && (
+        <>
+          <div className="mobile-menu-backdrop" onClick={closeMobileMenu} />
+          <div id="mobile-nav-menu" className="mobile-menu-sheet" role="menu">
+            <button
+              className="mobile-menu-item"
+              role="menuitem"
+              onClick={() => {
+                closeMobileMenu();
+                router.push("/quran");
+              }}
+            >
+              Quran
+            </button>
+            <button
+              className="mobile-menu-item"
+              role="menuitem"
+              onClick={() => {
+                closeMobileMenu();
+                router.push("/hadith");
+              }}
+            >
+              Hadith
+            </button>
+            <button
+              className="mobile-menu-item"
+              role="menuitem"
+              onClick={() => {
+                closeMobileMenu();
+                router.push("/qa-search");
+              }}
+            >
+              Ask AI
+            </button>
+            <button
+              className="mobile-menu-item"
+              role="menuitem"
+              onClick={() => {
+                closeMobileMenu();
+                router.push("/duas");
+              }}
+            >
+              Duas
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -8,7 +8,7 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.onestt
 
 const Footer = () => (
     <footer className="site-footer">
-        <div className="footer-inner">
+        <div className="container footer-inner">
             {/* Brand */}
             <div className="footer-brand">
                 <div className="footer-brand-row">
@@ -62,7 +62,7 @@ const Footer = () => (
             </div>
         </div>
 
-        <div className="footer-bottom">
+        <div className="container footer-bottom">
             <p>&copy; {new Date().getFullYear()} Rushd — Quran, Tafsir &amp; Guidance. All rights reserved.</p>
             <a href="https://onesttech.com" target="_blank" rel="noopener noreferrer">Developed by Onest Tech</a>
         </div>

@@ -58,26 +58,26 @@
 .rw-link {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 4px;
     font-size: 0.78rem;
     color: rgba(255, 255, 255, 0.65);
     text-decoration: none;
-    padding: 0.3rem 0.6rem;
-    border-radius: 0.4rem;
+    padding: 4px 0 4px 12px;
     transition: all 0.2s ease;
     cursor: pointer;
 }
 
-.rw-link:hover {
+/* .rw-link:hover {
     color: white;
     background: rgba(255, 255, 255, 0.1);
-}
+    border-radius: var(--border-radius-sm);
+} */
 
 /* ── Time Cards Grid (3 equal columns) ──────────────── */
 .rw-times-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.625rem;
+    gap: 12px;
     position: relative;
     z-index: 1;
 }
@@ -112,15 +112,17 @@
 }
 
 .rw-card-value {
-    font-size: 1.15rem;
+    font-size: 16px;
     font-weight: 700;
     color: #ffffff;
     line-height: 1;
 }
 
+
+
 .rw-mono {
-    font-family: 'SF Mono', 'Consolas', 'Liberation Mono', monospace;
-    font-size: 1.05rem;
+    /* font-family: 'SF Mono', 'Consolas', 'Liberation Mono', monospace; */
+    font-size: 16px;
 }
 
 /* Countdown card: subtle gold tint */
@@ -269,7 +271,7 @@
 
     .rw-times-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
+        gap: 10px;
     }
 
     /* Countdown card spans full width on mobile */
@@ -277,8 +279,9 @@
         grid-column: 1 / -1;
         flex-direction: row;
         justify-content: center;
-        gap: 0.5rem;
-        padding: 0.6rem 0.75rem;
+        align-items: center;
+        gap: 10px;
+        padding: 20px 12px;
     }
 
     .rw-countdown-card .rw-card-label {

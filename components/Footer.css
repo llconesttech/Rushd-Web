@@ -1,7 +1,7 @@
 /* ---- Site Footer ---- */
 .site-footer {
     color: rgba(255, 255, 255, 0.7);
-    padding: 3rem 1rem 1.5rem;
+    padding: 48px 0 24px 0;
     font-size: 0.88rem;
     position: relative;
     z-index: 1;
@@ -16,7 +16,7 @@
 }
 
 .footer-inner {
-    max-width: var(--page-max-width);
+    /* max-width: var(--page-max-width); */
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
@@ -105,7 +105,7 @@
 
 /* Bottom Bar */
 .footer-bottom {
-    max-width: var(--page-max-width);
+    /* max-width: var(--page-max-width); */
     margin: 2rem auto 0;
     padding-top: 1.25rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
