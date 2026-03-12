@@ -20,7 +20,7 @@ const TopBar = () => {
 
     return (
         <div className="topbar">
-            <div className="topbar-inner">
+            <div className="topbar-inner container">
                 {/* Brand Logo */}
                 <div className="topbar-brand" onClick={() => router.push('/')}>
                     <img src={mounted && theme === 'dark' ? '/light_gold.png' : '/logo.png'} alt="Rushd Logo" className="topbar-logo" />

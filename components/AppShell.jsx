@@ -103,15 +103,11 @@ export default function AppShell({ children }) {
         )}
 
         <div className="main-content-wrapper">
-          <main className="reader-main-content" onScroll={handleMainScroll}>
-            <div
-              style={{
-                width: "100%",
-                maxWidth: isReaderPage ? "1000px" : "1200px",
-                padding: isReaderPage ? "2rem" : "0",
-                margin: "0 auto",
-              }}
-            >
+          <main
+            className={`reader-main-content ${isGridView ? "hide-scrollbar" : ""}`}
+            onScroll={handleMainScroll}
+          >
+            <div className="container">
               {children}
             </div>
             <Footer />
@@ -125,6 +121,7 @@ export default function AppShell({ children }) {
         </div>
 
         {showSidebars && <SettingsSidebar persistent={true} />}
+        
       </div>
 
       <div

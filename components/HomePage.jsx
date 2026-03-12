@@ -304,7 +304,7 @@ const HomePage = () => {
 
                 {/* Ramadan Widget - Shows Sehri/Iftar countdown */}
                 {coords && (
-                    <section className="container">
+                    <section className="">
                         <RamadanWidget latitude={coords.lat} longitude={coords.lng} />
                     </section>
                 )}
