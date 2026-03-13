@@ -17,7 +17,7 @@ export default function SurahList() {
     });
 
     return (
-        <div className="container">
+        <div className="">
             <PageHeader
                 title="Surah Index"
                 subtitle="Select a Surah to read • 114 Surahs • 30 Juz"
