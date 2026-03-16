@@ -8,7 +8,7 @@ export const useSettings = () => useContext(SettingsContext);
 
 export const SettingsProvider = ({ children }) => {
     const [isSurahListOpen, setIsSurahListOpen] = useState(false); // Left Sidebar
-    const [isSettingsOpen, setIsSettingsOpen] = useState(true); // Right Sidebar (Default open as per screenshot)
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false); // Right Sidebar
 
     // Theme (dark/light) - persisted to localStorage
     const [theme, setTheme] = useState('dark');

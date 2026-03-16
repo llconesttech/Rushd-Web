@@ -4,6 +4,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import './PageHeader.css';
+import ReadingProgress from './ReadingProgress';
 
 const PageHeader = ({ breadcrumbs = [], title, subtitle = '', badge = '', actions = null, isScrolled: externalIsScrolled = undefined }) => {
     const backLink = breadcrumbs.length > 1
@@ -34,6 +35,17 @@ const PageHeader = ({ breadcrumbs = [], title, subtitle = '', badge = '', action
 
         return () => scroller.removeEventListener('scroll', handleScroll);
     }, [externalIsScrolled]);
+
+    const surah = {
+        ayahs: [
+            {
+                numberInSurah: 1,
+                page: 1 ,
+                juz: 1,
+                hizbQuarter: 1
+            }
+        ]
+    }
 
     return (
         <div className={`page-header ${isScrolled ? 'scrolled' : ''}`}>
@@ -67,6 +79,7 @@ const PageHeader = ({ breadcrumbs = [], title, subtitle = '', badge = '', action
                         {title}
                         {badge && <span className="ph-title-badge">{badge}</span>}
                     </h1>
+                    {isScrolled && <ReadingProgress surah={surah} className="ph-inline-reading-bar" />}
                     {subtitle && <p className="ph-subtitle">{subtitle}</p>}
                 </div>
 

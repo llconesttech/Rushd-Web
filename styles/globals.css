@@ -1218,11 +1218,6 @@ h6 {
 }
 
 @media (max-width: 640px) {
-  .scrolled-reading-bar {
-    gap: 0.5rem;
-    width: 100%;
-    justify-content: space-between;
-  }
 
   .reading-info-group {
     gap: 0.25rem;

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * Tracks the current reading position (Page, Juz, Hizb) using IntersectionObserver.
  * Robustly detects which Ayah is currently at the top of the viewport.
  */
-const ReadingProgress = ({ surah, pageFilter, onClearFilter }) => {
+const ReadingProgress = ({ surah, pageFilter, onClearFilter, className = 'scrolled-reading-bar' }) => {
   // Initialize with first ayah
   const getInitialPos = useCallback(() => {
     if (!surah?.ayahs?.[0]) return null;
@@ -86,7 +86,7 @@ const ReadingProgress = ({ surah, pageFilter, onClearFilter }) => {
 
   if (!currentPos) {
     return (
-      <div className="scrolled-reading-bar">
+      <div className={className}>
         <div className="reading-info-group">
           <span className="reading-chip">Page --</span>
           <span className="reading-chip">Juz --</span>
@@ -96,7 +96,7 @@ const ReadingProgress = ({ surah, pageFilter, onClearFilter }) => {
   }
 
   return (
-    <div className="scrolled-reading-bar">
+    <div className={className}>
       <div className="reading-info-group">
         {pageFilter ? (
           <span
@@ -127,7 +127,8 @@ ReadingProgress.propTypes = {
     }))
   }),
   pageFilter: PropTypes.number,
-  onClearFilter: PropTypes.func.isRequired
+  onClearFilter: PropTypes.func,
+  className: PropTypes.string
 };
 
 export default ReadingProgress;

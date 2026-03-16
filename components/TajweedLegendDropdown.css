@@ -7,6 +7,13 @@
   transition: all 0.3s ease;
 }
 
+@media (max-width: 575px){
+  .tajweed-legend-abs-container{
+    top: 12px;
+    right: 12px;
+  }
+}
+
 /* Revert to flex item in scrolled state */
 .page-header.scrolled .tajweed-legend-abs-container {
   position: static;
@@ -112,7 +119,7 @@
     /* Center without transform to avoid animation conflict */
     width: 480px;
     /* Bit wider for 3 columns comfortable */
-    border-radius: 1.5rem;
+    border-radius: 6px;
     border: 1px solid var(--color-border);
     height: auto;
     max-height: 80vh;

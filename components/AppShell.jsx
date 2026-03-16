@@ -72,6 +72,15 @@ export default function AppShell({ children }) {
 
   const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
 
+  const handleSurahsBarClick = useCallback(() => {
+    if (pathname === "/quran") {
+      const main = document.querySelector(".reader-main-content");
+      if (main) main.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (isReaderPage) {
+      toggleSurahList();
+    }
+  }, [pathname, isReaderPage, toggleSurahList]);
+
   const handleMobileSearch = useCallback(
     (e) => {
       e.preventDefault();
@@ -120,7 +129,7 @@ export default function AppShell({ children }) {
           />
         )}
 
-        {showSidebars && (
+        {(showSidebars || isSettingsOpen) && (
           <div
             className={`sidebar-backdrop ${anySidebarOpen ? "visible" : ""}`}
             onClick={handleBackdropClick}
@@ -143,7 +152,7 @@ export default function AppShell({ children }) {
           )}
         </div>
 
-        {showSidebars && <SettingsSidebar persistent={true} />}
+        {(showSidebars || isSettingsOpen) && <SettingsSidebar persistent={true} />}
       </div>
 
       <div
@@ -168,11 +177,18 @@ export default function AppShell({ children }) {
             <span>Home</span>
           </button>
           <button
-            className={`bar-btn ${isSurahListOpen ? "active" : ""}`}
-            onClick={toggleSurahList}
+            className={`bar-btn ${isReaderPage && isSurahListOpen ? "active" : ""}`}
+            onClick={handleSurahsBarClick}
           >
             <BookOpen size={22} />
             <span>Surahs</span>
+          </button>
+          <button
+            className={`bar-btn ${isSettingsOpen ? "active" : ""}`}
+            onClick={toggleSettings}
+          >
+            <Settings size={22} />
+            <span>Settings</span>
           </button>
         </div>
       </div>
