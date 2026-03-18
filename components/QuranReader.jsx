@@ -355,7 +355,7 @@ export default function QuranReader() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "20px",
+                gap: "10px",
                 width: "100%",
                 justifyContent: "flex-end",
               }}
