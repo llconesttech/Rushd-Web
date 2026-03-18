@@ -7,13 +7,6 @@
   transition: all 0.3s ease;
 }
 
-@media (max-width: 575px){
-  .tajweed-legend-abs-container{
-    top: 12px;
-    right: 12px;
-  }
-}
-
 /* 320–575.98px: stack so transliteration is above Tajweed (main + scrolled) */
 @media (min-width: 320px) and (max-width: 575.98px) {
   .page-header .ph-actions:has(.tajweed-legend-abs-container) > div {
@@ -22,14 +15,19 @@
     gap: 0.5rem;
   }
 
-  .page-header .ph-actions:has(.tajweed-legend-abs-container) .tajweed-legend-abs-container {
+  .page-header
+    .ph-actions:has(.tajweed-legend-abs-container)
+    .tajweed-legend-abs-container {
     position: static;
     top: auto;
-    right: auto;
+    right: 12px !important;
     order: 2;
   }
 
-  .page-header .ph-actions:has(.tajweed-legend-abs-container) > div > div:first-child {
+  .page-header
+    .ph-actions:has(.tajweed-legend-abs-container)
+    > div
+    > div:first-child {
     order: 1;
   }
 }
@@ -93,7 +91,6 @@
   }
 }
 
-
 /* ---- Backdrop ---- */
 .tajweed-backdrop {
   position: fixed;
@@ -126,10 +123,11 @@
   flex-direction: column;
   animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   border-top: 1px solid var(--color-border);
+  border-top-left-radius: var(--border-radius-md);
+  border-top-right-radius: var(--border-radius-md);
 }
 
 @media (min-width: 768px) {
-
   /* On desktop, floating bottom sheet centered */
   .tajweed-sheet {
     bottom: 2rem;
@@ -206,7 +204,7 @@
   text-align: center;
   gap: 0.5rem;
   padding: 0.75rem 0.5rem;
-  border-radius: 0.75rem;
+  border-radius: 6px;
   background: var(--color-bg-main);
   border: 1px solid var(--color-border);
   text-decoration: none;
@@ -269,7 +267,7 @@
   padding: 0.75rem;
   background-color: var(--color-primary);
   color: white;
-  border-radius: 0.75rem;
+  border-radius: var(--border-radius-sm);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;

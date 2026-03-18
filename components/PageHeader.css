@@ -64,9 +64,19 @@
     box-shadow: var(--ph-shadow);
   }
 
+  /* Back button visible on both states */
+  .page-header-nav,
   .page-header.scrolled .page-header-nav {
-    margin-bottom: 10px;
-    display: none;
+    display: flex;
+    margin: 0;
+    position: absolute;
+    left: 12px;
+    top: 26px;
+    z-index: 3;
+  }
+
+  .ph-breadcrumbs {
+    display: none !important;
   }
 
   .page-header.scrolled .page-header-content {
@@ -74,7 +84,11 @@
     gap: 0.5rem;
     justify-content: space-between;
     flex: initial;
-    padding-left: 0;
+    padding-left: 40px;
+  }
+
+  .page-header-content {
+    padding-left: 40px;
   }
 
   .page-header.scrolled .ph-titles {
@@ -221,7 +235,7 @@
 @media (min-width: 320px) and (max-width: 575.98px) {
   .page-header-nav {
     margin-bottom: 10px;
-    display: none;
+    display: flex;
   }
 }
 
@@ -374,7 +388,7 @@
 .page-header-content {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.5rem;
   transition: gap 0.3s ease;
   min-width: 0;
@@ -535,7 +549,7 @@
 
 @media (min-width: 768px) {
   .ph-title {
-    font-size: 24px;
+    font-size: 21px;
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
@@ -563,7 +577,7 @@
 
 @media (min-width: 1200px) {
   .ph-title {
-    font-size: 32px;
+    font-size: 25px;
   }
 
   .page-header.scrolled .ph-title {
@@ -698,7 +712,7 @@
   align-items: center;
   gap: 0.3rem;
   padding: 0.3rem 0.6rem;
-  border-radius: 9999px;
+  border-radius: 6px;
   font-weight: 500;
   font-size: 0.75rem;
   cursor: pointer;

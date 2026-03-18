@@ -303,15 +303,7 @@ const MushafReader = () => {
         </div>
       </div>
 
-      {/* Audio Player Dock Local to Mushaf */}
-      {primarySurah > 0 && (
-        <div className="audio-player-dock" style={{ position: 'sticky', bottom: 0, paddingBottom: '0.5rem', zIndex: 100 }}>
-          <AudioPlayer
-            surahNumber={primarySurah}
-            totalAyahs={surahData.find(s => s.number === primarySurah)?.ayahs || 0}
-          />
-        </div>
-      )}
+      {/* Audio player dock is provided by AppShell */}
     </div>
   );
 };

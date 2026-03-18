@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import {
   BookOpen,
@@ -34,9 +34,14 @@ export default function AppShell({ children }) {
   const [mobileSearchQuery, setMobileSearchQuery] = useState("");
 
   // Route detection
-  const readerMatch = pathname.match(/^\/quran\/(\d+)$/);
-  const surahNumber = readerMatch ? parseInt(readerMatch[1]) : null;
-  const isReaderPage = !!readerMatch;
+  const quranReaderMatch = pathname.match(/^\/quran\/(\d+)$/);
+  const mushafReaderMatch = pathname.match(/^\/quran\/mushaf\/(\d+)$/);
+  const surahNumber = quranReaderMatch
+    ? parseInt(quranReaderMatch[1])
+    : mushafReaderMatch
+      ? parseInt(mushafReaderMatch[1])
+      : null;
+  const isReaderPage = !!quranReaderMatch || !!mushafReaderMatch;
   const isGridView = pathname === "/" || pathname === "/quran";
   const isZakatPage = pathname === "/zakat";
   const showSidebars = isReaderPage;
@@ -78,8 +83,10 @@ export default function AppShell({ children }) {
       if (main) main.scrollTo({ top: 0, behavior: "smooth" });
     } else if (isReaderPage) {
       toggleSurahList();
+    } else {
+      router.push("/quran");
     }
-  }, [pathname, isReaderPage, toggleSurahList]);
+  }, [pathname, isReaderPage, toggleSurahList, router]);
 
   const handleMobileSearch = useCallback(
     (e) => {
@@ -93,6 +100,11 @@ export default function AppShell({ children }) {
 
   const bgClass =
     isGridView || isZakatPage ? "app-layout bg-dots" : "app-layout";
+
+  // If user leaves /quran/{id}, ensure settings sidebar isn't left open
+  useEffect(() => {
+    if (!isReaderPage && isSettingsOpen) toggleSettings();
+  }, [isReaderPage, isSettingsOpen, toggleSettings]);
 
   return (
     <div
@@ -129,7 +141,7 @@ export default function AppShell({ children }) {
           />
         )}
 
-        {(showSidebars || isSettingsOpen) && (
+        {showSidebars && (
           <div
             className={`sidebar-backdrop ${anySidebarOpen ? "visible" : ""}`}
             onClick={handleBackdropClick}
@@ -152,7 +164,7 @@ export default function AppShell({ children }) {
           )}
         </div>
 
-        {(showSidebars || isSettingsOpen) && <SettingsSidebar persistent={true} />}
+        {showSidebars && <SettingsSidebar persistent={true} />}
       </div>
 
       <div
@@ -183,13 +195,15 @@ export default function AppShell({ children }) {
             <BookOpen size={22} />
             <span>Surahs</span>
           </button>
-          <button
-            className={`bar-btn ${isSettingsOpen ? "active" : ""}`}
-            onClick={toggleSettings}
-          >
-            <Settings size={22} />
-            <span>Settings</span>
-          </button>
+          {isReaderPage && (
+            <button
+              className={`bar-btn ${isSettingsOpen ? "active" : ""}`}
+              onClick={toggleSettings}
+            >
+              <Settings size={22} />
+              <span>Settings</span>
+            </button>
+          )}
         </div>
       </div>
 
@@ -214,85 +228,85 @@ export default function AppShell({ children }) {
               </button>
             </div>
             <div className="container">
-            <form
-              className="topbar-search-form mobile-menu-search"
-              onSubmit={handleMobileSearch}
-            >
-              <Search size={16} />
-              <input
-                type="text"
-                placeholder="Search Quran, Hadith..."
-                value={mobileSearchQuery}
-                onChange={(e) => setMobileSearchQuery(e.target.value)}
-              />
-            </form>
+              <form
+                className="topbar-search-form mobile-menu-search"
+                onSubmit={handleMobileSearch}
+              >
+                <Search size={16} />
+                <input
+                  type="text"
+                  placeholder="Search Quran, Hadith..."
+                  value={mobileSearchQuery}
+                  onChange={(e) => setMobileSearchQuery(e.target.value)}
+                />
+              </form>
             </div>
             <div className="mobile-menu-grid container" role="menu">
-            <button
-              className="mobile-menu-item"
-              role="menuitem"
-              onClick={() => {
-                closeMobileMenu();
-                router.push("/quran");
-              }}
-            >
-              <span className="mmi-icon">
-                <Book size={18} />
-              </span>
-              <span className="mmi-text">
-                <span className="mmi-title">Quran</span>
-                <span className="mmi-subtitle">Read & explore</span>
-              </span>
-            </button>
-            <button
-              className="mobile-menu-item"
-              role="menuitem"
-              onClick={() => {
-                closeMobileMenu();
-                router.push("/hadith");
-              }}
-            >
-              <span className="mmi-icon">
-                <ScrollText size={18} />
-              </span>
-              <span className="mmi-text">
-                <span className="mmi-title">Hadith</span>
-                <span className="mmi-subtitle">Collections</span>
-              </span>
-            </button>
-            <button
-              className="mobile-menu-item"
-              role="menuitem"
-              onClick={() => {
-                closeMobileMenu();
-                router.push("/qa-search");
-              }}
-            >
-              <span className="mmi-icon">
-                <Sparkles size={18} />
-              </span>
-              <span className="mmi-text">
-                <span className="mmi-title">Ask AI</span>
-                <span className="mmi-subtitle">Get answers</span>
-              </span>
-            </button>
-            <button
-              className="mobile-menu-item"
-              role="menuitem"
-              onClick={() => {
-                closeMobileMenu();
-                router.push("/duas");
-              }}
-            >
-              <span className="mmi-icon">
-                <HeartHandshake size={18} />
-              </span>
-              <span className="mmi-text">
-                <span className="mmi-title">Duas</span>
-                <span className="mmi-subtitle">Daily supplications</span>
-              </span>
-            </button>
-          </div>
+              <button
+                className="mobile-menu-item"
+                role="menuitem"
+                onClick={() => {
+                  closeMobileMenu();
+                  router.push("/quran");
+                }}
+              >
+                <span className="mmi-icon">
+                  <Book size={18} />
+                </span>
+                <span className="mmi-text">
+                  <span className="mmi-title">Quran</span>
+                  <span className="mmi-subtitle">Read & explore</span>
+                </span>
+              </button>
+              <button
+                className="mobile-menu-item"
+                role="menuitem"
+                onClick={() => {
+                  closeMobileMenu();
+                  router.push("/hadith");
+                }}
+              >
+                <span className="mmi-icon">
+                  <ScrollText size={18} />
+                </span>
+                <span className="mmi-text">
+                  <span className="mmi-title">Hadith</span>
+                  <span className="mmi-subtitle">Collections</span>
+                </span>
+              </button>
+              <button
+                className="mobile-menu-item"
+                role="menuitem"
+                onClick={() => {
+                  closeMobileMenu();
+                  router.push("/qa-search");
+                }}
+              >
+                <span className="mmi-icon">
+                  <Sparkles size={18} />
+                </span>
+                <span className="mmi-text">
+                  <span className="mmi-title">Ask AI</span>
+                  <span className="mmi-subtitle">Get answers</span>
+                </span>
+              </button>
+              <button
+                className="mobile-menu-item"
+                role="menuitem"
+                onClick={() => {
+                  closeMobileMenu();
+                  router.push("/duas");
+                }}
+              >
+                <span className="mmi-icon">
+                  <HeartHandshake size={18} />
+                </span>
+                <span className="mmi-text">
+                  <span className="mmi-title">Duas</span>
+                  <span className="mmi-subtitle">Daily supplications</span>
+                </span>
+              </button>
+            </div>
           </div>
         </>
       )}
