@@ -12,6 +12,7 @@ const PageHeader = ({
   subtitle = "",
   badge = "",
   actions = null,
+  readingProgressSurah = null,
   isScrolled: externalIsScrolled = undefined,
 }) => {
   const backLink =
@@ -43,17 +44,6 @@ const PageHeader = ({
 
     return () => scroller.removeEventListener("scroll", handleScroll);
   }, [externalIsScrolled]);
-
-  const surah = {
-    ayahs: [
-      {
-        numberInSurah: 1,
-        page: 1,
-        juz: 1,
-        hizbQuarter: 1,
-      },
-    ],
-  };
 
   return (
     <div className={`page-header ${isScrolled ? "scrolled" : ""}`}>
@@ -89,7 +79,12 @@ const PageHeader = ({
             {title}
             {badge && <span className="ph-title-badge">{badge}</span>}
           </h1>
-          {<ReadingProgress surah={surah} className="ph-inline-reading-bar" />}
+          {readingProgressSurah && (
+            <ReadingProgress
+              surah={readingProgressSurah}
+              className="ph-inline-reading-bar"
+            />
+          )}
           {subtitle && <p className="ph-subtitle">{subtitle}</p>}
         </div>
 
@@ -110,6 +105,16 @@ PageHeader.propTypes = {
   subtitle: PropTypes.string,
   badge: PropTypes.node,
   actions: PropTypes.node,
+  readingProgressSurah: PropTypes.shape({
+    ayahs: PropTypes.arrayOf(
+      PropTypes.shape({
+        numberInSurah: PropTypes.number,
+        page: PropTypes.number,
+        juz: PropTypes.number,
+        hizbQuarter: PropTypes.number,
+      }),
+    ),
+  }),
   isScrolled: PropTypes.bool,
 };
 

@@ -30,9 +30,9 @@
     position: absolute;
     top: 19%;
     left: 50%;
-    transform: translateX(-36%);
+    transform: translateX(-39%);
     z-index: 3;
-    padding: 6px 12px;
+    padding: 4px 16px;
     border-radius: 9999px;
     background: rgba(255, 255, 255, 0.78);
     color: var(--color-primary-dark);
@@ -40,6 +40,14 @@
     font-size: 1.2rem;
     letter-spacing: 0.02em;
     text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+    .qibla-cardinal-overlay {
+        left: 50%;
+        transform: translate(-40%);
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -60,19 +68,36 @@
     }
 }
 
+[data-theme="dark"] .qibla-cardinal-overlay {
+    background: rgba(8, 39, 49, 0.72);
+    border: 1px solid color-mix(in oklab, #7ad8c8 35%, transparent);
+    color: #9ee9dc;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+}
+
 .qibla-angle-overlay {
     position: absolute;
-    top: 30%;
+    top: 28%;
     left: 50%;
     transform: translateX(-43%);
     z-index: 3;
-    padding: 4px 10px;
+    padding: 4px 16px;
     border-radius: 9999px;
     background: rgba(255, 255, 255, 0.72);
     color: var(--color-primary-dark);
     font-weight: 600;
     font-size: 1rem;
     letter-spacing: 0.01em;
+}
+
+@media (max-width: 768px) {
+    .qibla-angle-overlay {
+        left: 50%;
+        transform: translate(-43%);
+        top: 28%;
+        padding: 4px 10px;
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -93,6 +118,13 @@
         padding: 2px 10px;
         font-size: 8px;
     }
+}
+
+[data-theme="dark"] .qibla-angle-overlay {
+    background: rgba(8, 39, 49, 0.68);
+    border: 1px solid color-mix(in oklab, #7ad8c8 30%, transparent);
+    color: #8ed8cc;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .compass-wrapper {

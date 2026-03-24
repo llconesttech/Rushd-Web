@@ -345,6 +345,7 @@ export default function QuranReader() {
           title={`Surah ${surah.englishName}`}
           badge={surahBadge}
           subtitle={subtitle}
+          readingProgressSurah={surah}
           breadcrumbs={[
             { label: "Home", path: "/" },
             { label: "Quran", path: "/quran" },

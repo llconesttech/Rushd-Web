@@ -1,13 +1,15 @@
 /* eslint-disable */
 import React, { useState, useMemo } from 'react';
-import { BookOpen, Search, Filter } from 'lucide-react';
+import { BookOpen, Filter } from 'lucide-react';
 import PageHeader from './PageHeader';
+import Form from './Form';
 import { DAILY_DUAS, DUA_CATEGORIES } from '../data/duasData';
 import './DailyDuas.css';
 
 const DailyDuas = () => {
     const [activeCategory, setActiveCategory] = useState(DUA_CATEGORIES[0].id);
     const [searchQuery, setSearchQuery] = useState('');
+    const handleSearchSubmit = (e) => e.preventDefault();
 
     // Filter Duas
     const filteredDuas = useMemo(() => {
@@ -39,16 +41,13 @@ const DailyDuas = () => {
 
             <div className="duas-controls">
                 {/* Search Bar */}
-                <div className="duas-search-wrapper">
-                    <Search className="search-icon" size={18} />
-                    <input
-                        type="text"
-                        placeholder="Search duas by title, meaning or transliteration..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="duas-search-input"
-                    />
-                </div>
+                <Form
+                    onSubmit={handleSearchSubmit}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search duas by title, meaning or transliteration..."
+                    className="topbar-search-form mobile-menu-search"
+                />
 
                 {/* Category Switcher */}
                 <div className="dua-categories-wrapper">

@@ -1,8 +1,9 @@
 'use client';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { Search, Hash, Loader2, BookOpen, ChevronRight, ChevronDown, ArrowLeft, ExternalLink, X } from 'lucide-react';
+import { Hash, Loader2, BookOpen, ChevronRight, ChevronDown, ArrowLeft, ExternalLink, X } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
+import Form from '@/components/Form';
 import { HADITH_BOOKS } from '@/data/hadithData';
 import { apiFetch } from '@/lib/apiClient';
 import '@/components/Hadith.css';
@@ -170,14 +171,14 @@ const QASearch = () => {
         ]}
       />
 
-      <div className="hadith-search-bar" style={{ marginTop: '1.5rem', marginBottom: '1rem' }}>
-        <Search size={18} className="search-icon" />
-        <input
-          type="text"
-          placeholder="Search questions, topics, or categories..."
+      <div className="" style={{ marginTop: '1.5rem', marginBottom: '1rem' }}>
+        <Form
+          onSubmit={(e) => e.preventDefault()}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="hadith-search-input"
+          placeholder="Search questions, topics, or categories..."
+          className="topbar-search-form mobile-menu-search"
+          iconSize={18}
         />
         {searchTerm && (
           <button 

@@ -7,12 +7,13 @@ import {
   Settings,
   Home,
   Menu,
-  Search,
   X,
   Book,
   ScrollText,
   Sparkles,
   HeartHandshake,
+  Moon,
+  Sun,
 } from "lucide-react";
 import { useSettings } from "@/context/SettingsContext";
 import { getSurahInfo } from "@/data/quranData";
@@ -21,12 +22,19 @@ import SurahListSidebar from "@/components/SurahListSidebar";
 import SettingsSidebar from "@/components/SettingsSidebar";
 import AudioPlayer from "@/components/AudioPlayer";
 import Footer from "./Footer";
+import Form from "./Form";
 
 export default function AppShell({ children }) {
   const router = useRouter();
   const pathname = usePathname();
-  const { isSurahListOpen, isSettingsOpen, toggleSurahList, toggleSettings } =
-    useSettings();
+  const {
+    isSurahListOpen,
+    isSettingsOpen,
+    toggleSurahList,
+    toggleSettings,
+    theme,
+    toggleTheme,
+  } = useSettings();
 
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -228,18 +236,14 @@ export default function AppShell({ children }) {
               </button>
             </div>
             <div className="container">
-              <form
-                className="topbar-search-form mobile-menu-search"
-                onSubmit={handleMobileSearch}
-              >
-                <Search size={16} />
-                <input
-                  type="text"
-                  placeholder="Search Quran, Hadith..."
-                  value={mobileSearchQuery}
-                  onChange={(e) => setMobileSearchQuery(e.target.value)}
-                />
-              </form>
+              <Form
+              placeholder="Search Quran, Hadith..."
+                value={mobileSearchQuery}
+                onChange={(e) => setMobileSearchQuery(e.target.value)}
+                handleMobileSearch={handleMobileSearch}
+                mobileSearchQuery={mobileSearchQuery}
+                setMobileSearchQuery={setMobileSearchQuery}
+              />
             </div>
             <div className="mobile-menu-grid container" role="menu">
               <button
@@ -304,6 +308,21 @@ export default function AppShell({ children }) {
                 <span className="mmi-text">
                   <span className="mmi-title">Duas</span>
                   <span className="mmi-subtitle">Daily supplications</span>
+                </span>
+              </button>
+              <button
+                className="mobile-menu-item"
+                role="menuitem"
+                onClick={toggleTheme}
+              >
+                <span className="mmi-icon">
+                  {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                </span>
+                <span className="mmi-text">
+                  <span className="mmi-title">
+                    {theme === "dark" ? "Light Mode" : "Dark Mode"}
+                  </span>
+                  <span className="mmi-subtitle">Switch theme</span>
                 </span>
               </button>
             </div>

@@ -11,6 +11,7 @@
   border: 1px solid var(--ph-border);
   padding: 0.75rem 0.75rem;
   position: sticky;
+  /* height: 85px; */
   top: 0;
   z-index: 50;
   margin-bottom: 0.75rem;
@@ -23,6 +24,15 @@
   user-select: none;
   overflow: hidden;
 }
+
+/* @media (max-width: 575.98px) {
+  .page-header:not(.has-reading-progress) {
+    padding: 0.75rem 0.75rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
+} */
 
 @supports (color: color-mix(in oklab, white 50%, black)) {
   .page-header {
@@ -46,7 +56,7 @@
 .page-header.scrolled {
   padding: 0 0.75rem;
   box-shadow: var(--ph-shadow-scrolled);
-  height: 80px;
+  /* height: 80px; */
   overflow: hidden;
   display: flex;
   gap: 0.75rem;
@@ -57,10 +67,10 @@
   /* Mobile: keep header in "main" layout even if scrolled class exists */
   .page-header.scrolled {
     padding: 0.75rem 0.75rem;
-    height: auto;
-    display: block;
+    /* height: 80px; */
+    display: flex;
     gap: initial;
-    align-items: initial;
+    align-items: center;
     box-shadow: var(--ph-shadow);
   }
 
@@ -71,8 +81,13 @@
     margin: 0;
     position: absolute;
     left: 12px;
-    top: 26px;
+    top: 11px;
     z-index: 3;
+  }
+
+  .page-header.has-reading-progress .page-header-nav,
+  .page-header.has-reading-progress.scrolled .page-header-nav {
+    top: 26px;
   }
 
   .ph-breadcrumbs {
@@ -243,7 +258,7 @@
   .page-header-nav {
     gap: 10px;
     font-size: 14px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 }
 
@@ -521,7 +536,7 @@
   font-weight: 750;
   letter-spacing: -0.02em;
   color: var(--color-primary-dark);
-  margin: 0 0 5px 0;
+  margin: 0 0 0 0;
   transition:
     font-size 0.3s ease,
     margin 0.3s ease;
@@ -711,7 +726,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  padding: 0.3rem 0.6rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 6px;
   font-weight: 500;
   font-size: 0.75rem;
