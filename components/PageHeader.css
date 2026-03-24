@@ -16,7 +16,7 @@
   margin-bottom: 0.75rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-anchor: none;
-  border-radius: 6px;
+  border-radius: 0 0 6px 6px;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -137,7 +137,7 @@
     padding: 0 1.25rem;
     margin: 0.75rem 0;
     height: 80px;
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
   }
 }
 
@@ -145,7 +145,7 @@
 @media (min-width: 992px) {
   .page-header {
     padding: 20px 20px;
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
   }
 
   .page-header.scrolled {
@@ -158,13 +158,13 @@
 @media (min-width: 1200px) {
   .page-header {
     padding: 20px 20px;
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
   }
 
   .page-header.scrolled {
     padding: 0 1.5rem;
     height: 90px;
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
   }
 }
 

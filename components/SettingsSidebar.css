@@ -173,7 +173,7 @@
 
 .settings-item {
     padding: 0.5rem 0.625rem;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 0.825rem;
     color: var(--color-text-main);

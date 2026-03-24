@@ -305,7 +305,7 @@
     align-items: center;
     gap: 0.625rem;
     padding: 0.625rem 0.5rem;
-    border-radius: 10px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
     margin-bottom: 2px;
@@ -333,7 +333,7 @@
     align-items: center;
     justify-content: center;
     background: rgba(13, 92, 99, 0.1);
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--color-primary);
