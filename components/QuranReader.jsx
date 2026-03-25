@@ -1,12 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
-import {
-  useParams,
-  useRouter,
-  useSearchParams,
-  usePathname,
-} from "next/navigation";
+import React, { useEffect, useRef } from "react";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
 import { useSurahDetail } from "@/hooks/useQuran";
@@ -46,6 +41,7 @@ export default function QuranReader() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pageFilter = searchParams.get("page");
+  const surahNum = parseInt(params.number, 10);
 
   const {
     selectedScript,
@@ -56,9 +52,12 @@ export default function QuranReader() {
     uiStyle,
     selectedArabicFont,
     showTajweedTooltips,
+    audioPlayback,
   } = useSettings();
 
-  const surahNum = parseInt(params.number);
+  const activeAudioAyahInSurah =
+    audioPlayback?.surahNumber === surahNum ? audioPlayback.ayahInSurah : null;
+  const lastScrolledAudioAyah = useRef(null);
 
   const getArabicFontFamily = () => {
     if (
@@ -92,6 +91,28 @@ export default function QuranReader() {
     selectedTranslation,
     selectedTafsir,
   );
+
+  useEffect(() => {
+    lastScrolledAudioAyah.current = null;
+  }, [surahNum]);
+
+  // Keep the ayah currently playing in view (docked AudioPlayer)
+  useEffect(() => {
+    if (loading || !surah || activeAudioAyahInSurah == null) return;
+    const ayahObj = surah.ayahs.find(
+      (a) => a.numberInSurah === activeAudioAyahInSurah,
+    );
+    if (!ayahObj) return;
+    if (lastScrolledAudioAyah.current === activeAudioAyahInSurah) return;
+
+    requestAnimationFrame(() => {
+      const el = document.getElementById(`ayah-${ayahObj.number}`);
+      if (el) {
+        lastScrolledAudioAyah.current = activeAudioAyahInSurah;
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+  }, [loading, surah, activeAudioAyahInSurah]);
 
   // Deep link to ayah via hash
   useEffect(() => {
@@ -175,6 +196,10 @@ export default function QuranReader() {
   );
 
   const renderAyah = (ayah, index) => {
+    const isAudioActive =
+      activeAudioAyahInSurah != null &&
+      ayah.numberInSurah === activeAudioAyahInSurah;
+
     const arabicContent = isWordByWord ? (
       <div className="word-by-word-container" style={{ padding: 0 }}>
         {parseWordByWord(ayah.text).map((w, i) => (
@@ -248,10 +273,17 @@ export default function QuranReader() {
       return (
         <div
           key={ayah.number}
-          className="ayah-card-style2"
+          id={`ayah-${ayah.number}`}
+          className={`ayah-card-style2 ${isAudioActive ? "ayah-card-style2--audio-active" : ""}`}
           data-ayah-num={ayah.numberInSurah}
+          aria-current={isAudioActive ? "true" : undefined}
         >
-          <span className="ayah-badge">Ayah {ayah.numberInSurah}</span>
+          <div className="ayah-card-style2-meta">
+            <span className="ayah-badge">Ayah {ayah.numberInSurah}</span>
+            {isAudioActive && (
+              <span className="ayah-playing-label">Playing</span>
+            )}
+          </div>
           <button className="play-btn-circle" title="Play Ayah">
             <svg
               width="20"
@@ -286,8 +318,9 @@ export default function QuranReader() {
       <div
         key={ayah.number}
         id={`ayah-${ayah.number}`}
-        className="ayah-row"
+        className={`ayah-row ${isAudioActive ? "ayah-row--audio-active" : ""}`}
         data-ayah-num={ayah.numberInSurah}
+        aria-current={isAudioActive ? "true" : undefined}
         style={{
           backgroundColor:
             index % 2 === 0 ? "var(--color-bg-card)" : "var(--color-bg-main)",
@@ -297,6 +330,7 @@ export default function QuranReader() {
           <span>
             {surah.number}:{ayah.numberInSurah}
           </span>
+          {isAudioActive && <span className="ayah-playing-label">Playing</span>}
         </div>
         {arabicContent}
         {ayah.transliteration && (

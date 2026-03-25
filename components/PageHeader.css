@@ -14,7 +14,7 @@
   /* height: 85px; */
   top: 0;
   z-index: 50;
-  margin-bottom: 0.75rem;
+  margin-bottom: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-anchor: none;
   border-radius: 0 0 6px 6px;
@@ -130,9 +130,17 @@
 /* ===== BREAKPOINTS ===== */
 
 /* 576px — small mobile landscape */
+
+@media (min-width: 320px) and (max-width: 575.98px) {
+  .page-header {
+    margin-bottom: 12px;
+  }
+}
+
 @media (min-width: 576px) {
   .page-header {
     padding: 20px 20px;
+    margin-bottom: 16px;
   }
 
   .page-header.scrolled {
@@ -145,7 +153,7 @@
 @media (min-width: 768px) {
   .page-header {
     padding: 20px 20px;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
   }
 
   .page-header.scrolled {

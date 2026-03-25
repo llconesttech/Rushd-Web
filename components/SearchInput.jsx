@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Search } from "lucide-react";
 
-const Form = ({
+const SearchInput = ({
   // Reusable API
   onSubmit,
   value,
@@ -38,7 +38,7 @@ const Form = ({
   );
 };
 
-Form.propTypes = {
+SearchInput.propTypes = {
   onSubmit: PropTypes.func,
   value: PropTypes.string,
   onChange: PropTypes.func,
@@ -53,4 +53,4 @@ Form.propTypes = {
   setMobileSearchQuery: PropTypes.func,
 };
 
-export default Form;
+export default SearchInput;

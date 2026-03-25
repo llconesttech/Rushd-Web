@@ -14,6 +14,12 @@ import "./SettingsSidebar.css";
 
 import { usePathname } from "next/navigation";
 
+/** Mushaf page view uses the page API; WBW/Kids layouts are not available there. */
+const MUSHAF_UNSUPPORTED_SCRIPT_KEYS = new Set([
+  "quran-wordbyword",
+  "quran-kids",
+]);
+
 const SettingsSidebar = ({ persistent = false }) => {
   const pathname = usePathname();
   const isShanENuzool = pathname.startsWith("/shan-e-nuzool");
@@ -52,12 +58,27 @@ const SettingsSidebar = ({ persistent = false }) => {
     if (isShanENuzool) setActiveSection("translations");
   }, [isShanENuzool]);
 
-  // Mushaf view: "translations" tab is not available
+  // Mushaf view: Languages and Tafsir tabs are not available
   useEffect(() => {
-    if (isMushafRoute && activeSection === "translations") {
+    if (
+      isMushafRoute &&
+      (activeSection === "translations" || activeSection === "tafsir")
+    ) {
       setActiveSection("quran");
     }
   }, [isMushafRoute, activeSection]);
+
+  // Mushaf: fall back if a non-supported script was left selected (e.g. from /quran/{id})
+  useEffect(() => {
+    if (!isMushafRoute) return;
+    if (MUSHAF_UNSUPPORTED_SCRIPT_KEYS.has(selectedScript)) {
+      setSelectedScript("quran-tajweed");
+    }
+  }, [isMushafRoute, selectedScript, setSelectedScript]);
+
+  const quranScriptEntries = Object.entries(quranScripts).filter(
+    ([key]) => !isMushafRoute || !MUSHAF_UNSUPPORTED_SCRIPT_KEYS.has(key),
+  );
 
   const isIndoPak =
     selectedScript === "quran-indopak" ||
@@ -110,7 +131,7 @@ const SettingsSidebar = ({ persistent = false }) => {
   const tabs = isShanENuzool
     ? ["translations", "shan-e-nuzool"]
     : isMushafRoute
-      ? ["quran", "tafsir", "reciters"]
+      ? ["quran", "reciters"]
       : ["quran", "translations", "tafsir", "reciters"];
 
   return (
@@ -153,7 +174,7 @@ const SettingsSidebar = ({ persistent = false }) => {
           <section className="settings-section">
             <h4>Arabic Script Style</h4>
             <ul className="settings-list">
-              {Object.entries(quranScripts).map(([key, value]) => (
+              {quranScriptEntries.map(([key, value]) => (
                 <li
                   key={key}
                   className={`settings-item ${selectedScript === key ? "active" : ""}`}
@@ -168,8 +189,8 @@ const SettingsSidebar = ({ persistent = false }) => {
             </ul>
 
             {/* Mushaf route: Arabic font options not applicable */}
-            {!isMushafRoute && (
-              <>
+            {/* {isMushafRoute && ( */}
+              {/* <> */}
                 <h4 style={{ marginTop: "1rem" }}>Arabic Font</h4>
                 {isIndoPak ? (
                   <p
@@ -200,8 +221,8 @@ const SettingsSidebar = ({ persistent = false }) => {
                     ))}
                   </div>
                 )}
-              </>
-            )}
+              {/* </> */}
+            {/* )} */}
 
             {/* Tajweed Tooltips Toggle */}
             {isTajweed && (

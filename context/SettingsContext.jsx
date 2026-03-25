@@ -62,6 +62,9 @@ export const SettingsProvider = ({ children }) => {
     const toggleSurahList = () => setIsSurahListOpen(!isSurahListOpen);
     const toggleSettings = () => setIsSettingsOpen(!isSettingsOpen);
 
+    /** Surah reader + docked player: current recitation position for UI sync (e.g. ayah highlight). */
+    const [audioPlayback, setAudioPlayback] = useState(null);
+
     const value = {
         theme,
         toggleTheme,
@@ -87,7 +90,9 @@ export const SettingsProvider = ({ children }) => {
         showTajweedTooltips,
         setShowTajweedTooltips,
         selectedShanENuzool,
-        setSelectedShanENuzool
+        setSelectedShanENuzool,
+        audioPlayback,
+        setAudioPlayback,
     };
 
     return (

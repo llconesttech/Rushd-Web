@@ -7,8 +7,13 @@ import audioService from '../services/audioService';
 import './AudioPlayer.css';
 
 const AudioPlayer = ({ surahNumber, totalAyahs }) => {
-    const { selectedReciter, setSelectedReciter } = useSettings();
+    const { selectedReciter, setSelectedReciter, setAudioPlayback } = useSettings();
     const audioRef = useRef(null);
+    /** After ayah change / auto-advance: play() even if `pause` zeroed React state. */
+    const shouldResumePlaybackRef = useRef(false);
+    const isPlayingRef = useRef(false);
+    /** Ignore `pause` fired by `load()` until `play()` settles. */
+    const switchingTrackRef = useRef(false);
     const [currentAyah, setCurrentAyah] = useState(1);
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
@@ -28,21 +33,50 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
     }, [localUrl]);
 
     useEffect(() => {
-        if (audioRef.current) {
-            audioRef.current.load();
-            if (isPlaying) {
-                audioRef.current.play().catch(e => {
-                    console.log('Autoplay prevented:', e);
-                    setAudioError('Click play to start');
-                });
-            }
+        isPlayingRef.current = isPlaying;
+    }, [isPlaying]);
+
+    useEffect(() => {
+        const audio = audioRef.current;
+        if (!audio) return;
+
+        switchingTrackRef.current = true;
+        audio.load();
+        const tryPlay =
+            shouldResumePlaybackRef.current || isPlayingRef.current;
+        shouldResumePlaybackRef.current = false;
+
+        if (!tryPlay) {
+            switchingTrackRef.current = false;
+            return;
         }
+
+        audio
+            .play()
+            .then(() => {
+                switchingTrackRef.current = false;
+            })
+            .catch((e) => {
+                switchingTrackRef.current = false;
+                console.log('Autoplay prevented:', e);
+                setAudioError('Click play to start');
+                setIsPlaying(false);
+            });
     }, [currentSrc]);
 
     useEffect(() => {
         setCurrentAyah(1);
         setIsPlaying(false);
+        shouldResumePlaybackRef.current = false;
     }, [surahNumber]);
+
+    useEffect(() => {
+        setAudioPlayback({ surahNumber, ayahInSurah: currentAyah });
+    }, [surahNumber, currentAyah, setAudioPlayback]);
+
+    useEffect(() => {
+        return () => setAudioPlayback(null);
+    }, [setAudioPlayback]);
 
     const handleTimeUpdate = () => {
         if (audioRef.current) setCurrentTime(audioRef.current.currentTime);
@@ -65,8 +99,8 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         const state = stateRef.current;
 
         if (state.isAutoPlay && state.currentAyah < state.totalAyahs) {
-            setIsPlaying(true); // Ensure playing plays next track
-            setCurrentAyah(prev => prev + 1);
+            shouldResumePlaybackRef.current = true;
+            setCurrentAyah((prev) => prev + 1);
         } else {
             setIsPlaying(false);
         }
@@ -76,6 +110,7 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         console.error('Audio error:', e);
         if (currentSrc === localUrl && localUrl !== remoteUrl) {
             console.log('Local audio not found, switching to remote:', remoteUrl);
+            if (isPlayingRef.current) shouldResumePlaybackRef.current = true;
             setCurrentSrc(remoteUrl);
             return;
         }
@@ -83,27 +118,46 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         setIsPlaying(false);
     };
 
+    const handlePause = () => {
+        if (switchingTrackRef.current) return;
+        const el = audioRef.current;
+        const st = stateRef.current;
+        if (
+            el?.ended &&
+            st.isAutoPlay &&
+            st.currentAyah < st.totalAyahs
+        ) {
+            return;
+        }
+        setIsPlaying(false);
+    };
+
     const togglePlay = () => {
-        if (audioRef.current) {
-            if (isPlaying) {
-                audioRef.current.pause();
-            } else {
-                setAudioError(null);
-                audioRef.current.play().catch(e => {
-                    console.log('Play prevented:', e);
-                    setAudioError('Unable to play audio');
-                });
-            }
-            setIsPlaying(!isPlaying);
+        const media = audioRef.current;
+        if (!media) return;
+        if (media.paused) {
+            setAudioError(null);
+            media.play().catch((err) => {
+                console.log('Play prevented:', err);
+                setAudioError('Unable to play audio');
+            });
+        } else {
+            media.pause();
         }
     };
 
     const handlePrevious = () => {
-        if (currentAyah > 1) { setCurrentAyah(prev => prev - 1); setIsPlaying(true); }
+        if (currentAyah > 1) {
+            shouldResumePlaybackRef.current = true;
+            setCurrentAyah((prev) => prev - 1);
+        }
     };
 
     const handleNext = () => {
-        if (currentAyah < totalAyahs) { setCurrentAyah(prev => prev + 1); setIsPlaying(true); }
+        if (currentAyah < totalAyahs) {
+            shouldResumePlaybackRef.current = true;
+            setCurrentAyah((prev) => prev + 1);
+        }
     };
 
     const formatTime = (time) => {
@@ -133,8 +187,11 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleLoadedMetadata}
                 onEnded={handleEnded}
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
+                onPlay={() => {
+                    switchingTrackRef.current = false;
+                    setIsPlaying(true);
+                }}
+                onPause={handlePause}
                 onError={handleError}
                 preload="auto"
             />
@@ -223,6 +280,7 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                                     onClick={() => {
                                         setSelectedReciter(key);
                                         setShowReciterMenu(false);
+                                        shouldResumePlaybackRef.current = false;
                                         setIsPlaying(false);
                                     }}
                                 >

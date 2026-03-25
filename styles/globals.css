@@ -140,6 +140,28 @@
   --border-radius-md: 8px;
   --border-radius-lg: 10px;
   --border-radius-xl: 12px;
+
+  /* Current ayah (audio / selection) */
+  --ayah-active-accent: var(--color-primary);
+  --ayah-active-accent-soft: color-mix(
+    in srgb,
+    var(--color-primary) 14%,
+    transparent
+  );
+  --ayah-active-surface: linear-gradient(
+    115deg,
+    color-mix(in srgb, var(--color-primary) 9%, var(--color-bg-card)) 0%,
+    color-mix(in srgb, var(--color-secondary) 5%, var(--color-bg-main)) 100%
+  );
+  --ayah-active-border: color-mix(
+    in srgb,
+    var(--color-primary) 28%,
+    var(--color-border)
+  );
+  --ayah-active-inset: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  --ayah-active-glow:
+    0 0 0 1px var(--ayah-active-accent-soft),
+    0 6px 28px color-mix(in srgb, var(--color-primary) 12%, transparent);
 }
 
 /* Dark Theme Overrides */
@@ -171,6 +193,25 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
   --shadow-md: 0 4px 8px -1px rgb(0 0 0 / 0.4);
   --shadow-lg: 0 10px 20px -3px rgb(0 0 0 / 0.6);
+
+  --ayah-active-accent-soft: color-mix(
+    in srgb,
+    var(--color-secondary) 35%,
+    transparent
+  );
+  --ayah-active-surface: linear-gradient(
+    115deg,
+    color-mix(in srgb, var(--color-secondary) 14%, var(--color-bg-card)) 0%,
+    color-mix(in srgb, var(--color-primary) 8%, var(--color-bg-main)) 100%
+  );
+  --ayah-active-border: color-mix(
+    in srgb,
+    var(--color-secondary) 40%,
+    var(--color-border)
+  );
+  --ayah-active-inset: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  --ayah-active-glow:
+    0 0 0 1px rgba(129, 192, 198, 0.25), 0 8px 36px rgba(0, 0, 0, 0.35);
 }
 
 body {
@@ -476,37 +517,70 @@ h6 {
 
 .ayah-badge {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background-color: #ecfdf5;
-  color: #059669;
-  border-radius: 1rem;
-  font-size: 0.75rem;
-  font-weight: 600;
+  padding: 0.33rem 0.78rem;
+  background: color-mix(in srgb, var(--color-primary) 9%, var(--color-bg-card));
+  color: var(--color-primary);
+  border-radius: 999px;
+  border: 1px solid
+    color-mix(in srgb, var(--color-primary) 22%, var(--color-border));
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 1.5rem;
+  letter-spacing: 0.07em;
+  margin-bottom: 1rem;
+  backdrop-filter: blur(2px);
 }
 
 .play-btn-circle {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 40px;
-  height: 40px;
+  top: 1.05rem;
+  right: 1.05rem;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: #f3f4f6;
+  background: color-mix(
+    in srgb,
+    var(--color-bg-card) 90%,
+    var(--color-primary-light)
+  );
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  border: 1px solid
+    color-mix(in srgb, var(--color-primary) 18%, var(--color-border));
   cursor: pointer;
-  color: #6b7280;
-  transition: all 0.2s ease;
+  color: var(--color-text-muted);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  transition: all 0.22s ease;
 }
 
 .play-btn-circle:hover {
-  background: var(--color-primary-light);
-  color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 10%,
+    var(--color-bg-card)
+  );
+  color: var(--color-primary);
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 32%,
+    var(--color-border)
+  );
+}
+
+.play-btn-circle:active {
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .play-btn-circle {
+  background: color-mix(
+    in srgb,
+    var(--color-bg-card) 90%,
+    var(--color-secondary) 10%
+  );
+  color: rgba(255, 255, 255, 0.82);
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 .ayah-text-container {
@@ -727,7 +801,7 @@ h6 {
 .mobile-menu-search {
   /* margin: 0 auto 10px; */
   border-radius: var(--border-radius-sm) !important;
-  padding: 12px 12px !important;
+  padding: 10px 12px !important;
 }
 
 .mobile-menu-search input {
@@ -888,7 +962,7 @@ h6 {
 
 @media (min-width: 768px) {
   .quran-reader-inner {
-    padding: 0 2rem;
+    padding: 0 0;
   }
 }
 
@@ -1026,18 +1100,18 @@ h6 {
 /* ---- Ayah Container (Style 1) ---- */
 .ayah-content-wrap {
   margin-top: 0.5rem;
-  padding: 0 0.5rem 1.5rem;
-  background: var(--color-bg-card);
+  padding: 0 0px 24px;
+  /* background: var(--color-bg-card); */
   border-radius: var(--border-radius-sm);
-  box-shadow: var(--shadow-md);
+  /* box-shadow: var(--shadow-md); */
   overflow: hidden;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .ayah-content-wrap {
     padding: 0 1rem 2rem;
   }
-}
+} */
 
 .ayah-content-wrap.transparent {
   background: transparent;
@@ -1096,24 +1170,229 @@ h6 {
 
 /* ---- Ayah Row (Style 1) ---- */
 .ayah-row {
-  padding: 1.25rem 0.75rem;
-  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  margin: 10px 0;
+  padding: 1.1rem 0.95rem;
+  border: 1px solid color-mix(in srgb, var(--color-border) 85%, transparent);
+  border-radius: var(--border-radius-md);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-bg-card) 96%, transparent),
+    color-mix(in srgb, var(--color-bg-main) 35%, var(--color-bg-card))
+  );
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
 }
 
 @media (min-width: 768px) {
   .ayah-row {
-    padding: 1.5rem 1rem;
+    padding: 1.35rem 1.2rem;
   }
 }
 
 .ayah-row:last-child {
-  border-bottom: none;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-border) 85%, transparent);
+}
+
+.ayah-row:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 22%,
+    var(--color-border)
+  );
+  box-shadow:
+    0 6px 18px color-mix(in srgb, var(--color-primary) 9%, transparent),
+    0 1px 1px rgba(0, 0, 0, 0.02);
+}
+
+@media (hover: none) {
+  .ayah-row:hover {
+    transform: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  }
+}
+
+@keyframes ayah-active-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.92;
+    filter: brightness(1.05);
+  }
+}
+
+.ayah-row.ayah-row--audio-active {
+  isolation: isolate;
+  margin: 0.5rem 0;
+  padding: 1.25rem 1rem 1.25rem 1.35rem;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--ayah-active-border);
+  border-bottom: 1px solid var(--ayah-active-border);
+  background-color: transparent !important;
+  background-image: var(--ayah-active-surface) !important;
+  /* box-shadow: var(--shadow-md), var(--ayah-active-glow), var(--ayah-active-inset); */
+  scroll-margin-top: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  .ayah-row.ayah-row--audio-active {
+    padding: 1.5rem 1.25rem 1.5rem 1.5rem;
+  }
+}
+
+.ayah-row.ayah-row--audio-active::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 1rem;
+  bottom: 1rem;
+  width: 5px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    var(--color-secondary) 0%,
+    var(--color-primary) 45%,
+    var(--color-primary-dark) 100%
+  );
+  box-shadow: 0 0 14px color-mix(in srgb, var(--color-primary) 40%, transparent);
+  animation: ayah-active-pulse 2.8s ease-in-out infinite;
+}
+
+.ayah-row.ayah-row--audio-active .ayah-number-badge {
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
+/* “Playing” chip (used in reader rows + cards) */
+.ayah-playing-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--color-primary);
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 10%,
+    var(--color-bg-card)
+  );
+  padding: 0.28rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid var(--ayah-active-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.ayah-playing-label::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--ayah-active-accent-soft);
+  animation: ayah-playing-dot 1.15s ease-in-out infinite;
+}
+
+@keyframes ayah-playing-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.88);
+  }
+}
+
+[data-theme="dark"] .ayah-playing-label {
+  color: var(--color-primary-dark);
+  background: color-mix(
+    in srgb,
+    var(--color-secondary) 14%,
+    var(--color-bg-card)
+  );
+}
+
+[data-theme="dark"] .ayah-playing-label::before {
+  background: var(--color-secondary);
+}
+
+.ayah-card-style2-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.ayah-card-style2-meta .ayah-badge {
+  margin-bottom: 0;
+}
+
+.ayah-card-style2.ayah-card-style2--audio-active {
+  border-color: var(--ayah-active-border);
+  background-image: var(--ayah-active-surface);
+  box-shadow:
+    var(--shadow-lg), var(--ayah-active-glow), var(--ayah-active-inset);
+  transform: translateY(-2px);
+}
+
+.ayah-card-style2.ayah-card-style2--audio-active::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-secondary),
+    var(--color-primary) 50%,
+    var(--color-accent)
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.ayah-card-style2.ayah-card-style2--audio-active .play-btn-circle {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 14%,
+    var(--color-bg-card)
+  );
+  color: var(--color-primary);
+  border: 1px solid var(--ayah-active-border);
+  box-shadow: 0 2px 8px
+    color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.ayah-card-style2.ayah-card-style2--audio-active .ayah-badge {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 12%,
+    var(--color-bg-card)
+  );
+  color: var(--color-primary);
+  border: 1px solid var(--ayah-active-border);
 }
 
 .ayah-number-badge {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.45rem;
   margin-bottom: 0.75rem;
   color: var(--color-text-muted);
   font-size: 0.8rem;
@@ -1382,20 +1661,51 @@ h6 {
 
 /* ---- Ayah Card Style 2 (Beige Cards) ---- */
 .ayah-card-style2 {
-  background-color: #ffffff;
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  padding: 1.25rem;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-bg-card) 98%, transparent) 0%,
+    color-mix(in srgb, var(--color-bg-main) 26%, var(--color-bg-card)) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--color-border) 88%, transparent);
+  border-radius: 0.95rem;
+  padding: 1.1rem 1rem;
   margin-bottom: 1rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 8px 26px color-mix(in srgb, var(--color-primary) 6%, transparent);
   width: 100%;
   box-sizing: border-box;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
 @media (min-width: 768px) {
   .ayah-card-style2 {
-    padding: 2rem;
+    padding: 1.75rem;
     margin-bottom: 1.5rem;
+  }
+}
+
+.ayah-card-style2:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 24%,
+    var(--color-border)
+  );
+  box-shadow:
+    0 10px 30px color-mix(in srgb, var(--color-primary) 10%, transparent),
+    0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+@media (hover: none) {
+  .ayah-card-style2:hover {
+    transform: none;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.03),
+      0 8px 26px color-mix(in srgb, var(--color-primary) 6%, transparent);
   }
 }
 

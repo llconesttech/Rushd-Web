@@ -22,7 +22,8 @@ import SurahListSidebar from "@/components/SurahListSidebar";
 import SettingsSidebar from "@/components/SettingsSidebar";
 import AudioPlayer from "@/components/AudioPlayer";
 import Footer from "./Footer";
-import Form from "./Form";
+import Form from "./SearchInput";
+import SearchInput from "./SearchInput";
 
 export default function AppShell({ children }) {
   const router = useRouter();
@@ -236,8 +237,8 @@ export default function AppShell({ children }) {
               </button>
             </div>
             <div className="container">
-              <Form
-              placeholder="Search Quran, Hadith..."
+              <SearchInput
+                placeholder="Search Quran, Hadith..."
                 value={mobileSearchQuery}
                 onChange={(e) => setMobileSearchQuery(e.target.value)}
                 handleMobileSearch={handleMobileSearch}

@@ -1,23 +1,29 @@
-'use client';
+"use client";
 /* eslint-disable */
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { apiFetch } from '@/lib/apiClient';
-import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
-import { ChevronRight, ChevronLeft, Loader2, BookOpen, Settings } from 'lucide-react';
-import { useSwipeable } from 'react-swipeable';
-import PageHeader from './PageHeader';
-import { useSettings } from '../context/SettingsContext';
-import { parseTajweed } from '../utils/tajweedParser';
-import { surahData } from '../data/quranData';
-import TajweedLegendDropdown from './TajweedLegendDropdown';
-import AudioPlayer from './AudioPlayer';
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { apiFetch } from "@/lib/apiClient";
+import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
+import {
+  ChevronRight,
+  ChevronLeft,
+  Loader2,
+  BookOpen,
+  Settings,
+} from "lucide-react";
+import { useSwipeable } from "react-swipeable";
+import PageHeader from "./PageHeader";
+import { useSettings } from "../context/SettingsContext";
+import { parseTajweed } from "../utils/tajweedParser";
+import { surahData } from "../data/quranData";
+import TajweedLegendDropdown from "./TajweedLegendDropdown";
+import AudioPlayer from "./AudioPlayer";
 
-import './Mushaf.css';
+import "./Mushaf.css";
 
 const toArabicNumerals = (n) => {
-  if (!n) return '';
-  return n.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+  if (!n) return "";
+  return n.toString().replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
 };
 
 const MushafReader = () => {
@@ -30,17 +36,29 @@ const MushafReader = () => {
   const [loading, setLoading] = useState(true);
   const containerRef = useRef(null);
 
-  const isTajweed = selectedScript === 'quran-tajweed' || selectedScript === 'quran-indopak-tajweed';
-  const isIndoPak = selectedScript === 'quran-indopak' || selectedScript === 'quran-indopak-tajweed';
+  const isTajweed =
+    selectedScript === "quran-tajweed" ||
+    selectedScript === "quran-indopak-tajweed";
+  const isIndoPak =
+    selectedScript === "quran-indopak" ||
+    selectedScript === "quran-indopak-tajweed";
 
   const getArabicFontFamily = () => {
-    if (selectedScript === 'quran-indopak' || selectedScript === 'quran-indopak-tajweed') return 'var(--font-arabic-indopak)';
+    if (
+      selectedScript === "quran-indopak" ||
+      selectedScript === "quran-indopak-tajweed"
+    )
+      return "var(--font-arabic-indopak)";
     switch (selectedArabicFont) {
-      case 'alqalam': return "'Al Qalam', serif";
-      case 'mequran': return "'Me Quran', serif";
-      case 'scheherazade': return "'Scheherazade', serif";
-      case 'saleem': return "'Saleem', serif";
-      case 'amiri':
+      case "alqalam":
+        return "'Al Qalam', serif";
+      case "mequran":
+        return "'Me Quran', serif";
+      case "scheherazade":
+        return "'Scheherazade', serif";
+      case "saleem":
+        return "'Saleem', serif";
+      case "amiri":
       default:
         return "'Amiri Quran', serif";
     }
@@ -51,24 +69,29 @@ const MushafReader = () => {
       setLoading(true);
       try {
         let targetScript = selectedScript;
-        if (targetScript.includes('kids') || targetScript.includes('wordbyword')) {
-          targetScript = 'quran-uthmani';
+        if (
+          targetScript.includes("kids") ||
+          targetScript.includes("wordbyword")
+        ) {
+          targetScript = "quran-uthmani";
         }
 
-        const data = await apiFetch(`/quran/page/${targetScript}/${currentPage}`, { cache: false });
-        
+        const data = await apiFetch(
+          `/quran/page/${targetScript}/${currentPage}`,
+          { cache: false },
+        );
+
         // Add localized surah name to each ayah
         const enhancedAyahs = data.ayahs.map((ayah) => {
-          const sData = surahData.find(s => s.number === ayah.surahNumber);
+          const sData = surahData.find((s) => s.number === ayah.surahNumber);
           return {
             ...ayah,
             localizedSurahName: sData ? sData.name : ayah.surahName,
             translatedName: sData ? sData.meaning : ayah.surahEnglishName,
           };
         });
-        
-        setPageData({ ...data, ayahs: enhancedAyahs });
 
+        setPageData({ ...data, ayahs: enhancedAyahs });
       } catch (err) {
         console.error("Failed to load page", err);
       }
@@ -93,19 +116,19 @@ const MushafReader = () => {
   // Keyboard navigation (Right to left standard)
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowLeft') handleNextPage(); // Left goes Next in RTL
-      if (e.key === 'ArrowRight') handlePrevPage(); // Right goes Prev in RTL
+      if (e.key === "ArrowLeft") handleNextPage(); // Left goes Next in RTL
+      if (e.key === "ArrowRight") handlePrevPage(); // Right goes Prev in RTL
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentPage, handleNextPage, handlePrevPage]);
 
   // Swipe Gestures for Mobile
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => handleNextPage(),  // Swiping left moves to next page (RTL behavior)
+    onSwipedLeft: () => handleNextPage(), // Swiping left moves to next page (RTL behavior)
     onSwipedRight: () => handlePrevPage(), // Swiping right moves to previous page
     preventScrollOnSwipe: true,
-    trackMouse: false
+    trackMouse: false,
   });
 
   // Format Arabic Ayah for inline display (removing trailing spaces, adding the Ayah end symbol properly)
@@ -116,28 +139,38 @@ const MushafReader = () => {
     if (isTajweed) {
       let html = parseTajweed(textContent, false); // Explicitly disable tooltips for Mushaf
       return (
-        <span key={ayah.ayahNumber} className="mushaf-ayah-span inline-ayah tajweed-text">
+        <span
+          key={ayah.ayahNumber}
+          className="mushaf-ayah-span inline-ayah tajweed-text"
+        >
           <span dangerouslySetInnerHTML={{ __html: html }} />
-          <span className="mushaf-ayah-end">۝<span className="mushaf-ayah-number">{ayah.ayahNumber}</span></span>
+          <span className="mushaf-ayah-end">
+            ۝<span className="mushaf-ayah-number">{ayah.ayahNumber}</span>
+          </span>
         </span>
       );
     }
 
     return (
       <span key={ayah.ayahNumber} className="mushaf-ayah-span inline-ayah">
-        {textContent} <span className="mushaf-ayah-end">۝<span className="mushaf-ayah-number">{ayah.ayahNumber}</span></span>
+        {textContent}{" "}
+        <span className="mushaf-ayah-end">
+          ۝<span className="mushaf-ayah-number">{ayah.ayahNumber}</span>
+        </span>
       </span>
     );
-  }
+  };
 
-  const pageRukus = pageData?.ayahs ? [...new Set(pageData.ayahs.map(a => a.ruku).filter(Boolean))] : [];
-  const hasSajdah = pageData?.ayahs?.some(a => a.sajda);
+  const pageRukus = pageData?.ayahs
+    ? [...new Set(pageData.ayahs.map((a) => a.ruku).filter(Boolean))]
+    : [];
+  const hasSajdah = pageData?.ayahs?.some((a) => a.sajda);
 
   // Safely pull primary/dominant values for the current page
-  const primaryJuz = pageData?.ayahs?.[0]?.juz || '';
+  const primaryJuz = pageData?.ayahs?.[0]?.juz || "";
   const primarySurah = pageData?.ayahs?.[0]?.surahNumber || 1;
   // To solve Surah Name not showing in header:
-  const primarySurahName = pageData?.ayahs?.[0]?.localizedSurahName || '';
+  const primarySurahName = pageData?.ayahs?.[0]?.localizedSurahName || "";
   const headerTitle = primarySurahName ? `Surah ${primarySurahName}` : `Mushaf`;
 
   return (
@@ -146,17 +179,31 @@ const MushafReader = () => {
         title={headerTitle}
         subtitle={`Juz ${primaryJuz} • Page ${currentPage}`}
         breadcrumbs={[
-          { label: 'Home', path: '/' },
-          { label: 'Quran', path: '/quran' },
-          { label: `Mushaf Page ${currentPage}`, path: `/quran/mushaf/${currentPage}` }
+          { label: "Home", path: "/" },
+          { label: "Quran", path: "/quran" },
+          {
+            label: `Mushaf Page ${currentPage}`,
+            path: `/quran/mushaf/${currentPage}`,
+          },
         ]}
         actions={
-          <div className="mushaf-header-actions" style={{ position: 'relative' }}>
+          <div
+            className="mushaf-header-actions"
+            style={{ position: "relative" }}
+          >
             {isTajweed && <TajweedLegendDropdown />}
-            <Link href={`/quran/${primarySurah}?page=${currentPage}`} className="quran-switch-btn" title="Back to Surah Details">
+            <Link
+              href={`/quran/${primarySurah}?page=${currentPage}`}
+              className="quran-switch-btn"
+              title="Back to Surah Details"
+            >
               <BookOpen size={16} /> Translation
             </Link>
-            <button className="quran-switch-btn" onClick={() => router.push('/settings')} title="Change Script Settings">
+            <button
+              className="quran-switch-btn"
+              onClick={() => router.push("/settings")}
+              title="Change Script Settings"
+            >
               <Settings size={16} /> Settings
             </button>
           </div>
@@ -166,7 +213,7 @@ const MushafReader = () => {
       <div
         className="mushaf-reader-wrapper"
         ref={containerRef}
-        style={{ '--mushaf-font': getArabicFontFamily() }}
+        style={{ "--mushaf-font": getArabicFontFamily() }}
         {...swipeHandlers}
       >
         {/* Top Navigation Controls (Desktop) */}
@@ -191,8 +238,9 @@ const MushafReader = () => {
         </div>
 
         {/* Page Content                {/* Forcing paper-bg to ensure a premium Mushaf aesthetic regardless of general global UI setting */}
-        <div className={`mushaf-page mushaf-paper-bg ${isIndoPak ? 'indopak' : ''}`}>
-
+        <div
+          className={`mushaf-page mushaf-paper-bg ${isIndoPak ? "indopak" : ""}`}
+        >
           {/* Top Indicators - Rendered at the top header of the page instead of side margins */}
           {pageData?.ayahs?.length > 0 && !loading && (
             <div className="mushaf-page-indicators">
@@ -207,11 +255,12 @@ const MushafReader = () => {
                   alt={primarySurahName}
                   className="mushaf-header-surah-img"
                   onError={(e) => {
-                    e.target.style.display = 'none';
-                    if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                    e.target.style.display = "none";
+                    if (e.target.nextSibling)
+                      e.target.nextSibling.style.display = "block";
                   }}
                 />
-                <span style={{ display: 'none' }}>{primarySurahName}</span>
+                <span style={{ display: "none" }}>{primarySurahName}</span>
               </div>
 
               <div className="indicator-group right-group">
@@ -240,34 +289,45 @@ const MushafReader = () => {
             ) : pageData?.ayahs?.length > 0 ? (
               <div className="mushaf-text-flow" dir="rtl">
                 {pageData.ayahs.map((ayah, i) => (
-                  <React.Fragment key={`${ayah.surahNumber}-${ayah.ayahNumber}`}>
+                  <React.Fragment
+                    key={`${ayah.surahNumber}-${ayah.ayahNumber}`}
+                  >
                     {/* Render Surah Header + Bismillah if this is first ayah of a surah (skip 1 and 9) */}
-                    {ayah.ayahNumber === 1 && ayah.surahNumber !== 1 && ayah.surahNumber !== 9 && (
-                      <div className="mushaf-surah-break">
-                        {/* Show ornament only if there's an ayah before (not first element on page) */}
-                        {i > 0 && (
-                          <div className="mushaf-surah-ornament">
+                    {ayah.ayahNumber === 1 &&
+                      ayah.surahNumber !== 1 &&
+                      ayah.surahNumber !== 9 && (
+                        <div className="mushaf-surah-break">
+                          {/* Show ornament only if there's an ayah before (not first element on page) */}
+                          {i > 0 && (
+                            <div className="mushaf-surah-ornament">
+                              <img
+                                src={`/api/v1/assets/fonts/Tuluth/Vector-${ayah.surahNumber - 1}.svg`}
+                                alt={ayah.localizedSurahName}
+                                className="mushaf-inline-surah-img"
+                                onError={(e) => {
+                                  e.target.style.display = "none";
+                                  if (e.target.nextSibling)
+                                    e.target.nextSibling.style.display =
+                                      "block";
+                                }}
+                              />
+                              <h2
+                                className="mushaf-surah-name"
+                                style={{ display: "none" }}
+                              >
+                                {ayah.localizedSurahName}
+                              </h2>
+                            </div>
+                          )}
+                          <div className="mushaf-bismillah">
                             <img
-                              src={`/api/v1/assets/fonts/Tuluth/Vector-${ayah.surahNumber - 1}.svg`}
-                              alt={ayah.localizedSurahName}
-                              className="mushaf-inline-surah-img"
-                              onError={(e) => {
-                                e.target.style.display = 'none';
-                                if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
-                              }}
+                              src="/api/v1/assets/fonts/Tuluth/bismillah.svg"
+                              alt="Bismillah"
+                              className="mushaf-bismillah-img"
                             />
-                            <h2 className="mushaf-surah-name" style={{ display: 'none' }}>{ayah.localizedSurahName}</h2>
                           </div>
-                        )}
-                        <div className="mushaf-bismillah">
-                          <img 
-                            src="/api/v1/assets/fonts/Tuluth/bismillah.svg" 
-                            alt="Bismillah" 
-                            className="mushaf-bismillah-img"
-                          />
                         </div>
-                      </div>
-                    )}
+                      )}
 
                     {renderAyahInline(ayah)}
                   </React.Fragment>
@@ -289,7 +349,9 @@ const MushafReader = () => {
               >
                 <ChevronLeft size={24} />
               </button>
-              <span className="mushaf-page-badge footer-badge">Page {currentPage} / 604</span>
+              <span className="mushaf-page-badge footer-badge">
+                Page {currentPage} / 604
+              </span>
               <button
                 onClick={handlePrevPage}
                 disabled={currentPage <= 1}
@@ -309,4 +371,3 @@ const MushafReader = () => {
 };
 
 export default MushafReader;
-

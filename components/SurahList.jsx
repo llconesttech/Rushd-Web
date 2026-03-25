@@ -1,20 +1,62 @@
 'use client';
 
 import Link from 'next/link';
+import { useMemo, useState } from 'react';
 import { useSurahList } from '@/hooks/useQuran';
 import { surahData } from '@/data/quranData';
 import PageHeader from '@/components/PageHeader';
+import SearchInput from './SearchInput';
+import './SurahList.css';
+
+function filterSurahs(surahs, rawQuery) {
+    const q = rawQuery.trim();
+    if (!q) return surahs;
+
+    const qLower = q.toLowerCase();
+    const asNum = /^\d+$/.test(q) ? parseInt(q, 10) : null;
+    const numExact = asNum !== null && asNum >= 1 && asNum <= 114;
+
+    return surahs.filter((s) => {
+        if (numExact && s.number === asNum) return true;
+
+        const english =
+            (s.englishName || s.name || '').toLowerCase();
+        const meaning = (
+            s.englishNameTranslation ||
+            s.meaning ||
+            ''
+        ).toLowerCase();
+        if (english.includes(qLower) || meaning.includes(qLower))
+            return true;
+
+        if (s.arabicName && s.arabicName.includes(q)) return true;
+
+        if (asNum !== null && String(s.number).includes(q)) return true;
+
+        return false;
+    });
+}
 
 export default function SurahList() {
     const { data: surahs, loading, error } = useSurahList();
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const enhancedSurahs = useMemo(
+        () =>
+            surahs.map((surah) => {
+                const metadata = surahData.find((s) => s.number === surah.number);
+                return { ...surah, ...metadata };
+            }),
+        [surahs],
+    );
+
+    const visibleSurahs = useMemo(
+        () => filterSurahs(enhancedSurahs, searchQuery),
+        [enhancedSurahs, searchQuery],
+    );
 
     if (loading) return <div className="loading">Loading...</div>;
     if (error) return <div className="error">Error loading Surahs</div>;
-
-    const enhancedSurahs = surahs.map(surah => {
-        const metadata = surahData.find(s => s.number === surah.number);
-        return { ...surah, ...metadata };
-    });
 
     return (
         <div className="">
@@ -27,14 +69,28 @@ export default function SurahList() {
                 ]}
             />
 
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-                gap: '1rem',
-                marginTop: '1rem',
-                direction: 'rtl',
-            }}>
-                {enhancedSurahs.map(surah => (
+            <SearchInput
+                onSubmit={(e) => e.preventDefault()}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search by name, meaning, number, or Arabic…"
+                className="topbar-search-form mobile-menu-search"
+            />
+
+            {visibleSurahs.length === 0 ? (
+                <p
+                    style={{
+                        marginTop: '1.25rem',
+                        color: 'var(--color-text-muted)',
+                        textAlign: 'center',
+                    }}
+                >
+                    No surahs match “{searchQuery.trim()}”. Try another spelling or
+                    number.
+                </p>
+            ) : (
+            <div className="surah-list-container">
+                {visibleSurahs.map(surah => (
                     <Link href={`/quran/${surah.number}`} key={surah.number} style={{ textDecoration: 'none', color: 'inherit' }}>
                         <div className="surah-card">
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
@@ -87,6 +143,7 @@ export default function SurahList() {
                     </Link>
                 ))}
             </div>
+            )}
         </div>
     );
 }
