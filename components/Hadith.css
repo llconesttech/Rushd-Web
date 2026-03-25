@@ -147,7 +147,7 @@
   display: flex;
   background: var(--card-bg, #fff);
   border: 1px solid var(--border-color, #e5e7eb);
-  border-radius: 12px;
+  border-radius:0px;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -159,17 +159,17 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.hadith-book-card.sahih-sittah {
+/* .hadith-book-card.sahih-sittah {
   border-color: #d4af37;
   box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.2);
-}
+} */
 
 .hadith-book-card.sahih-sittah:hover {
   box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
 }
 
 .book-card-accent {
-  width: 5px;
+  width: 2px;
   flex-shrink: 0;
   border-radius: 12px 0 0 12px;
 }
@@ -800,6 +800,45 @@
   display: flex;
   gap: 0.3rem;
   flex-wrap: wrap;
+}
+
+/* Narrator card (HadithBooks) - list layout */
+.narrator-books.narrator-books-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex-wrap: nowrap;
+}
+
+.narrator-book-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.25rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: #111827; /* black */
+}
+
+[data-theme="dark"] .narrator-book-row {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.narrator-book-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: inherit;
+}
+
+.narrator-book-count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: inherit;
+  font-variant-numeric: tabular-nums;
+  padding-left: 0.5rem;
 }
 
 .narrator-book-tag {

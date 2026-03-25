@@ -205,7 +205,7 @@
 
   .page-header.scrolled {
     padding: 0 1.75rem;
-    height: 80px;
+    height: 90px;
   }
 }
 
@@ -418,7 +418,7 @@
 }
 
 .page-header.scrolled .page-header-content {
-  align-items: end;
+  align-items: center;
   gap: 0.75rem;
   justify-content: space-between;
   flex: 1;
@@ -620,8 +620,8 @@
   }
 
   .page-header.scrolled .ph-title {
-    font-size: 25px;
-    margin-bottom: 8px;
+    font-size: 21px;
+    margin-bottom: 0px;
   }
 }
 

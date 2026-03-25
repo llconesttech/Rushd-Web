@@ -6,6 +6,7 @@ import { HADITH_BOOKS, HADITH_LANGUAGES } from '../data/hadithData';
 import { getSectionHadiths, getEdition, getAvailableLanguages, detectLanguage } from '../services/hadithService';
 import PageHeader from './PageHeader';
 import './Hadith.css';
+import SearchInput from './SearchInput';
 
 const HadithReader = () => {
     const { bookId, sectionId } = useParams();
@@ -240,7 +241,7 @@ const HadithReader = () => {
             </div >
 
             {/* Search */}
-            < div className="hadith-search-bar" style={{ position: 'relative' }}>
+            {/* < div className="hadith-search-bar" style={{ position: 'relative' }}>
                 <Search size={18} className="search-icon" />
                 <input
                     type="text"
@@ -259,7 +260,17 @@ const HadithReader = () => {
                         </button>
                     )
                 }
-            </div >
+            </div > */}
+
+            <SearchInput
+            
+            onSubmit={(e) => e.preventDefault()}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search whole book by exact text or hadith number..."
+            className="topbar-search-form mobile-menu-search mb-4"
+            iconSize={18}
+            ></SearchInput>
 
             {loading && <div className="hadith-loading">Loading hadiths...</div>}
             {isSearching && <div className="hadith-loading">Searching globally across the book...</div>}

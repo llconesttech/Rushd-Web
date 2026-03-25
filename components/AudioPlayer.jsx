@@ -7,7 +7,7 @@ import audioService from '../services/audioService';
 import './AudioPlayer.css';
 
 const AudioPlayer = ({ surahNumber, totalAyahs }) => {
-    const { selectedReciter, setSelectedReciter, setAudioPlayback } = useSettings();
+    const { selectedReciter, setSelectedReciter, setAudioPlayback, audioCommand, setAudioCommand } = useSettings();
     const audioRef = useRef(null);
     /** After ayah change / auto-advance: play() even if `pause` zeroed React state. */
     const shouldResumePlaybackRef = useRef(false);
@@ -16,6 +16,7 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
     const switchingTrackRef = useRef(false);
     const [currentAyah, setCurrentAyah] = useState(1);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [hasStartedPlayback, setHasStartedPlayback] = useState(false);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const [showReciterMenu, setShowReciterMenu] = useState(false);
@@ -68,15 +69,86 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         setCurrentAyah(1);
         setIsPlaying(false);
         shouldResumePlaybackRef.current = false;
+        setHasStartedPlayback(false);
     }, [surahNumber]);
 
     useEffect(() => {
-        setAudioPlayback({ surahNumber, ayahInSurah: currentAyah });
-    }, [surahNumber, currentAyah, setAudioPlayback]);
+        // Don't mark an active ayah until user actually starts playback.
+        if (!hasStartedPlayback) {
+            setAudioPlayback(null);
+            return;
+        }
+        setAudioPlayback({ surahNumber, ayahInSurah: currentAyah, isPlaying, hasStarted: true });
+    }, [surahNumber, currentAyah, isPlaying, hasStartedPlayback, setAudioPlayback]);
 
     useEffect(() => {
         return () => setAudioPlayback(null);
     }, [setAudioPlayback]);
+
+    // Allow reader UI to start playing/pausing a specific ayah
+    useEffect(() => {
+        if (!audioCommand) return;
+        if (audioCommand.surahNumber !== surahNumber) return;
+
+        const media = audioRef.current;
+
+        const safePlay = () => {
+            if (!media) return;
+            setAudioError(null);
+            shouldResumePlaybackRef.current = true;
+            switchingTrackRef.current = true;
+            media.play().then(() => {
+                switchingTrackRef.current = false;
+            }).catch((err) => {
+                switchingTrackRef.current = false;
+                console.log('Play prevented:', err);
+                setAudioError('Click play to start');
+                setIsPlaying(false);
+            });
+        };
+
+        const safePause = () => {
+            if (!media) return;
+            media.pause();
+        };
+
+        if (audioCommand.type === 'pause') {
+            safePause();
+            setAudioCommand(null);
+            return;
+        }
+
+        if (audioCommand.type === 'toggle_ayah') {
+            if (audioCommand.ayahInSurah === currentAyah) {
+                if (media?.paused) safePlay();
+                else safePause();
+            } else {
+                shouldResumePlaybackRef.current = true;
+                setCurrentAyah(audioCommand.ayahInSurah);
+            }
+            setAudioCommand(null);
+            return;
+        }
+
+        if (audioCommand.type === 'play_ayah') {
+            // Clear any previous user-facing error when user explicitly taps play.
+            setAudioError(null);
+            shouldResumePlaybackRef.current = true;
+
+            // If the requested ayah is already selected, we still need to play().
+            if (audioCommand.ayahInSurah === currentAyah) {
+                safePlay();
+            } else {
+                setCurrentAyah(audioCommand.ayahInSurah);
+            }
+            setAudioCommand(null);
+            return;
+        }
+
+        // Unknown command: just clear it
+        setAudioCommand(null);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [audioCommand, surahNumber, currentAyah, setAudioCommand]);
 
     const handleTimeUpdate = () => {
         if (audioRef.current) setCurrentTime(audioRef.current.currentTime);
@@ -106,8 +178,9 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         }
     };
 
-    const handleError = (e) => {
-        console.error('Audio error:', e);
+    const handleError = () => {
+        // Avoid console.error here: Next.js dev overlay treats it as a runtime error.
+        console.warn('Audio playback error. Attempting fallback source.');
         if (currentSrc === localUrl && localUrl !== remoteUrl) {
             console.log('Local audio not found, switching to remote:', remoteUrl);
             if (isPlayingRef.current) shouldResumePlaybackRef.current = true;
@@ -189,6 +262,7 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                 onEnded={handleEnded}
                 onPlay={() => {
                     switchingTrackRef.current = false;
+                    setHasStartedPlayback(true);
                     setIsPlaying(true);
                 }}
                 onPause={handlePause}
@@ -206,7 +280,13 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                 {/* Left: Ayah info */}
                 <button
                     className="fp-ayah-badge"
-                    onClick={() => setIsExpanded(!isExpanded)}
+                    onClick={() => {
+                        setIsExpanded((v) => {
+                            const next = !v;
+                            setShowReciterMenu(next);
+                            return next;
+                        });
+                    }}
                     title="Show reciter options"
                 >
                     <span className="fp-ayah-text">
@@ -280,6 +360,7 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                                     onClick={() => {
                                         setSelectedReciter(key);
                                         setShowReciterMenu(false);
+                                        setIsExpanded(false);
                                         shouldResumePlaybackRef.current = false;
                                         setIsPlaying(false);
                                     }}

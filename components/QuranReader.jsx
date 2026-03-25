@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useParams, useRouter, useSearchParams, usePathname } from "next/navigation";
 import Link from "next/link";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Bookmark, Copy, Pause, Play, Share2 } from "lucide-react";
 import { useSurahDetail } from "@/hooks/useQuran";
 import { translations } from "@/data/quranData";
 import { getArabicSurahName, getSurahName } from "@/data/surahNames";
@@ -39,6 +39,7 @@ const getManzil = (n) => {
 export default function QuranReader() {
   const params = useParams();
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const pageFilter = searchParams.get("page");
   const surahNum = parseInt(params.number, 10);
@@ -53,11 +54,68 @@ export default function QuranReader() {
     selectedArabicFont,
     showTajweedTooltips,
     audioPlayback,
+    setAudioCommand,
   } = useSettings();
 
+  const hasAudioStarted = !!(
+    audioPlayback?.surahNumber === surahNum && audioPlayback?.hasStarted
+  );
   const activeAudioAyahInSurah =
-    audioPlayback?.surahNumber === surahNum ? audioPlayback.ayahInSurah : null;
+    hasAudioStarted ? audioPlayback.ayahInSurah : null;
+  const isAudioPlaying = !!(hasAudioStarted && audioPlayback?.isPlaying);
   const lastScrolledAudioAyah = useRef(null);
+
+  const bookmarkStorageKey = "rushdBookmarks";
+  const [bookmarks, setBookmarks] = useState(() => {
+    if (typeof window === "undefined") return {};
+    try {
+      return JSON.parse(localStorage.getItem(bookmarkStorageKey) || "{}");
+    } catch {
+      return {};
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(bookmarkStorageKey, JSON.stringify(bookmarks));
+    } catch {
+      // ignore storage failures
+    }
+  }, [bookmarks]);
+
+  const makeAyahLink = (ayahNumber) => {
+    const origin = typeof window !== "undefined" ? window.location.origin : "";
+    return `${origin}${pathname}#ayah-${ayahNumber}`;
+  };
+
+  const handleCopy = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      // Fallback
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+  };
+
+  const handleShare = async (url) => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ url });
+        return;
+      } catch {
+        // user cancelled or not allowed
+      }
+    }
+    await handleCopy(url);
+  };
 
   const getArabicFontFamily = () => {
     if (
@@ -199,6 +257,11 @@ export default function QuranReader() {
     const isAudioActive =
       activeAudioAyahInSurah != null &&
       ayah.numberInSurah === activeAudioAyahInSurah;
+    const isThisAyahPlaying = isAudioActive && isAudioPlaying;
+
+    const ayahLink = makeAyahLink(ayah.number);
+    const bookmarkKey = `${surahNum}:${ayah.numberInSurah}`;
+    const isBookmarked = !!bookmarks[bookmarkKey];
 
     const arabicContent = isWordByWord ? (
       <div className="word-by-word-container" style={{ padding: 0 }}>
@@ -269,6 +332,75 @@ export default function QuranReader() {
       </div>
     );
 
+    const actionsBar = (
+      <div className="ayah-actions" role="group" aria-label="Ayah actions">
+        <button
+          type="button"
+          className="ayah-action-btn primary"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setAudioCommand?.({
+              type: "toggle_ayah",
+              surahNumber: surahNum,
+              ayahInSurah: ayah.numberInSurah,
+              ts: Date.now(),
+            });
+          }}
+          title={isThisAyahPlaying ? "Pause this ayah" : "Play this ayah"}
+          aria-label={isThisAyahPlaying ? "Pause this ayah" : "Play this ayah"}
+        >
+          {isThisAyahPlaying ? <Pause size={16} /> : <Play size={16} />}
+          <span className="ayah-action-label">Play</span>
+        </button>
+
+        <button
+          type="button"
+          className="ayah-action-btn"
+          onClick={() => handleShare(ayahLink)}
+          title="Share ayah link"
+          aria-label="Share ayah link"
+        >
+          <Share2 size={16} />
+          <span className="ayah-action-label">Share</span>
+        </button>
+
+        <button
+          type="button"
+          className={`ayah-action-btn ${isBookmarked ? "active" : ""}`}
+          onClick={() =>
+            setBookmarks((prev) => {
+              const next = { ...prev };
+              if (next[bookmarkKey]) delete next[bookmarkKey];
+              else
+                next[bookmarkKey] = {
+                  surah: surahNum,
+                  ayah: ayah.numberInSurah,
+                  url: ayahLink,
+                };
+              return next;
+            })
+          }
+          title={isBookmarked ? "Remove bookmark" : "Bookmark this ayah"}
+          aria-label={isBookmarked ? "Remove bookmark" : "Bookmark this ayah"}
+        >
+          <Bookmark size={16} />
+          <span className="ayah-action-label">Save</span>
+        </button>
+
+        <button
+          type="button"
+          className="ayah-action-btn"
+          onClick={() => handleCopy(ayahLink)}
+          title="Copy ayah link"
+          aria-label="Copy ayah link"
+        >
+          <Copy size={16} />
+          <span className="ayah-action-label">Copy</span>
+        </button>
+      </div>
+    );
+
     if (isStyle2) {
       return (
         <div
@@ -281,23 +413,13 @@ export default function QuranReader() {
           <div className="ayah-card-style2-meta">
             <span className="ayah-badge">Ayah {ayah.numberInSurah}</span>
             {isAudioActive && (
-              <span className="ayah-playing-label">Playing</span>
+              <span className="ayah-playing-label">
+                {isThisAyahPlaying ? "Playing" : "Paused"}
+              </span>
             )}
+            <div className="ayah-meta-spacer" />
+            {actionsBar}
           </div>
-          <button className="play-btn-circle" title="Play Ayah">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-          </button>
           <div className="ayah-text-container">
             {arabicContent}
             {ayah.transliteration && (
@@ -327,10 +449,19 @@ export default function QuranReader() {
         }}
       >
         <div className="ayah-number-badge">
-          <span>
-            {surah.number}:{ayah.numberInSurah}
-          </span>
-          {isAudioActive && <span className="ayah-playing-label">Playing</span>}
+          <div className="ayah-meta-left">
+            <span>
+              {surah.number}:{ayah.numberInSurah}
+            </span>
+            {isAudioActive && (
+              <span className="ayah-playing-label">
+                {isThisAyahPlaying ? "Playing" : "Paused"}
+              </span>
+            )}
+          </div>
+          <div className="ayah-meta-right">
+            {actionsBar}
+          </div>
         </div>
         {arabicContent}
         {ayah.transliteration && (

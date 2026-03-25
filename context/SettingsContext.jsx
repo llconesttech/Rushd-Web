@@ -64,6 +64,8 @@ export const SettingsProvider = ({ children }) => {
 
     /** Surah reader + docked player: current recitation position for UI sync (e.g. ayah highlight). */
     const [audioPlayback, setAudioPlayback] = useState(null);
+    /** One-off command channel to control the docked AudioPlayer from the reader UI. */
+    const [audioCommand, setAudioCommand] = useState(null);
 
     const value = {
         theme,
@@ -93,6 +95,8 @@ export const SettingsProvider = ({ children }) => {
         setSelectedShanENuzool,
         audioPlayback,
         setAudioPlayback,
+        audioCommand,
+        setAudioCommand,
     };
 
     return (

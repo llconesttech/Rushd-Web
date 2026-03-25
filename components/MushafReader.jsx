@@ -199,13 +199,6 @@ const MushafReader = () => {
             >
               <BookOpen size={16} /> Translation
             </Link>
-            <button
-              className="quran-switch-btn"
-              onClick={() => router.push("/settings")}
-              title="Change Script Settings"
-            >
-              <Settings size={16} /> Settings
-            </button>
           </div>
         }
       />

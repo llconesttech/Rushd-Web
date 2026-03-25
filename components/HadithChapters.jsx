@@ -8,6 +8,7 @@ import { HADITH_BOOKS, HADITH_LANGUAGES } from '../data/hadithData';
 import { getBookChapters, getAvailableLanguages, getBookStats } from '../services/hadithService';
 import PageHeader from './PageHeader';
 import './Hadith.css';
+import SearchInput from './SearchInput';
 
 const HadithChapters = () => {
     const { bookId } = useParams();
@@ -225,7 +226,7 @@ const HadithChapters = () => {
             </div>
 
             {/* Search Bar */}
-            <div className="hadith-search-bar">
+            {/* <div className="hadith-search-bar">
                 <Search size={18} className="search-icon" />
                 <input
                     type="text"
@@ -239,7 +240,16 @@ const HadithChapters = () => {
                         {filteredChapters.length} result{filteredChapters.length !== 1 ? 's' : ''}
                     </span>
                 )}
-            </div>
+            </div> */}
+
+            <SearchInput
+            onSubmit={(e) => e.preventDefault()}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search all chapters across books in any language..."
+            className="topbar-search-form mobile-menu-search mb-4"
+            iconSize={18}
+            ></SearchInput>
 
             {loading && <div className="hadith-loading">Loading chapters...</div>}
             {error && <div className="hadith-error">Error: {error}</div>}

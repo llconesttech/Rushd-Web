@@ -8,7 +8,7 @@ const SearchInput = ({
   value,
   onChange,
   placeholder = "Search...",
-  className = "topbar-search-form mobile-menu-search",
+  className = "topbar-search-form mobile-menu-search mb-4",
   inputClassName = "",
   iconSize = 16,
   showIcon = true,
