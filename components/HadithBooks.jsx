@@ -289,7 +289,7 @@ const HadithBooks = () => {
   };
 
   return (
-    <div className="container hadith-container">
+    <div className="">
       <PageHeader
         title="Hadith Collections"
         subtitle="Browse the authentic collections of Prophetic traditions"
@@ -333,43 +333,20 @@ const HadithBooks = () => {
         </button>
       </div>
 
-      {/* Search */}
-      {/* <div className="hadith-search-bar">
-                <Search size={18} className="search-icon" />
-                <input
-                    type="text"
-                    placeholder={
-                        viewMode === 'books' ? 'Search books by name, author, or Arabic title...' :
-                            viewMode === 'chapters' ? 'Search all chapters across books in any language...' :
-                                'Search narrators by name...'
-                    }
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="hadith-search-input"
-                />
-                {searchTerm && (
-                    <span className="search-results-count">
-                        {viewMode === 'books' ? filteredBooks.length :
-                            viewMode === 'chapters' ? chapterResults.length :
-                                filteredNarrators.length} results
-                    </span>
-                )}
-            </div> */}
-
-      <SearchInput>
+      <SearchInput
         onSubmit={(e) => e.preventDefault()}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search books by name, author, or Arabic title..."
-        className="topbar-search-form mobile-menu-search
+        placeholder="Search Hadith by name, author, or Arabic title..."
+        className="topbar-search-form mobile-menu-search mb-15"
         iconSize={18}
-      </SearchInput>
+      ></SearchInput>
 
       {/* ───── Books View ───── */}
       {viewMode === "books" && (
         <>
           {sahihBooks.length > 0 && (
-            <section className="hadith-section">
+            <section className="hadith-section hadith-section-featured">
               <div className="section-label">
                 <span className="section-label-icon">⭐</span>
                 <h2>Sahih Sittah</h2>
@@ -384,7 +361,7 @@ const HadithBooks = () => {
           )}
 
           {otherBooks.length > 0 && (
-            <section className="hadith-section">
+            <section className="hadith-section hadith-section-featured">
               <div className="section-label">
                 <span className="section-label-icon">📚</span>
                 <h2>Other Collections</h2>

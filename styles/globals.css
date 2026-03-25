@@ -248,6 +248,10 @@ html {
   margin-bottom: 8px !important;
 }
 
+.mb-15{
+  margin-bottom: 15px !important;
+}
+
 /* Root layout: fills viewport, no body scroll; only main content scrolls */
 .app-root {
   display: flex;
