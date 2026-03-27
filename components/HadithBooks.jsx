@@ -346,7 +346,7 @@ const HadithBooks = () => {
       {viewMode === "books" && (
         <>
           {sahihBooks.length > 0 && (
-            <section className="hadith-section hadith-section-featured">
+            <section className="mb-10 hadith-section-featured">
               <div className="section-label">
                 <span className="section-label-icon">⭐</span>
                 <h2>Sahih Sittah</h2>
@@ -361,7 +361,7 @@ const HadithBooks = () => {
           )}
 
           {otherBooks.length > 0 && (
-            <section className="hadith-section hadith-section-featured">
+            <section className="mb-10 hadith-section-featured">
               <div className="section-label">
                 <span className="section-label-icon">📚</span>
                 <h2>Other Collections</h2>

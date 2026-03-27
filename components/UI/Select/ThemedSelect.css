@@ -1,0 +1,22 @@
+.themed-select-wrapper {
+  display: block;
+  min-width: 0;
+}
+
+.themed-select-label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-secondary, #6b7280);
+  margin-bottom: 0.35rem;
+  padding-left: 2px;
+}
+
+.themed-select-wrapper .themed-rs__control {
+  font-family: inherit;
+  border-radius: var(--border-radius-sm) !important;
+  box-shadow: none !important;
+  min-height: 38px !important;
+}

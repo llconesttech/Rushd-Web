@@ -12,6 +12,7 @@ import {
 import PageHeader from "./PageHeader";
 import "./Hadith.css";
 import SearchInput from "./SearchInput";
+import ThemedSelect from "./UI/Select/ThemedSelect";
 
 const HadithReader = () => {
   const { bookId, sectionId } = useParams();
@@ -221,6 +222,35 @@ const HadithReader = () => {
     return match?.text || "";
   }
 
+  const langAccent = book?.color ?? "#0d5c63";
+
+  const langOptions = useMemo(
+    () =>
+      availableLangs.map((lang) => {
+        const meta = HADITH_LANGUAGES[lang.code];
+        return {
+          value: lang.code,
+          label: meta ? `${meta.name} (${meta.native})` : lang.language,
+        };
+      }),
+    [availableLangs],
+  );
+
+  const selectedLangOption = useMemo(
+    () => langOptions.find((o) => o.value === selectedLang) ?? null,
+    [langOptions, selectedLang],
+  );
+
+  const gradeOptions = useMemo(
+    () => uniqueGrades.map((g) => ({ value: g, label: g })),
+    [uniqueGrades],
+  );
+
+  const selectedGradeOption = useMemo(
+    () => gradeOptions.find((o) => o.value === gradeFilter) ?? null,
+    [gradeOptions, gradeFilter],
+  );
+
   return (
     <div className="hadith-reader-container">
       <PageHeader
@@ -235,46 +265,52 @@ const HadithReader = () => {
       />
 
       <div className="hadith-reader-toolbar">
-        <select
-          value={selectedLang}
-          onChange={(e) => setSelectedLang(e.target.value)}
-          className="hadith-lang-select"
-        >
-          {availableLangs
-            .filter((l) => l.code !== "ara")
-            .map((lang) => {
-              const meta = HADITH_LANGUAGES[lang.code];
-              return (
-                <option key={lang.code} value={lang.code}>
-                  {meta ? `${meta.name}` : lang.language}
-                </option>
-              );
-            })}
-        </select>
-
-        {uniqueGrades.length > 0 && (
-          <select
-            value={gradeFilter}
-            onChange={(e) => setGradeFilter(e.target.value)}
-            className="hadith-lang-select"
-          >
-            <option value="all">All Grades</option>
-            {uniqueGrades.map((g) => (
-              <option key={g} value={g}>
-                {g}
-              </option>
-            ))}
-          </select>
-        )}
-
-        <label className="toggle-arabic-label">
-          <input
-            type="checkbox"
-            checked={showArabic}
-            onChange={(e) => setShowArabic(e.target.checked)}
+        <div className="hadith-reader-toolbar-left">
+          <ThemedSelect
+            label=""
+            accent={langAccent}
+            wrapperClassName="hadith-reader-select-field"
+            instanceId="hadith-reader-lang"
+            options={langOptions}
+            value={selectedLangOption}
+            onChange={(opt) => opt && setSelectedLang(opt.value)}
+            isSearchable
+            isClearable={false}
+            isDisabled={loading || langOptions.length === 0}
           />
-          Show Arabic
-        </label>
+
+          <ThemedSelect
+            label=""
+            accent={book.color}
+            wrapperClassName="hadith-reader-select-field"
+            instanceId="hadith-reader-grade"
+            options={gradeOptions}
+            value={selectedGradeOption}
+            onChange={(opt) => opt && setGradeFilter(opt.value)}
+            isSearchable
+            isClearable={false}
+            isDisabled={loading || uniqueGrades.length === 0}
+            placeholder="Choose grade…"
+          />
+
+          <label className="toggle-arabic-switch" htmlFor="toggle-arabic-text">
+            <input
+              id="toggle-arabic-text"
+              type="checkbox"
+              checked={showArabic}
+              onChange={(e) => setShowArabic(e.target.checked)}
+            />
+            <span className="toggle-arabic-track" aria-hidden="true">
+              <span className="toggle-arabic-thumb" />
+            </span>
+            <span className="toggle-arabic-copy">
+              <span className="toggle-arabic-copy-label">Arabic text</span>
+              <span className="toggle-arabic-copy-state">
+                {showArabic ? "Visible" : "Hidden"}
+              </span>
+            </span>
+          </label>
+        </div>
 
         <span className="hadith-count-label">
           {displayHadiths.length}

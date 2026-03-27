@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { Search, BookOpen, Info } from "lucide-react";
+import { BookOpen, Info } from "lucide-react";
 import { HADITH_BOOKS, HADITH_LANGUAGES } from "../data/hadithData";
 import {
   getBookChapters,
@@ -13,6 +13,7 @@ import {
 import PageHeader from "./PageHeader";
 import "./Hadith.css";
 import SearchInput from "./SearchInput";
+import ThemedSelect from "./UI/Select/ThemedSelect";
 
 const HadithChapters = () => {
   const { bookId } = useParams();
@@ -194,10 +195,29 @@ const HadithChapters = () => {
       )
     : chapterWiseTotal;
 
+  const langOptions = useMemo(
+    () =>
+      availableLangs.map((lang) => {
+        const meta = HADITH_LANGUAGES[lang.code];
+        return {
+          value: lang.code,
+          label: meta ? `${meta.name} (${meta.native})` : lang.language,
+        };
+      }),
+    [availableLangs],
+  );
+
+  const selectedLangOption = useMemo(
+    () => langOptions.find((o) => o.value === selectedLang) ?? null,
+    [langOptions, selectedLang],
+  );
+
+  const langAccent = HADITH_BOOKS[bookId]?.color ?? "#0d5c63";
+
   if (!book) return <div className="container">Book not found</div>;
 
   return (
-    <div className="">
+    <div className="mb-10">
       <PageHeader
         title={book.name}
         subtitle={book.arabic}
@@ -215,7 +235,12 @@ const HadithChapters = () => {
             <BookOpen size={24} color="#fff" />
           </div>
           <div>
-            <h2 className="book-title-big">{book.name}</h2>
+            <div className="flex items-center gap-2">
+              <h2 className="book-title-big">{book.name}</h2>{" "}
+              {book.isSahihSittah && (
+                <span className="sahih-badge-inline">Sahih Sittah</span>
+              )}
+            </div>
             <p className="book-author-big">
               by {book.author} · {chapters.length} Chapters ·{" "}
               <span className="hadith-count-inline-wrap">
@@ -259,25 +284,21 @@ const HadithChapters = () => {
               </span>
             </p>
           </div>
-          {book.isSahihSittah && (
-            <span className="sahih-badge-inline">Sahih Sittah</span>
-          )}
         </div>
 
-        <select
-          value={selectedLang}
-          onChange={(e) => setSelectedLang(e.target.value)}
-          className="hadith-lang-select"
-        >
-          {availableLangs.map((lang) => {
-            const meta = HADITH_LANGUAGES[lang.code];
-            return (
-              <option key={lang.code} value={lang.code}>
-                {meta ? `${meta.name} (${meta.native})` : lang.language}
-              </option>
-            );
-          })}
-        </select>
+        <ThemedSelect
+          label="Translation"
+          accent={langAccent}
+          wrapperClassName="hadith-chapters-lang-field"
+          instanceId="hadith-chapters-lang"
+          options={langOptions}
+          value={selectedLangOption}
+          onChange={(opt) => opt && setSelectedLang(opt.value)}
+          isSearchable
+          isClearable={false}
+          isDisabled={loading || langOptions.length === 0}
+          placeholder=""
+        />
       </div>
 
       <SearchInput

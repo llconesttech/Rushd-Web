@@ -137,7 +137,7 @@
   }
 }
 
-@media (min-width: 576px) {
+@media (min-width: 576px) and (max-width: 767.98px) {
   .page-header {
     padding: 20px 20px;
     margin-bottom: 16px;
@@ -150,7 +150,7 @@
 }
 
 /* 768px — tablets */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 991.98px) {
   .page-header {
     padding: 20px 20px;
     margin-bottom: 16px;
@@ -165,7 +165,7 @@
 }
 
 /* 992px — small desktop / large tablet */
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1199.98px) {
   .page-header {
     padding: 20px 20px;
     border-radius: 0 0 6px 6px;
@@ -178,7 +178,7 @@
 }
 
 /* 1200px — desktop */
-@media (min-width: 1200px) {
+@media (min-width: 1200px) and (max-width: 1279.98px) {
   .page-header {
     padding: 20px 20px;
     border-radius: 0 0 6px 6px;
@@ -191,14 +191,14 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1280px) and (max-width: 1399.98px) {
   .page-header {
     padding: 20px 16px;
   }
 }
 
 /* 1400px — large desktop */
-@media (min-width: 1400px) {
+@media (min-width: 1400px) and (max-width: 1499.98px) {
   .page-header {
     padding: 20px 20px;
   }
@@ -403,6 +403,7 @@
 
 @media (min-width: 768px) {
   .ph-crumb-current {
+    font-size: 14px;
     padding: 2px 10px;
   }
 }
