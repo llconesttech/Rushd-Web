@@ -290,7 +290,7 @@ const HadithReader = () => {
             isSearchable
             isClearable={false}
             isDisabled={loading || uniqueGrades.length === 0}
-            placeholder="Choose grade…"
+            placeholder="Choose grade…" 
           />
 
           <label className="toggle-arabic-switch" htmlFor="toggle-arabic-text">

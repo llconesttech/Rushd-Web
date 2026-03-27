@@ -124,6 +124,8 @@ const HadithBooks = () => {
   // Chapters View Mode State
   const [chapterResults, setChapterResults] = useState([]);
   const [isChapterSearching, setIsChapterSearching] = useState(false);
+  const chapterSearchRequestRef = useRef(0);
+  const normalizedSearchTerm = searchTerm.trim();
 
   useEffect(() => {
     const loadStats = async () => {
@@ -155,25 +157,40 @@ const HadithBooks = () => {
 
   // Handle Chapter Search
   useEffect(() => {
-    if (viewMode !== "chapters") return;
+    if (viewMode !== "chapters") {
+      setIsChapterSearching(false);
+      return;
+    }
 
-    if (!searchTerm.trim()) {
+    const query = searchTerm.trim();
+    if (!query) {
+      chapterSearchRequestRef.current += 1; // invalidate pending results
       setChapterResults([]);
       setIsChapterSearching(false);
       return;
     }
 
+    const requestId = ++chapterSearchRequestRef.current;
     const timer = setTimeout(() => {
       setIsChapterSearching(true);
-      searchAllChapters(searchTerm)
+      searchAllChapters(query)
         .then((res) => {
+          if (requestId !== chapterSearchRequestRef.current) return;
           setChapterResults(res);
           setIsChapterSearching(false);
         })
-        .catch(() => setIsChapterSearching(false));
+        .catch(() => {
+          if (requestId !== chapterSearchRequestRef.current) return;
+          setChapterResults([]);
+          setIsChapterSearching(false);
+        });
     }, 500); // 500ms debounce
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      // Invalidate this pending request when deps change before resolve.
+      chapterSearchRequestRef.current += 1;
+    };
   }, [searchTerm, viewMode]);
 
   const allBooks = Object.values(HADITH_BOOKS);
@@ -235,6 +252,19 @@ const HadithBooks = () => {
 
   const toggleLetter = useCallback((letter) => {
     setExpandedLetters((prev) => ({ ...prev, [letter]: !prev[letter] }));
+  }, []);
+
+  const handleSearchTermChange = useCallback((e) => {
+    const nextValue = e.target.value;
+
+    // Immediate hard reset when input is cleared to avoid stale card flash.
+    if (!nextValue.trim()) {
+      chapterSearchRequestRef.current += 1;
+      setChapterResults([]);
+      setIsChapterSearching(false);
+    }
+
+    setSearchTerm(nextValue);
   }, []);
 
   const sahihBooks = filteredBooks.filter((b) => b.isSahihSittah);
@@ -336,7 +366,7 @@ const HadithBooks = () => {
       <SearchInput
         onSubmit={(e) => e.preventDefault()}
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={handleSearchTermChange}
         placeholder="Search Hadith by name, author, or Arabic title..."
         className="topbar-search-form mobile-menu-search mb-15"
         iconSize={18}
@@ -384,26 +414,16 @@ const HadithBooks = () => {
 
       {/* ───── Chapters View ───── */}
       {viewMode === "chapters" && (
-        <>
-          {!searchTerm.trim() ? (
-            <div
-              className="hadith-empty-state"
-              style={{ padding: "4rem 1rem" }}
-            >
-              <Search
-                size={48}
-                color="var(--color-text-muted)"
-                style={{ opacity: 0.3, marginBottom: "1rem" }}
-              />
-              <h3
-                style={{
-                  margin: "0 0 0.5rem",
-                  color: "var(--color-primary-dark)",
-                }}
-              >
+        <React.Fragment key={normalizedSearchTerm ? "chapters-searching" : "chapters-empty"}>
+          {!normalizedSearchTerm ? (
+            <div className="hadith-empty-state hadith-empty-state--global-search">
+              <div className="global-search-empty-icon-wrap" aria-hidden="true">
+                <Search size={42} />
+              </div>
+              <h3 className="global-search-empty-title">
                 Global Chapter Search
               </h3>
-              <p>
+              <p className="global-search-empty-text">
                 Type a keyword in English, Arabic, Bengali, etc. to search
                 across all book chapters globally.
               </p>
@@ -426,16 +446,12 @@ const HadithBooks = () => {
                       : "#"
                   }
                   key={`${chapter.bookId}-${chapter.id}`}
-                  className="chapter-card-grid"
+                  className="chapter-card-grid chapter-card-grid--search"
+                  style={{ "--chapter-accent": chapter.bookColor }}
                 >
                   <div className="chapter-card-header-row">
                     <span
-                      className="chapter-num-badge"
-                      style={{
-                        backgroundColor: chapter.bookColor + "18",
-                        color: chapter.bookColor,
-                        borderColor: chapter.bookColor + "40",
-                      }}
+                      className="chapter-num-badge chapter-num-search-badge"
                     >
                       Ch. {chapter.id}
                     </span>
@@ -466,7 +482,7 @@ const HadithBooks = () => {
               ))}
             </div>
           )}
-        </>
+        </React.Fragment>
       )}
 
       {/* ───── Narrators View ───── */}
@@ -542,18 +558,18 @@ const HadithBooks = () => {
                             <User size={18} />
                           </div>
                           <div className="narrator-info">
-                            <h4 className="narrator-name mb-8">
+                            <h4 className="narrator-name">
                               {narrator.canonical}
                             </h4>
                             {(narrator.grade || narrator.death) && (
-                              <div className="narrator-meta-row mb-4">
+                              <div className="narrator-meta-row">
                                 {narrator.grade && (
-                                  <h6 className="narrator-name">
+                                  <h6 className="narrator-meta-item">
                                     {narrator.grade}
                                   </h6>
                                 )}
                                 {narrator.death && (
-                                  <h6 className="narrator-name">
+                                  <h6 className="narrator-meta-item">
                                     {narrator.death}
                                   </h6>
                                 )}

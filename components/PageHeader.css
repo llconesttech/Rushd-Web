@@ -195,6 +195,10 @@
   .page-header {
     padding: 20px 16px;
   }
+  .page-header.scrolled {
+    padding: 0 1.75rem;
+    height: 90px;
+  }
 }
 
 /* 1400px — large desktop */

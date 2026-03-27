@@ -34,13 +34,15 @@ export function useThemedSelectStyles(accent = DEFAULT_ACCENT, opts = {}) {
         minHeight: 42,
         borderRadius: 6,
         borderWidth: 1,
-        borderColor: state.isFocused ? "#16a34a" : "var(--border-color, #e5e7eb)",
+        borderColor: state.isFocused
+          ? accent
+          : "var(--border-color, #e5e7eb)",
         boxShadow: "none",
         backgroundColor: "var(--card-bg, var(--color-bg-card, #fff))",
         transition: "border-color 0.15s ease, box-shadow 0.15s ease",
         "&:hover": {
           borderColor: state.isFocused
-            ? "#16a34a"
+            ? accent
             : "var(--border-color, #d1d5db)",
         },
       }),

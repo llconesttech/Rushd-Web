@@ -341,16 +341,10 @@ const HadithChapters = () => {
                 href={`/hadith/${bookId}/${chapter.id}?lang=${selectedLang}${targetHadith ? `&hadith=${targetHadith}` : ""}`}
                 key={chapter.id}
                 className="chapter-card-grid"
+                style={{ "--chapter-accent": book.color }}
               >
                 <div className="chapter-card-header-row">
-                  <span
-                    className="chapter-num-badge"
-                    style={{
-                      backgroundColor: book.color + "18",
-                      color: book.color,
-                      borderColor: book.color + "40",
-                    }}
-                  >
+                  <span className="chapter-num-badge">
                     {chapter.id}
                   </span>
                   <span className="chapter-hadith-badge">
