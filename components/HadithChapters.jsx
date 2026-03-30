@@ -217,7 +217,7 @@ const HadithChapters = () => {
   if (!book) return <div className="container">Book not found</div>;
 
   return (
-    <div className="mb-10">
+    <div className="">
       <PageHeader
         title={book.name}
         subtitle={book.arabic}

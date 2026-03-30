@@ -5,7 +5,6 @@
     width: 100%;
     /* Background handled by App.jsx Layout -> .bg-dots */
     background: transparent;
-    padding-bottom: 2rem;
 }
 
 /* Fix: Ensure 'container' does not block the background if it has a global style */
@@ -16,8 +15,7 @@
 .zakat-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding-bottom: 4rem;
+    gap: 24px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -31,23 +29,19 @@
 .zakat-config-panel {
     background-color: var(--color-bg-card);
     /* Standard White */
-    border-radius: 1rem;
+    border-radius: var(--border-radius-sm);
     border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-md);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    overflow: hidden;
-    margin-bottom: 1rem;
-}
-
-.zakat-config-panel:hover {
-    box-shadow: var(--shadow-lg);
+    /* Tooltips extend outside the panel; avoid clipping them. */
+    overflow: visible;
 }
 
 .config-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 1.75rem;
+    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+    padding: 10px 28px;
     background-color: #f8fafc;
     /* Subtle grey for header distinction */
     border-bottom: 1px solid var(--color-border);
@@ -79,8 +73,8 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.5rem;
+    padding: 6px 12px;
+    border-radius: var(--border-radius-sm);
     border: 1px solid transparent;
     background-color: transparent;
     color: var(--color-text-muted);
@@ -97,25 +91,97 @@
 
 .config-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    padding: 1.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    border-radius: var(--border-radius-sm);
+    gap: 28px;
+    padding: 28px;
     background-color: var(--color-bg-card);
+    align-items: start;
 }
 
 .config-group {
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 0.65rem;
+    padding: 1rem 1rem 1.05rem;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid color-mix(in srgb, var(--color-border, #e2e8e9) 85%, transparent);
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--color-bg-card, #fff) 92%, rgba(15, 23, 42, 0.02)),
+            var(--color-bg-card, #fff)
+        );
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    height: 100%;
+}
+
+
+[data-theme="dark"] .config-group {
+    border-color: rgba(255, 255, 255, 0.12);
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--color-bg-card, #13282f) 92%, rgba(255, 255, 255, 0.03)),
+            var(--color-bg-card, #13282f)
+        );
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+[data-theme="dark"] .config-group:hover {
+    border-color: rgba(45, 212, 191, 0.32);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
 }
 
 .config-label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 600;
     color: var(--color-text-main);
+}
+
+.config-label > span {
+    flex: 1;
+    min-width: 0;
+}
+
+.config-label .info-tooltip-container {
+    margin-left: auto;
+}
+
+/* Aligns Currency / Nisab controls with metal price inputs (same sub-label + gap height). */
+.config-meta-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.25rem;
+    min-height: 16px;
+    box-sizing: border-box;
+}
+
+.config-meta-row--placeholder {
+    flex-shrink: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.config-meta-row--placeholder::after {
+    content: "\00a0";
+}
+
+.config-meta-row--split .config-meta-label {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--color-text-muted, #64748b) 92%, var(--color-text-main, #0f172a));
+    line-height: 1.25;
+}
+
+[data-theme="dark"] .config-meta-row--split .config-meta-label {
+    color: rgba(148, 163, 184, 0.92);
 }
 
 /* Modern Select */
@@ -124,124 +190,45 @@
     width: 100%;
 }
 
-.modern-select {
+/* Currency select now uses shared `ThemedSelect` (react-select) */
+.zakat-currency-select {
     width: 100%;
-    appearance: none;
-    background-color: #ffffff;
-    /* White input on cream card stands out nicely */
-    border: 1px solid var(--color-border);
-    border-radius: 0.6rem;
-    padding: 0.75rem 1rem;
-    padding-right: 2.5rem;
-    font-size: 0.95rem;
-    color: var(--color-text-main);
-    cursor: pointer;
-    transition: all 0.2s;
 }
 
-.modern-select:hover {
-    border-color: #cbd5e1;
+/* Match control width to currency select / metal inputs in the config row */
+.config-group .segmented-control {
+    width: 100%;
+    max-width: 100%;
 }
 
-.modern-select:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px var(--color-primary-light-translucent, rgba(16, 185, 129, 0.2));
-}
-
-.select-arrow {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: var(--color-text-muted);
-}
-
-/* Segmented Control */
-.segment-control {
-    display: flex;
-    background-color: #f1f5f9;
-    /* Standard light grey */
-    padding: 0.3rem;
-    border-radius: 0.7rem;
-    border: 1px solid var(--color-border);
-}
-
-.segment-option {
+.config-group .segmented-control .segmented-control__option {
     flex: 1;
-    padding: 0.6rem;
-    border: none;
-    background: transparent;
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-align: center;
+    justify-content: center;
 }
 
-.segment-option:hover:not(.active) {
-    background-color: rgba(0, 0, 0, 0.03);
-    color: var(--color-text-main);
-}
+/* Segmented control moved to shared UI component */
 
-.segment-option.active {
-    background-color: #ffffff;
-    color: var(--color-primary);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    font-weight: 600;
-}
-
-/* Metal Prices Row */
+/* Metal Prices Row — inputs only; sub-labels live in .config-meta-row--split */
 .metal-prices-row {
     display: flex;
     gap: 1.25rem;
+    align-items: stretch;
 }
 
-.metal-input-wrapper {
+.metal-prices-row > .themed-input {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+    min-width: 0;
 }
 
-.metal-input-wrapper label {
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
-    font-weight: 500;
-}
+@media (max-width: 899.98px) {
+    .config-group.full-width-mobile {
+        grid-column: 1 / -1;
+    }
 
-.price-input {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.currency-symbol {
-    position: absolute;
-    left: 0.9rem;
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    pointer-events: none;
-}
-
-.price-input input {
-    width: 100%;
-    padding: 0.65rem 0.75rem 0.65rem 2rem;
-    border: 1px solid var(--color-border);
-    border-radius: 0.6rem;
-    background-color: #ffffff;
-    color: var(--color-text-main);
-    font-size: 0.95rem;
-    transition: all 0.2s;
-}
-
-.price-input input:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px var(--color-primary-light-translucent, rgba(16, 185, 129, 0.2));
+    .config-grid {
+        gap: 1.25rem;
+        padding: 1.25rem;
+    }
 }
 
 /* --- Layout Grid --- */
@@ -249,7 +236,7 @@
     display: grid;
     grid-template-columns: 1fr 340px;
     /* Sidebar fixed width */
-    gap: 2rem;
+    gap: 24px;
     align-items: start;
 }
 
@@ -262,7 +249,7 @@
 .zakat-cards-column {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 24px;
 }
 
 /* Tooltips */
@@ -284,10 +271,11 @@
 .tooltip-content {
     position: absolute;
     bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-8px);
+    right: 0;
+    left: auto;
+    transform: translateY(-8px);
     width: max-content;
-    max-width: 260px;
+    max-width: min(320px, 80vw);
     padding: 0.75rem;
     background-color: #1e293b;
     color: #fff;
@@ -304,8 +292,9 @@
     content: '';
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 10px;
+    left: auto;
+    transform: none;
     border-width: 6px;
     border-style: solid;
     border-color: #1e293b transparent transparent transparent;
@@ -466,27 +455,24 @@
     background-color: var(--color-bg-card);
     /* Standard White */
     border: 1px solid var(--color-border);
-    border-radius: 1rem;
+    border-radius: var(--border-radius-sm);
     overflow: hidden;
     transition: all 0.2s ease;
-    box-shadow: var(--shadow-sm);
-}
-
-.zakat-card:hover {
-    border-color: var(--color-primary-light);
-    /* Lift effect on hover */
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
 }
 
 .zakat-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 1.5rem;
-    background-color: #fcfcfc;
-    /* Very subtle grey */
-    border-bottom: 1px solid var(--color-border);
+    padding: 1.05rem 1.25rem;
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, #ffffff 92%, rgba(15, 23, 42, 0.02)),
+            #ffffff
+        );
+    border-bottom: 1px solid color-mix(in srgb, var(--color-border, #e2e8e9) 88%, transparent);
+    gap: 1rem;
 }
 
 .zakat-card-title-group {
@@ -496,33 +482,36 @@
     cursor: pointer;
     flex: 1;
     user-select: none;
+    min-width: 0;
 }
 
 .zakat-card h3 {
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-size: 1.02rem;
+    font-weight: 700;
     margin: 0;
     color: var(--color-text-main);
     flex: 1;
+    min-width: 0;
+    letter-spacing: 0.01em;
 }
 
 /* Icons */
 .zakat-icon-wrapper {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--border-radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f1f5f9;
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.95),
+            rgba(241, 245, 249, 0.92) 55%,
+            rgba(226, 232, 240, 0.75)
+        );
     color: var(--color-primary);
-    transition: all 0.2s;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
-}
-
-.zakat-card:hover .zakat-icon-wrapper {
-    transform: scale(1.05);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
 /* Specific Category Colors */
@@ -587,26 +576,59 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.4rem 0.8rem;
+    padding: 7px 10px;
     border-radius: 999px;
-    border: 1px solid transparent;
-    background-color: transparent;
-    color: var(--color-text-muted);
+    border: 1px solid color-mix(in srgb, var(--color-border, #e2e8e9) 90%, transparent);
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, #ffffff 92%, rgba(15, 23, 42, 0.02)),
+            #ffffff
+        );
+    color: color-mix(in srgb, var(--color-text-muted, #64748b) 92%, var(--color-text-main, #0f172a));
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 650;
     cursor: pointer;
     transition: all 0.2s;
-}
-
-.info-toggle-btn:hover {
-    background-color: #f1f5f9;
-    color: var(--color-primary);
+    white-space: nowrap;
 }
 
 .info-toggle-btn.active {
     background-color: rgba(16, 185, 129, 0.1);
     color: var(--color-primary);
     border-color: rgba(16, 185, 129, 0.2);
+}
+
+.info-toggle-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary, #0d5c63) 28%, transparent);
+}
+
+[data-theme="dark"] .zakat-card-header {
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--color-bg-card, #13282f) 90%, rgba(255, 255, 255, 0.03)),
+            var(--color-bg-card, #13282f)
+        );
+    border-bottom-color: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .info-toggle-btn {
+    border-color: rgba(255, 255, 255, 0.14);
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--color-bg-card, #13282f) 88%, rgba(255, 255, 255, 0.03)),
+            var(--color-bg-card, #13282f)
+        );
+    color: rgba(203, 213, 225, 0.92);
+}
+
+[data-theme="dark"] .info-toggle-btn:hover {
+    border-color: rgba(45, 212, 191, 0.30);
+    color: rgba(94, 234, 212, 0.92);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
 }
 
 /* Details Panel */
@@ -639,11 +661,10 @@
 .zakat-input-group label {
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--color-text-muted);
+    color: var(--color-text-main);
 }
 
 /* Reuse Modern Inputs */
-.input-wrapper,
 .select-wrapper {
     position: relative;
     display: flex;
@@ -651,11 +672,10 @@
     width: 100%;
 }
 
-.input-wrapper input,
 .select-wrapper select {
     width: 100%;
 
-    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
     border: 1px solid var(--color-border);
     border-radius: 0.6rem;
     font-size: 0.95rem;
@@ -665,11 +685,6 @@
     transition: all 0.2s;
 }
 
-.select-wrapper select {
-    padding-left: 1rem;
-}
-
-.input-wrapper input:focus,
 .select-wrapper select:focus {
     outline: none;
     border-color: var(--color-primary);
@@ -677,19 +692,25 @@
     background-color: #ffffff;
 }
 
-.currency-prefix {
-    position: absolute;
-    left: 0.9rem;
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    pointer-events: none;
-    font-weight: 500;
+/* ThemedInput wrapper inside category cards */
+.zakat-themed-input-wrap {
+    position: relative;
+    width: 100%;
+}
+
+/* For gram inputs, leave space for the suffix "g" */
+.zakat-themed-input-wrap:has(.unit-suffix) .themed-input__field {
+    padding-right: 2rem;
 }
 
 .unit-suffix {
     position: absolute;
     right: 1rem;
-    color: #8A8476;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
     font-size: 0.85rem;
     pointer-events: none;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
 }

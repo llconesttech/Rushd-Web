@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Info, ChevronDown, ChevronUp } from 'lucide-react';
+import ThemedInput from './UI/Input/ThemedInput';
 
 const ZakatCategoryCard = ({ category, values, onChange, currencySymbol }) => {
     const [showDetails, setShowDetails] = useState(false);
@@ -52,16 +53,18 @@ const ZakatCategoryCard = ({ category, values, onChange, currencySymbol }) => {
                                     </select>
                                 </div>
                             ) : (
-                                <div className="input-wrapper">
-                                    <span className="currency-prefix">{currencySymbol}</span>
-                                    <input
+                                <div className="zakat-themed-input-wrap">
+                                    <ThemedInput
                                         type="number"
+                                        inputMode="decimal"
+                                        prefix={currencySymbol}
+                                        ariaLabel={input.label}
                                         placeholder={input.placeholder}
                                         value={values[input.id] || ''}
                                         onChange={(e) => onChange(input.id, e.target.value)}
-                                        onWheel={(e) => e.target.blur()}
+                                        onWheel={(e) => e.currentTarget.blur()}
                                     />
-                                    {input.id.includes('Grams') && <span className="unit-suffix">g</span>}
+                                    {input.id.includes('Grams') ? <span className="unit-suffix">g</span> : null}
                                 </div>
                             )}
                         </div>

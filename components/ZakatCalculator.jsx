@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import PageHeader from './PageHeader';
-import { Calculator, RefreshCw, ChevronDown, Info, Settings, Globe, Scale, Coins } from 'lucide-react';
+import { Calculator, RefreshCw, Info, Settings, Globe, Scale, Coins } from 'lucide-react';
 import './ZakatCalculator.css';
 import ZakatCategoryCard from './ZakatCategoryCard';
 import { ZAKAT_CATEGORIES, LIABILITIES_CATEGORY } from '../data/zakatData';
+import ThemedSelect from './UI/Select/ThemedSelect';
+import SegmentedControl from './UI/SegmentedControl/SegmentedControl';
+import ThemedInput from './UI/Input/ThemedInput';
 
 // Nisab thresholds (fixed gram amounts)
 const NISAB_VALUES = {
@@ -146,7 +149,6 @@ const ZakatCalculator = () => {
 
     return (
         <div className="zakat-page-background">
-            <div className="container">
                 <PageHeader
                     title="Zakat Calculator"
                     subtitle="Calculate your annual Zakat obligation"
@@ -177,18 +179,27 @@ const ZakatCalculator = () => {
                                     <span>Currency</span>
                                     <InfoTooltip text="Select the currency for your assets. Metal prices will update automatically based on default values." />
                                 </div>
-                                <div className="select-container">
-                                    <select
-                                        className="modern-select"
-                                        value={currency.code}
-                                        onChange={(e) => handleCurrencyChange(CURRENCIES.find(c => c.code === e.target.value))}
-                                    >
-                                        {CURRENCIES.map(c => (
-                                            <option key={c.code} value={c.code}>{c.symbol} {c.code} - {c.name}</option>
-                                        ))}
-                                    </select>
-                                    <ChevronDown size={14} className="select-arrow" />
-                                </div>
+                                {/* <div className="config-meta-row config-meta-row--placeholder" aria-hidden="true" /> */}
+                                <ThemedSelect
+                                    accent="#0d5c63"
+                                    wrapperClassName="zakat-currency-select"
+                                    instanceId="zakat-currency"
+                                    options={CURRENCIES.map((c) => ({
+                                        value: c.code,
+                                        label: `${c.symbol} ${c.code} — ${c.name}`,
+                                    }))}
+                                    value={{
+                                        value: currency.code,
+                                        label: `${currency.symbol} ${currency.code} — ${currency.name}`,
+                                    }}
+                                    onChange={(opt) => {
+                                        if (!opt) return;
+                                        const next = CURRENCIES.find((c) => c.code === opt.value);
+                                        if (next) handleCurrencyChange(next);
+                                    }}
+                                    isSearchable
+                                    isClearable={false}
+                                />
                             </div>
 
                             {/* Nisab Selector */}
@@ -204,20 +215,17 @@ const ZakatCalculator = () => {
                                         </>
                                     } />
                                 </div>
-                                <div className="segment-control">
-                                    <button
-                                        className={`segment-option ${nisabType === 'silver' ? 'active' : ''}`}
-                                        onClick={() => setNisabType('silver')}
-                                    >
-                                        Silver
-                                    </button>
-                                    <button
-                                        className={`segment-option ${nisabType === 'gold' ? 'active' : ''}`}
-                                        onClick={() => setNisabType('gold')}
-                                    >
-                                        Gold
-                                    </button>
-                                </div>
+                                {/* <div className="config-meta-row config-meta-row--placeholder" aria-hidden="true" /> */}
+                                <SegmentedControl
+                                    value={nisabType}
+                                    onChange={setNisabType}
+                                    accent="#0d5c63"
+                                    ariaLabel="Nisab standard"
+                                    options={[
+                                        { value: 'silver', label: 'Silver' },
+                                        { value: 'gold', label: 'Gold' },
+                                    ]}
+                                />
                             </div>
 
                             {/* Metal Prices */}
@@ -227,29 +235,37 @@ const ZakatCalculator = () => {
                                     <span>Metal Prices ({currency.code})</span>
                                     <InfoTooltip text="These are default estimated market rates. You can edit them to match your local market rates." />
                                 </div>
+                                <div className="config-meta-row config-meta-row--split">
+                                    <span className="config-meta-label">Gold/g</span>
+                                    <span className="config-meta-label">Silver/g</span>
+                                </div>
                                 <div className="metal-prices-row">
-                                    <div className="metal-input-wrapper">
-                                        <label>Gold/g</label>
-                                        <div className="price-input">
-                                            <span className="currency-symbol">{currency.symbol}</span>
-                                            <input
-                                                type="number"
-                                                value={metalPrices.gold}
-                                                onChange={(e) => setMetalPrices({ ...metalPrices, gold: parseFloat(e.target.value) || 0 })}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="metal-input-wrapper">
-                                        <label>Silver/g</label>
-                                        <div className="price-input">
-                                            <span className="currency-symbol">{currency.symbol}</span>
-                                            <input
-                                                type="number"
-                                                value={metalPrices.silver}
-                                                onChange={(e) => setMetalPrices({ ...metalPrices, silver: parseFloat(e.target.value) || 0 })}
-                                            />
-                                        </div>
-                                    </div>
+                                    <ThemedInput
+                                        type="number"
+                                        inputMode="decimal"
+                                        prefix={currency.symbol}
+                                        ariaLabel="Gold price per gram"
+                                        value={metalPrices.gold}
+                                        onChange={(e) =>
+                                            setMetalPrices({
+                                                ...metalPrices,
+                                                gold: parseFloat(e.target.value) || 0,
+                                            })
+                                        }
+                                    />
+                                    <ThemedInput
+                                        type="number"
+                                        inputMode="decimal"
+                                        prefix={currency.symbol}
+                                        ariaLabel="Silver price per gram"
+                                        value={metalPrices.silver}
+                                        onChange={(e) =>
+                                            setMetalPrices({
+                                                ...metalPrices,
+                                                silver: parseFloat(e.target.value) || 0,
+                                            })
+                                        }
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -343,7 +359,7 @@ const ZakatCalculator = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
     );
 };
