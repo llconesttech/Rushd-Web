@@ -231,8 +231,21 @@ const NarratorDetail = () => {
             </div>
 
             {/* Results Count */}
-            <div className="narrators-summary" style={{ marginTop: '0.5rem' }}>
-                Showing {Math.min(paginatedHadiths.length, filteredHadiths.length)} of {filteredHadiths.length} hadiths
+            <div
+                className="narrators-summary narrators-summary--compact"
+                style={{ marginTop: "0.5rem" }}
+                role="status"
+                aria-live="polite"
+            >
+                Showing{" "}
+                <span className="narrators-summary-figure narrators-summary-figure--accent">
+                    {Math.min(paginatedHadiths.length, filteredHadiths.length)}
+                </span>{" "}
+                of{" "}
+                <span className="narrators-summary-figure">
+                    {filteredHadiths.length}
+                </span>{" "}
+                hadiths
             </div>
 
             {/* Hadith List */}

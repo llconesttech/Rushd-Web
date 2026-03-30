@@ -26,6 +26,8 @@ export function useThemedSelectStyles(accent = DEFAULT_ACCENT, opts = {}) {
 
   return useMemo(() => {
     void themeTick;
+    /* Must match control/menu: --card-bg is unused in Rushd; falling back to #fff broke dark-mode options (light tint + light text). */
+    const menuSurface = "var(--card-bg, var(--color-bg-card, #fff))";
     return {
       control: (base, state) => ({
         ...base,
@@ -82,12 +84,12 @@ export function useThemedSelectStyles(accent = DEFAULT_ACCENT, opts = {}) {
         fontWeight: state.isSelected ? 600 : 500,
         color: "var(--text-primary, var(--color-text-main, #1a1a1a))",
         backgroundColor: state.isSelected
-          ? `color-mix(in srgb, ${accent} 16%, var(--card-bg, #fff))`
+          ? `color-mix(in srgb, ${accent} 26%, ${menuSurface})`
           : state.isFocused
-            ? "color-mix(in srgb, var(--border-color, #e5e7eb) 55%, var(--card-bg, #fff))"
+            ? `color-mix(in srgb, var(--border-color, var(--color-border, #e5e7eb)) 42%, ${menuSurface})`
             : "transparent",
         "&:active": {
-          backgroundColor: `color-mix(in srgb, ${accent} 22%, var(--card-bg, #fff))`,
+          backgroundColor: `color-mix(in srgb, ${accent} 32%, ${menuSurface})`,
         },
       }),
       indicatorSeparator: () => ({ display: "none" }),
