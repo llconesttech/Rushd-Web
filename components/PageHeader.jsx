@@ -13,6 +13,7 @@ const PageHeader = ({
   badge = "",
   actions = null,
   readingProgressSurah = null,
+  onBack = null,
   isScrolled: externalIsScrolled = undefined,
 }) => {
   const backLink =
@@ -48,9 +49,20 @@ const PageHeader = ({
   return (
     <div className={`page-header ${isScrolled ? "scrolled" : ""}`}>
       <div className="page-header-nav">
-        <Link href={backLink} className="ph-back-btn" title="Go Back">
-          <ChevronLeft size={18} />
-        </Link>
+        {typeof onBack === "function" ? (
+          <button
+            type="button"
+            className="ph-back-btn"
+            title="Go Back"
+            onClick={onBack}
+          >
+            <ChevronLeft size={18} />
+          </button>
+        ) : (
+          <Link href={backLink} className="ph-back-btn" title="Go Back">
+            <ChevronLeft size={18} />
+          </Link>
+        )}
 
         <nav className="ph-breadcrumbs">
           {breadcrumbs.map((crumb, index) => {
@@ -105,6 +117,7 @@ PageHeader.propTypes = {
   subtitle: PropTypes.string,
   badge: PropTypes.node,
   actions: PropTypes.node,
+  onBack: PropTypes.func,
   readingProgressSurah: PropTypes.shape({
     ayahs: PropTypes.arrayOf(
       PropTypes.shape({

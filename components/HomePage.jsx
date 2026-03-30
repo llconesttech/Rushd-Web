@@ -30,7 +30,6 @@ const featureSections = [
             { id: 'read', title: 'Read Quran', icon: '📖', link: '/quran' },
             { id: 'hadith', title: 'Hadith', icon: '📜', link: '/hadith' },
             { id: 'tajweed', title: 'Tajweed', icon: '🎯', link: '/tajweed' },
-            { id: 'audio', title: 'Audio Recitation', icon: '🎧', link: '/audio' },
             { id: 'qa', title: 'Hadith Q&A', icon: '💡', link: '/qa-search' },
         ]
     },

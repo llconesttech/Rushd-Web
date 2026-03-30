@@ -82,12 +82,12 @@ const NarratorDetail = () => {
     }, [filteredHadiths, page]);
 
     if (loading) {
-        return <div className="container hadith-container"><div className="hadith-loading">Loading narrator...</div></div>;
+        return <div className="hadith-container"><div className="hadith-loading">Loading narrator...</div></div>;
     }
 
     if (!narrator) {
         return (
-            <div className="container hadith-container">
+            <div className="hadith-container">
                 <div className="hadith-empty-state">
                     <p>Narrator not found</p>
                     <Link href="/hadith" className="back-link"><ArrowLeft size={16} /> Back to collections</Link>
@@ -100,7 +100,7 @@ const NarratorDetail = () => {
     const grades = [...new Set(narrator.hadiths.map(h => h.grade).filter(Boolean))];
 
     return (
-        <div className="container hadith-container">
+        <div className="hadith-container">
             <PageHeader
                 title={narrator.canonical}
                 subtitle={`${narrator.totalCount.toLocaleString()} Hadiths across ${narrator.books.length} collection${narrator.books.length > 1 ? 's' : ''}`}

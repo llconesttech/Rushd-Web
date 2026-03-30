@@ -14,7 +14,7 @@
   /* height: 85px; */
   top: 0;
   z-index: 50;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-anchor: none;
   border-radius: 0 0 6px 6px;
@@ -308,6 +308,14 @@
   border-radius: 9999px;
   background: color-mix(in oklab, var(--color-bg-card) 70%, transparent);
   border: 1px solid color-mix(in oklab, var(--ph-border) 70%, transparent);
+}
+
+button.ph-back-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid color-mix(in oklab, var(--ph-border) 70%, transparent);
+  cursor: pointer;
+  padding: 0;
 }
 
 .ph-back-btn:hover {

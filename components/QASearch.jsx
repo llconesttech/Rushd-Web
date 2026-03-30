@@ -177,18 +177,44 @@ const QASearch = () => {
     return HADITH_BOOKS[bookId] || { name: bookId, color: "#666" };
   };
 
+  const breadcrumbs = useMemo(() => {
+    const base = [
+      { label: "Home", path: "/" },
+      { label: "Q&A Search", path: "/qa-search" },
+    ];
+
+    if (view === "categories") return base;
+
+    if (view === "search") {
+      return [...base, { label: "Search", path: "/qa-search" }];
+    }
+
+    if (view === "subcategories" && selectedCategory?.name) {
+      return [...base, { label: selectedCategory.name, path: "/qa-search" }];
+    }
+
+    if (view === "qa" && selectedCategory?.name && selectedSubcategory?.name) {
+      return [
+        ...base,
+        { label: selectedCategory.name, path: "/qa-search" },
+        { label: selectedSubcategory.name, path: "/qa-search" },
+      ];
+    }
+
+    // Fallback for any new/unknown view state
+    return base;
+  }, [selectedCategory?.name, selectedSubcategory?.name, view]);
+
   return (
-    <div className="container hadith-container">
+    <div className="hadith-container">
       <PageHeader
         title="Islamic Q&A Knowledge Base"
         subtitle="Browse 68,000+ authentic questions & answers from hadith books"
-        breadcrumbs={[
-          { label: "Home", path: "/" },
-          { label: "Q&A Search", path: "/qa-search" },
-        ]}
+        breadcrumbs={breadcrumbs}
+        onBack={view !== "categories" ? navigateBack : undefined}
       />
 
-      <div className="" style={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
+      <div className="qa-search-bar">
         <SearchInput
           onSubmit={(e) => e.preventDefault()}
           value={searchTerm}
@@ -216,17 +242,20 @@ const QASearch = () => {
         )}
       </div>
 
-      {view !== "categories" && (
-        <button onClick={navigateBack} className="qa-back-btn">
-          <ArrowLeft size={16} /> Back
-        </button>
-      )}
-
       {view === "categories" && (
         <div className="qa-categories-view">
-          <h2 className="section-title">
-            <Hash size={20} /> Browse by Category
-          </h2>
+          <div className="qa-section-header">
+            <div className="qa-section-title-row">
+              <span className="qa-section-icon" aria-hidden>
+                <Hash size={18} />
+              </span>
+              <h2 className="qa-section-title">Browse by topic</h2>
+            </div>
+            <p className="qa-section-subtitle">
+              Choose a category to explore authentic questions and answers from
+              hadith literature.
+            </p>
+          </div>
           {loadingCategories ? (
             <div className="hadith-loading">Loading categories...</div>
           ) : (

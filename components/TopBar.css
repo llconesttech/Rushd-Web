@@ -31,10 +31,11 @@
 .topbar-inner {
     /* max-width: var(--page-max-width); */
     height: 100%;
-    margin: 0 auto;
+    margin: 0 auto !important;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 0 !important;
 }
 
 .topbar-brand {

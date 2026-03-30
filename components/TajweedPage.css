@@ -1,8 +1,14 @@
 .tajweed-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    gap: 1rem;
     margin-top: 1.5rem;
+}
+
+@media (min-width: 320px) and (max-width: 575.98px){
+    .tajweed-grid{
+        gap: 12px;
+    }
 }
 
 .tajweed-card {

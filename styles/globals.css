@@ -243,6 +243,10 @@ html {
 }
 
 /* Custom CSS */
+.mb-0{
+  margin-bottom: 0 !important;
+}
+
 .mb-4 {
   margin-bottom: 4px !important;
 }
@@ -325,6 +329,7 @@ h6 {
   width: 100%;
   margin-inline: auto;
   padding-inline: calc(var(--container-padding) * 0.5);
+  padding-bottom: 50px;
 }
 
 @media (min-width: 576px) {
@@ -1121,7 +1126,7 @@ h6 {
 /* ---- Ayah Container (Style 1) ---- */
 .ayah-content-wrap {
   margin-top: 0.5rem;
-  padding: 0 0px 24px;
+  padding: 0;
   /* background: var(--color-bg-card); */
   border-radius: var(--border-radius-sm);
   /* box-shadow: var(--shadow-md); */
@@ -1192,10 +1197,10 @@ h6 {
 /* ---- Ayah Row (Style 1) ---- */
 .ayah-row {
   position: relative;
-  margin: 10px 0;
+  margin: 15px 0;
   padding: 1.1rem 0.95rem;
   border: 1px solid color-mix(in srgb, var(--color-border) 85%, transparent);
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-sm);
   background: linear-gradient(
     180deg,
     color-mix(in srgb, var(--color-bg-card) 96%, transparent),
