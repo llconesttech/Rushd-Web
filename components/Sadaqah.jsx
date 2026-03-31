@@ -138,7 +138,7 @@ AccordionSection.propTypes = {
 
 const Sadaqah = () => {
     return (
-        <div className="container">
+        <div>
             <PageHeader
                 title="Sadaqah (Charity)"
                 subtitle="The virtue and types of Islamic charity"

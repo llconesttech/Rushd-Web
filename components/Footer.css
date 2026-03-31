@@ -21,6 +21,7 @@
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
     gap: 2rem;
+    padding-bottom: 0 !important;
 }
 
 /* Brand Column */
@@ -114,6 +115,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 0.5rem;
+    padding-bottom: 0 !important;
 }
 
 .footer-bottom p {
