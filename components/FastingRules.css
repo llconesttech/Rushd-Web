@@ -1,14 +1,17 @@
 .fasting-rules-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1rem;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 /* Accordion Sections - reuse from SalahRules */
 .accordion-section {
     background: var(--color-bg-card);
     border-radius: var(--border-radius-sm);
-    margin-bottom: 32px;
+    margin-bottom: 10px;
     border: 1px solid var(--color-border);
     overflow: hidden;
 }
@@ -26,10 +29,6 @@
     transition: background 0.2s;
 }
 
-.accordion-header:hover {
-    background: var(--color-bg-main);
-}
-
 .accordion-title {
     display: flex;
     align-items: center;
@@ -40,6 +39,12 @@
 
 .accordion-title svg {
     color: var(--color-primary);
+}
+
+[data-theme="dark"] .accordion-title svg {
+    /* Stronger contrast on dark accordion header surfaces */
+    color: rgba(94, 234, 212, 0.96);
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35));
 }
 
 .accordion-content {
@@ -67,7 +72,7 @@
 .fast-types-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.75rem;
+    gap: 15px;
 }
 
 .fast-type-card {
@@ -76,7 +81,7 @@
     gap: 0.75rem;
     padding: 0.75rem;
     background: var(--color-bg-main);
-    border-radius: 0.75rem;
+    border-radius: var(--border-radius-sm);
     border: 1px solid var(--color-border);
 }
 
@@ -99,7 +104,7 @@
 .rules-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 0.75rem;
+    gap: 15px;
 }
 
 .rule-item {
@@ -219,7 +224,7 @@
     gap: 0.75rem;
     padding: 1rem;
     background: #fef3c7;
-    border-radius: 0.75rem;
+    border-radius: var(--border-radius-sm);
     margin-top: 1rem;
 }
 

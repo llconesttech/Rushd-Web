@@ -97,7 +97,7 @@ const AccordionSection = ({ title, icon: Icon, children, defaultOpen = false }) 
 
 const FastingRules = () => {
     return (
-        <div className="container">
+        <div>
             <PageHeader
                 title="Fasting Rules"
                 subtitle="Essential guidelines for Sawm (Fasting)"

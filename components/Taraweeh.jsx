@@ -129,7 +129,7 @@ const AccordionSection = ({ title, icon: Icon, children, defaultOpen = false }) 
 
 const Taraweeh = () => {
     return (
-        <div className="container">
+        <div>
             <PageHeader
                 title="Taraweeh Prayer"
                 subtitle="Night prayers during Ramadan"

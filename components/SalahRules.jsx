@@ -110,7 +110,7 @@ const SalahRules = () => {
             <AccordionSection title="Prayer Times & Rakats" icon={Clock} defaultOpen={true}>
                 <div className="rakats-table">
                     <div className="rakats-header">
-                        <span>Prayer</span>
+                        <span className='arabic'>Prayer</span>
                         <span>Sunnah</span>
                         <span>Fard</span>
                         <span>After</span>
