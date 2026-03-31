@@ -103,23 +103,24 @@ export default function SurahList() {
                                 }}>{surah.number}</span>
                                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                                     <span
-                                        className={`revelation-chip ${
+                                        className={`surah-pill surah-pill--revelation ${
                                             surah.revelationType === 'Meccan'
-                                                ? 'revelation-chip--meccan'
-                                                : 'revelation-chip--medinan'
+                                                ? 'surah-pill--meccan'
+                                                : 'surah-pill--medinan'
                                         }`}
-                                        aria-label={surah.revelationType}
-                                        title={surah.revelationType}
                                     >
                                         <img
-                                            className="revelation-chip__img"
+                                            className="surah-pill__icon"
                                             src={
                                                 surah.revelationType === 'Meccan'
                                                     ? '/Macca.png'
                                                     : '/Madina.png'
                                             }
-                                            alt={surah.revelationType}
+                                            alt=""
+                                            aria-hidden="true"
+                                            loading="lazy"
                                         />
+                                        {surah.revelationType}
                                     </span>
                                     {surah.juz && (
                                         <span style={{
