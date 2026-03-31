@@ -109,6 +109,7 @@ export default function SurahList() {
                                                 : 'surah-pill--medinan'
                                         }`}
                                     >
+                                        {surah.revelationType}
                                         <img
                                             className="surah-pill__icon"
                                             src={
@@ -120,7 +121,6 @@ export default function SurahList() {
                                             aria-hidden="true"
                                             loading="lazy"
                                         />
-                                        {surah.revelationType}
                                     </span>
                                     {surah.juz && (
                                         <span style={{
