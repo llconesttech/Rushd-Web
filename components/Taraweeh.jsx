@@ -114,7 +114,7 @@ const AccordionSection = ({ title, icon: Icon, children, defaultOpen = false }) 
     const [isOpen, setIsOpen] = useState(defaultOpen);
 
     return (
-        <div className={`accordion - section ${isOpen ? 'open' : ''} `}>
+        <div className={`accordion-section ${isOpen ? 'open' : ''}`}>
             <button className="accordion-header" onClick={() => setIsOpen(!isOpen)}>
                 <div className="accordion-title">
                     <Icon size={20} />
