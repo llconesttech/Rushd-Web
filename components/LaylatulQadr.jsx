@@ -125,7 +125,7 @@ const LaylatulQadr = () => {
     }, [ramadanInfo]);
 
     return (
-        <div className="container">
+        <div>
             <PageHeader
                 title="Laylatul Qadr"
                 subtitle="The Night of Power & Decree"
