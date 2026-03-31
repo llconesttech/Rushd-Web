@@ -61,7 +61,7 @@ const RamadanCalendar = () => {
 
     if (loading) {
         return (
-            <div className="container">
+            <div className="">
                 <PageHeader
                     title="Ramadan Calendar"
                     subtitle="Loading..."
@@ -79,7 +79,7 @@ const RamadanCalendar = () => {
     }
 
     return (
-        <div className="container">
+        <div>
             <PageHeader
                 title="Ramadan Calendar"
                 subtitle={ramadanInfo.isCurrentlyRamadan
