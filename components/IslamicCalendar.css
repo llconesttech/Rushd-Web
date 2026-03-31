@@ -1,7 +1,6 @@
 .calendar-container {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 1rem;
 }
 
 /* Current Date Card */
@@ -11,7 +10,7 @@
     gap: 1rem;
     padding: 1.5rem;
     background: linear-gradient(135deg, var(--color-primary) 0%, #0d9488 100%);
-    border-radius: 1rem;
+    border-radius: var(--border-radius-sm);
     color: white;
     margin-bottom: 1.5rem;
 }
@@ -56,7 +55,7 @@
 /* Calendar Card */
 .calendar-card {
     background: var(--color-bg-card);
-    border-radius: 1rem;
+    border-radius: var(--border-radius-sm);
     padding: 1.5rem;
     border: 1px solid var(--color-border);
     margin-bottom: 1.5rem;
@@ -193,7 +192,7 @@
 /* Events Card */
 .events-card {
     background: var(--color-bg-card);
-    border-radius: 1rem;
+    border-radius: var(--border-radius-sm);
     padding: 1.5rem;
     border: 1px solid var(--color-border);
     margin-bottom: 1rem;
@@ -220,7 +219,7 @@
     align-items: center;
     padding: 0.75rem;
     background: var(--color-bg-main);
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius-sm);
     gap: 1rem;
 }
 
@@ -261,9 +260,9 @@
 
 /* Info */
 .calendar-info {
-    padding: 1rem;
+    padding: 24px;
     background: #fef3c7;
-    border-radius: 0.75rem;
+    border-radius: var(--border-radius-sm);
 }
 
 .calendar-info p {

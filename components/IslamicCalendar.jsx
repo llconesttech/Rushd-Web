@@ -166,7 +166,7 @@ const IslamicCalendar = () => {
     }, [todayHijri]);
 
     return (
-        <div className="container">
+        <div className="">
             <PageHeader
                 title="Islamic Calendar"
                 subtitle="Hijri Calendar & Important Dates"
