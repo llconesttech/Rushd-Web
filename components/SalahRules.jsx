@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import PageHeader from './PageHeader';
-import { ChevronDown, ChevronUp, Clock, CheckCircle, XCircle, BookOpen, Moon, MessageSquare, List, Sun, Users, Calendar, Briefcase, Settings2, AlertTriangle } from 'lucide-react';
+import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Clock, CheckCircle, XCircle, BookOpen, Moon, MessageSquare, List, Sun, Users, Calendar, Briefcase, Settings2, AlertTriangle } from 'lucide-react';
 import './SalahRules.css';
 import {
     PRAYER_RAKATS, CONDITIONS, PILLARS, INVALIDATORS, SUNNAH_ACTS,
@@ -35,6 +35,74 @@ AccordionSection.propTypes = {
 const SalahRules = () => {
     const [activeCategory, setActiveCategory] = useState('regular'); // 'regular', 'voluntary', 'special'
     const [activeMadhhab, setActiveMadhhab] = useState('hanafi'); // 'hanafi', 'shafii', 'maliki', 'hanbali'
+
+    const categoryTrackRef = useRef(null);
+    const [categoryCarousel, setCategoryCarousel] = useState({
+        enabled: false,
+        overflow: false,
+        canPrev: false,
+        canNext: false,
+    });
+
+    const updateCategoryCarousel = useCallback(() => {
+        const el = categoryTrackRef.current;
+        if (!el) return;
+        const overflow = el.scrollWidth > el.clientWidth + 1;
+        const canPrev = el.scrollLeft > 1;
+        const canNext = el.scrollLeft + el.clientWidth < el.scrollWidth - 1;
+        setCategoryCarousel((prev) => ({
+            ...prev,
+            overflow,
+            canPrev,
+            canNext,
+        }));
+    }, []);
+
+    useEffect(() => {
+        const mq = window.matchMedia('(max-width: 479.98px)');
+        const apply = () => setCategoryCarousel((s) => ({ ...s, enabled: mq.matches }));
+        apply();
+        mq.addEventListener?.('change', apply);
+        return () => mq.removeEventListener?.('change', apply);
+    }, []);
+
+    useEffect(() => {
+        const el = categoryTrackRef.current;
+        if (!el) return;
+        let raf = 0;
+        const onScroll = () => {
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(updateCategoryCarousel);
+        };
+        el.addEventListener('scroll', onScroll, { passive: true });
+
+        const ro = new ResizeObserver(() => updateCategoryCarousel());
+        ro.observe(el);
+        updateCategoryCarousel();
+
+        return () => {
+            cancelAnimationFrame(raf);
+            el.removeEventListener('scroll', onScroll);
+            ro.disconnect();
+        };
+    }, [updateCategoryCarousel]);
+
+    useEffect(() => {
+        if (!categoryCarousel.enabled) return;
+        const el = categoryTrackRef.current;
+        if (!el) return;
+        const btn = el.querySelector('.category-tab.active');
+        if (btn && typeof btn.scrollIntoView === 'function') {
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+    }, [activeCategory, categoryCarousel.enabled]);
+
+    const scrollCategoryBy = useCallback((dir) => {
+        const el = categoryTrackRef.current;
+        if (!el) return;
+        const amount = Math.max(160, Math.floor(el.clientWidth * 0.75));
+        el.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    }, []);
 
     const renderRegularSalah = () => (
         <>
@@ -450,31 +518,59 @@ const SalahRules = () => {
                         </div>
                     </div>
 
-                    <div className="category-switcher">
+                    <div
+                        className={[
+                            'category-switcher',
+                            categoryCarousel.enabled ? 'category-switcher--carousel' : '',
+                            categoryCarousel.enabled && categoryCarousel.overflow ? 'is-overflow' : '',
+                        ].filter(Boolean).join(' ')}
+                    >
                         <button
-                            className={`category-tab ${activeCategory === 'regular' ? 'active' : ''}`}
-                            onClick={() => setActiveCategory('regular')}
+                            type="button"
+                            className="category-scroll-btn prev"
+                            onClick={() => scrollCategoryBy(-1)}
+                            aria-label="Scroll categories left"
+                            disabled={!categoryCarousel.overflow || !categoryCarousel.canPrev}
                         >
-                            Regular Salah
+                            <ChevronLeft size={18} />
                         </button>
+
+                        <div className="category-switcher-track" ref={categoryTrackRef}>
+                            <button
+                                className={`category-tab ${activeCategory === 'regular' ? 'active' : ''}`}
+                                onClick={() => setActiveCategory('regular')}
+                            >
+                                Regular Salah
+                            </button>
+                            <button
+                                className={`category-tab ${activeCategory === 'voluntary' ? 'active' : ''}`}
+                                onClick={() => setActiveCategory('voluntary')}
+                            >
+                                Voluntary (Sunnah)
+                            </button>
+                            <button
+                                className={`category-tab ${activeCategory === 'special' ? 'active' : ''}`}
+                                onClick={() => setActiveCategory('special')}
+                            >
+                                Special Prayers
+                            </button>
+                            <div
+                                className="category-indicator"
+                                style={{
+                                    transform: `translateX(${activeCategory === 'regular' ? '0%' : activeCategory === 'voluntary' ? '100%' : '200%'})`
+                                }}
+                            />
+                        </div>
+
                         <button
-                            className={`category-tab ${activeCategory === 'voluntary' ? 'active' : ''}`}
-                            onClick={() => setActiveCategory('voluntary')}
+                            type="button"
+                            className="category-scroll-btn next"
+                            onClick={() => scrollCategoryBy(1)}
+                            aria-label="Scroll categories right"
+                            disabled={!categoryCarousel.overflow || !categoryCarousel.canNext}
                         >
-                            Voluntary (Sunnah)
+                            <ChevronRight size={18} />
                         </button>
-                        <button
-                            className={`category-tab ${activeCategory === 'special' ? 'active' : ''}`}
-                            onClick={() => setActiveCategory('special')}
-                        >
-                            Special Prayers
-                        </button>
-                        <div
-                            className="category-indicator"
-                            style={{
-                                transform: `translateX(${activeCategory === 'regular' ? '0%' : activeCategory === 'voluntary' ? '100%' : '200%'})`
-                            }}
-                        />
                     </div>
                 </div>
 

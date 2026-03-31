@@ -7,8 +7,8 @@
 /* Accordion Sections - reuse from SalahRules */
 .accordion-section {
     background: var(--color-bg-card);
-    border-radius: 1rem;
-    margin-bottom: 1rem;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 32px;
     border: 1px solid var(--color-border);
     overflow: hidden;
 }
@@ -107,7 +107,7 @@
     gap: 0.75rem;
     padding: 0.75rem;
     background: var(--color-bg-main);
-    border-radius: 0.75rem;
+    border-radius: var(--border-radius-sm);
     border: 1px solid var(--color-border);
 }
 
