@@ -5,7 +5,8 @@
     /* Hidden on mobile by default */
     background-color: var(--color-bg-card);
     border-bottom: 1px solid var(--color-border);
-    padding: 0 2rem;
+    /* Keep background full-width; alignment handled by inner `.container`. */
+    padding: 0;
     height: 80px;
     position: sticky;
     top: 0;

@@ -1,7 +1,11 @@
 .salah-rules-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1rem;
+    /* Match Surah Index alignment: rely on the global `.container` only. */
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 /* TOP CONTROLS: MADHHAB AND CATEGORY */

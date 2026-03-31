@@ -418,7 +418,7 @@ const SalahRules = () => {
     );
 
     return (
-        <div className="container">
+        <div className="">
             <PageHeader
                 title="Salah Rules"
                 subtitle="Essential guidelines for prayer"
