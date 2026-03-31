@@ -150,7 +150,7 @@ const LunarPhasePage = () => {
     }, []);
 
     return (
-        <div className="container">
+        <div>
             <PageHeader
                 title="Lunar Phase"
                 subtitle="Moon observation & phase calendar"
@@ -193,10 +193,15 @@ const LunarPhasePage = () => {
                 {/* Geolocation error fallback */}
                 {geoError && !activeCoords && (
                     <div className="lunar-fallback-card">
-                        <MapPin size={20} />
-                        <p className="lunar-fallback-text">
-                            Location access denied. Use the search bar above to find your city, or the moon data below defaults to UTC.
-                        </p>
+                        <div className="lunar-fallback-icon" aria-hidden="true">
+                            <MapPin size={18} />
+                        </div>
+                        <div className="lunar-fallback-body">
+                            <div className="lunar-fallback-title">Location not available</div>
+                            <p className="lunar-fallback-text">
+                                Location access was denied. Use the search bar above to find your city, or the moon data below will use UTC.
+                            </p>
+                        </div>
                     </div>
                 )}
 
