@@ -102,12 +102,25 @@ export default function SurahList() {
                                     fontWeight: 'bold', fontSize: '0.9rem',
                                 }}>{surah.number}</span>
                                 <div style={{ display: 'flex', gap: '0.5rem' }}>
-                                    <span style={{
-                                        fontSize: '0.7rem', padding: '0.2rem 0.5rem',
-                                        backgroundColor: surah.revelationType === 'Meccan' ? 'var(--color-pill-meccan-bg)' : 'var(--color-pill-medinan-bg)',
-                                        color: surah.revelationType === 'Meccan' ? 'var(--color-pill-meccan-text)' : 'var(--color-pill-medinan-text)',
-                                        borderRadius: '0.5rem',
-                                    }}>{surah.revelationType}</span>
+                                    <span
+                                        className={`revelation-chip ${
+                                            surah.revelationType === 'Meccan'
+                                                ? 'revelation-chip--meccan'
+                                                : 'revelation-chip--medinan'
+                                        }`}
+                                        aria-label={surah.revelationType}
+                                        title={surah.revelationType}
+                                    >
+                                        <img
+                                            className="revelation-chip__img"
+                                            src={
+                                                surah.revelationType === 'Meccan'
+                                                    ? '/Macca.png'
+                                                    : '/Madina.png'
+                                            }
+                                            alt={surah.revelationType}
+                                        />
+                                    </span>
                                     {surah.juz && (
                                         <span style={{
                                             fontSize: '0.7rem', padding: '0.2rem 0.5rem',
