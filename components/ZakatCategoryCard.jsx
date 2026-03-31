@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Info, ChevronDown, ChevronUp } from 'lucide-react';
 import ThemedInput from './UI/Input/ThemedInput';
+import ThemedSelect from './UI/Select/ThemedSelect';
 
 const ZakatCategoryCard = ({ category, values, onChange, currencySymbol }) => {
     const [showDetails, setShowDetails] = useState(false);
@@ -37,21 +38,35 @@ const ZakatCategoryCard = ({ category, values, onChange, currencySymbol }) => {
 
             {isExpanded && (
                 <div className="zakat-inputs-container">
-                    {category.inputs.map(input => (
+                    {category.inputs.map((input) => {
+                        const isSelect = input.type === 'select';
+                        const selectOptions = isSelect && input.options
+                            ? input.options.map((o) => ({ value: o.value, label: o.label }))
+                            : [];
+                        const stored = values[input.id];
+                        const selectValue = isSelect
+                            ? selectOptions.find((o) => o.value === stored) ??
+                              (stored === undefined || stored === ''
+                                  ? selectOptions[0] ?? null
+                                  : null)
+                            : null;
+
+                        return (
                         <div key={input.id} className="zakat-input-group">
                             <label>{input.label}</label>
 
-                            {input.type === 'select' ? (
-                                <div className="select-wrapper">
-                                    <select
-                                        value={values[input.id] || ''}
-                                        onChange={(e) => onChange(input.id, e.target.value)}
-                                    >
-                                        {input.options.map(opt => (
-                                            <option key={opt.value} value={opt.value}>{opt.label}</option>
-                                        ))}
-                                    </select>
-                                </div>
+                            {isSelect ? (
+                                <ThemedSelect
+                                    accent="#0d5c63"
+                                    wrapperClassName="zakat-field-select"
+                                    instanceId={`zakat-${category.id}-${input.id}`}
+                                    options={selectOptions}
+                                    value={selectValue}
+                                    onChange={(opt) => onChange(input.id, opt ? opt.value : '')}
+                                    isSearchable={false}
+                                    isClearable={false}
+                                    aria-label={input.label}
+                                />
                             ) : (
                                 <div className="zakat-themed-input-wrap">
                                     <ThemedInput
@@ -68,7 +83,8 @@ const ZakatCategoryCard = ({ category, values, onChange, currencySymbol }) => {
                                 </div>
                             )}
                         </div>
-                    ))}
+                        );
+                    })}
                 </div>
             )}
         </div>

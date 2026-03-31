@@ -20,3 +20,14 @@
   box-shadow: none !important;
   min-height: 38px !important;
 }
+
+/* Match ThemedInput dark borders (subtle edge on charcoal/teal card surfaces). */
+[data-theme="dark"] .themed-rs__control {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+[data-theme="dark"] .themed-rs__control:hover {
+  border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+/* Focus ring/border still comes from inline styles (accent); no override here. */

@@ -43,6 +43,18 @@
   padding: 0.6rem 0;
 }
 
+/* Chromium/Safari/Edge: native steppers use a light panel that clashes in dark UI */
+.themed-input__field[type="number"]::-webkit-outer-spin-button,
+.themed-input__field[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.themed-input__field[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
 .themed-input__field::placeholder {
   color: var(--text-secondary, var(--color-text-muted, #5a6a72));
 }
