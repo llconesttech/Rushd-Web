@@ -24,7 +24,7 @@ const TopBar = () => {
                 {/* Brand Logo */}
                 <div className="topbar-brand" onClick={() => router.push('/')}>
                     <img src={mounted && theme === 'dark' ? '/light_gold.png' : '/logo.png'} alt="Rushd Logo" className="topbar-logo" />
-                    <span className="topbar-title">Rushd</span>
+                    {/* <span className="topbar-title">Rushd</span> */}
                 </div>
 
                 {/* Primary Navigation */}
