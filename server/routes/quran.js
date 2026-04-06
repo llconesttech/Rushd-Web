@@ -44,9 +44,9 @@ router.get('/shan-e-nuzool/:edition/:surah', cacheMiddleware(), async (req, res,
 // GET /api/v1/quran/search?q=...&edition=en-sahih&limit=50
 router.get('/search', async (req, res, next) => {
     try {
-        const { q, edition = 'en-sahih', limit = 50 } = req.query;
+        const { q, edition = 'en-sahih', type = 'translations', limit = 50 } = req.query;
         if (!q || !q.trim()) return res.json([]);
-        res.json(await quranData.search(q, edition, parseInt(limit)));
+        res.json(await quranData.search(q, edition, type, parseInt(limit)));
     } catch (err) { next(err); }
 });
 

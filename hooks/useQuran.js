@@ -143,7 +143,7 @@ export const useSurahDetail = (number, transliterationType = 'none', selectedScr
                 let startMap = {};
                 if (transliterationType !== 'none') {
                     try {
-                        const transId = transliterationType === 'bn_v1' ? 'en-transliteration' : normalizeEditionId(transliterationType);
+                        const transId = normalizeEditionId(transliterationType);
                         const transResult = await quranServiceV2.getSurah(number, transId, 'transliterations');
                         if (transResult && transResult.ayahs) {
                             transResult.ayahs.forEach(item => {
@@ -153,6 +153,7 @@ export const useSurahDetail = (number, transliterationType = 'none', selectedScr
                         }
                     } catch (v2Err) {
                         console.log(`V2 transliteration missing`);
+                        // Optional legacy fallback (kept safe, but only used if present)
                         if (transliterationType === 'bn_v1') {
                             const transJson = await quranService.transliteration.getLocal('bn_v1');
                             const surahTrans = transJson[number];

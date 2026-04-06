@@ -26,8 +26,12 @@ app.prepare().then(() => {
     const server = express();
 
     // Global middleware
+    // Helmet sets Cross-Origin-Opener-Policy (COOP) by default. Browsers ignore COOP on plain HTTP
+    // for non-localhost hosts (e.g. http://192.168.x.x) and log a console warning — unrelated to
+    // next.config.js `allowedDevOrigins` (that option only affects Next dev `/_next/*` checks).
     server.use(helmet({
         contentSecurityPolicy: false, // Let Next.js handle CSP
+        ...(dev ? { crossOriginOpenerPolicy: false } : {}),
     }));
     server.use(cors({
         origin: process.env.ALLOWED_ORIGINS?.split(',') || '*',

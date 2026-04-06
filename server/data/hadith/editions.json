@@ -277,6 +277,18 @@
         "linkmin": "/data/hadith/dehlawi/eng-dehlawi.json"
       },
       {
+        "name": "ben-dehlawi",
+        "book": "dehlawi",
+        "author": "Shah Waliullah Dehlawi",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/dehlawi/ben-dehlawi.json",
+        "linkmin": "/data/hadith/dehlawi/ben-dehlawi.json"
+      },
+      {
         "name": "fra-dehlawi",
         "book": "dehlawi",
         "author": "Unknown",
@@ -823,6 +835,18 @@
         "linkmin": "/data/hadith/qudsi/eng-qudsi.json"
       },
       {
+        "name": "ben-qudsi",
+        "book": "qudsi",
+        "author": "Unknown",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "",
+        "comments": "",
+        "link": "/data/hadith/qudsi/ben-qudsi.json",
+        "linkmin": "/data/hadith/qudsi/ben-qudsi.json"
+      },
+      {
         "name": "fra-qudsi",
         "book": "qudsi",
         "author": "Unknown",
@@ -976,6 +1000,17 @@
         "source": "https://sunnah.com/darimi",
         "link": "/data/hadith/darimi/eng-darimi.json",
         "linkmin": "/data/hadith/darimi/eng-darimi.json"
+      },
+      {
+        "name": "ben-darimi",
+        "book": "darimi",
+        "author": "Sunnah.com",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/darimi",
+        "link": "/data/hadith/darimi/ben-darimi.json",
+        "linkmin": "/data/hadith/darimi/ben-darimi.json"
       }
     ]
   },
@@ -1003,6 +1038,17 @@
         "source": "https://sunnah.com/adab",
         "link": "/data/hadith/adab/eng-adab.json",
         "linkmin": "/data/hadith/adab/eng-adab.json"
+      },
+      {
+        "name": "ben-adab",
+        "book": "adab",
+        "author": "Sunnah.com",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/adab",
+        "link": "/data/hadith/adab/ben-adab.json",
+        "linkmin": "/data/hadith/adab/ben-adab.json"
       }
     ]
   },
@@ -1030,6 +1076,17 @@
         "source": "https://sunnah.com/bulugh",
         "link": "/data/hadith/bulugh/eng-bulugh.json",
         "linkmin": "/data/hadith/bulugh/eng-bulugh.json"
+      },
+      {
+        "name": "ben-bulugh",
+        "book": "bulugh",
+        "author": "Sunnah.com",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/bulugh",
+        "link": "/data/hadith/bulugh/ben-bulugh.json",
+        "linkmin": "/data/hadith/bulugh/ben-bulugh.json"
       }
     ]
   },
@@ -1057,6 +1114,17 @@
         "source": "https://sunnah.com/riyadussalihin",
         "link": "/data/hadith/riyadussalihin/eng-riyadussalihin.json",
         "linkmin": "/data/hadith/riyadussalihin/eng-riyadussalihin.json"
+      },
+      {
+        "name": "ben-riyadussalihin",
+        "book": "riyadussalihin",
+        "author": "Sunnah.com",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/riyadussalihin",
+        "link": "/data/hadith/riyadussalihin/ben-riyadussalihin.json",
+        "linkmin": "/data/hadith/riyadussalihin/ben-riyadussalihin.json"
       }
     ]
   },
@@ -1084,6 +1152,17 @@
         "source": "https://sunnah.com/mishkat",
         "link": "/data/hadith/mishkat/eng-mishkat.json",
         "linkmin": "/data/hadith/mishkat/eng-mishkat.json"
+      },
+      {
+        "name": "ben-mishkat",
+        "book": "mishkat",
+        "author": "Sunnah.com",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/mishkat",
+        "link": "/data/hadith/mishkat/ben-mishkat.json",
+        "linkmin": "/data/hadith/mishkat/ben-mishkat.json"
       }
     ]
   },
@@ -1111,6 +1190,17 @@
         "source": "https://sunnah.com/shamail",
         "link": "/data/hadith/shamail/eng-shamail.json",
         "linkmin": "/data/hadith/shamail/eng-shamail.json"
+      },
+      {
+        "name": "ben-shamail",
+        "book": "shamail",
+        "author": "Sunnah.com",
+        "language": "Bengali",
+        "has_sections": true,
+        "direction": "ltr",
+        "source": "https://sunnah.com/shamail",
+        "link": "/data/hadith/shamail/ben-shamail.json",
+        "linkmin": "/data/hadith/shamail/ben-shamail.json"
       }
     ]
   }

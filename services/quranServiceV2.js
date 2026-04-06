@@ -45,9 +45,11 @@ export const getArabicScripts = async () => (await getMeta()).arabicScripts;
 export const getTranslations = async () => (await getMeta()).translations;
 
 export const search = async (query, options = {}) => {
-    const { edition = 'en-sahih', limit = 50 } = options;
+    const { edition = 'en-sahih', type = 'translations', limit = 50 } = options;
     if (!query?.trim()) return [];
-    return apiFetch(`/quran/search?q=${encodeURIComponent(query)}&edition=${edition}&limit=${limit}`);
+    return apiFetch(
+        `/quran/search?q=${encodeURIComponent(query)}&edition=${edition}&type=${type}&limit=${limit}`,
+    );
 };
 
 export const clearCache = () => {

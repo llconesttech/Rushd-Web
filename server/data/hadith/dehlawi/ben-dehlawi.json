@@ -1,0 +1,447 @@
+{
+  "metadata": {
+    "name": "dehlawi"
+  },
+  "hadiths": [
+    {
+      "hadithnumber": 1,
+      "arabicnumber": 1,
+      "text": "খবর সরাসরি দেখার মতো নয়।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 1
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 2,
+      "arabicnumber": 2,
+      "text": "যুদ্ধ প্রতারণার আশ্রয় নেয়।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 2
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 3,
+      "arabicnumber": 3,
+      "text": "একজন মুসলিম অন্য মুসলিমের প্রতিচ্ছবি।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 3
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 4,
+      "arabicnumber": 4,
+      "text": "যিনি পরামর্শের জন্য জিজ্ঞাসিত হন, তিনি আমানতদার।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 4
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 5,
+      "arabicnumber": 5,
+      "text": "যে ব্যক্তি ের দিকে পথ দেখায়, সে যেন  কাজটাই করে ফেলেছে",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 5
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 6,
+      "arabicnumber": 6,
+      "text": "প্রয়োজনীয় কাজের জন্য গোপনীয়তা অবলম্বন করুন।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 6
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 7,
+      "arabicnumber": 7,
+      "text": "আগুন থেকে নিজেকে বাঁচিয়ে রেখো, তা সে এক খণ্ড তাড়াইয়ের অংশ হলেও।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 7
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 8,
+      "arabicnumber": 8,
+      "text": "দুনিয়া মুমিনদের জন্য কারাগার এবং কাফেরদের জন্য জান্নাত।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 8
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 9,
+      "arabicnumber": 9,
+      "text": "শালীনতা সম্পূর্ণভাবে কল্যাণকর।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 9
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 10,
+      "arabicnumber": 10,
+      "text": "একজন মুমিনের কথা হলো হাতের মুষ্টিবদ্ধ করার মতো।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 10
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 11,
+      "arabicnumber": 11,
+      "text": "কোনো মুমিনকে তার ভাইয়ের সাথে তিন দিনের বেশি সম্পর্ক ছিন্ন করা বৈধ নয়।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 11
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 12,
+      "arabicnumber": 12,
+      "text": "যে ব্যক্তি প্রতারণা করে, সে আমাদের নয়।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 12
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 13,
+      "arabicnumber": 13,
+      "text": "কম যা যথেষ্ট, তা অনেক বেশি উত্তম যা বিক্ষিপ্ত করে।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 13
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 14,
+      "arabicnumber": 14,
+      "text": "যিনি তাঁর দান প্রত্যাহার করেন, তিনি যেন নিজের বমি পুনরায় গ্রহণ করেন।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 14
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 15,
+      "arabicnumber": 15,
+      "text": "বিপদ আসে কথা বলার মাধ্যমে।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 15
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 16,
+      "arabicnumber": 16,
+      "text": "মানুষ চুলের আঁচিলের দাঁতের মতো।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 16
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 17,
+      "arabicnumber": 17,
+      "text": "আত্মার প্রাচুর্যই প্রকৃত প্রাচুর্য।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 17
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 18,
+      "arabicnumber": 18,
+      "text": "আনন্দিত সে, যে অন্যের দ্বারা উপদেশ গ্রহণ করে।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 18
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 19,
+      "arabicnumber": 19,
+      "text": "অবশ্যই, কবিতার মধ্যে প্রজ্ঞা রয়েছে এবং -এর মধ্যে জাদু বিদ্যমান",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 19
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 20,
+      "arabicnumber": 20,
+      "text": "রাজার ক্ষমা রাজ্য টিকিয়ে রাখে।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 20
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 21,
+      "arabicnumber": 21,
+      "text": "একজন ব্যক্তি সেই ব্যক্তির সাথে থাকবে, যাকে সে ভালোবাসে।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 21
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 22,
+      "arabicnumber": 22,
+      "text": "যে ব্যক্তি নিজেকে চেনে, সে ধ্বংস হয় না।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 22
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 23,
+      "arabicnumber": 23,
+      "text": "সন্তান শয্যারঅধীন এবং ব্যভিচারীর জন্য প্রস্তর নিক্ষেপ।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 23
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 24,
+      "arabicnumber": 24,
+      "text": "উচ্চ হাত নিম্ন হাতের চেয়ে উত্তম।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 24
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 25,
+      "arabicnumber": 25,
+      "text": "আল্লাহ তা’আলা সেই ব্যক্তিকে পছন্দ করেন না, যিনি মানুষের প্রতি কৃতজ্ঞ থাকে না।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 25
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 26,
+      "arabicnumber": 26,
+      "text": "তোমার কোনো কিছুর প্রতি ভালোবাসা তোমাকে অন্ধ ও বধির করে দিতে পারে।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 26
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 27,
+      "arabicnumber": 27,
+      "text": "হৃদয়গুলো সুন্দর আচরণে অনুগ্রহের প্রতি আকৃষ্ট এবং খারাপ আচরণে বিদ্বেষের দিকে ঝুঁকে থাকে।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 27
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 28,
+      "arabicnumber": 28,
+      "text": "যে ব্যক্তি পাপ থেকে তওবা করে, সে যেন পাপী নয়।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 28
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 29,
+      "arabicnumber": 29,
+      "text": "সাক্ষী যা দেখে, অনুপস্থিত ব্যক্তি তা দেখে না।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 29
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 30,
+      "arabicnumber": 30,
+      "text": "যখন কোনো জাতির সম্মানিত ব্যক্তি তোমাদের কাছে আসবে, তখন তাকে সম্মান করো।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 30
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 31,
+      "arabicnumber": 31,
+      "text": "মিথ্যা কসম ঘরবাড়ি ধ্বংস করে দেয়।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 31
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 32,
+      "arabicnumber": 32,
+      "text": "যে ব্যক্তি নিজের সম্পদ রক্ষার জন্য নিহত হয়, সে শহীদ।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 32
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 33,
+      "arabicnumber": 33,
+      "text": "আমল নিয়তের উপর নির্ভরশীল।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 33
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 34,
+      "arabicnumber": 34,
+      "text": "জনগণের নেতা তাদের সেবক।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 34
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 35,
+      "arabicnumber": 35,
+      "text": "বিষয়গুলির মধ্যে সর্বোত্তম হলো মধ্যম পন্থা।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 35
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 36,
+      "arabicnumber": 36,
+      "text": "হে আল্লাহ, তুমি তোমার উম্মাহকেের সকালে তাড়াতাড়ি ঘুম থেকে ওঠার ক্ষেত্রে বরকত দাও।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 36
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 37,
+      "arabicnumber": 37,
+      "text": "দরিদ্রতা প্রায় কুফরের কাছাকাছি পৌঁছে যায়।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 37
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 38,
+      "arabicnumber": 38,
+      "text": "ভ্রমণ হলো শাস্তির একটি অংশ।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 38
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 39,
+      "arabicnumber": 39,
+      "text": "তাকওয়া হলো শ্রেষ্ঠ জাদ।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 39
+      },
+      "web_ref": "GENERATED"
+    },
+    {
+      "hadithnumber": 40,
+      "arabicnumber": 40,
+      "text": "আলোচনা-সমাবেশগুলো হলো আমানত।",
+      "grades": [],
+      "reference": {
+        "book": 1,
+        "hadith": 40
+      },
+      "web_ref": "GENERATED"
+    }
+  ]
+}
