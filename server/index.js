@@ -12,6 +12,7 @@ import qaRoutes from './routes/qa.js';
 import audioRoutes from './routes/audio.js';
 import assetsRoutes from './routes/assets.js';
 import asmauHusnaRoutes from './routes/asmaulHusna.js';
+import mobileAuthRoutes from './routes/mobileAuth.js';
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -46,6 +47,12 @@ app.prepare().then(() => {
     // Audio and assets are public (no auth required)
     server.use('/api/v1/audio', apiRateLimiter, audioRoutes);
     server.use('/api/v1/assets', apiRateLimiter, assetsRoutes);
+
+    // Mobile authentication endpoints
+    server.use('/api/v1/mobile/auth', mobileAuthRoutes);
+
+    // Mobile API routes (BFF pattern for mobile)
+    server.use('/api/v1/mobile', apiRateLimiter, authMiddleware, securityHeaders, quranRoutes);
 
     // Test endpoint (remove in production)
     server.get('/api/test', (req, res) => {

@@ -1,21 +1,27 @@
 import rateLimit from 'express-rate-limit';
 
-// Development rate limiter - can be increased for dev
+function getClientIP(req) {
+    return req.headers['x-forwarded-for']?.split(',')[0]?.trim()
+        || req.headers['cf-connecting-ip']
+        || req.headers['x-real-ip']
+        || req.connection?.remoteAddress
+        || 'unknown';
+}
+
 export const devRateLimiter = rateLimit({
     windowMs: 60 * 1000,
-    max: 500, // 500 requests per minute for dev
+    max: 500,
     standardHeaders: true,
     legacyHeaders: false,
     message: { error: 'Too many requests, slow down.' },
+    keyGenerator: (req) => getClientIP(req),
 });
 
-// Production rate limiter - use API key based limiting
 export const rateLimiter = rateLimit({
     windowMs: 60 * 1000,
-    max: 100, // Default per API key
+    max: 100,
     standardHeaders: true,
     legacyHeaders: false,
     message: { error: 'Too many requests, slow down.' },
-    // In production, use Redis store with API key
-    // keyGenerator: (req) => req.headers['x-api-key'] || req.ip
+    keyGenerator: (req) => getClientIP(req),
 });

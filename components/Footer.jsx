@@ -21,7 +21,7 @@ const Footer = () => (
                         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" />
                     </a>
                     <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
-                        <Image src="/google-play.png" alt="Google Play" width={100} height={100} />
+                        <img src="/google-play.png" alt="Google Play" style={{ width: 'auto', height: '40px' }} />
                     </a>
                 </div>
             </div>

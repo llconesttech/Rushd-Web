@@ -9,10 +9,8 @@ import './AudioPlayer.css';
 const AudioPlayer = ({ surahNumber, totalAyahs }) => {
     const { selectedReciter, setSelectedReciter, setAudioPlayback, audioCommand, setAudioCommand } = useSettings();
     const audioRef = useRef(null);
-    /** After ayah change / auto-advance: play() even if `pause` zeroed React state. */
     const shouldResumePlaybackRef = useRef(false);
     const isPlayingRef = useRef(false);
-    /** Ignore `pause` fired by `load()` until `play()` settles. */
     const switchingTrackRef = useRef(false);
     const [currentAyah, setCurrentAyah] = useState(1);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -26,12 +24,15 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
 
     const localUrl = audioService.getLocalUrl(selectedReciter, surahNumber, currentAyah);
     const remoteUrl = audioService.getRemoteUrl(selectedReciter, surahNumber, currentAyah);
-    const [currentSrc, setCurrentSrc] = useState(localUrl);
+    
+    const currentSrc = localUrl || remoteUrl;
 
+    const stableSrcRef = useRef(remoteUrl);
     useEffect(() => {
-        setCurrentSrc(localUrl);
-        setAudioError(null);
-    }, [localUrl]);
+        if (stableSrcRef.current !== remoteUrl) {
+            stableSrcRef.current = remoteUrl;
+        }
+    }, [remoteUrl]);
 
     useEffect(() => {
         isPlayingRef.current = isPlaying;
@@ -41,10 +42,14 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         const audio = audioRef.current;
         if (!audio) return;
 
+        if (audio.src !== stableSrcRef.current) {
+            audio.src = stableSrcRef.current;
+        }
+        
         switchingTrackRef.current = true;
         audio.load();
-        const tryPlay =
-            shouldResumePlaybackRef.current || isPlayingRef.current;
+        
+        const tryPlay = shouldResumePlaybackRef.current || isPlayingRef.current;
         shouldResumePlaybackRef.current = false;
 
         if (!tryPlay) {
@@ -52,18 +57,14 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
             return;
         }
 
-        audio
-            .play()
-            .then(() => {
-                switchingTrackRef.current = false;
-            })
-            .catch((e) => {
-                switchingTrackRef.current = false;
-                console.log('Autoplay prevented:', e);
-                setAudioError('Click play to start');
-                setIsPlaying(false);
-            });
-    }, [currentSrc]);
+        audio.play().then(() => {
+            switchingTrackRef.current = false;
+        }).catch(() => {
+            switchingTrackRef.current = false;
+            setAudioError('Click play to start');
+            setIsPlaying(false);
+        });
+    }, [currentAyah]);
 
     useEffect(() => {
         setCurrentAyah(1);
@@ -73,7 +74,6 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
     }, [surahNumber]);
 
     useEffect(() => {
-        // Don't mark an active ayah until user actually starts playback.
         if (!hasStartedPlayback) {
             setAudioPlayback(null);
             return;
@@ -85,7 +85,6 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         return () => setAudioPlayback(null);
     }, [setAudioPlayback]);
 
-    // Allow reader UI to start playing/pausing a specific ayah
     useEffect(() => {
         if (!audioCommand) return;
         if (audioCommand.surahNumber !== surahNumber) return;
@@ -99,9 +98,8 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
             switchingTrackRef.current = true;
             media.play().then(() => {
                 switchingTrackRef.current = false;
-            }).catch((err) => {
+            }).catch(() => {
                 switchingTrackRef.current = false;
-                console.log('Play prevented:', err);
                 setAudioError('Click play to start');
                 setIsPlaying(false);
             });
@@ -131,11 +129,8 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         }
 
         if (audioCommand.type === 'play_ayah') {
-            // Clear any previous user-facing error when user explicitly taps play.
             setAudioError(null);
             shouldResumePlaybackRef.current = true;
-
-            // If the requested ayah is already selected, we still need to play().
             if (audioCommand.ayahInSurah === currentAyah) {
                 safePlay();
             } else {
@@ -145,9 +140,7 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
             return;
         }
 
-        // Unknown command: just clear it
         setAudioCommand(null);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [audioCommand, surahNumber, currentAyah, setAudioCommand]);
 
     const handleTimeUpdate = () => {
@@ -161,7 +154,6 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         }
     };
 
-    // Refs to ensure event handlers access latest state
     const stateRef = useRef({ isAutoPlay, currentAyah, totalAyahs, isPlaying });
     useEffect(() => {
         stateRef.current = { isAutoPlay, currentAyah, totalAyahs, isPlaying };
@@ -169,7 +161,6 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
 
     const handleEnded = () => {
         const state = stateRef.current;
-
         if (state.isAutoPlay && state.currentAyah < state.totalAyahs) {
             shouldResumePlaybackRef.current = true;
             setCurrentAyah((prev) => prev + 1);
@@ -179,14 +170,6 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
     };
 
     const handleError = () => {
-        // Avoid console.error here: Next.js dev overlay treats it as a runtime error.
-        console.warn('Audio playback error. Attempting fallback source.');
-        if (currentSrc === localUrl && localUrl !== remoteUrl) {
-            console.log('Local audio not found, switching to remote:', remoteUrl);
-            if (isPlayingRef.current) shouldResumePlaybackRef.current = true;
-            setCurrentSrc(remoteUrl);
-            return;
-        }
         setAudioError('Audio unavailable for this reciter/ayah');
         setIsPlaying(false);
     };
@@ -195,11 +178,7 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         if (switchingTrackRef.current) return;
         const el = audioRef.current;
         const st = stateRef.current;
-        if (
-            el?.ended &&
-            st.isAutoPlay &&
-            st.currentAyah < st.totalAyahs
-        ) {
+        if (el?.ended && st.isAutoPlay && st.currentAyah < st.totalAyahs) {
             return;
         }
         setIsPlaying(false);
@@ -210,8 +189,7 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         if (!media) return;
         if (media.paused) {
             setAudioError(null);
-            media.play().catch((err) => {
-                console.log('Play prevented:', err);
+            media.play().catch(() => {
                 setAudioError('Unable to play audio');
             });
         } else {
@@ -270,14 +248,11 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                 preload="auto"
             />
 
-            {/* Progress bar (top edge of pill) */}
             <div className="fp-progress-track" onClick={handleSeek}>
                 <div className="fp-progress-fill" style={{ width: `${progress}%` }} />
             </div>
 
-            {/* Main controls row */}
             <div className="fp-main">
-                {/* Left: Ayah info */}
                 <button
                     className="fp-ayah-badge"
                     onClick={() => {
@@ -295,7 +270,6 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                     <ChevronDown size={12} className={`fp-expand-icon ${isExpanded ? 'rotated' : ''}`} />
                 </button>
 
-                {/* Desktop: Reciter name chip (visible on wider screens) */}
                 <button
                     className="fp-reciter-chip"
                     onClick={() => { setIsExpanded(true); setShowReciterMenu(true); }}
@@ -307,7 +281,6 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                     </span>
                 </button>
 
-                {/* Center: Transport controls */}
                 <div className="fp-controls">
                     <button className="fp-btn" onClick={handlePrevious} disabled={currentAyah <= 1} aria-label="Previous Ayah">
                         <SkipBack size={16} strokeWidth={2} />
@@ -323,7 +296,6 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                     </button>
                 </div>
 
-                {/* Right: Time + Auto-play */}
                 <div className="fp-right">
                     <span className="fp-time">{formatTime(currentTime)}</span>
                     <button
@@ -337,7 +309,6 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
                 </div>
             </div>
 
-            {/* Expandable section: reciter selector */}
             {isExpanded && (
                 <div className="fp-expanded-section">
                     <div className="fp-reciter-row">
@@ -381,4 +352,3 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
 };
 
 export default AudioPlayer;
-

@@ -20,8 +20,8 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { HADITH_BOOKS } from "../data/hadithData";
+import HADITH_STATS from "../data/hadithStats";
 import {
-  getBookStats,
   getAllNarrators,
   searchAllChapters,
 } from "../services/hadithService";
@@ -123,8 +123,8 @@ const HadithCountInfo = ({ stats }) => {
 };
 
 const HadithBooks = () => {
-  const [stats, setStats] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState(HADITH_STATS);
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState("books"); // 'books' | 'narrators'
   const [narrators, setNarrators] = useState([]);
@@ -150,22 +150,6 @@ const HadithBooks = () => {
   const [isChapterSearching, setIsChapterSearching] = useState(false);
   const chapterSearchRequestRef = useRef(0);
   const normalizedSearchTerm = searchTerm.trim();
-
-  useEffect(() => {
-    const loadStats = async () => {
-      const result = {};
-      for (const bookId of Object.keys(HADITH_BOOKS)) {
-        try {
-          result[bookId] = await getBookStats(bookId);
-        } catch {
-          result[bookId] = { totalHadiths: 0, totalChapters: 0 };
-        }
-      }
-      setStats(result);
-      setLoading(false);
-    };
-    loadStats();
-  }, []);
 
   useEffect(() => {
     if (viewMode === "narrators" && narrators.length === 0) {
@@ -433,7 +417,7 @@ const HadithBooks = () => {
               </div>
               <span className="book-arabic-name">{book.arabic}</span>
               <p className="book-author">{book.author}</p>
-              {!loading && (
+              {bookStats.totalChapters > 0 && (
                 <div className="book-stats">
                   {bookStats.totalChapters > 0 && (
                     <span className="stat-badge chapters">

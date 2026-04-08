@@ -43,8 +43,8 @@ export default function AppShell({ children }) {
   const [mobileSearchQuery, setMobileSearchQuery] = useState("");
 
   // Route detection
-  const quranReaderMatch = pathname.match(/^\/quran\/(\d+)$/);
-  const mushafReaderMatch = pathname.match(/^\/quran\/mushaf\/(\d+)$/);
+  const quranReaderMatch = pathname.match(/^\/quran\/(\d+)\/?$/);
+  const mushafReaderMatch = pathname.match(/^\/quran\/mushaf\/(\d+)\/?$/);
   const surahNumber = quranReaderMatch
     ? parseInt(quranReaderMatch[1])
     : mushafReaderMatch
