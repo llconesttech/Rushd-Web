@@ -3,7 +3,7 @@
     "name": "Forty Hadith of an-Nawawi",
     "sections": {
       "0": "",
-      "1": "Forty Hadith of an-Nawawi"
+      "1": "الأربعون النووية"
     },
     "section_details": {
       "0": {
@@ -29,7 +29,8 @@
       "reference": {
         "book": 1,
         "hadith": 1
-      }
+      },
+      "web_ref": 1
     },
     {
       "hadithnumber": 2,
@@ -39,7 +40,8 @@
       "reference": {
         "book": 1,
         "hadith": 2
-      }
+      },
+      "web_ref": 2
     },
     {
       "hadithnumber": 3,
@@ -49,7 +51,8 @@
       "reference": {
         "book": 1,
         "hadith": 3
-      }
+      },
+      "web_ref": 3
     },
     {
       "hadithnumber": 4,
@@ -59,7 +62,8 @@
       "reference": {
         "book": 1,
         "hadith": 4
-      }
+      },
+      "web_ref": 4
     },
     {
       "hadithnumber": 5,
@@ -69,7 +73,8 @@
       "reference": {
         "book": 1,
         "hadith": 5
-      }
+      },
+      "web_ref": 5
     },
     {
       "hadithnumber": 6,
@@ -79,7 +84,8 @@
       "reference": {
         "book": 1,
         "hadith": 6
-      }
+      },
+      "web_ref": 6
     },
     {
       "hadithnumber": 7,
@@ -89,7 +95,8 @@
       "reference": {
         "book": 1,
         "hadith": 7
-      }
+      },
+      "web_ref": 7
     },
     {
       "hadithnumber": 8,
@@ -99,7 +106,8 @@
       "reference": {
         "book": 1,
         "hadith": 8
-      }
+      },
+      "web_ref": 8
     },
     {
       "hadithnumber": 9,
@@ -109,7 +117,8 @@
       "reference": {
         "book": 1,
         "hadith": 9
-      }
+      },
+      "web_ref": 9
     },
     {
       "hadithnumber": 10,
@@ -119,7 +128,8 @@
       "reference": {
         "book": 1,
         "hadith": 10
-      }
+      },
+      "web_ref": 10
     },
     {
       "hadithnumber": 11,
@@ -129,7 +139,8 @@
       "reference": {
         "book": 1,
         "hadith": 11
-      }
+      },
+      "web_ref": 11
     },
     {
       "hadithnumber": 12,
@@ -139,7 +150,8 @@
       "reference": {
         "book": 1,
         "hadith": 12
-      }
+      },
+      "web_ref": 12
     },
     {
       "hadithnumber": 13,
@@ -149,7 +161,8 @@
       "reference": {
         "book": 1,
         "hadith": 13
-      }
+      },
+      "web_ref": 13
     },
     {
       "hadithnumber": 14,
@@ -159,7 +172,8 @@
       "reference": {
         "book": 1,
         "hadith": 14
-      }
+      },
+      "web_ref": 14
     },
     {
       "hadithnumber": 15,
@@ -169,7 +183,8 @@
       "reference": {
         "book": 1,
         "hadith": 15
-      }
+      },
+      "web_ref": 15
     },
     {
       "hadithnumber": 16,
@@ -179,7 +194,8 @@
       "reference": {
         "book": 1,
         "hadith": 16
-      }
+      },
+      "web_ref": 16
     },
     {
       "hadithnumber": 17,
@@ -189,7 +205,8 @@
       "reference": {
         "book": 1,
         "hadith": 17
-      }
+      },
+      "web_ref": 17
     },
     {
       "hadithnumber": 18,
@@ -199,7 +216,8 @@
       "reference": {
         "book": 1,
         "hadith": 18
-      }
+      },
+      "web_ref": 18
     },
     {
       "hadithnumber": 19,
@@ -209,7 +227,8 @@
       "reference": {
         "book": 1,
         "hadith": 19
-      }
+      },
+      "web_ref": 19
     },
     {
       "hadithnumber": 20,
@@ -219,7 +238,8 @@
       "reference": {
         "book": 1,
         "hadith": 20
-      }
+      },
+      "web_ref": 20
     },
     {
       "hadithnumber": 21,
@@ -229,7 +249,8 @@
       "reference": {
         "book": 1,
         "hadith": 21
-      }
+      },
+      "web_ref": 21
     },
     {
       "hadithnumber": 22,
@@ -239,7 +260,8 @@
       "reference": {
         "book": 1,
         "hadith": 22
-      }
+      },
+      "web_ref": 22
     },
     {
       "hadithnumber": 23,
@@ -249,7 +271,8 @@
       "reference": {
         "book": 1,
         "hadith": 23
-      }
+      },
+      "web_ref": 23
     },
     {
       "hadithnumber": 24,
@@ -259,7 +282,8 @@
       "reference": {
         "book": 1,
         "hadith": 24
-      }
+      },
+      "web_ref": 24
     },
     {
       "hadithnumber": 25,
@@ -269,7 +293,8 @@
       "reference": {
         "book": 1,
         "hadith": 25
-      }
+      },
+      "web_ref": 25
     },
     {
       "hadithnumber": 26,
@@ -279,7 +304,8 @@
       "reference": {
         "book": 1,
         "hadith": 26
-      }
+      },
+      "web_ref": 26
     },
     {
       "hadithnumber": 27,
@@ -289,7 +315,8 @@
       "reference": {
         "book": 1,
         "hadith": 27
-      }
+      },
+      "web_ref": 27
     },
     {
       "hadithnumber": 28,
@@ -299,7 +326,8 @@
       "reference": {
         "book": 1,
         "hadith": 28
-      }
+      },
+      "web_ref": 28
     },
     {
       "hadithnumber": 29,
@@ -309,7 +337,8 @@
       "reference": {
         "book": 1,
         "hadith": 29
-      }
+      },
+      "web_ref": 29
     },
     {
       "hadithnumber": 30,
@@ -319,7 +348,8 @@
       "reference": {
         "book": 1,
         "hadith": 30
-      }
+      },
+      "web_ref": 30
     },
     {
       "hadithnumber": 31,
@@ -329,7 +359,8 @@
       "reference": {
         "book": 1,
         "hadith": 31
-      }
+      },
+      "web_ref": 31
     },
     {
       "hadithnumber": 32,
@@ -339,7 +370,8 @@
       "reference": {
         "book": 1,
         "hadith": 32
-      }
+      },
+      "web_ref": 32
     },
     {
       "hadithnumber": 33,
@@ -349,7 +381,8 @@
       "reference": {
         "book": 1,
         "hadith": 33
-      }
+      },
+      "web_ref": 33
     },
     {
       "hadithnumber": 34,
@@ -359,7 +392,8 @@
       "reference": {
         "book": 1,
         "hadith": 34
-      }
+      },
+      "web_ref": 34
     },
     {
       "hadithnumber": 35,
@@ -369,7 +403,8 @@
       "reference": {
         "book": 1,
         "hadith": 35
-      }
+      },
+      "web_ref": 35
     },
     {
       "hadithnumber": 36,
@@ -379,7 +414,8 @@
       "reference": {
         "book": 1,
         "hadith": 36
-      }
+      },
+      "web_ref": 36
     },
     {
       "hadithnumber": 37,
@@ -389,7 +425,8 @@
       "reference": {
         "book": 1,
         "hadith": 37
-      }
+      },
+      "web_ref": 37
     },
     {
       "hadithnumber": 38,
@@ -399,7 +436,8 @@
       "reference": {
         "book": 1,
         "hadith": 38
-      }
+      },
+      "web_ref": 38
     },
     {
       "hadithnumber": 39,
@@ -409,7 +447,8 @@
       "reference": {
         "book": 1,
         "hadith": 39
-      }
+      },
+      "web_ref": 39
     },
     {
       "hadithnumber": 40,
@@ -419,7 +458,8 @@
       "reference": {
         "book": 1,
         "hadith": 40
-      }
+      },
+      "web_ref": 40
     },
     {
       "hadithnumber": 41,
@@ -429,7 +469,8 @@
       "reference": {
         "book": 1,
         "hadith": 41
-      }
+      },
+      "web_ref": 41
     },
     {
       "hadithnumber": 42,
@@ -439,7 +480,8 @@
       "reference": {
         "book": 1,
         "hadith": 42
-      }
+      },
+      "web_ref": 42
     }
   ]
 }

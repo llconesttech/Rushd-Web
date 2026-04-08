@@ -29,5 +29,22 @@ export async function getNarratorClusters() {
 }
 
 export async function getEdition(bookId, lang) {
-    return readJSON(path.join(DATA_DIR, bookId, `${lang}-${bookId}.json`));
+    const edition = await readJSON(path.join(DATA_DIR, bookId, `${lang}-${bookId}.json`));
+
+    // Some community-provided Bengali editions only ship `hadiths` without `metadata`.
+    // The UI expects `metadata.sections` + `metadata.section_details` for chapters.
+    if (lang === 'ben' && (!edition?.metadata || !edition?.metadata?.sections)) {
+        try {
+            const eng = await readJSON(path.join(DATA_DIR, bookId, `eng-${bookId}.json`));
+            return {
+                ...edition,
+                metadata: eng?.metadata || edition?.metadata,
+            };
+        } catch {
+            // If English metadata isn't available, return as-is.
+            return edition;
+        }
+    }
+
+    return edition;
 }

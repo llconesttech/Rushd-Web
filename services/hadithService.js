@@ -64,7 +64,24 @@ export async function getBookChapters(bookId, langCode = 'eng') {
 
 export async function getSectionHadiths(bookId, sectionId, langCode = 'eng') {
     const edition = await getEdition(bookId, langCode);
-    return edition.hadiths.filter(h => h.reference?.book === parseInt(sectionId));
+    const sectionNum = parseInt(sectionId, 10);
+
+    // Preferred: explicit reference.book
+    const byRef = edition.hadiths?.filter(h => h.reference?.book === sectionNum);
+    if (byRef?.length) return byRef;
+
+    // Fallback (for editions that don't include `reference`): use section_details hadith ranges.
+    const det = edition.metadata?.section_details?.[String(sectionNum)];
+    const firstH = det?.hadithnumber_first;
+    const lastH = det?.hadithnumber_last;
+    if (firstH != null && lastH != null) {
+        return (edition.hadiths || []).filter(h => {
+            const n = Number(h.hadithnumber);
+            return !Number.isNaN(n) && n >= firstH && n <= lastH;
+        });
+    }
+
+    return [];
 }
 
 export async function getArabicEdition(bookId) {
