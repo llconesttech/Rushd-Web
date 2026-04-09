@@ -22,17 +22,19 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
     const [audioError, setAudioError] = useState(null);
     const [isExpanded, setIsExpanded] = useState(false);
 
+    const [remoteUrlUsed, setRemoteUrlUsed] = useState(false);
+
     const localUrl = audioService.getLocalUrl(selectedReciter, surahNumber, currentAyah);
     const remoteUrl = audioService.getRemoteUrl(selectedReciter, surahNumber, currentAyah);
-    
-    const currentSrc = localUrl || remoteUrl;
 
-    const stableSrcRef = useRef(remoteUrl);
+    // Use the remote URL if it has been used, otherwise use the local URL
+    const currentSrc = remoteUrlUsed ? remoteUrl : (localUrl || remoteUrl);
+    const stableSrcRef = useRef(currentSrc);
     useEffect(() => {
-        if (stableSrcRef.current !== remoteUrl) {
-            stableSrcRef.current = remoteUrl;
+        if (stableSrcRef.current !== currentSrc) {
+            stableSrcRef.current = currentSrc;
         }
-    }, [remoteUrl]);
+    }, [currentSrc]);
 
     useEffect(() => {
         isPlayingRef.current = isPlaying;
@@ -61,17 +63,29 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
             switchingTrackRef.current = false;
         }).catch(() => {
             switchingTrackRef.current = false;
-            setAudioError('Click play to start');
+            // setAudioError('Click play to start');
             setIsPlaying(false);
         });
-    }, [currentAyah]);
+    }, [currentAyah, currentSrc]);
 
+    // Reset the player when the surah changes
     useEffect(() => {
         setCurrentAyah(1);
         setIsPlaying(false);
         shouldResumePlaybackRef.current = false;
+        setRemoteUrlUsed(false);
         setHasStartedPlayback(false);
     }, [surahNumber]);
+    
+    // Reset the remote URL used when the reciter changes
+    useEffect(() => {
+        setRemoteUrlUsed(false);
+    }, [selectedReciter]);
+
+    // Reset the remote URL used when the current ayah changes
+    useEffect(() => {
+        setRemoteUrlUsed(false);
+    }, [currentAyah]);
 
     useEffect(() => {
         if (!hasStartedPlayback) {
@@ -169,7 +183,14 @@ const AudioPlayer = ({ surahNumber, totalAyahs }) => {
         }
     };
 
+    // If the local URL is not available, use the remote URL
     const handleError = () => {
+        if (!remoteUrlUsed && localUrl && remoteUrl && localUrl !== remoteUrl) {
+            setRemoteUrlUsed(true);
+            setAudioError(null);
+            shouldResumePlaybackRef.current = true;
+            return;
+        }
         setAudioError('Audio unavailable for this reciter/ayah');
         setIsPlaying(false);
     };

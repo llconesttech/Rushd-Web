@@ -58,7 +58,7 @@ const reciters = [
     {
         id: 'maher',
         name: 'Maher Al Muaiqly',
-        subfolder: 'MaherAlMuaiqly_128kbps',
+        subfolder: 'MaherAlMuaiqly128kbps',
     },
     {
         id: 'yasser_dosari',
@@ -66,14 +66,14 @@ const reciters = [
         subfolder: 'Yasser_Ad-Dussary_128kbps',
     },
     {
-        id: 'juhany',
-        name: 'Abdullah Awad al-Juhany',
-        subfolder: 'Abdullah_Juhany_128kbps',
+        id: 'shuraym',
+        name: 'Saood Ash-Shuraym',
+        subfolder: 'Saood_ash-Shuraym_128kbps',
     },
     {
-        id: 'baleela',
-        name: 'Bandar Baleela',
-        subfolder: 'Bandar_Baleela_64kbps',
+        id: 'bukhtair',
+        name: 'Salaah Abdul Rahman Bukhatir',
+        subfolder: 'Salaah_AbdulRahman_Bukhatir_128kbps',
     }
 ];
 

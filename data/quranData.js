@@ -262,17 +262,17 @@ export const translations = {
 export const reciters = {
     "mishary_rashid": { "english_name": "Mishary Rashid Alafasy", "style": "Murattal", "subfolder": "Alafasy_64kbps", "bitRate": "64" },
     "abdulbaset": { "english_name": "AbdulBaset AbdulSamad", "style": "Murattal", "subfolder": "Abdul_Basit_Murattal_64kbps", "bitRate": "64" },
+    "ghamadi": { "english_name": "Saad Al-Ghamdi", "style": "Murattal", "subfolder": "Ghamadi_40kbps", "bitRate": "40" },
+    "husary": { "english_name": "Mahmoud Khalil Al-Husary", "style": "Murattal", "subfolder": "Husary_64kbps", "bitRate": "64" },
     "abdulbaset_mujawwad": { "english_name": "AbdulBaset AbdulSamad (Mujawwad)", "style": "Mujawwad", "subfolder": "Abdul_Basit_Mujawwad_128kbps", "bitRate": "128" },
     "minshawi_mujawwad": { "english_name": "Mohamed Siddiq Al-Minshawi (Mujawwad)", "style": "Mujawwad", "subfolder": "Minshawy_Mujawwad_192kbps", "bitRate": "192" },
     "hudhaify": { "english_name": "Ali Al-Hudhaify", "style": "Madani", "subfolder": "Hudhaify_64kbps", "bitRate": "64" },
     "sudais": { "english_name": "Abdur-Rahman as-Sudais", "style": "Madani", "subfolder": "Abdurrahmaan_As-Sudais_64kbps", "bitRate": "64" },
     "shuraim": { "english_name": "Saud Al-Shuraim", "style": "Madani", "subfolder": "Saood_ash-Shuraym_64kbps", "bitRate": "64" },
-    "ghamadi": { "english_name": "Saad Al-Ghamdi", "style": "Murattal", "subfolder": "Ghamadi_40kbps", "bitRate": "40" },
-    "husary": { "english_name": "Mahmoud Khalil Al-Husary", "style": "Murattal", "subfolder": "Husary_64kbps", "bitRate": "64" },
-    "maher": { "english_name": "Maher Al Muaiqly", "style": "Madani", "subfolder": "MaherAlMuaiqly_128kbps", "bitRate": "128" },
+    "bukhtair": { "english_name": "Salaah Abdul Rahman Bukhatir", "style": "Madani", "subfolder": "Salaah_AbdulRahman_Bukhatir_128kbps", "bitRate": "128" },
+    "maher": { "english_name": "Maher Al Muaiqly", "style": "Meccan", "subfolder": "MaherAlMuaiqly128kbps", "bitRate": "128" },
     "yasser_dosari": { "english_name": "Yasser Al-Dosari", "style": "Meccan", "subfolder": "Yasser_Ad-Dussary_128kbps", "bitRate": "128" },
-    "juhany": { "english_name": "Abdullah Awad al-Juhany", "style": "Meccan", "subfolder": "Abdullah_Juhany_128kbps", "bitRate": "128" },
-    "baleela": { "english_name": "Bandar Baleela", "style": "Meccan", "subfolder": "Bandar_Baleela_64kbps", "bitRate": "64" }
+    "shuraym": { "english_name": "Saood Ash-Shuraym", "style": "Meccan", "subfolder": "Saood_ash-Shuraym_128kbps", "bitRate": "128" },
 };
 
 // Complete Surah metadata with Juz information
