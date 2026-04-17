@@ -1,13 +1,13 @@
 module.exports = {
   apps: [{
     name: 'rushd-web-ern',
-    script: 'node_modules/next/dist/bin/next',
-    args: 'start',
-    instances: '2', // Use 'max' for cluster mode
-    exec_mode: 'cluster',
+    // Run the custom Express + Next server (server/index.js)
+    script: 'server/index.js',
+    instances: 1,
+    exec_mode: 'fork',
     env: {
       NODE_ENV: 'production',
-      PORT: 3000
+      PORT: 3000,
     }
   }]
 }

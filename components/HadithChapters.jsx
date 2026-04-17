@@ -57,9 +57,7 @@ const HadithChapters = () => {
         const fallback = langs.find((l) => l.code !== "ara") || langs[0];
         const langToUse = hasEng ? "eng" : fallback?.code || "ara";
         setSelectedLang(langToUse);
-
-        const ch = await getBookChapters(bookId, langToUse);
-        setChapters(ch);
+        setChapters(await getBookChapters(bookId, langToUse));
       } catch (e) {
         setError(e.message);
       }
@@ -72,17 +70,18 @@ const HadithChapters = () => {
   }, [bookId]);
 
   useEffect(() => {
-    if (!loading && selectedLang) {
-      const reload = async () => {
-        try {
-          const ch = await getBookChapters(bookId, selectedLang);
-          setChapters(ch);
-        } catch {
-          /* keep existing */
-        }
-      };
-      reload();
-    }
+    // Avoid double-fetch on initial mount: the first effect loads chapters with the chosen language.
+    if (!selectedLang) return;
+    if (loading) return;
+    if (selectedLang === "eng" && chapters.length === 0) return;
+    const reload = async () => {
+      try {
+        setChapters(await getBookChapters(bookId, selectedLang));
+      } catch {
+        /* keep existing */
+      }
+    };
+    reload();
   }, [selectedLang, loading, bookId]);
 
   const filteredChapters = useMemo(() => {
@@ -339,7 +338,7 @@ const HadithChapters = () => {
             return (
               <Link
                 href={`/hadith/${bookId}/${chapter.id}?lang=${selectedLang}${targetHadith ? `&hadith=${targetHadith}` : ""}`}
-                key={chapter.id}
+                key={`${bookId}-${selectedLang}-${String(chapter.id)}`}
                 className="chapter-card-grid"
                 style={{ "--chapter-accent": book.color }}
               >

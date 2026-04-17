@@ -1,14 +1,14 @@
 {
   "metadata": {
-    "name": "Musnad Ahmad ibn Hanbal",
+    "name": "مسند أحمد بن حنبل",
     "sections": {
-      "1": "Musnad Abu Bakr as-Siddiq (ra)",
-      "2": "Musnad `Umar b. al-Khattab (ra)",
-      "3": "The Hadeeth of Saqeefah",
-      "4": "Musnad Uthman ibn Affan",
-      "5": "Musnad 'Ali Ibn Abi Talib",
-      "6": "Musnad of Abu Muhammad Talhah bin 'Ubaidullah",
-      "7": "The Musnad of az-Zubair bin al-'Awwam",
+      "1": "مسند أبي بكر الصديق (رضي الله عنه)",
+      "2": "مسند عمر بن الخطاب (رضي الله عنه)",
+      "3": "حديث السقيفة",
+      "4": "مسند عثمان بن عفان",
+      "5": "مسند علي بن أبي طالب",
+      "6": "مسند أبي محمد طلحة بن عبيد الله",
+      "7": "مسند الزبير بن العوام",
       "31": ""
     },
     "section_details": {

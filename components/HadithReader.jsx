@@ -42,14 +42,16 @@ const HadithReader = () => {
   useEffect(() => {
     if (hadithFromUrl && !loading && hadiths.length > 0) {
       const targetNum = parseInt(hadithFromUrl, 10);
-      const targetRef = document.getElementById(`hadith-${targetNum}`);
+      const targetRef = document.getElementById(
+        `hadith-${sectionId}-${targetNum}`,
+      );
       if (targetRef) {
         targetRef.scrollIntoView({ behavior: "smooth", block: "center" });
         targetRef.classList.add("hadith-highlight");
         setTimeout(() => targetRef.classList.remove("hadith-highlight"), 3000);
       }
     }
-  }, [hadithFromUrl, loading, hadiths]);
+  }, [hadithFromUrl, loading, hadiths, sectionId]);
 
   useEffect(() => {
     const load = async () => {
@@ -188,7 +190,9 @@ const HadithReader = () => {
           results.push({
             ...h,
             __araText: araText,
-            __isCurrentChapter: h.reference?.book === parseInt(sectionId),
+            __isCurrentChapter:
+              (h.reference?.book ?? h.reference?.section) ===
+              parseInt(sectionId),
           });
         }
 
@@ -347,11 +351,16 @@ const HadithReader = () => {
             const isRtl = langMeta?.dir === "rtl";
             const isOtherChapter =
               searchResults !== null && !hadith.__isCurrentChapter;
+            const chapterKey = String(
+              hadith.reference?.book ?? hadith.reference?.section ?? sectionId,
+            );
+            const hadithKey = String(hadith.hadithnumber ?? index);
+            const stableKey = `${bookId}-${selectedLang}-${chapterKey}-${hadithKey}`;
 
             return (
               <div
-                key={hadith.hadithnumber}
-                id={`hadith-${hadith.hadithnumber}`}
+                key={stableKey}
+                id={`hadith-${chapterKey}-${hadithKey}`}
                 className={`hadith-card ${index % 2 === 0 ? "even" : "odd"}`}
               >
                 {isOtherChapter && (
@@ -363,7 +372,8 @@ const HadithReader = () => {
                       color: "var(--color-primary-dark)",
                     }}
                   >
-                    From Chapter {hadith.reference?.book}
+                    From Chapter{" "}
+                    {hadith.reference?.book ?? hadith.reference?.section}
                   </div>
                 )}
                 <div className="hadith-card-header">

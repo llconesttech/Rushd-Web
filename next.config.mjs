@@ -6,6 +6,7 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   allowedDevOrigins: ['192.168.7.77:3000'],
+  devIndicators: false,
 };
 
 export default nextConfig;

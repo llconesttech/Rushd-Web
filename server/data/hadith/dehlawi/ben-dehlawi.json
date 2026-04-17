@@ -1,244 +1,425 @@
 {
+  "metadata": {
+    "name": "শাহ ওয়ালিউল্লাহ দেহলভীর চল্লিশ হাদিস",
+    "sections": {
+      "0": "ছয়টি সহীহ হাদীস",
+      "1": "الأربعون حديثاً للشاه ولي الله الدهلوي"
+    },
+    "section_details": {
+      "0": {
+        "hadithnumber_first": 0,
+        "hadithnumber_last": 0,
+        "arabicnumber_first": 0,
+        "arabicnumber_last": 0
+      },
+      "1": {
+        "hadithnumber_first": 1,
+        "hadithnumber_last": 40,
+        "arabicnumber_first": 1,
+        "arabicnumber_last": 40
+      }
+    }
+  },
   "hadiths": [
     {
       "hadithnumber": 1,
       "arabic": "لَیْسَ الْخَبَرُ کَالْمُعَایَنَةِ",
       "text": "খবর সরাসরি দেখার মতো নয়।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 1
+      }
     },
     {
       "hadithnumber": 2,
       "arabic": "الْحَرْبُ خُدَعَةٌ",
       "text": "যুদ্ধ প্রতারণার আশ্রয় নেয়।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 2
+      }
     },
     {
       "hadithnumber": 3,
       "arabic": "الْمُسْلِمُ مِرْآةُ الْمُسْلِمِ",
       "text": "একজন মুসলিম অন্য মুসলিমের প্রতিচ্ছবি।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 3
+      }
     },
     {
       "hadithnumber": 4,
       "arabic": "الْمُسْتَشَارُ مُؤتَمَنٌ",
       "text": "যিনি পরামর্শের জন্য জিজ্ঞাসিত হন, তিনি আমানতদার।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 4
+      }
     },
     {
       "hadithnumber": 5,
       "arabic": "الدَّالُّ عَلَی الْخَیْرِ کَفَاعِلِهِ",
       "text": "যে ব্যক্তি ের দিকে পথ দেখায়, সে যেন কাজটাই করে ফেলেছে",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 5
+      }
     },
     {
       "hadithnumber": 6,
       "arabic": "إِسْتَعِیْنُوْا عَلَی الْحَوَائِجِ بِالْکِتْمَانِ",
       "text": "প্রয়োজনীয় কাজের জন্য গোপনীয়তা অবলম্বন করুন।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 6
+      }
     },
     {
       "hadithnumber": 7,
       "arabic": "إِتَّقُوْا النَّارَ وَلَوْ بِشِقِّ تَمْرَةٍ",
       "text": "আগুন থেকে নিজেকে বাঁচিয়ে রেখো, তা সে এক খণ্ড তাড়াইয়ের অংশ হলেও।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 7
+      }
     },
     {
       "hadithnumber": 8,
       "arabic": "الدُّنْیَا سِجْنُ الْمُؤمِنِ وَ جَنَّةُ الْکَافِرِ",
       "text": "দুনিয়া মুমিনদের জন্য কারাগার এবং কাফেরদের জন্য জান্নাত।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 8
+      }
     },
     {
       "hadithnumber": 9,
       "arabic": "الْحَیَاءُ خَیْرٌ کُلُّهُ",
       "text": "শালীনতা সম্পূর্ণভাবে কল্যাণকর।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 9
+      }
     },
     {
       "hadithnumber": 10,
       "arabic": "عِدَةُ الْمُؤمِنِ کَاَخْذِ الْکَفِّ",
       "text": "একজন মুমিনের কথা হলো হাতের মুষ্টিবদ্ধ করার মতো।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 10
+      }
     },
     {
       "hadithnumber": 11,
       "arabic": "لَا یَحِلُّ لِمُؤمِنٍ اَنْ یَّجُهْرَ أخَاهُ فَوقَ ثَلَاثَةِ أیَّامٍ",
       "text": "কোনো মুমিনকে তার ভাইয়ের সাথে তিন দিনের বেশি সম্পর্ক ছিন্ন করা বৈধ নয়।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 11
+      }
     },
     {
       "hadithnumber": 12,
       "arabic": "لَیْسَ مِنَّا مَنْ غَشَّنَا",
       "text": "যে ব্যক্তি প্রতারণা করে, সে আমাদের নয়।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 12
+      }
     },
     {
       "hadithnumber": 13,
       "arabic": "مَا قَلَّ وَكَفَى خَيْرٌ مِمَّا كَثُرَ وَأَلْهَى",
       "text": "কম যা যথেষ্ট, তা অনেক বেশি উত্তম যা বিক্ষিপ্ত করে।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 13
+      }
     },
     {
       "hadithnumber": 14,
       "arabic": "الرَّاجِعُ فِيْ هِبَتِهِ کَالرَّاجِعِ فِيْ قَیْئِهِ",
       "text": "যিনি তাঁর দান প্রত্যাহার করেন, তিনি যেন নিজের বমি পুনরায় গ্রহণ করেন।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 14
+      }
     },
     {
       "hadithnumber": 15,
       "arabic": "الْبَلَاءُ مُوَکِّلٌ بِالْمَنْطِقِ",
       "text": "বিপদ আসে কথা বলার মাধ্যমে।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 15
+      }
     },
     {
       "hadithnumber": 16,
       "arabic": "النَّاسُ کَأسْنَانِ الْمُشْطِ",
       "text": "মানুষ চুলের আঁচিলের দাঁতের মতো।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 16
+      }
     },
     {
       "hadithnumber": 17,
       "arabic": "الْغِنَى غِنَى النَّفْسِ",
       "text": "আত্মার প্রাচুর্যই প্রকৃত প্রাচুর্য।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 17
+      }
     },
     {
       "hadithnumber": 18,
       "arabic": "الْسَّعِیْدُ مَنْ وُّعِظَ بِغَیْرِهِ",
       "text": "আনন্দিত সে, যে অন্যের দ্বারা উপদেশ গ্রহণ করে।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 18
+      }
     },
     {
       "hadithnumber": 19,
       "arabic": "وَ إِنَّ مِنَ الشِّعْرِ لَحِکْمَةً وَاِنَّ مِنَ الْبَیَانِ لَسِحْرًا",
       "text": "অবশ্যই, কবিতার মধ্যে প্রজ্ঞা রয়েছে এবং -এর মধ্যে জাদু বিদ্যমান",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 19
+      }
     },
     {
       "hadithnumber": 20,
       "arabic": "عَفْوُ الْمُلُوْكِ إِبْقَاءٌ لِلْمُلْكِ",
       "text": "রাজার ক্ষমা রাজ্য টিকিয়ে রাখে।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 20
+      }
     },
     {
       "hadithnumber": 21,
       "arabic": "اَلْمَرْءُ مَعَ مَنْ أَحَبَّ",
       "text": "একজন ব্যক্তি সেই ব্যক্তির সাথে থাকবে, যাকে সে ভালোবাসে।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 21
+      }
     },
     {
       "hadithnumber": 22,
       "arabic": "مَا هَلَكَ إمْرُؤٌ عَرَفَ قَدْرَهُ",
       "text": "যে ব্যক্তি নিজেকে চেনে, সে ধ্বংস হয় না।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 22
+      }
     },
     {
       "hadithnumber": 23,
       "arabic": "اَلْوَلَدُ لِلْفِرَاشِ وَ لِلْعَاهِرِ الْحَجَرُ",
       "text": "সন্তান শয্যারঅধীন এবং ব্যভিচারীর জন্য প্রস্তর নিক্ষেপ।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 23
+      }
     },
     {
       "hadithnumber": 24,
       "arabic": "الْیَدُ الْعُلْیَا خَیْرٌ مِّنَ الْیَدِ السُّفْلَی",
       "text": "উচ্চ হাত নিম্ন হাতের চেয়ে উত্তম।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 24
+      }
     },
     {
       "hadithnumber": 25,
       "arabic": "لَا شَکَرَ اللهَ مَنْ لَّا یَشْکُرُ النَّاسَ",
       "text": "আল্লাহ তা’আলা সেই ব্যক্তিকে পছন্দ করেন না, যিনি মানুষের প্রতি কৃতজ্ঞ থাকে না।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 25
+      }
     },
     {
       "hadithnumber": 26,
       "arabic": "حُبُّكَ الشَّيْءَ یُعْمِيْ وَ یُصِمُّ",
       "text": "তোমার কোনো কিছুর প্রতি ভালোবাসা তোমাকে অন্ধ ও বধির করে দিতে পারে।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 26
+      }
     },
     {
       "hadithnumber": 27,
       "arabic": "جُبِلَتِ الْقُلُوبُ عَلی حُبَّ مَنْ اَحْسَنَ اِلَیْهَا وَ بُغْضِ مَنْ اَسَاءَ اِلَیْهَا",
       "text": "হৃদয়গুলো সুন্দর আচরণে অনুগ্রহের প্রতি আকৃষ্ট এবং খারাপ আচরণে বিদ্বেষের দিকে ঝুঁকে থাকে।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 27
+      }
     },
     {
       "hadithnumber": 28,
       "arabic": "الْتَّائِبُ مِنَ الذَّنْبِ کَمَنْ لَا ذَنْبَ لَهُ",
       "text": "যে ব্যক্তি পাপ থেকে তওবা করে, সে যেন পাপী নয়।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 28
+      }
     },
     {
       "hadithnumber": 29,
       "arabic": "الشَّاهِدُ یَرَی مَا لَا یَرَاهُ الْغَائِبُ",
       "text": "সাক্ষী যা দেখে, অনুপস্থিত ব্যক্তি তা দেখে না।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 29
+      }
     },
     {
       "hadithnumber": 30,
       "arabic": "اِذا جَاءَکُمْ کَرِیْمُ قَوْمٍ فَاَکْرِمُوهُ",
       "text": "যখন কোনো জাতির সম্মানিত ব্যক্তি তোমাদের কাছে আসবে, তখন তাকে সম্মান করো।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 30
+      }
     },
     {
       "hadithnumber": 31,
       "arabic": "الْیَمِینُ الْفَاجِرَةُ تَدَعُ الدِّیَارَ الْبَلَاقِعَ",
       "text": "মিথ্যা কসম ঘরবাড়ি ধ্বংস করে দেয়।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 31
+      }
     },
     {
       "hadithnumber": 32,
       "arabic": "مَنْ قُتِلَ دُونَ مَالِهِ فَهُوَ شَهِیْدٌ",
       "text": "যে ব্যক্তি নিজের সম্পদ রক্ষার জন্য নিহত হয়, সে শহীদ।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 32
+      }
     },
     {
       "hadithnumber": 33,
       "arabic": "الْاَعْمَالُ بِالنِّیَّةِ",
       "text": "আমল নিয়তের উপর নির্ভরশীল।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 33
+      }
     },
     {
       "hadithnumber": 34,
       "arabic": "سَیِّدُ الْقَوْمِ خَادِمُهُمْ",
       "text": "জনগণের নেতা তাদের সেবক।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 34
+      }
     },
     {
       "hadithnumber": 35,
       "arabic": "خَیْرُ الْأُمُوْرِ أَوْسَطُهَا",
       "text": "বিষয়গুলির মধ্যে সর্বোত্তম হলো মধ্যম পন্থা।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 35
+      }
     },
     {
       "hadithnumber": 36,
       "arabic": "اَللَّهُمَّ بَارِكْ فِیْ أُمَّتِیْ فِی بُکُوْرِهَا یَوْمَ الْخَمِیْسِ",
       "text": "হে আল্লাহ, তুমি তোমার উম্মাহকেের সকালে তাড়াতাড়ি ঘুম থেকে ওঠার ক্ষেত্রে বরকত দাও।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 36
+      }
     },
     {
       "hadithnumber": 37,
       "arabic": "کَادَ الْفَقْرُ أَنْ یَکُوْنَ کُفْرًا",
       "text": "দরিদ্রতা প্রায় কুফরের কাছাকাছি পৌঁছে যায়।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 37
+      }
     },
     {
       "hadithnumber": 38,
       "arabic": "الْسَّفَرُ قِطْعَةٌ مِّنَ الْعَذَابِ",
       "text": "ভ্রমণ হলো শাস্তির একটি অংশ।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 38
+      }
     },
     {
       "hadithnumber": 39,
       "arabic": "خَیْرُ زَّادِ الْتَّقْوَی",
       "text": "তাকওয়া হলো শ্রেষ্ঠ জাদ।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 39
+      }
     },
     {
       "hadithnumber": 40,
       "arabic": "الْمَجَالِسُ بِالْاَمَانَةِ",
       "text": "আলোচনা-সমাবেশগুলো হলো আমানত।",
-      "translation_source": "V12_UniversalBridge"
+      "translation_source": "V12_UniversalBridge",
+      "reference": {
+        "book": 1,
+        "hadith": 40
+      }
     }
   ]
 }

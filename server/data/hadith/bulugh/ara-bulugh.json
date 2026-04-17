@@ -1,23 +1,23 @@
 {
   "metadata": {
-    "name": "Bulugh al-Maram",
+    "name": "بلوغ المرام",
     "sections": {
-      "1": "The Book of Purification",
-      "2": "The Book of Prayer",
-      "3": "Funerals",
-      "4": "The Book of Zakah",
-      "5": "Fasting",
-      "6": "Hajj",
-      "7": "Business Transactions",
-      "8": "Marriage",
-      "9": "Crimes (Qisas or Retaliation)",
-      "10": "Hudud",
-      "11": "Jihad",
-      "12": "Food",
-      "13": "Oaths and Vows",
-      "14": "Judgments",
-      "15": "Emancipation",
-      "16": "The Comprehensive Book"
+      "1": "كتاب التهجد",
+      "2": "كتاب الصلاة",
+      "3": "كتاب الجنائز",
+      "4": "كتاب الزكاة",
+      "5": "كتاب الصيام",
+      "6": "كتاب الحج",
+      "7": "البيع",
+      "8": "كتاب النكاح",
+      "9": "كتاب القصاص",
+      "10": "الحدود",
+      "11": "كتاب الجهاد",
+      "12": "كتاب الطعام",
+      "13": "كتاب المناسك و العهود",
+      "14": "كتاب الأحكام",
+      "15": "كتاب الإفراج",
+      "16": "الكتاب المُفصّل"
     },
     "section_details": {
       "1": {

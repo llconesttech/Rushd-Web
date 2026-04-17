@@ -2,17 +2,26 @@ import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 
 const API_SECRET = process.env.API_SECRET || 'rushd-app-secret-change-this-in-production';
-const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+// Server-side base URL for the internal API (`/api/v1`).
+// IMPORTANT: Do not rely on NEXT_PUBLIC_* here (those are meant for client bundles).
+const BACKEND_URL = process.env.API_BASE_URL || process.env.API_URL || '';
 
 const rateLimitMap = new Map();
 const RATE_LIMIT = 30;
 const WINDOW_MS = 60000;
 
 function getClientIP(request) {
-    return request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() 
+    return request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
         || request.headers.get('cf-connecting-ip')
         || request.headers.get('x-real-ip')
         || 'unknown';
+}
+
+function getBackendOrigin(request) {
+    // Default to same-origin, which works when `/api/v1` is served by the same node process
+    // (e.g., via `server/index.js`).
+    const origin = new URL(request.url).origin;
+    return BACKEND_URL || origin;
 }
 
 function checkRateLimit(ip) {
@@ -52,7 +61,8 @@ async function proxyRequest(request, path) {
     try {
         const { token, timestamp } = generateHMAC();
         
-        const url = new URL(`${BACKEND_URL}/api/v1${path}`);
+        const base = getBackendOrigin(request);
+        const url = new URL(`${base}/api/v1${path}`);
         
         const searchParams = new URL(request.url).searchParams;
         for (const [key, value] of searchParams) {
@@ -70,21 +80,32 @@ async function proxyRequest(request, path) {
             cache: 'no-store',
         });
 
+        const contentType = response.headers.get('content-type') || '';
+        const isJson = contentType.includes('application/json');
+
         if (!response.ok) {
-            const errorData = await response.json().catch(() => ({ error: 'Request failed' }));
+            const errorData = isJson
+                ? await response.json().catch(() => ({ error: 'Request failed' }))
+                : { error: 'Request failed', status: response.status };
             return NextResponse.json(errorData, { status: response.status });
         }
 
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
-            const data = await response.json();
-            return NextResponse.json(data);
+        if (!isJson) {
+            const text = await response.text().catch(() => '');
+            return NextResponse.json(
+                {
+                    error: 'Unexpected response format',
+                    hint: 'Backend did not return JSON. Is /api/v1 running in production?',
+                    sample: text.slice(0, 300),
+                },
+                { status: 502 },
+            );
         }
-        
-        return NextResponse.json({ error: 'Unexpected response format' }, { status: 502 });
+
+        return NextResponse.json(await response.json());
     } catch (error) {
         return NextResponse.json(
-            { error: 'Backend service unavailable' },
+            { error: 'Backend service unavailable', details: error?.message || String(error) },
             { status: 503 }
         );
     }

@@ -1,8 +1,27 @@
 import { apiFetch } from '@/lib/apiClient';
 import { HADITH_BOOKS } from '@/data/hadithData';
 
+function inferChapterRefField(edition) {
+    const sample = (edition?.hadiths || []).slice(0, 200);
+    if (!sample.length) return 'book';
+
+    const bookVals = new Set();
+    const sectionVals = new Set();
+    for (const h of sample) {
+        const b = h?.reference?.book;
+        const s = h?.reference?.section;
+        if (b !== undefined && b !== null) bookVals.add(String(b));
+        if (s !== undefined && s !== null) sectionVals.add(String(s));
+    }
+
+    // Darimi (and some others) encode the chapter in `reference.section` while `reference.book` stays constant (often 0).
+    if (bookVals.size <= 1 && sectionVals.size > 1) return 'section';
+    return 'book';
+}
+
 export async function getEditions() {
-    return apiFetch('/hadith/editions', { cache: false });
+    // Editions are effectively static; keep a long client cache.
+    return apiFetch('/hadith/editions', { cache: true, ttl: 1000 * 60 * 60 });
 }
 
 export async function getInfo() {
@@ -39,14 +58,14 @@ export async function getBookChapters(bookId, langCode = 'eng') {
     const { metadata } = edition;
     if (!metadata?.sections) return [];
 
-    return Object.entries(metadata.sections)
+    const entries = Object.entries(metadata.sections)
         .filter(([key]) => key !== '0')
         .map(([sectionId, sectionName]) => {
             const sectionIdNum = parseInt(sectionId, 10);
             const details = metadata.section_details?.[sectionId];
             const firstH = details?.hadithnumber_first;
             const lastH = details?.hadithnumber_last;
-            const hadithCount = (firstH && lastH && !isNaN(firstH) && !isNaN(lastH))
+            const hadithCount = (firstH != null && lastH != null && !isNaN(firstH) && !isNaN(lastH))
                 ? lastH - firstH + 1
                 : 0;
             return {
@@ -60,6 +79,55 @@ export async function getBookChapters(bookId, langCode = 'eng') {
             };
         })
         .sort((a, b) => a.id - b.id);
+
+    // Fallback for editions that don't ship `metadata.section_details` (e.g. `darimi`):
+    // derive counts and ranges from hadith references.
+    const hasAnyRanges = entries.some(ch => ch.hadithCount > 0);
+    const hasSectionDetails = metadata?.section_details && Object.keys(metadata.section_details).length > 0;
+    if (hasAnyRanges || hasSectionDetails) return entries;
+
+    const chapterField = inferChapterRefField(edition);
+    const agg = new Map(); // chapterId -> stats
+    for (const h of (edition.hadiths || [])) {
+        const ref = h?.reference || {};
+        const chapterIdRaw = ref?.[chapterField];
+        if (chapterIdRaw == null) continue;
+        const chapterId = String(chapterIdRaw);
+
+        const n = Number(h.hadithnumber);
+        const a = Number(h.arabicnumber);
+        const cur = agg.get(chapterId) || {
+            count: 0,
+            firstHadith: null,
+            lastHadith: null,
+            firstArabic: null,
+            lastArabic: null,
+        };
+        cur.count += 1;
+        if (!Number.isNaN(n)) {
+            cur.firstHadith = cur.firstHadith == null ? n : Math.min(cur.firstHadith, n);
+            cur.lastHadith = cur.lastHadith == null ? n : Math.max(cur.lastHadith, n);
+        }
+        if (!Number.isNaN(a) && a !== 0) {
+            cur.firstArabic = cur.firstArabic == null ? a : Math.min(cur.firstArabic, a);
+            cur.lastArabic = cur.lastArabic == null ? a : Math.max(cur.lastArabic, a);
+        }
+        agg.set(chapterId, cur);
+    }
+
+    return entries.map(ch => {
+        const key = String(ch.id);
+        const stat = agg.get(key);
+        if (!stat) return ch;
+        return {
+            ...ch,
+            hadithCount: stat.count || 0,
+            firstHadith: ch.firstHadith ?? stat.firstHadith,
+            lastHadith: ch.lastHadith ?? stat.lastHadith,
+            firstArabic: ch.firstArabic ?? stat.firstArabic,
+            lastArabic: ch.lastArabic ?? stat.lastArabic,
+        };
+    });
 }
 
 export async function getSectionHadiths(bookId, sectionId, langCode = 'eng') {
@@ -67,7 +135,8 @@ export async function getSectionHadiths(bookId, sectionId, langCode = 'eng') {
     const sectionNum = parseInt(sectionId, 10);
 
     // Preferred: explicit reference.book
-    const byRef = edition.hadiths?.filter(h => h.reference?.book === sectionNum);
+    const chapterField = inferChapterRefField(edition);
+    const byRef = edition.hadiths?.filter(h => Number(h.reference?.[chapterField]) === sectionNum);
     if (byRef?.length) return byRef;
 
     // Fallback (for editions that don't include `reference`): use section_details hadith ranges.
