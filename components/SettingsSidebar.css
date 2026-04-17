@@ -38,6 +38,11 @@
         z-index: 10;
         flex-shrink: 0;
     }
+
+    /* On wide screens the sidebar is persistent, so hide the close button. */
+    .settings-sidebar.persistent .settings-header .close-btn {
+        display: none;
+    }
 }
 
 /* Tablet tweak */
